@@ -13,11 +13,11 @@ if ($usuario && password_verify($password, $usuario['password'])) {
     $_SESSION['rol'] = $usuario['rol'];
 
     if ($usuario['rol'] == 'admin') {
-        header("Location: admin.php");
+        header("Location: index.html");
     } else {
-        header("Location: usuario.php");
+        header("Location: index.html");
     }
 } else {
-    echo "Credenciales incorrectas. <a href='index.html'>Volver</a>";
+    echo "Contraseña incorrecta. <a href='login.php'>Intentar de nuevo</a>";
 }
 ?>
