@@ -51,3 +51,5 @@ body.addEventListener('click', e => {
 
   // Opcional: movimiento automático
   setInterval(() => mover(1), 5000);
+
+  
