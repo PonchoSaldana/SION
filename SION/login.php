@@ -23,6 +23,8 @@
 
     <div class="formulario oculto" id="form-registro">
         <span class="cerrar" onclick="toggleForm()">×</span>
+
+
         <img src="imagenes/sion.png" alt="Sion Wireless" class="logo">
         <h3>Registro</h3>
         <form method="POST" action="procesar_registro.php">
