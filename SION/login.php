@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Sion Wireless - Login</title>
-    <link rel="stylesheet" href="estiloslogin.css">
+    <link rel="stylesheet" href="css/estiloslogin.css">
 </head>
 <body>
 
 <div class="contenedor">
     <div class="formulario" id="form-login">
         <span class="cerrar" onclick="toggleForm()">×</span>
-        <img src="imagenes/logoSION_B.jpeg" alt="Sion Wireless" class="logo">
+        <img src="img/logoSION_B.jpeg" alt="Sion Wireless" class="logo">
         <h3>Iniciar sesión</h3>
         <form method="POST" action="procesar_login.php">
             <input type="email" name="correo" placeholder="Correo electrónico..." required>
