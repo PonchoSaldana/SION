@@ -32,7 +32,7 @@ p{
 .banner {
     background-image: linear-gradient(to right, hsla(221, 100%, 50%, 0), hsla(253, 42%, 19%, 0), hsla(107, 15%, 24%, 0.5)),url(../img/fondoINDEX.webp);
     width: 100%;
-    height: 750px;
+    height: 650px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -364,7 +364,7 @@ nav .nav-bar .logo a {
     padding: 30px 20px; /* Espaciado interno arriba, abajo y a los lados */
     display: flex; /* Para centrar el contenido de la sección si es necesario */
     justify-content: center;
-    height: 500px;
+    height: 400px;
     align-items: center;
     min-height: 250px; /* Altura mínima para que el contenido central se vea bien */
 }
