@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--TITULO----------------------------------------------------------->
-    <title>SION SYSTEM WIRELESS</title>
+    <title>Sion Wireless - Inicio</title>
     <!--FAVICON-------------------------------------------------------------->
     <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
     <!--ESTILO--------------------------------------------------------------->
@@ -47,7 +47,7 @@
                     <i class="bx bx-search search"></i><!--- Icono de búsqueda -->
                 </div>
                 <div class="iconCarrito">
-                    <a href="#" style="color: white;"> <i class='bx bx-cart cart'></i></a><span id="productos">0</span><!--- Icono de carrito de compras -->
+                    <a href="carrito.php" style="color: white;"> <i class='bx bx-cart cart'></i></a><span id="productos">0</span><!--- Icono de carrito de compras -->
                 </div>
                 <div class="search-field">
                     <input type="text" placeholder="Buscar tus productos preferidos...">
