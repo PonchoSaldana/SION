@@ -10,7 +10,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-image: linear-gradient(to right, hsla(221, 100%, 15%, 0.5), hsla(212, 98%, 17%, 0.5), hsla(194, 36%, 21%, 0.724)),url(../img/fondoLOGIN.jpg);
+    background-image: linear-gradient(to right, hsla(222, 100%, 5%, 0.842), hsla(212, 98%, 17%, 0.769), hsla(194, 36%, 21%, 0.724)),url(../img/fondoLOGIN.jpg);
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
