@@ -399,12 +399,10 @@ nav .nav-bar .logo a {
     font-size: 1.2em; /* Tamaño del título, ¡agrandado! */
     color: #222;
     margin-bottom: 10px; /* Más espacio debajo del título para los botones */
-    text-align: center; /* Centra el texto */
     line-height: 1.2; /* Ajuste la altura de línea si el texto es muy largo */
 }
 
 .redes-sociales {
-    display: flex;
     gap: 20px; /* Espacio entre los iconos, ¡agrandado! */
     align-items: center;
     justify-content: center; /* Centra los botones si el contenedor es más ancho */
