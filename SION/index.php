@@ -29,7 +29,7 @@
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#">Categoria</a></li>
+                    <li><a href="#">Categorias</a></li>
                     <li><a href="#">Servicios</a></li>
                     <li><a href="#">Ofertas</a></li>
                     <li><a href="#">Compras</a></li>
