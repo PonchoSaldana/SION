@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sion Wireless - Ofertas</title>
+    <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/ofertas.css">
-     <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <title>Ofertas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
         <!--ENCABEZADO----------------------------------------------------------->
@@ -22,9 +24,9 @@
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Categoria</a></li>
                     <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="ofertas.php">Ofertas</a></li>
                     <li><a href="#">Compras</a></li>
                     <li><a href="#">Favoritos</a></li>
                     <li><a href="#">Ver todos los productos</a></li>

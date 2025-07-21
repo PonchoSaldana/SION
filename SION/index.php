@@ -29,9 +29,9 @@
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Categoria</a></li>
                     <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="ofertas.php">Ofertas</a></li>
                     <li><a href="#">Compras</a></li>
                     <li><a href="#">Favoritos</a></li>
                     <li><a href="#">Ver todos los productos</a></li>
