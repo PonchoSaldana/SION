@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/carrito.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <!--ENCABEZADO----------------------------------------------------------->
@@ -24,9 +24,9 @@
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Categoria</a></li>
                     <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="ofertas.php">Ofertas</a></li>
                     <li><a href="#">Compras</a></li>
                     <li><a href="#">Favoritos</a></li>
                     <li><a href="#">Ver todos los productos</a></li>
@@ -52,120 +52,256 @@
         </div>
     </nav>
 <hr>
-<section class="banner">
-    
-</section>
-    <h1>Mi carrito</h1>
+<section class="banner"></section>
+<!-- Contenedor principal del carrito -->
+<section class="contenedor-carrito">
+<!-- Tabla de productos y resumen -->
+<h1 class="my-cart-title">Mi Carrito</h1>
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-7 col-sm-12 mb-4">
+                <div class="products-main-container">
+                    <div class="header-row">
+                        <div style="flex: 2;">Productos</div>
+                        <div style="flex: 1; text-align: center;">Cantidad</div>
+                        <div style="flex: 1; text-align: right;">Total</div>
+                    </div>
 
-    <!-- Tabla de productos y resumen -->
-    <div class="contenido-carrito">
+                    <div class="product-list-container">
+                        <div class="product-card">
+                            <img src="img/descarga (1).jpeg" alt="Cámara de seguridad">
+                            <div class="product-details">
+                                <h5>Cámara de seguridad analógica 1080P al aire libre IP66 cámara de vigilancia CCTV impermeab Irfora Cámara AHD</h5>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
+                                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                                    <span class="price">Precio $400</span>
+                                </div>
+                            </div>
+                            <div class="quantity-control-container">
+                                <div class="input-group custom-quantity-selector" data-price="400">
+                                    <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
+                                    <input type="number" class="form-control" value="1" min="1" aria-label="Cantidad" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
+                                </div>
+                                <span class="item-total">$400</span>
+                            </div>
+                        </div>
 
-      <!-- Lista de productos -->
-      <div class="lista-productos">
-        
-        <!-- Producto individual -->
-        <div class="producto">
-          <img src="{{ asset('img/images (2).jpeg') }}" alt="Cámara AHD">
-          <div class="info-producto">
-            <h3>Cámara de seguridad analógica 1080P al aire libre IP66 cámara de vigilancia CCTV</h3>
-            <p class="precio">Precio $400</p>
-            <div class="acciones">
-              <button>Eliminar</button>
-              <div class="cantidad">
-                <button>-</button>
-                <input type="text" value="1">
-                <button>+</button>
-              </div>
-              <p class="total">$400</p>
+                        <div class="product-card">
+                            <img src="img/descarga (2).jpeg" alt="Cámara CCTV">
+                            <div class="product-details">
+                                <h5>Cámara CCTV a color a tiempo completo 1080P, cámara de seguridad al aire libre con cable de 2 MP</h5>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
+                                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                                    <span class="price">Precio $500</span>
+                                </div>
+                            </div>
+                            <div class="quantity-control-container">
+                                <div class="input-group custom-quantity-selector" data-price="500">
+                                    <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
+                                    <input type="number" class="form-control" value="2" min="1" aria-label="Cantidad" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
+                                </div>
+                                <span class="item-total">$1000</span>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="img/images (1).jpeg" alt="Router">
+                            <div class="product-details">
+                                <h5>Router CISCO1941-SEC-K9 2U 2 Puertos PoE Ports Puerto de gestion 4 Ranuras</h5>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
+                                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                                    <span class="price">Precio $600</span>
+                                </div>
+                            </div>
+                            <div class="quantity-control-container">
+                                <div class="input-group custom-quantity-selector" data-price="600">
+                                    <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
+                                    <input type="number" class="form-control" value="1" min="1" aria-label="Cantidad" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
+                                </div>
+                                <span class="item-total">$600</span>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="img/images (2).jpeg" alt="Disco Duro">
+                            <div class="product-details">
+                                <h5>Disco Duro Externo USB 3.0 de 1TB Seagate Expansion Portable Hard Drive</h5>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
+                                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                                    <span class="price">Precio $80</span>
+                                </div>
+                            </div>
+                            <div class="quantity-control-container">
+                                <div class="input-group custom-quantity-selector" data-price="80">
+                                    <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
+                                    <input type="number" class="form-control" value="3" min="1" aria-label="Cantidad" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
+                                </div>
+                                <span class="item-total">$240</span>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="img/images (2).jpeg" alt="Disco Duro">
+                            <div class="product-details">
+                                <h5>Disco Duro Externo USB 3.0 de 1TB Seagate Expansion Portable Hard Drive</h5>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
+                                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                                    <span class="price">Precio $80</span>
+                                </div>
+                            </div>
+                            <div class="quantity-control-container">
+                                <div class="input-group custom-quantity-selector" data-price="80">
+                                    <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
+                                    <input type="number" class="form-control" value="3" min="1" aria-label="Cantidad" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
+                                </div>
+                                <span class="item-total">$240</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Otro producto -->
-        <div class="producto">
-          <img src="{{ asset('img/images (3).jpeg') }}" alt="Cámara CCTV">
-          <div class="info-producto">
-            <h3>Switch 24 puertos marca Cisco</h3>
-            <p class="precio">Precio $500</p>
-            <div class="acciones">
-              <button>Eliminar</button>
-              <div class="cantidad">
-                <button>-</button>
-                <input type="text" value="2">
-                <button>+</button>
-              </div>
-              <p class="total">$1000</p>
+            <div class="col-lg-4 col-md-5 col-sm-12 mb-4">
+                <div class="summary-container"><br>
+                    <div class="summary-header">
+                        Resumen de compra
+                    </div>
+                    <div class="summary-item">
+                        <span id="summary-products-count-text">Productos ( 0 )</span>
+                        <span></span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total</span>
+                        <span class="value" id="grand-total">$0</span>
+                    </div>
+                    <button class="buy-button">Comprar</button>
+                </div>
             </div>
-          </div>
+
         </div>
-
-      </div>
-
-      <!-- Resumen de compra -->
-      <aside class="resumen-compra">
-        <h3>Resumen de compra</h3>
-        <p>Productos (3)</p>
-        <h2>Total: <span class="total-final">$1400</span></h2>
-        <button class="boton-comprar">Comprar</button>
-      </aside>
-
-    </div>
-  </section>
-
-  <!-- Sección de productos vistos recientemente -->
-<section class="vistos-recientemente">
-    <h2>Viste recientemente</h2>
-    <div class="productos-recientes">
-
-      <!-- Cada tarjeta de producto -->
-      <div class="tarjeta-producto">
-        <img src="{{ asset('img/images (2).jpeg') }}" alt="">
-        <p>$400</p>
-        <button>Agregar al carrito</button>
-      </div>
-
-      <div class="tarjeta-producto">
-        <img src="{{ asset('img/images (3).jpeg') }}" alt="">
-        <p>$500</p>
-        <button>Agregar al carrito</button>
-      </div>
-
-      <div class="tarjeta-producto">
-        <img src="{{ asset('img/images (4).jpeg') }}" alt="">
-        <p>$200</p>
-        <button>Agregar al carrito</button>
-      </div>
-
-      <div class="tarjeta-producto">
-        <img src="{{ asset('img/descarga (1).jpeg') }}" alt="">
-        <p>$700</p>
-        <button>Agregar al carrito</button>
-      </div>
-
-      <div class="tarjeta-producto">
-        <img src="{{ asset('img/descarga (2).jpeg') }}" alt="">
-        <p>$2500</p>
-        <button>Agregar al carrito</button>
-      </div>
-
     </div>
 </section>
 
+<!--VISTA RECIENTEMENTE-->
+<section>
+  <div class="recently-viewed-container">
+        <h2>Viste recientemente</h2>
+        <div class="carousel-wrapper">
+            <button class="nav-button left" onclick="scrollCarousel(-1)">&#8592;</button>
+            <div class="carousel" id="productCarousel">
+                <div class="product-cardxd">
+                    <div class="product-image-container">
+                        <img src="img/descarga (1).jpeg" alt="Cámara de seguridad analógica 1080P al aire libre" class="product-image">
+                    </div>
+                    <div class="product-details">
+                        <p class="product-description">Cámara de seguridad analógica 1080P al aire libre IP66 cámara de vigilancia CCTV...</p>
+                        <div class="product-price-section">
+                            $400
+                        </div>
+                        <button class="add-to-cart-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-cardxd">
+                    <div class="product-image-container">
+                        <img src="img/images.jpeg" alt="Cámara CCTV a color a tiempo completo 1080P" class="product-image">
+                    </div>
+                    <div class="product-details">
+                        <p class="product-description">Cámara CCTV a color a tiempo completo 1080P, cámara de seguridad al aire libre con cable de 2 MP...</p>
+                        <div class="product-price-section">
+                            $500
+                        </div>
+                        <button class="add-to-cart-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-cardxd">
+                    <div class="product-image-container">
+                        <img src="img/images (4).jpeg" alt="Antena de TV Mitzu Interior Negro TV-8000" class="product-image">
+                    </div>
+                    <div class="product-details">
+                        <p class="product-description">Antena de TV Mitzu Interior Negro TV-8000</p>
+                        <div class="product-price-section">
+                            $200
+                        </div>
+                        <button class="add-to-cart-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-cardxd">
+                    <div class="product-image-container">
+                        <img src="img/descarga.jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
+                    </div>
+                    <div class="product-details">
+                        <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
+                        <div class="product-price-section">
+                            $700
+                        </div>
+                        <button class="add-to-cart-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-cardxd">
+                    <div class="product-image-container">
+                        <img src="img/images (3).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
+                    </div>
+                    <div class="product-details">
+                        <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
+                        <div class="product-price-section">
+                            $700
+                        </div>
+                        <button class="add-to-cart-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-cardxd">
+                    <div class="product-image-container">
+                        <img src="img/descarga (1).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
+                    </div>
+                    <div class="product-details">
+                        <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
+                        <div class="product-price-section">
+                            $700
+                        </div>
+                        <button class="add-to-cart-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-cardxd">
+                    <div class="product-image-container">
+                        <img src="img/images (2).jpeg" alt="Switch Gigabit Ethernet de 24 puertos" class="product-image">
+                    </div>
+                    <div class="product-details">
+                        <p class="product-description">Switch Gigabit Ethernet de 24 puertos</p>
+                        <div class="product-price-section">
+                            $2500
+                        </div>
+                        <button class="add-to-cart-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                </div>
+            <button class="nav-button right" onclick="scrollCarousel(1)">&#8594;</button>
+        </div>
+    </div>
+</section>
+
+<!-- Pie de página -->
 <footer class="main-footer">
     <div class="footer-section footer-logo">
         <img src="img/LOGO/sin fondo.png" alt="Logo SION">
         <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
     </div>
-    <div class="footer-section">
-        <h4>Contacto</h4>
+    <div class="footer-section"><h4>Contacto</h4>
         <ul>
-            <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
-            <li><a href="tel:+525555555555">55-5555-5555</a></li>
-            <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
+          <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
+          <li><a href="tel:+525555555555">55-5555-5555</a></li>
+          <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
         </ul>
     </div>
-    <div class="footer-section">
-        <h4>Empresa</h4>
+    <div class="footer-section"><h4>Empresa</h4>
         <ul>
             <li><a href="#">Política de privacidad</a></li>
             <li><a href="#">Términos y condiciones</a></li>
