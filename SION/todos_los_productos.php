@@ -118,8 +118,6 @@
     <button>Agregar al carrito</button>
   </div>
 </section>
-
-
 <div class="iconCarrito">
     <a href="carrito.php" style="color: white;"> <i class='bx bx-cart cart'></i></a><span id="productos">0</span>
 </div
@@ -140,9 +138,6 @@
         });
 </script>
 </section>
-
-
-
 <!-- fooder(pie de pagina) -->
 <section class="pie de pagina">
   <footer class="main-footer">
