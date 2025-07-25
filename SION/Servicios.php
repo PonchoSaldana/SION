@@ -29,13 +29,13 @@
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
                         <ul class="submenu">
-                            <li><a href="#">Antenas</a></li>
-                            <li><a href="#">Camaras de seguridad</a></li>
-                            <li><a href="#">Cables de red</a></li>
-                            <li><a href="#">Conectores y jacks</a></li>
-                            <li><a href="#">Modems</a></li>
-                            <li><a href="#">Switches</a></li>
-                            <li><a href="#">Routers</a></li>
+                            <li><a href="submenu/antenas.php">Antenas</a></li>
+                            <li><a href="submenu/camaras.php">Camaras de seguridad</a></li>
+                            <li><a href="submenu/cables.php">Cables de red</a></li>
+                            <li><a href="submenu/conectoresJaks.php">Conectores y jacks</a></li>
+                            <li><a href="submenu/modems.php">Modems</a></li>
+                            <li><a href="submenu/switch.php">Switches</a></li>
+                            <li><a href="submenu/router.php">Routers</a></li>
                         </ul>
                     </li>
                     <li><a href="Servicios.php">Servicios</a></li>

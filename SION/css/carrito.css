@@ -458,7 +458,6 @@ nav .nav-bar .logo a {
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             color: white;
-            font-family: sans-serif;
         }
         .summary-header {
             background-color: #1976d2;
@@ -475,7 +474,8 @@ nav .nav-bar .logo a {
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
-            font-size: 1em;
+            font-size: 1.5em;
+            color: #fff;
         }
         .summary-item.total {
             font-size: 1.2em;

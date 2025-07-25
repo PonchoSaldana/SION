@@ -294,11 +294,11 @@ h1{
     display: flex; 
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px; /* Espacio entre las tarjetas */
+    gap: 50px; /* Espacio entre las tarjetas */
     padding: 20px 0; /* Ajusta el padding si ya lo tienes en main */
 }
 .product-card {
-    width: 240px; /* Ligeramente más pequeño para que quepan 4 en una fila */
+    width: 300px; /* Ligeramente más pequeño para que quepan 4 en una fila */
     border: 1px solid #eee; /* Borde más sutil */
     padding: 15px; 
     text-align: center;
