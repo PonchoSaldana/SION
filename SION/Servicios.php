@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sion Wirekess - Servicios</title>
+    <title>Sion Wireless - Servicios</title>
     <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/servicios.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -26,8 +26,19 @@
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#">Categorias</a></li>
-                    <li><a href="#">Servicios</a></li>
+                    <li class="has-submenu">
+                        <a href="#" data-submenu-toggle>Categoría</a>
+                        <ul class="submenu">
+                            <li><a href="#">Antenas</a></li>
+                            <li><a href="#">Camaras de seguridad</a></li>
+                            <li><a href="#">Cables de red</a></li>
+                            <li><a href="#">Conectores y jacks</a></li>
+                            <li><a href="#">Modems</a></li>
+                            <li><a href="#">Switches</a></li>
+                            <li><a href="#">Routers</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Servicios.php">Servicios</a></li>
                     <li><a href="ofertas.php">Ofertas</a></li>
                     <li><a href="#">Compras</a></li>
                     <li><a href="#">Favoritos</a></li>
@@ -53,44 +64,31 @@
         </div>
     </nav>
     </section>
-
-<h2>Servicios</h2>
-
-<section>
-    <div class="container">
-        <div class="card">
-            <div class="image-container">
-                <img src="img/instalacion camaras de seguridad.jpg" alt="Cámara de seguridad">
-            </div>
-            <div class="content">
-                <h3>Instalación de camara de seguridad</h3>
-                <div class="price-section">
-                    <span class="price">$450</span>
-                    <button class="button">Solicitar</button>
+<br><br><br><br>
+<main>
+        <section class="services-section">
+            <h1 class="my-cart-title">Servicios</h1>
+            <div class="service-card">
+                <img src="img/instalacion camaras de seguridad.jpg" alt="Instalación de cámara de seguridad">
+                <div class="service-details">
+                    <h2>Instalación de cámara de seguridad</h2>
+                    <p>$450</p>
+                    <button type="button" class="btn btn-primary btn-lg">Solicitar</button>
                 </div>
             </div>
-        </div>
-</section>
-
-<section>
-    <div class="container">
-        <div class="card">
-            <div class="image-container">
-                <img src="img/instalacion camaras de antena.jpg" alt="Cámara de seguridad">
-            </div>
-            <div class="content">
-                <h3>Instalación de antena</h3>
-                <div class="price-section">
-                    <span class="price">$600</span>
-                    <button class="button">Solicitar</button>
+            <div class="service-card">
+                <img src="img/instalacion camaras de antena.jpg" alt="Instalación de antena">
+                <div class="service-details">
+                    <h2>Instalación de antena</h2>
+                    <p>$600</p>
+                    <button type="button" class="btn btn-primary btn-lg">Solicitar</button>
                 </div>
             </div>
-        </div>
-</section>
+        </section>
+</main>
 
 <!-- fooder(pie de pagina) -->
-<section class="pie de pagina">
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="footer-section footer-logo">
         <img src="img/LOGO/sin fondo.png" alt="Logo SION">
         <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
@@ -112,8 +110,6 @@
         </ul>
     </div>
 </footer>
-    <script src="js/index.js"></script>
-</section>
-
+    <script src="js/menu.js"></script>
 </body>
 </html>

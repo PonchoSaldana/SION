@@ -121,3 +121,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 behavior: 'smooth'
             });
         }
+
+        // SUBMENU AL PRECIONAR CATEGORÍA
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona todos los enlaces que activarán un submenú
+    const submenuToggles = document.querySelectorAll('[data-submenu-toggle]');
+
+    submenuToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function(event) {
+            event.preventDefault(); // Evita que el enlace de Categoría navegue a '#'
+
+            // Obtén el elemento padre (el <li>)
+            const parentLi = this.closest('li.has-submenu');
+
+            if (parentLi) {
+                // Alterna la clase 'submenu-open' en el <li> padre
+                parentLi.classList.toggle('submenu-open');
+
+                // Cierra otros submenús si están abiertos (opcional)
+                document.querySelectorAll('.has-submenu.submenu-open').forEach(function(openSubmenu) {
+                    if (openSubmenu !== parentLi) { // Si no es el menú que acabamos de hacer clic
+                        openSubmenu.classList.remove('submenu-open');
+                    }
+                });
+            }
+        });
+    });
+
+    // Opcional: Cierra el submenú si se hace clic fuera de él
+    document.addEventListener('click', function(event) {
+        const openSubmenus = document.querySelectorAll('.has-submenu.submenu-open');
+        openSubmenus.forEach(function(openSubmenu) {
+            // Si el clic no fue dentro del submenú abierto
+            if (!openSubmenu.contains(event.target)) {
+                openSubmenu.classList.remove('submenu-open');
+            }
+        });
+    });
+});

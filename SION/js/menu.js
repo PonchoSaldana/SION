@@ -1,4 +1,4 @@
-//MENU RESPONSIVE
+//menu responsive
 const body = document.querySelector('body');
 const nav = document.querySelector('nav');
 const searchToggle = document.querySelector('.searchToggle');
@@ -30,34 +30,6 @@ body.addEventListener('click', e => {
         searchToggle.classList.remove('active');
     }
 });
-
-
-
-// CARRUSEL
-const contenedor = document.getElementById('contenedor');
-const slides = document.querySelectorAll('.carrusel-slide');
-let index = 0;
-
-function mover(direccion) {
-    const visibleSlides = window.innerWidth <= 700 ? 1 : 4;
-    const maxIndex = slides.length - visibleSlides;
-
-    index += direccion;
-
-    // --- Lógica para el bucle ---
-    if (index > maxIndex) {
-        index = 0; // Regresa al principio si llega al final
-    } else if (index < 0) {
-        index = maxIndex; // Va al final si intenta ir hacia atrás desde el principio
-    }
-    // --- Fin de la lógica para el bucle ---
-
-    const slideWidth = slides[0].offsetWidth + 20; // incluye el gap
-    contenedor.style.transform = `translateX(-${index * slideWidth}px)`;
-}
-
-// Opcional: movimiento automático
-setInterval(() => mover(1), 5000);
 
 // SUBMENU AL PRECIONAR CATEGORÍA
 document.addEventListener('DOMContentLoaded', function() {

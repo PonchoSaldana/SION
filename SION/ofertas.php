@@ -24,12 +24,23 @@
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#">Categoria</a></li>
-                    <li><a href="#">Servicios</a></li>
+                    <li class="has-submenu">
+                        <a href="#" data-submenu-toggle>Categoría</a>
+                        <ul class="submenu">
+                            <li><a href="#">Antenas</a></li>
+                            <li><a href="#">Camaras de seguridad</a></li>
+                            <li><a href="#">Cables de red</a></li>
+                            <li><a href="#">Conectores y jacks</a></li>
+                            <li><a href="#">Modems</a></li>
+                            <li><a href="#">Switches</a></li>
+                            <li><a href="#">Routers</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Servicios.php">Servicios</a></li>
                     <li><a href="ofertas.php">Ofertas</a></li>
                     <li><a href="#">Compras</a></li>
                     <li><a href="#">Favoritos</a></li>
-                    <li><a href="#">Ver todos los productos</a></li>
+                    <li><a href="todos_los_productos.php">Ver todos los productos</a></li>
                 </ul>
             </div>
 
@@ -51,5 +62,6 @@
             </div>
         </div>
     </nav>
+    <script src="js/menu.js"></script>
 </body>
 </html>

@@ -10,12 +10,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.wave{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
 /* Color Variables */
 :root {
     --body-color: #E4E9F7;
@@ -29,33 +23,8 @@ p{
     font-size: 25px;
 }
 
-.banner {
-    background-image: linear-gradient(to right, hsla(221, 100%, 50%, 0), hsla(253, 42%, 19%, 0), hsla(107, 15%, 24%, 0.5)),url(../img/fondoINDEX.webp);
-    width: 100%;
-    height: 650px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.banner-text {
-    position: absolute;
-    top: 35%;
-    left: 10%;
-    color: #fff;
-    text-shadow: 1px 5px 4px #000;
-}
-
-.banner-text h2 {
-    font-size: 40px;
-    margin: 0;
-}
-
-body {
-    height: 100vh;
-    background-color: var(--body-color);
+body{
+    color: #76c8ff;
 }
 
 nav {
@@ -99,10 +68,42 @@ nav .nav-bar .logo a {
 .menu .logo-toggle {
     display: none;
 }
+/*--SUBMENU-------------------------------------*/
+.nav-links .submenu {
+  display: none; /* El submenú estará oculto inicialmente */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+
+  /* CAMBIOS PARA CENTRAR */
+  left: 33%;
+  transform: translateX(-50%);
+
+  background-color: #1683CE;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Estilos para los enlaces del submenú */
+.nav-links .submenu li a {
+  display: block;
+  padding: 10px 20px; /* Espaciado interno para los elementos del submenú */
+  color: #fff; /* Color del texto */
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Mostrar el submenú cuando el cursor está sobre el elemento padre (li) */
+.nav-links .has-submenu.submenu-open > .submenu {
+  display: block; /* Muestra el submenú cuando el padre tiene la clase submenu-open */
+}
+/*---------------------------------------*/
 
 .nav-bar .nav-links {
     display: flex;
-    align-items: center;
 }
 
 .nav-bar .nav-links li {
@@ -120,7 +121,7 @@ nav .nav-bar .logo a {
     transition: transform 0.3s;
 }
 .nav-links li a:hover {
-    transform: scale(1.3);
+    transform: scale(1);
     color: rgb(9, 0, 112);
    
 }
@@ -260,204 +261,80 @@ nav .nav-bar .logo a {
     font-size: 22px;
     cursor: pointer;
 }
-.imagen-wrapper {
-    width: 100%; /* El contenedor de la imagen ocupa todo el ancho disponible */
-    padding-top: 100%; /* Truco para mantener una relación de aspecto 1:1 (cuadrado) */
-    position: relative;
-    overflow: hidden; /* Asegura que la imagen no se salga si es muy grande */
-    display: flex; /* Para centrar la imagen dentro de su wrapper */
-    justify-content: center;
-    align-items: center;
-}
 
-.imagen-wrapper img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* ¡Clave! Redimensiona la imagen para que quepa completamente dentro del contenedor, manteniendo su relación de aspecto. No la recorta ni la estira. */
-    object-position: center; /* Centra la imagen dentro del contenedor */
-    display: block; /* Elimina cualquier espacio extra debajo de la imagen */
+:root {
+    --main-blue: #1683CE;
 }
-
-.texto-slide {
-    text-align: center; /* Centra el texto */
-    margin-top: 15px; /* Espacio entre la imagen y el texto */
-    width: 100%; /* Asegura que el contenedor de texto ocupe el ancho */
-}
-.texto-slide p {
-    font-size: 15px; /* Tamaño de fuente, ajusta si es necesario */
-    font-weight: bold; /* Negrita, como en tu ejemplo */
-    color: #333; /* Color de texto */
-    margin: 0; /* Elimina márgenes predeterminados del párrafo */
-}
-.prev {
-    left: 20px;
-}
-
-.next {
-    right: 20px;
-}
-
-/*UBICACION--------------------*/
-#ubicacion {
-    background-color: #fff; /* Color de fondo similar al de la imagen */
-    padding: 30px 20px; /* Espaciado interno arriba, abajo y a los lados */
-    display: flex; /* Para centrar el contenido de la sección si es necesario */
-    justify-content: center;
-    height: 400px;
-    align-items: center;
-    min-height: 250px; /* Altura mínima para que el contenido central se vea bien */
-}
-
-.ubicacion-contenedor {
-    display: flex;
-    justify-content: space-between; /* Coloca los elementos a los extremos */
-    align-items: center; /* Centra verticalmente los elementos */
-    max-width: 1200px; /* Ancho máximo del contenedor */
-    width: 100%; /* Asegura que ocupe todo el ancho disponible */
-    margin: 0 auto; /* Centra el contenedor en pantallas más grandes */
-}
-
-.ubicacion-contenido-central { /* NUEVO ESTILO: Para centrar el h2 y las redes sociales */
-    flex-grow: 1; /* Permite que este div ocupe el espacio restante */
-    text-align: center; /* Centra el texto y los elementos internos */
-    display: flex;
-    flex-direction: column; /* Apila el h2 y las redes sociales */
-    align-items: center; /* Centra horizontalmente el h2 y las redes sociales */
-    justify-content: center;
-}
-
-.ubicacion-izquierda h2 { /* Cambiado a .ubicacion-contenido-central h2 si prefieres, pero sigue funcionando */
-    font-size: 2.8em; /* Tamaño del título, ¡agrandado! */
-    color: #222;
-    margin-bottom: 50px; /* Más espacio debajo del título para los botones */
-    line-height: 1.2; /* Ajuste la altura de línea si el texto es muy largo */
-}
-
-.ubicacion-izquierda h1 { /* Cambiado a .ubicacion-contenido-central h2 si prefieres, pero sigue funcionando */
-    font-size: 1.2em; /* Tamaño del título, ¡agrandado! */
-    color: #222;
-    margin-bottom: 10px; /* Más espacio debajo del título para los botones */
-    line-height: 1.2; /* Ajuste la altura de línea si el texto es muy largo */
-}
-
-.redes-sociales {
-    gap: 20px; /* Espacio entre los iconos, ¡agrandado! */
-    align-items: center;
-    justify-content: center; /* Centra los botones si el contenedor es más ancho */
-}
-
-.redes-sociales a i {
-    font-size: 50px; /* Tamaño de los iconos, ¡MUCHO MÁS GRANDES! */
-    color: #333; /* Color de los iconos */
-}
-
-.ubicacion-derecha {
-    flex-shrink: 0; /* Evita que el globo se encoja si el espacio es limitado */
-    margin-left: 30px; /* Espacio a la izquierda del globo para separarlo del texto */
-}
-
-.ubicacion-derecha i {
-    font-size: 200px;
-    color: #333;
-}
-
-h2 {
-    text-align:center;
-}
-.card{
-    background: linear-gradient(to right, #095b91, #00b4e0);
-}
-.container {
-    display: flex;
-    flex-direction: column; 
-    gap: 20px;
-    width: 90%; 
-    max-width: 500px;
-    margin: 20px auto; 
-    padding: 0 10px; 
-    box-sizing: border-box; 
-    flex-grow: 1;
-}
-.image-container {
-    flex: 0 0 40%;
-    max-width: 40%;
-    overflow: hidden;
-}
-
-.image-container img {
-    width: 80%;
-    height: 100%;
-}
-.content {
-    flex: 1;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.content h2 {
-    margin-top: 10;
-    font-size: 1.2em;
-    line-height: 1.2;
-    color: rgb(248, 248, 248);
-    align-items: center;
-}
-.content h3 {
-    margin-top: 10;
-    font-size: 1.2em;
-    line-height: 1.2;
-    color: rgb(248, 248, 248);
-    align-items: center;
-}
-
-.price-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.price {
-    font-size: 1.6em; /* Ligeramente más pequeño para ajustarse */
-    font-weight: bold;
-    color: white;
-}
-
-.button {
-    background: linear-gradient(to bottom, #007bff, #0056b3);
-    color: white;
-    border: none;
-    border-radius: 15px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 0.9em; /* Ligeramente más pequeño */
-    font-weight: bold;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease;
-}
-
-.main{
+/*--SERVICIOS-------------------------------------*/
+h1{
     text-align: center;
-    padding: 1 4rem;
-    margin-top: 50px;
-    width: 100%;
-    height: 60px; /*ancho del footer*/
+    font-size: 35px;
+    color: #ffffff;
+    text-shadow: 2px 0px 10px #000;
+}
+main {
+    padding: 20px;
+    max-width: auto;
+    background-color: #76c8ff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.my-cart-title {
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.service-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--main-blue); /* Fondo azul de la tarjeta */
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.service-card img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.service-card .service-details {
+    flex-grow: 1; /* Permite que los detalles ocupen el espacio restante */
+}
+
+.service-card .service-details h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+.service-card .service-details p {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #40f470;
+}
+
+
+/*PIE DE PAGINA*/
 .main-footer {
     background: linear-gradient(to right, #095b91, #00b4e0);
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 10px 10px;
+    padding: 30px 20px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
 }
 
 .footer-section {
@@ -505,15 +382,6 @@ h2 {
 }
 
 
-/* responsivo */
-@media (max-width: 768px) {
-        .main-footer {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
-
-}
 /* Responsive Design----------------------------------------------------------------------------------------------------------------------------------------------------*/
 @media (max-width: 875px){
     nav .nav-bar .logo a {
