@@ -80,73 +80,64 @@
 <h3>Vista rápida</h3><br>
 <div class="carrusel-contenedor" id="contenedor">
     <div class="carrusel-slide">
-        <div class="imagen-wrapper"> <img src="img/descarga (1).jpeg" alt="Antenas">
+        <div class="imagen-wrapper"> <img src="img/antena.webp" alt="Antenas">
         </div>
-        <div class="texto-slide"> <p>Router CISCO1941-SEC-K9 2U 2 Puertos PoE Ports Puerto de gestion 4 Ranuras</p>
-            <hr><br><a class="btn btn-primary" href="#" role="button">Ver producto</a>
+        <div class="texto-slide"> <p>Antena aérea para TV HD, giratoria 360∞ con control, Volteck</p>
+            <hr><br><a class="btn btn-primary" href="submenu/antenas.php" role="button">Ver productos</a>
         </div>
     </div>
     <div class="carrusel-slide">
         <div class="imagen-wrapper">
-            <img src="img/descarga (2).jpeg" alt="Producto 2">
+            <img src="img/cables.jpeg" alt="Producto 2">
         </div>
         <div class="texto-slide">
-            <p>Router para juegos GT-AXE11000 Tri-band WiFi 6E (802.11ax)</p>
-            <hr><br><a class="btn btn-primary" href="#" role="button">Ver producto</a>
+            <p>Cable de Red LAN Ponchado 5m - Listo para usar (Cat-5)</p>
+            <hr><br><a class="btn btn-primary" href="submenu/cables.php" role="button">Ver productos</a>
         </div>
     </div>
     <div class="carrusel-slide">
         <div class="imagen-wrapper">
-            <img src="img/descarga.jpeg" alt="Otro Producto">
-        </div>
-        <div class="texto-slide">
-            <p>Router de juegos WiFi 6 de doble banda GS-AX5400</p>
-            <hr><br><a class="btn btn-primary" href="#" role="button">Ver producto</a>
-        </div>
-    </div>
-    <div class="carrusel-slide">
-        <div class="imagen-wrapper">
-            <img src="img/images (1).jpeg" alt="Producto 4">
+            <img src="img/images (1).jpeg" alt="Otro Producto">
         </div>
         <div class="texto-slide">
             <p>Cámara de Seguridad Wifi 2 lentes movimiento y audio</p>
-            <hr><br><a class="btn btn-primary" href="#" role="button">Ver producto</a>
+            <hr><br><a class="btn btn-primary" href="submenu/camaras.php" role="button">Ver productos</a>
         </div>
     </div>
     <div class="carrusel-slide">
         <div class="imagen-wrapper">
-            <img src="img/images (2).jpeg" alt="Producto 5">
+            <img src="img/jack.webp" alt="Producto 4">
         </div>
         <div class="texto-slide">
-            <p>Cámara de Seguridad Steren Cctv-1120 Digital/ Full Hd/ tipo Domo/ Tetrahíbrida color Blanco</p>
-            <hr><br><a class="btn btn-primary" href="#" role="button">Ver producto</a>
+            <p>Jack RJ45 de 8 contactos a 90° CAT 6, tipo Keystone, blanco</p>
+            <hr><br><a class="btn btn-primary" href="submenu/conectoresJaks.php" role="button">Ver productos</a>
         </div>
     </div>
     <div class="carrusel-slide">
         <div class="imagen-wrapper">
-            <img src="img/images (3).jpeg" alt="Producto 6">
+            <img src="img/modem.jpeg" alt="Producto 5">
         </div>
         <div class="texto-slide">
-            <p>Switches Cisco Catalyst de la serie 2960-XR</p>
-            <hr><br><a class="btn btn-primary" href="#" role="button">Ver producto</a>
+            <p>Modem Internet Prepago 4.5g Internet Hogar</p>
+            <hr><br><a class="btn btn-primary" href="submenu/modems.php" role="button">Ver productos</a>
         </div>
     </div>
     <div class="carrusel-slide">
         <div class="imagen-wrapper">
-            <img src="img/images (4).jpeg" alt="Producto 7">
+            <img src="img/descarga (2).jpeg" alt="Producto 6">
         </div>
         <div class="texto-slide">
             <p>Router ASUS Gigabit Ethernet de Banda Dual RT-AX57, Inalámbrico, 2402 Mbit/s, 4x RJ-45, 2.4/5GHz, 4 Antenas Externas</p>
-            <hr><br><a class="btn btn-primary" href="#" role="button">Ver producto</a>
+            <hr><br><a class="btn btn-primary" href="submenu/router.php" role="button">Ver productos</a>
         </div>
     </div>
     <div class="carrusel-slide">
         <div class="imagen-wrapper">
-            <img src="img/images.jpeg" alt="Producto 8">
+            <img src="img/images (3).jpeg" alt="Producto 7">
         </div>
         <div class="texto-slide">
-            <p>Cámara de seguridad analógica 1080P al aire libre IP66 cámara de vigilancia CCTV impermeab Irfora Cámara AHD</p>
-            <hr><br><a class="btn btn-primary" href="#" role="button">Ver producto</a>
+            <p>Switches Cisco Catalyst de la serie 2960-XR</p>
+            <hr><br><a class="btn btn-primary" href="submenu/switch.php" role="button">Ver productos</a>
         </div>
     </div>
 </div>

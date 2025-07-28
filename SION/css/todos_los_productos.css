@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: "Ubuntu";
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -18,9 +19,11 @@ html {
     --search-bar: #f2f2f2;
     --search-text: #010718;
 }
-p{
+
+p {
     font-size: 25px;
 }
+
 body {
     padding-top: 100px;
 }
@@ -66,39 +69,45 @@ nav .nav-bar .logo a {
 .menu .logo-toggle {
     display: none;
 }
+
 /*--SUBMENU-------------------------------------*/
 .nav-links .submenu {
-  display: none; /* El submenú estará oculto inicialmente */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 100%;
+    display: none;
+    /* El submenú estará oculto inicialmente */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
 
-  /* CAMBIOS PARA CENTRAR */
-  left: 33%;
-  transform: translateX(-50%);
+    /* CAMBIOS PARA CENTRAR */
+    left: 33%;
+    transform: translateX(-50%);
 
-  background-color: #1683CE;
-  min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  z-index: 1000;
+    background-color: #1683CE;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 
 /* Estilos para los enlaces del submenú */
 .nav-links .submenu li a {
-  display: block;
-  padding: 10px 20px; /* Espaciado interno para los elementos del submenú */
-  color: #fff; /* Color del texto */
-  text-decoration: none;
-  white-space: nowrap;
+    display: block;
+    padding: 10px 20px;
+    /* Espaciado interno para los elementos del submenú */
+    color: #fff;
+    /* Color del texto */
+    text-decoration: none;
+    white-space: nowrap;
 }
 
 /* Mostrar el submenú cuando el cursor está sobre el elemento padre (li) */
-.nav-links .has-submenu.submenu-open > .submenu {
-  display: block; /* Muestra el submenú cuando el padre tiene la clase submenu-open */
+.nav-links .has-submenu.submenu-open>.submenu {
+    display: block;
+    /* Muestra el submenú cuando el padre tiene la clase submenu-open */
 }
+
 /*---------------------------------------*/
 
 .nav-bar .nav-links {
@@ -120,10 +129,11 @@ nav .nav-bar .logo a {
     padding: 10px;
     transition: transform 0.3s;
 }
+
 .nav-links li a:hover {
     transform: scale(1);
     color: rgb(9, 0, 112);
-   
+
 }
 
 /* Search Box */
@@ -133,16 +143,17 @@ nav .nav-bar .logo a {
     position: relative;
 }
 
-.iconUser{
+.iconUser {
     color: #fff;
     font-size: 30px;
     cursor: pointer;
     justify-content: center;
     transition: transform 0.3s;
 }
+
 .iconUser i:hover {
-  transform: scale(1.3);
-  color: rgb(9, 0, 112);
+    transform: scale(1.3);
+    color: rgb(9, 0, 112);
 }
 
 .iconCarrito {
@@ -152,11 +163,12 @@ nav .nav-bar .logo a {
     transition: transform 0.3s;
 
 }
+
 .iconCarrito i:hover {
     transform: scale(1.3);
     color: rgb(9, 0, 112);
 }
-    
+
 .iconCarrito span {
     position: absolute;
     top: -1px;
@@ -208,7 +220,7 @@ nav .nav-bar .logo a {
 
 .searchBox .search-field {
     position: absolute;
-    bottom: -90px; 
+    bottom: -90px;
     right: 30px;
     height: 55px;
     width: 550px;
@@ -223,7 +235,7 @@ nav .nav-bar .logo a {
     transition: all 0.3s ease;
 }
 
-.searchToggle.active ~ .search-field {
+.searchToggle.active~.search-field {
     bottom: -74px;
     opacity: 1;
     pointer-events: auto;
@@ -265,15 +277,20 @@ nav .nav-bar .logo a {
 
 /* PRODUCTOS */
 main {
-    padding: 20px; /* Padding general para el contenido principal */
-    max-width: auto; /* Ancho máximo para centrar el contenido */
-    margin: auto; /* Centra el contenido principal */
-    background-color: #76c8ff; /* Fondo blanco para el área de contenido */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    min-height: 500px; /* Para que el fondo blanco se vea si hay poco contenido */
+    padding: 20px;
+    /* Padding general para el contenido principal */
+    max-width: auto;
+    /* Ancho máximo para centrar el contenido */
+    margin: auto;
+    /* Centra el contenido principal */
+    background-color: #76c8ff;
+    /* Fondo blanco para el área de contenido */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
+    /* Para que el fondo blanco se vea si hay poco contenido */
 }
 
-h1{
+h1 {
     text-align: center;
     font-size: 35px;
     color: #ffffff;
@@ -291,62 +308,72 @@ h1{
 
 /* CONTENEDOR DE PRODUCTO */
 .product-container {
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 50px; /* Espacio entre las tarjetas */
-    padding: 20px 0; /* Ajusta el padding si ya lo tienes en main */
+    gap: 50px;
+    /* Espacio entre las tarjetas */
+    padding: 20px 0;
+    /* Ajusta el padding si ya lo tienes en main */
 }
+
 .product-card {
-    width: 300px; /* Ligeramente más pequeño para que quepan 4 en una fila */
-    border: 1px solid #eee; /* Borde más sutil */
-    padding: 15px; 
+    width: 300px;
+    /* Ligeramente más pequeño para que quepan 4 en una fila */
+    border: 1px solid #eee;
+    /* Borde más sutil */
+    padding: 15px;
     text-align: center;
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     background-color: #fff;
-    transition: transform 0.2s ease-in-out; /* Animación al pasar el ratón */
+    transition: transform 0.2s ease-in-out;
+    /* Animación al pasar el ratón */
 }
 
 .product-card:hover {
-    transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+    transform: translateY(-5px);
+    /* Efecto de elevación al pasar el ratón */
 }
 
 .product-card img {
-    max-width: 100%; 
-    height: 150px; 
+    max-width: 100%;
+    height: 150px;
     object-fit: contain;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 .product-card h3 {
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 1.2em;
-    color: #000000; 
+    color: #000000;
 }
 
 .product-card p {
-    font-size: 0.95em; 
+    font-size: 0.95em;
     color: #000000;
     margin-bottom: 10px;
-    flex-grow: 1; /* Permite que la descripción ocupe el espacio disponible */
-    display: -webkit-box; 
+    flex-grow: 1;
+    /* Permite que la descripción ocupe el espacio disponible */
+    display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 16px; /* Ajusta el tamaño de la fuente para descripciones */
+    font-size: 16px;
+    /* Ajusta el tamaño de la fuente para descripciones */
     line-height: 1.4;
 }
 
 .price {
     font-weight: bold;
-    font-size: 1.3em; /* Un poco más grande para el precio */
-    margin-top: auto; 
-    margin-bottom: 15px; 
+    font-size: 1.3em;
+    /* Un poco más grande para el precio */
+    margin-top: auto;
+    margin-bottom: 15px;
 }
 
 /* PIE DE PAGINA */
@@ -401,23 +428,264 @@ h1{
 }
 
 .footer-section ul li a:hover {
-    color: #f0f0f0; /* Un blanco un poco más claro para el efecto hover */
+    color: #f0f0f0;
+    /* Un blanco un poco más claro para el efecto hover */
     text-decoration: underline;
 }
+
+/*-----------------MODAL--------------*/
+.modal-fullscreen {
+    display: none; /* <--- MUY IMPORTANTE: Asegúrate de que esté aquí y no sea sobrescrito */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo un poco más oscuro y transparente */
+    display: flex; /* <-- Lo dejo como flex aquí, pero recuerda que el 'none' inicial lo oculta */
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Añadido un poco de padding para que el modal no se pegue a los bordes en pantallas pequeñas */
+}
+
+.modal-content-fullscreen {
+    background-color: #fefefe; /* Fondo blanco como en la imagen */
+    margin: auto; /* Centrar el modal */
+    padding: 0; /* Eliminamos el padding aquí, se gestionará internamente */
+    border-radius: 10px; /* Bordes redondeados */
+    width: auto; /* Ancho del modal, ajustado a un porcentaje más pequeño */
+    max-width: 90%; /* Ancho máximo para el modal */
+    height: auto; /* Altura automática basada en el contenido */
+    /*max-height: 90vh;  Altura máxima para que no exceda el viewport */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra suave */
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    overflow: hidden; /* Para contener los elementos hijos dentro del borde redondeado */
+
+    /* PROPIEDADES NUEVAS/MODIFICADAS PARA DISEÑO HORIZONTAL */
+    display: flex; /* Usamos flexbox para la distribución horizontal */
+    flex-direction: row; /* Contenido en fila (imagen a la izquierda, texto a la derecha) */
+    align-items: flex-start; /* Alineación al inicio de la cruz */
+    color: #333; /* Color de texto general para el contenido del modal */
+}
+
+/* Animación para el modal */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.close-button {
+    color: #aaa; /* Color gris suave */
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px; /* Tamaño de la 'x' */
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1; /* Para ayudar a centrar la 'x' */
+    z-index: 10; /* Asegurar que esté por encima de otros elementos del modal */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333; /* Color más oscuro al pasar el ratón */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modificaciones para el H2 */
+.modal-content-fullscreen h2 {
+    text-align: left; /* Alineado a la izquierda como en la imagen */
+    margin-bottom: 10px; /* Espacio debajo del título */
+    color: #000;
+    font-size: 1.5em; /* Ajuste de tamaño para el título */
+}
+
+.modal-image-gallery { /* La sección izquierda con imagen principal y miniaturas */
+    flex: 0 0 350px; /* Ancho fijo para la galería (ajusta si lo quieres más grande o pequeño) */
+    background-color: #ffffff; /* Color de fondo oscuro como en la imagen de la cámara */
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Contenido apilado verticalmente */
+    align-items: center;
+    overflow-y: auto; /* Scroll si hay muchas miniaturas */
+    position: relative; /* Para el padding-top del contenido principal en responsive */
+}
+
+.modal-main-image {
+    width: 100%;
+    max-width: 300px; /* Controla el tamaño máximo de la imagen principal */
+    height: auto;
+    max-height: 250px; /* Altura máxima para la imagen principal */
+    object-fit: contain; /* Ajustar sin recortar */
+    margin-bottom: 20px;
+    border-radius: 8px; /* Bordes redondeados para la imagen principal */
+}
+
+
+.modal-thumbnails {
+    display: flex; /* Ya lo tienes en flex */
+    flex-direction: row; 
+    
+    justify-content: center; /* Centrar las miniaturas horizontalmente */
+    flex-wrap: wrap; /* Permitir que las miniaturas salten a la siguiente línea si no hay espacio */
+    
+    gap: 10px; /* Espacio entre miniaturas */
+    width: auto;
+    /* align-items: center;  Esta línea ya no es necesaria si quieres que se vean en fila y centradas horizontalmente */
+}
+
+
+@media (max-width: 768px) {
+    .modal-thumbnails {
+        flex-direction: row; /* Mantener en fila en móviles */
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+.modal-thumbnail {
+    width: 100px; /* Ancho de las miniaturas */
+    height: 100px; /* Alto de las miniaturas */
+    object-fit: cover; /* Recortar si es necesario para llenar el espacio */
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.modal-thumbnail:hover,
+.modal-thumbnail.active {
+    border-color: #007bff; /* Borde al pasar el ratón o si está activa */
+}
+
+/* Sección derecha para los detalles del producto */
+.modal-details-content { /* Necesitarás un div con esta clase en el HTML */
+    flex: 1; /* El contenido de los detalles ocupará el espacio restante (otra mitad) */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empujar el botón de carrito hacia abajo */
+    background-color: #00b3e031; /* Fondo blanco para la sección de detalles */
+}
+
+/* Estilos para el párrafo de precio */
+.modal-details-content .price {
+    font-size: 2em;
+    color: #28a745; /* Color verde para el precio */
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Contenido de descripción (si existe) */
+.modal-content-fullscreen p { /* Aplica a todos los párrafos dentro del modal-content-fullscreen */
+    line-height: 1.2;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 15px; /* Espacio para separar párrafos */
+    font-size: 20px; /* Tamaño de fuente para el texto descriptivo */
+}
+
+.modal-content-fullscreen ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.modal-content-fullscreen ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.modal-content-fullscreen .add-to-cart-modal {
+    display: block;
+    width: 100%; /* Ocupará todo el ancho disponible en su columna */
+    margin: auto 0 0 0; /* Elimina auto a los lados, empuja hacia abajo */
+    padding: 15px 20px;
+    font-size: 1.1em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+@media (max-width: 480px) {
+    .modal-details-content {
+        padding: 15px;
+    }
+
+    .modal-content-fullscreen h2 {
+        /* Ajuste para el título en móvil muy pequeño */
+        font-size: 1.3em;
+    }
+
+    .modal-content-fullscreen .price {
+        font-size: 1.8em;
+    }
+
+    .modal-content-fullscreen .add-to-cart-modal {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+}
+
 
 
 /* responsivo */
 @media (max-width: 768px) {
-        .main-footer {
+    .main-footer {
         flex-direction: column;
         text-align: center;
         align-items: center;
     }
 
+    .modal-content-fullscreen {
+        flex-direction: column;
+        /* Apilar la imagen y el contenido en pantallas pequeñas */
+        width: 90%;
+        /* Más ancho en móviles */
+        max-width: none;
+        /* Sin límite de ancho máximo */
+    }
+
+    .modal-image-section {
+        flex: none;
+        /* Eliminar el ancho fijo */
+        width: 100%;
+        /* Ocupar todo el ancho disponible */
+        border-right: none;
+        /* Quitar el borde */
+        border-bottom: 1px solid #eee;
+        /* Añadir borde inferior */
+        padding-bottom: 15px;
+    }
+
+    .modal-main-image {
+        /* Asegurarse de que esta clase apunte a la imagen dentro de la sección */
+        max-height: 250px;
+        /* Ajustar altura para móvil */
+    }
+
+    .modal-details-content {
+        padding: 20px;
+    }
+
+    .modal-content-fullscreen h2 {
+        /* Ajuste para el título en móvil */
+        font-size: 1.5em;
+    }
+
 }
 
 /* Responsive Design----------------------------------------------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 875px){
+@media (max-width: 875px) {
     nav .nav-bar .logo a {
         font-size: 15px;
     }
@@ -478,15 +746,18 @@ h1{
 }
 
 @media (max-width: 390px) {
-    .searchBox .search-field{
+    .searchBox .search-field {
         width: 200px;
     }
-    .iconUser{
+
+    .iconUser {
         font-size: 15px;
     }
-    .iconCarrito{
+
+    .iconCarrito {
         font-size: 18px;
-    }   
+    }
+
     .searchToggle i {
         font-size: 16px;
     }

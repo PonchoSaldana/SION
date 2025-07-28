@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="es"> <head>
+<html lang="es">
+
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sion Wireless - Antenas</title>
     <link rel="shortcut icon" href="../img/LOGO/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/todos_los_productos.css"> <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/todos_los_productos.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <nav>
         <div class="nav-bar">
@@ -26,7 +30,8 @@
                             <img src="../img/LOGO/sin fondo.png" alt="Logo SION" height="90">
                         </a>
                     </span>
-                    <i class="bx bx-x sidelbarClose"></i> </div>
+                    <i class="bx bx-x sidelbarClose"></i>
+                </div>
                 <ul class="nav-links">
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
@@ -68,76 +73,116 @@
         </div>
     </nav>
 
-    <main> <h1 class="my-cart-title">Categoria - Antenas</h1>
+    <main>
+        <h1 class="my-cart-title">Categoria - Antenas</h1>
+        <section>
+            <div class="product-container">
+                <div class="product-card">
+                    <img src="../img/antena.webp" alt="GE Antena de TV para Exteriores">
+                    <h3>GE Antena de TV para Exteriores</h3><br>
+                    <p>Antena de TV de alta ganancia para exteriores, ideal para recibir señales digitales.</p>
+                    <p class="price">$299.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_001"
+                        data-product-name="GE Antena de TV para Exteriores, Largo Alcance, Resistente a la Interperie, Compatible con 4K, 1080p, UHF, VHF, Antena Digital HDTV, Montaje Tipo J para Variedad de Montajes, Multiples TVs, 29884"
+                        data-product-price="299.00"
+                        data-product-description="La antena de TV para exteriores GE ofrece un rendimiento excepcional con un alcance de hasta 70 millas, ideal para áreas rurales o suburbanas. Su diseño resistente a la intemperie garantiza durabilidad y fiabilidad en cualquier clima. Compatible con televisores 4K y 1080p, esta antena es perfecta para disfrutar de una amplia variedad de canales sin necesidad de suscripción. Incluye un montaje tipo J que se adapta a diferentes configuraciones de instalación."
+                        data-product-specs='[
+                   {"label": "Marca", "value": "GE"},
+                   {"label": "Color", "value": "Montaje en exterior/ático"},
+                   {"label": "Cantidad de canales", "value": "100"},
+                   {"label": "Impedancia", "value": "75 Ohm"},
+                   {"label": "Rango máximo", "value": "70 Millas"},
+                   {"label": "Dimensiones del producto", "value": "73,7l. x 38,1an. x 52,1alt. centimeters"},
+                   {"label": "UPC", "value": "030878298841"},
+                   {"label": "Fabricante", "value": "Jasco Products LLC"}
+               ]'
+                        data-main-image="../img/antena.webp"
+                        data-thumbnails='["../img/antena.webp", "../img/antena 2.jpeg", "../img/antena 3.jpeg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
+                </div>
 
-        <section> 
-          <div class="product-container">
                 <div class="product-card">
-                    <img src="../img/antena.webp" alt="Producto 1">
-                    <h3>Router</h3>
-                    <p>Router profesional de oficina</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/antena 1.1.jpg" alt="Cámara de vigilancia">
+                    <h3>Master Antena Exterior HD 37 Elementos para TV</h3><br>
+                    <p>Antena de alta calidad para exterior, resolucion 4k HD</p>
+                    <p class="price">$499.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_002"
+                        data-product-name="Master Antena Exterior HD 37 Elementos para TV Digital Alta Recepción en Zonas de Señal Débil UHF/VHF Compatible con TDT y HDTV"
+                        data-product-price="499.00"
+                        data-product-description="La Antena Exterior TVANT-20ELEM está diseñada para captar señales de televisión digital en alta definición (HD) en frecuencias VHF/UHF. Fabricada en aluminio y con 37 elementos, esta antena ofrece una ganancia de 16 dB en VHF y 18 dB en UHF, garantizando una recepción superior. Ideal para uso en exteriores, es perfecta para zonas de baja cobertura de señal."
+                        data-product-specs='[
+                   {"label": "Marca", "value": "Master"},
+                   {"label": "Color", "value": "Gris"},
+                   {"label": "Impedancia", "value": "312231"},
+                   {"label": "Dimensiones del producto", "value": "65l. x 27an. x 14alt. centimeters"},
+                   {"label": "Fabricante", "value": "Master"}
+               ]'
+                        data-main-image="../img/antena 1.1.jpg"
+                        data-thumbnails='["../img/antena 1.1.jpg", "../img/antena 1.2.jpg", "../img/antena 1.3.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
-                <div class="product-card">
-                    <img src="../img/antena.webp" alt="Producto 2">
-                    <h3>Router 5G</h3>
-                    <p>Router multiusos potente</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="../img/antena.webp" alt="Producto 3">
-                    <h3>Conector multiple</h3>
-                    <p>Conector multiusos</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="../img/antena.webp" alt="Producto 4">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-            </div> 
 
-            <div class="product-container"> <div class="product-card">
-                    <img src="../img/antena.webp" alt="Producto 5">
-                    <h3>Camara steren</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
                 <div class="product-card">
-                    <img src="../img/antena.webp" alt="Producto 6">
-                    <h3>Router multipuertos</h3>
-                    <p>Router de oficina</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/antena 2.1.jpg" alt="Cámara de vigilancia">
+                    <h3>LINK BITS EXHD03 Antena Exterior aérea HDTV</h3><br>
+                    <p>(fácil de Instalar)</p>
+                    <p class="price">$399.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_003"
+                        data-product-name="LINK BITS EXHD03 Antena Exterior aérea HDTV de Largo Alcance, Alcance Amplificado, 12 Elementos, Alta definición, (fácil de Instalar)."
+                        data-product-price="399.00"
+                        data-product-description="Alta definición: Nuestra Antena tv exterior HDTV para Alta Definición UHF. Capta señales digitales de TV especialmente UHF, ideal en pantallas de nueva generación. Podrás tener imagen de tus programas favoritos de TV abierta con esta antena tv exterior largo alcance."
+                        data-product-specs='[
+                   {"label": "Marca", "value": "LINK BITS"},
+                   {"label": "Color", "value": "plata"},
+                   {"label": "Rango máximo", "value": "75 Kilómetros"},
+                   {"label": "Dimensiones del producto", "value": "65l. x 27an. x 14alt. centimeters"},
+                   {"label": "Fabricante", "value": "EXHD03"}
+               ]'
+                        data-main-image="../img/antena 2.1.jpg"
+                        data-thumbnails='["../img/antena 2.1.jpg", "../img/antena 2.2.jpg", "../img/antena 2.3.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
-                <div class="product-card">
-                    <img src="../img/antena.webp" alt="Producto 7">
-                    <h3>Router gaming</h3>
-                    <p>Router para videojuegos</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+            </div>
+
+            <div id="productDetailsModal" class="modal-fullscreen" style="display: none;">
+                <div class="modal-content-fullscreen">
+                    <div class="modal-image-gallery">
+                        <img src="" alt="Imagen principal del producto" class="modal-main-image" id="mainModalImage">
+                        <div class="modal-thumbnails" id="modalThumbnailsContainer">
+                        </div>
+                    </div>
+
+                    <div class="modal-details-content">
+                        <span class="close-button" id="closeModalBtn">&times;</span>
+                        <div class="modal-details-header">
+                            <h2 id="modalProductName"></h2>
+                            <hr>
+                            <div id="modalProductSpecs">
+                            </div>
+                            <hr>
+                        </div>
+                        <p class="price" id="modalProductPrice"></p>
+                        <hr>
+                        <div class="description-section">
+                            <p id="modalProductDescription"></p>
+                        </div>
+                        <button type="button" class="btn btn-primary add-to-cart-modal">Agregar al carrito</button><br>
+                        <button type="button" class="btn btn-danger add-to-favorites-modal">Favoritos</button>
+                    </div>
                 </div>
-             </div>
-          </section>
+            </div>
+
+        </section>
     </main>
 
     <script>
         // Script del contador del carrito
         const contadorCarrito = document.getElementById('productos');
         let productosEnCarrito = 0;
+
         function actualizarContador() {
             contadorCarrito.textContent = productosEnCarrito;
         }
@@ -149,7 +194,7 @@
             });
         });
     </script>
-    
+
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="../img/LOGO/sin fondo.png" alt="Logo SION">
@@ -173,5 +218,6 @@
         </div>
         <script src="../js/menu.js"></script>
     </footer>
-    </body>
+</body>
+
 </html>
