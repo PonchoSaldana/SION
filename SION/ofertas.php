@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +11,14 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-        <!--ENCABEZADO----------------------------------------------------------->
+    <!--ENCABEZADO----------------------------------------------------------->
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
             <span class="logo navLogo"><a href="index.php">
-            <img src="img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
+                    <img src="img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
@@ -46,7 +48,7 @@
 
             <div class="searchBox">
                 <div class="iconUser">
-                   <a href="login.php" style="color: white;"> <i class='bx bx-user user'></i></a><!--- Icono de usuario -->
+                    <a href="login.php" style="color: white;"> <i class='bx bx-user user'></i></a><!--- Icono de usuario -->
                 </div>
                 <div class="searchToggle">
                     <i class="bx bx-x cancel"></i><!--- Icono de cerrar búsqueda -->
@@ -64,4 +66,5 @@
     </nav>
     <script src="js/menu.js"></script>
 </body>
+
 </html>

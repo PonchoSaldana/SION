@@ -435,7 +435,8 @@ h1 {
 
 /*-----------------MODAL--------------*/
 .modal-fullscreen {
-    display: none; /* <--- MUY IMPORTANTE: Asegúrate de que esté aquí y no sea sobrescrito */
+    display: none;
+    /* <--- MUY IMPORTANTE: Asegúrate de que esté aquí y no sea sobrescrito */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -443,98 +444,143 @@ h1 {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo un poco más oscuro y transparente */
-    display: flex; /* <-- Lo dejo como flex aquí, pero recuerda que el 'none' inicial lo oculta */
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Fondo un poco más oscuro y transparente */
+    display: flex;
+    /* <-- Lo dejo como flex aquí, pero recuerda que el 'none' inicial lo oculta */
     justify-content: center;
     align-items: center;
-    padding: 20px; /* Añadido un poco de padding para que el modal no se pegue a los bordes en pantallas pequeñas */
+    padding: 20px;
+    /* Añadido un poco de padding para que el modal no se pegue a los bordes en pantallas pequeñas */
 }
 
 .modal-content-fullscreen {
-    background-color: #fefefe; /* Fondo blanco como en la imagen */
-    margin: auto; /* Centrar el modal */
-    padding: 0; /* Eliminamos el padding aquí, se gestionará internamente */
-    border-radius: 10px; /* Bordes redondeados */
-    width: auto; /* Ancho del modal, ajustado a un porcentaje más pequeño */
-    max-width: 90%; /* Ancho máximo para el modal */
-    height: auto; /* Altura automática basada en el contenido */
+    background-color: #fefefe;
+    /* Fondo blanco como en la imagen */
+    margin: auto;
+    /* Centrar el modal */
+    padding: 0;
+    /* Eliminamos el padding aquí, se gestionará internamente */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    width: auto;
+    /* Ancho del modal, ajustado a un porcentaje más pequeño */
+    max-width: 90%;
+    /* Ancho máximo para el modal */
+    height: auto;
+    /* Altura automática basada en el contenido */
     /*max-height: 90vh;  Altura máxima para que no exceda el viewport */
     position: relative;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra suave */
     animation-name: animatetop;
     animation-duration: 0.4s;
-    overflow: hidden; /* Para contener los elementos hijos dentro del borde redondeado */
+    overflow: hidden;
+    /* Para contener los elementos hijos dentro del borde redondeado */
 
     /* PROPIEDADES NUEVAS/MODIFICADAS PARA DISEÑO HORIZONTAL */
-    display: flex; /* Usamos flexbox para la distribución horizontal */
-    flex-direction: row; /* Contenido en fila (imagen a la izquierda, texto a la derecha) */
-    align-items: flex-start; /* Alineación al inicio de la cruz */
-    color: #333; /* Color de texto general para el contenido del modal */
+    display: flex;
+    /* Usamos flexbox para la distribución horizontal */
+    flex-direction: row;
+    /* Contenido en fila (imagen a la izquierda, texto a la derecha) */
+    align-items: flex-start;
+    /* Alineación al inicio de la cruz */
+    color: #333;
+    /* Color de texto general para el contenido del modal */
 }
 
 /* Animación para el modal */
 @keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
 }
 
 .close-button {
-    color: #aaa; /* Color gris suave */
+    color: #aaa;
+    /* Color gris suave */
     position: absolute;
     top: 15px;
     right: 15px;
-    font-size: 28px; /* Tamaño de la 'x' */
+    font-size: 28px;
+    /* Tamaño de la 'x' */
     font-weight: bold;
     cursor: pointer;
-    line-height: 1; /* Para ayudar a centrar la 'x' */
-    z-index: 10; /* Asegurar que esté por encima de otros elementos del modal */
+    line-height: 1;
+    /* Para ayudar a centrar la 'x' */
+    z-index: 10;
+    /* Asegurar que esté por encima de otros elementos del modal */
 }
 
 .close-button:hover,
 .close-button:focus {
-    color: #333; /* Color más oscuro al pasar el ratón */
+    color: #333;
+    /* Color más oscuro al pasar el ratón */
     text-decoration: none;
     cursor: pointer;
 }
 
 /* Modificaciones para el H2 */
 .modal-content-fullscreen h2 {
-    text-align: left; /* Alineado a la izquierda como en la imagen */
-    margin-bottom: 10px; /* Espacio debajo del título */
+    text-align: left;
+    /* Alineado a la izquierda como en la imagen */
+    margin-bottom: 10px;
+    /* Espacio debajo del título */
     color: #000;
-    font-size: 1.5em; /* Ajuste de tamaño para el título */
+    font-size: 1.5em;
+    /* Ajuste de tamaño para el título */
 }
 
-.modal-image-gallery { /* La sección izquierda con imagen principal y miniaturas */
-    flex: 0 0 350px; /* Ancho fijo para la galería (ajusta si lo quieres más grande o pequeño) */
-    background-color: #ffffff; /* Color de fondo oscuro como en la imagen de la cámara */
+.modal-image-gallery {
+    /* La sección izquierda con imagen principal y miniaturas */
+    flex: 0 0 350px;
+    /* Ancho fijo para la galería (ajusta si lo quieres más grande o pequeño) */
+    background-color: #ffffff;
+    /* Color de fondo oscuro como en la imagen de la cámara */
     padding: 20px;
     display: flex;
-    flex-direction: column; /* Contenido apilado verticalmente */
+    flex-direction: column;
+    /* Contenido apilado verticalmente */
     align-items: center;
-    overflow-y: auto; /* Scroll si hay muchas miniaturas */
-    position: relative; /* Para el padding-top del contenido principal en responsive */
+    overflow-y: auto;
+    /* Scroll si hay muchas miniaturas */
+    position: relative;
+    /* Para el padding-top del contenido principal en responsive */
 }
 
 .modal-main-image {
     width: 100%;
-    max-width: 300px; /* Controla el tamaño máximo de la imagen principal */
+    max-width: 300px;
+    /* Controla el tamaño máximo de la imagen principal */
     height: auto;
-    max-height: 250px; /* Altura máxima para la imagen principal */
-    object-fit: contain; /* Ajustar sin recortar */
+    max-height: 250px;
+    /* Altura máxima para la imagen principal */
+    object-fit: contain;
+    /* Ajustar sin recortar */
     margin-bottom: 20px;
-    border-radius: 8px; /* Bordes redondeados para la imagen principal */
+    border-radius: 8px;
+    /* Bordes redondeados para la imagen principal */
 }
 
 
 .modal-thumbnails {
-    display: flex; /* Ya lo tienes en flex */
-    flex-direction: row; 
-    
-    justify-content: center; /* Centrar las miniaturas horizontalmente */
-    flex-wrap: wrap; /* Permitir que las miniaturas salten a la siguiente línea si no hay espacio */
-    
-    gap: 10px; /* Espacio entre miniaturas */
+    display: flex;
+    /* Ya lo tienes en flex */
+    flex-direction: row;
+
+    justify-content: center;
+    /* Centrar las miniaturas horizontalmente */
+    flex-wrap: wrap;
+    /* Permitir que las miniaturas salten a la siguiente línea si no hay espacio */
+
+    gap: 10px;
+    /* Espacio entre miniaturas */
     width: auto;
     /* align-items: center;  Esta línea ya no es necesaria si quieres que se vean en fila y centradas horizontalmente */
 }
@@ -542,7 +588,8 @@ h1 {
 
 @media (max-width: 768px) {
     .modal-thumbnails {
-        flex-direction: row; /* Mantener en fila en móviles */
+        flex-direction: row;
+        /* Mantener en fila en móviles */
         justify-content: center;
         flex-wrap: wrap;
         gap: 8px;
@@ -550,9 +597,12 @@ h1 {
 }
 
 .modal-thumbnail {
-    width: 100px; /* Ancho de las miniaturas */
-    height: 100px; /* Alto de las miniaturas */
-    object-fit: cover; /* Recortar si es necesario para llenar el espacio */
+    width: 100px;
+    /* Ancho de las miniaturas */
+    height: 100px;
+    /* Alto de las miniaturas */
+    object-fit: cover;
+    /* Recortar si es necesario para llenar el espacio */
     border-radius: 5px;
     border: 2px solid transparent;
     cursor: pointer;
@@ -561,34 +611,43 @@ h1 {
 
 .modal-thumbnail:hover,
 .modal-thumbnail.active {
-    border-color: #007bff; /* Borde al pasar el ratón o si está activa */
+    border-color: #007bff;
+    /* Borde al pasar el ratón o si está activa */
 }
 
 /* Sección derecha para los detalles del producto */
-.modal-details-content { /* Necesitarás un div con esta clase en el HTML */
-    flex: 1; /* El contenido de los detalles ocupará el espacio restante (otra mitad) */
+.modal-details-content {
+    /* Necesitarás un div con esta clase en el HTML */
+    flex: 1;
+    /* El contenido de los detalles ocupará el espacio restante (otra mitad) */
     padding: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Empujar el botón de carrito hacia abajo */
-    background-color: #00b3e031; /* Fondo blanco para la sección de detalles */
+    justify-content: space-between;
+    /* Empujar el botón de carrito hacia abajo */
+    background-color: #00b3e031;
+    /* Fondo blanco para la sección de detalles */
 }
 
 /* Estilos para el párrafo de precio */
 .modal-details-content .price {
     font-size: 2em;
-    color: #28a745; /* Color verde para el precio */
+    color: #28a745;
+    /* Color verde para el precio */
     font-weight: bold;
     margin-bottom: 25px;
 }
 
 /* Contenido de descripción (si existe) */
-.modal-content-fullscreen p { /* Aplica a todos los párrafos dentro del modal-content-fullscreen */
+.modal-content-fullscreen p {
+    /* Aplica a todos los párrafos dentro del modal-content-fullscreen */
     line-height: 1.2;
     color: #555;
     text-align: justify;
-    margin-bottom: 15px; /* Espacio para separar párrafos */
-    font-size: 20px; /* Tamaño de fuente para el texto descriptivo */
+    margin-bottom: 15px;
+    /* Espacio para separar párrafos */
+    font-size: 20px;
+    /* Tamaño de fuente para el texto descriptivo */
 }
 
 .modal-content-fullscreen ul {
@@ -604,8 +663,10 @@ h1 {
 
 .modal-content-fullscreen .add-to-cart-modal {
     display: block;
-    width: 100%; /* Ocupará todo el ancho disponible en su columna */
-    margin: auto 0 0 0; /* Elimina auto a los lados, empuja hacia abajo */
+    width: 100%;
+    /* Ocupará todo el ancho disponible en su columna */
+    margin: auto 0 0 0;
+    /* Elimina auto a los lados, empuja hacia abajo */
     padding: 15px 20px;
     font-size: 1.1em;
     background-color: #007bff;

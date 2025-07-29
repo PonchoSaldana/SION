@@ -60,12 +60,12 @@ function mover(direccion) {
 setInterval(() => mover(1), 5000);
 
 // SUBMENU AL PRECIONAR CATEGORÍA
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Selecciona todos los enlaces que activarán un submenú
     const submenuToggles = document.querySelectorAll('[data-submenu-toggle]');
 
-    submenuToggles.forEach(function(toggle) {
-        toggle.addEventListener('click', function(event) {
+    submenuToggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function (event) {
             event.preventDefault(); // Evita que el enlace de Categoría navegue a '#'
 
             // Obtén el elemento padre (el <li>)
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 parentLi.classList.toggle('submenu-open');
 
                 // Cierra otros submenús si están abiertos (opcional)
-                document.querySelectorAll('.has-submenu.submenu-open').forEach(function(openSubmenu) {
+                document.querySelectorAll('.has-submenu.submenu-open').forEach(function (openSubmenu) {
                     if (openSubmenu !== parentLi) { // Si no es el menú que acabamos de hacer clic
                         openSubmenu.classList.remove('submenu-open');
                     }
@@ -86,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Opcional: Cierra el submenú si se hace clic fuera de él
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         const openSubmenus = document.querySelectorAll('.has-submenu.submenu-open');
-        openSubmenus.forEach(function(openSubmenu) {
+        openSubmenus.forEach(function (openSubmenu) {
             // Si el clic no fue dentro del submenú abierto
             if (!openSubmenu.contains(event.target)) {
                 openSubmenu.classList.remove('submenu-open');

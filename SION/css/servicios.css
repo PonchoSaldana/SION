@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: "Ubuntu";
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -19,11 +20,12 @@ html {
     --search-bar: #f2f2f2;
     --search-text: #010718;
 }
-p{
+
+p {
     font-size: 25px;
 }
 
-body{
+body {
     color: #76c8ff;
 }
 
@@ -68,38 +70,44 @@ nav .nav-bar .logo a {
 .menu .logo-toggle {
     display: none;
 }
+
 /*--SUBMENU-------------------------------------*/
 .nav-links .submenu {
-  display: none; /* El submenú estará oculto inicialmente */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 100%;
+    display: none;
+    /* El submenú estará oculto inicialmente */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
 
-  /* CAMBIOS PARA CENTRAR */
-  left: 33%;
-  transform: translateX(-50%);
+    /* CAMBIOS PARA CENTRAR */
+    left: 33%;
+    transform: translateX(-50%);
 
-  background-color: #1683CE;
-  min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  z-index: 1000;
+    background-color: #1683CE;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 /* Estilos para los enlaces del submenú */
 .nav-links .submenu li a {
-  display: block;
-  padding: 10px 20px; /* Espaciado interno para los elementos del submenú */
-  color: #fff; /* Color del texto */
-  text-decoration: none;
-  white-space: nowrap;
+    display: block;
+    padding: 10px 20px;
+    /* Espaciado interno para los elementos del submenú */
+    color: #fff;
+    /* Color del texto */
+    text-decoration: none;
+    white-space: nowrap;
 }
 
 /* Mostrar el submenú cuando el cursor está sobre el elemento padre (li) */
-.nav-links .has-submenu.submenu-open > .submenu {
-  display: block; /* Muestra el submenú cuando el padre tiene la clase submenu-open */
+.nav-links .has-submenu.submenu-open>.submenu {
+    display: block;
+    /* Muestra el submenú cuando el padre tiene la clase submenu-open */
 }
+
 /*---------------------------------------*/
 
 .nav-bar .nav-links {
@@ -120,10 +128,11 @@ nav .nav-bar .logo a {
     padding: 10px;
     transition: transform 0.3s;
 }
+
 .nav-links li a:hover {
     transform: scale(1);
     color: rgb(9, 0, 112);
-   
+
 }
 
 /* Search Box */
@@ -133,16 +142,17 @@ nav .nav-bar .logo a {
     position: relative;
 }
 
-.iconUser{
+.iconUser {
     color: #fff;
     font-size: 30px;
     cursor: pointer;
     justify-content: center;
     transition: transform 0.3s;
 }
+
 .iconUser i:hover {
-  transform: scale(1.3);
-  color: rgb(9, 0, 112);
+    transform: scale(1.3);
+    color: rgb(9, 0, 112);
 }
 
 .iconCarrito {
@@ -152,11 +162,12 @@ nav .nav-bar .logo a {
     transition: transform 0.3s;
 
 }
+
 .iconCarrito i:hover {
     transform: scale(1.3);
     color: rgb(9, 0, 112);
 }
-    
+
 .iconCarrito span {
     position: absolute;
     top: -1px;
@@ -208,7 +219,7 @@ nav .nav-bar .logo a {
 
 .searchBox .search-field {
     position: absolute;
-    bottom: -90px; 
+    bottom: -90px;
     right: 30px;
     height: 55px;
     width: 550px;
@@ -223,7 +234,7 @@ nav .nav-bar .logo a {
     transition: all 0.3s ease;
 }
 
-.searchToggle.active ~ .search-field {
+.searchToggle.active~.search-field {
     bottom: -74px;
     opacity: 1;
     pointer-events: auto;
@@ -265,18 +276,20 @@ nav .nav-bar .logo a {
 :root {
     --main-blue: #1683CE;
 }
+
 /*--SERVICIOS-------------------------------------*/
-h1{
+h1 {
     text-align: center;
     font-size: 35px;
     color: #ffffff;
     text-shadow: 2px 0px 10px #000;
 }
+
 main {
     padding: 20px;
     max-width: auto;
     background-color: #76c8ff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .my-cart-title {
@@ -291,12 +304,13 @@ main {
 .service-card {
     display: flex;
     align-items: center;
-    background-color: var(--main-blue); /* Fondo azul de la tarjeta */
+    background-color: var(--main-blue);
+    /* Fondo azul de la tarjeta */
     color: #fff;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .service-card img {
@@ -308,7 +322,8 @@ main {
 }
 
 .service-card .service-details {
-    flex-grow: 1; /* Permite que los detalles ocupen el espacio restante */
+    flex-grow: 1;
+    /* Permite que los detalles ocupen el espacio restante */
 }
 
 .service-card .service-details h2 {
@@ -377,13 +392,14 @@ main {
 }
 
 .footer-section ul li a:hover {
-    color: #f0f0f0; /* Un blanco un poco más claro para el efecto hover */
+    color: #f0f0f0;
+    /* Un blanco un poco más claro para el efecto hover */
     text-decoration: underline;
 }
 
 
 /* Responsive Design----------------------------------------------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 875px){
+@media (max-width: 875px) {
     nav .nav-bar .logo a {
         font-size: 15px;
     }
@@ -444,15 +460,18 @@ main {
 }
 
 @media (max-width: 390px) {
-    .searchBox .search-field{
+    .searchBox .search-field {
         width: 200px;
     }
-    .iconUser{
+
+    .iconUser {
         font-size: 15px;
     }
-    .iconCarrito{
+
+    .iconCarrito {
         font-size: 18px;
-    }   
+    }
+
     .searchToggle i {
         font-size: 16px;
     }

@@ -1,7 +1,7 @@
 function toggleForm() {
     const loginForm = document.getElementById('form-login');
     const registroForm = document.getElementById('form-registro');
-    
+
     loginForm.classList.toggle('oculto');
     registroForm.classList.toggle('oculto');
 }
@@ -48,6 +48,6 @@ function validateRegistrationForm() {
         alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
         return false;
     }
-    
+
     return true;
 }

@@ -32,12 +32,12 @@ body.addEventListener('click', e => {
 });
 
 // SUBMENU AL PRECIONAR CATEGORÍA
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Selecciona todos los enlaces que activarán un submenú
     const submenuToggles = document.querySelectorAll('[data-submenu-toggle]');
 
-    submenuToggles.forEach(function(toggle) {
-        toggle.addEventListener('click', function(event) {
+    submenuToggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function (event) {
             event.preventDefault(); // Evita que el enlace de Categoría navegue a '#'
 
             // Obtén el elemento padre (el <li>)
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 parentLi.classList.toggle('submenu-open');
 
                 // Cierra otros submenús si están abiertos (opcional)
-                document.querySelectorAll('.has-submenu.submenu-open').forEach(function(openSubmenu) {
+                document.querySelectorAll('.has-submenu.submenu-open').forEach(function (openSubmenu) {
                     if (openSubmenu !== parentLi) { // Si no es el menú que acabamos de hacer clic
                         openSubmenu.classList.remove('submenu-open');
                     }
@@ -58,9 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Opcional: Cierra el submenú si se hace clic fuera de él
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         const openSubmenus = document.querySelectorAll('.has-submenu.submenu-open');
-        openSubmenus.forEach(function(openSubmenu) {
+        openSubmenus.forEach(function (openSubmenu) {
             // Si el clic no fue dentro del submenú abierto
             if (!openSubmenu.contains(event.target)) {
                 openSubmenu.classList.remove('submenu-open');
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Modal para detalles del producto
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const productDetailsModal = document.getElementById('productDetailsModal');
     const closeModalBtn = document.getElementById('closeModalBtn'); // Botón 'X'
     const mainModalImage = document.getElementById('mainModalImage');
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Itera sobre cada botón y añade el evento click
     openProductModalButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
+        button.addEventListener('click', function (event) {
             event.preventDefault(); // Prevenir el comportamiento por defecto del enlace
 
             // 1. Obtener la información del producto de los atributos data-* del botón
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             // Limpiar miniaturas existentes
-            modalThumbnailsContainer.innerHTML = ''; 
+            modalThumbnailsContainer.innerHTML = '';
 
             // Crear y añadir nuevas miniaturas
             thumbnailsData.forEach((thumbSrc, index) => {
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 modalThumbnailsContainer.appendChild(thumbnailImg);
 
                 // Añadir evento click a cada miniatura
-                thumbnailImg.addEventListener('click', function() {
+                thumbnailImg.addEventListener('click', function () {
                     document.querySelectorAll('.modal-thumbnail').forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
                     mainModalImage.src = this.dataset.fullSrc;
@@ -141,19 +141,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Lógica para cerrar el modal (botón 'X')
-    closeModalBtn.addEventListener('click', function() {
+    closeModalBtn.addEventListener('click', function () {
         productDetailsModal.style.display = 'none';
     });
 
     // Cierre del modal haciendo clic fuera de él
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', function (event) {
         if (event.target === productDetailsModal) {
             productDetailsModal.style.display = 'none';
         }
     });
 
     // Cierre del modal con la tecla 'Escape'
-    document.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
             productDetailsModal.style.display = 'none';
         }
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Lógica para el botón "Agregar a favoritos" dentro del modal
     const favoritesBtn = document.querySelector('.add-to-favorites-modal');
     if (favoritesBtn) {
-        favoritesBtn.addEventListener('click', function() {
+        favoritesBtn.addEventListener('click', function () {
             // Aquí iría la lógica para agregar el producto actual a favoritos
             console.log("Producto agregado a favoritos!");
             // Puedes decidir si el modal se cierra o no después de esta acción
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Lógica para el botón "Agregar al carrito" dentro del modal
     const addToCartModalBtn = document.querySelector('.add-to-cart-modal');
     if (addToCartModalBtn) {
-        addToCartModalBtn.addEventListener('click', function() {
+        addToCartModalBtn.addEventListener('click', function () {
             // Aquí iría la lógica para agregar el producto actual al carrito
             console.log("Producto agregado al carrito!");
             // Puedes decidir si el modal se cierra o no después de esta acción

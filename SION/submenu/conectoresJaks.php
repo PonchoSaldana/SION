@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="es"> <head>
+<html lang="es">
+
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sion Wireless - Conectores y Jacks</title>
     <link rel="shortcut icon" href="../img/LOGO/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/todos_los_productos.css"> <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/todos_los_productos.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <nav>
         <div class="nav-bar">
@@ -26,7 +30,8 @@
                             <img src="../img/LOGO/sin fondo.png" alt="Logo SION" height="90">
                         </a>
                     </span>
-                    <i class="bx bx-x sidelbarClose"></i> </div>
+                    <i class="bx bx-x sidelbarClose"></i>
+                </div>
                 <ul class="nav-links">
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
@@ -68,10 +73,11 @@
         </div>
     </nav>
 
-    <main> <h1 class="my-cart-title">Categoria - Conectores y Jacks</h1>
+    <main>
+        <h1 class="my-cart-title">Categoria - Conectores y Jacks</h1>
 
-        <section> 
-          <div class="product-container">
+        <section>
+            <div class="product-container">
                 <div class="product-card">
                     <img src="../img/jack.webp" alt="Producto 1">
                     <h3>Router</h3>
@@ -104,9 +110,10 @@
                     <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
                     <a href="#" class="btn btn-outline-info">Más detalles</a>
                 </div>
-            </div> 
+            </div>
 
-            <div class="product-container"> <div class="product-card">
+            <div class="product-container">
+                <div class="product-card">
                     <img src="../img/jack.webp" alt="Producto 5">
                     <h3>Camara steren</h3>
                     <p>Camara de vigilancia 360 grados</p>
@@ -122,14 +129,15 @@
                     <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
                     <a href="#" class="btn btn-outline-info">Más detalles</a>
                 </div>
-             </div>
-          </section>
+            </div>
+        </section>
     </main>
 
     <script>
         // Script del contador del carrito
         const contadorCarrito = document.getElementById('productos');
         let productosEnCarrito = 0;
+
         function actualizarContador() {
             contadorCarrito.textContent = productosEnCarrito;
         }
@@ -141,7 +149,7 @@
             });
         });
     </script>
-    
+
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="../img/LOGO/sin fondo.png" alt="Logo SION">
@@ -165,5 +173,6 @@
         </div>
         <script src="../js/menu.js"></script>
     </footer>
-    </body>
+</body>
+
 </html>
