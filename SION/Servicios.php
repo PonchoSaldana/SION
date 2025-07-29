@@ -40,7 +40,7 @@
                     </li>
                     <li><a href="Servicios.php">Servicios</a></li>
                     <li><a href="ofertas.php">Ofertas</a></li>
-                    <li><a href="#">Compras</a></li>
+                    <li><a href="compras.php">Compras</a></li>
                     <li><a href="#">Favoritos</a></li>
                     <li><a href="todos_los_productos.php">Ver todos los productos</a></li>
                 </ul>

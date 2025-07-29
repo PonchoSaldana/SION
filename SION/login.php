@@ -14,7 +14,7 @@
 <div class="contenedor-principal">
     <div class="contenedor">
         <div class="formulario" id="form-login">
-            <span class="cerrar" onclick="window.location.href='index.php'">×</span>
+            <span class="cerrar" onclick="window.location.href='index.php'">🡰</span>
             <img src="img/LOGO/sin fondo.png" class="logo">
             <h3>Iniciar sesión</h3>
             <form>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="formulario oculto" id="form-registro">
-            <span class="cerrar" onclick="window.location.href='index.php'">×</span>
+            <span class="cerrar" onclick="window.location.href='index.php'">🡰</span>
             <img src="img/LOGO/sin fondo.png" class="logo">
             <h3>Registro</h3>
             <form>
