@@ -5,4 +5,4 @@ FROM php:8.1-apache
 COPY . /var/www/html/
 
 # Exponer el puerto 80 para acceso web
-EXPOSE 80
+EXPOSE 8080
