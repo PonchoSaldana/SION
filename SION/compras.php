@@ -112,6 +112,33 @@
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script src="js/compras.js"></script>
   <script src="js/menu.js"></script>
+
+  <footer class="main-footer">
+        <div class="footer-section footer-logo">
+            <img src="img/LOGO/sin fondo.png" alt="Logo SION">
+            <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
+                <li><a href="tel:+525555555555">55-5555-5555</a></li>
+                <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Empresa</h4>
+            <ul>
+                <li><a href="#">Política de privacidad</a></li>
+                <li><a href="#">Términos y condiciones</a></li>
+                <li><a href="#">Promoción y ofertas</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
 </body>
 
 </html>

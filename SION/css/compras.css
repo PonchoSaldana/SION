@@ -409,3 +409,222 @@ section {
 .modal-contenido img {
     width: 100px;
 }
+/* Responsive Design----------------------------------------------------------------------------------------------------------------------------------------------------*/
+@media (max-width: 875px) {
+    nav .nav-bar .logo a {
+        font-size: 15px;
+    }
+
+    nav .nav-bar .nav-links li a {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 790px) {
+    nav .nav-bar .sidebarOpen {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        height: 100%;
+        width: 250px;
+        left: -100%;
+        top: 0;
+        padding: 10px;
+        background-color: var(--side-nav);
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu {
+        left: 0%;
+    }
+
+    nav.active .nav-bar .navLogo a {
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .menu .logo-toggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-toggle .sidelbarClose {
+        color: var(--text-color);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-bar .nav-links {
+        flex-direction: column;
+        padding-top: 30px;
+    }
+
+    .nav-links li a {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .carrusel-slide {
+        flex: 0 0 100%;
+        /* Solo una imagen por vista */
+    }
+
+    .carrusel-contenedor {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 390px) {
+    .searchBox .search-field {
+        width: 200px;
+    }
+
+    .iconUser {
+        font-size: 15px;
+    }
+
+    .iconCarrito {
+        font-size: 18px;
+    }
+
+    .searchToggle i {
+        font-size: 16px;
+    }
+}
+/*PIE DE PAGINA*/
+.main-footer {
+    background: linear-gradient(to right, #095b91, #00b4e0);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-section {
+    flex-basis: 200px;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    max-height: 90px;
+    width: auto;
+}
+
+.footer-logo p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #f0f0f0;
+    /* Un blanco un poco más claro para el efecto hover */
+    text-decoration: underline;
+}
+
+/* Opcional: Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .ubicacion-contenedor {
+        flex-direction: column;
+        /* Apila los elementos en pantallas pequeñas */
+        text-align: center;
+    }
+
+    .main-footer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .ubicacion-contenido-central {
+        margin-bottom: 25px;
+        /* Espacio entre el contenido central y el globo */
+        width: 100%;
+        /* Asegura que ocupe todo el ancho disponible */
+    }
+
+    .ubicacion-izquierda h2 {
+        font-size: 2em;
+        /* Ajuste de tamaño para móvil */
+        margin-bottom: 20px;
+    }
+
+    .redes-sociales {
+        flex-wrap: wrap;
+        /* Permite que los botones salten de línea si no caben */
+        justify-content: center;
+        gap: 15px;
+        /* Ajuste de espacio para móvil */
+    }
+
+    .redes-sociales a i {
+        font-size: 40px;
+        /* Ajuste de tamaño para móvil */
+        /* Si usas bordes circulares, ajusta width/height también */
+        /* width: 50px; */
+        /* height: 50px; */
+    }
+
+    .ubicacion-derecha {
+        margin-left: 0;
+        /* Quita el margen lateral en móvil */
+        margin-top: 20px;
+        /* Añade margen superior en móvil */
+    }
+
+    .ubicacion-derecha i {
+        font-size: 90px;
+        /* Ajuste de tamaño para móvil */
+    }
+}
+
+/* Opcional: Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .ubicacion-contenedor {
+        flex-direction: column;
+        /* Apila los elementos en pantallas pequeñas */
+        text-align: center;
+        /* Centra el texto en pantallas pequeñas */
+    }
+
+    .ubicacion-izquierda {
+        margin-bottom: 20px;
+        /* Espacio entre el texto y el icono en pantallas pequeñas */
+    }
+
+    .redes-sociales {
+        justify-content: center;
+        /* Centra los iconos en pantallas pequeñas */
+    }
+}
