@@ -1,8 +1,12 @@
-# Imagen base con PHP y Apache
 FROM php:8.1-apache
 
-# Copiar todos los archivos al servidor Apache
+# Copiar archivos al servidor
 COPY . /var/www/html/
 
-# Exponer el puerto 80 para acceso web
+# Permitir usar la variable de puerto (como 8080 en Railway)
+ENV PORT=8080
+
+# Ejecutar PHP embebido en el puerto que proporciona la plataforma
+CMD ["sh", "-c", "php -S 0.0.0.0:$PORT -t /var/www/html"]
+
 EXPOSE 8080
