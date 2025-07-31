@@ -196,7 +196,7 @@
                             <span>Total</span>
                             <span class="value" id="grand-total">$0</span>
                         </div>
-                        <button class="buy-button">Comprar</button>
+                        <button class="buy-button" id="comprarTodo">Comprar</button>
                     </div>
                 </div>
 
@@ -325,6 +325,95 @@
         </div>
     </footer>
     <script src="js/carrito.js"></script>
+    <script>
+  function obtenerCarrito() {
+    return JSON.parse(localStorage.getItem('carrito')) || [];
+  }
+
+  function mostrarCarrito() {
+    const lista = document.querySelector('.product-list-container');
+    const resumen = document.getElementById('summary-products-count-text');
+    const total = document.getElementById('grand-total');
+    const carrito = obtenerCarrito();
+
+    lista.innerHTML = '';
+    let suma = 0;
+
+    carrito.forEach((p, i) => {
+      const subtotal = p.precio * p.cantidad;
+      suma += subtotal;
+
+      lista.innerHTML += `
+        <div class="product-card">
+          <img src="${p.imagen}" alt="${p.nombre}">
+          <div class="product-details">
+            <h5>${p.nombre}</h5>
+            <div class="product-actions">
+              <button class="btn btn-danger btn-sm" onclick="eliminar(${i})">Eliminar</button>
+              <span class="price">$${p.precio}</span>
+            </div>
+          </div>
+          <div class="quantity-control-container">
+            <div class="input-group custom-quantity-selector">
+              <button class="btn btn-outline-secondary" onclick="cambiarCantidad(${i}, -1)">-</button>
+              <input type="number" class="form-control" value="${p.cantidad}" readonly>
+              <button class="btn btn-outline-secondary" onclick="cambiarCantidad(${i}, 1)">+</button>
+            </div>
+            <span class="item-total">$${subtotal.toFixed(2)}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    resumen.textContent = `Productos (${carrito.length})`;
+    total.textContent = `$${suma.toFixed(2)}`;
+  }
+
+  function eliminar(i) {
+    let carrito = obtenerCarrito();
+    carrito.splice(i, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito();
+  }
+
+  function cambiarCantidad(i, cambio) {
+    let carrito = obtenerCarrito();
+    carrito[i].cantidad += cambio;
+    if (carrito[i].cantidad < 1) carrito[i].cantidad = 1;
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito();
+  }
+
+  mostrarCarrito();
+</script>
+<script>
+document.getElementById('comprarTodo').addEventListener('click', () => {
+  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío.");
+    return;
+  }
+
+  // Recuperar compras existentes o inicializar
+  const compras = JSON.parse(localStorage.getItem('compras')) || [];
+
+  // Agregar productos con estado
+  const nuevasCompras = carrito.map(producto => ({
+    ...producto,
+    estado: "Esperando al cliente"
+  }));
+
+  const actualizadas = [...compras, ...nuevasCompras];
+  localStorage.setItem('compras', JSON.stringify(actualizadas));
+
+  // Vaciar carrito
+  localStorage.removeItem('carrito');
+  window.location.href = "compras.php";
+});
+</script>
+
+
 </body>
 
 </html>

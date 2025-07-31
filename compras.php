@@ -70,14 +70,7 @@
       <center>
         <h2>Compras 🛒</h2>
       </center>
-      <div class="tarjeta-compra" data-producto='{"nombre":"Switch Ethernet", "precio":"$900", "estado":"Esperando al cliente"}'>
-        <img src="img/images (2).jpeg" alt="Producto">
-        <div>
-          <p class="estado">Esperando al cliente</p>
-          <p>Su compra fue aprobada, ya puede pasar a recogerla</p>
-          <button class="detalles-btn">Ver detalles</button>
-          <button class="cancelar-btn">Cancelar</button>
-        </div>
+       
       </div>
     </section>
 
@@ -85,19 +78,19 @@
       <center>
         <h2>Historial ⏱️</h2>
       </center>
-      <div class="tarjeta-compra" data-producto='{"nombre":"Router TP-Link", "precio":"$700", "estado":"Entregado"}'>
-        <img src="img/descarga (1).jpeg" alt="Producto">
+      <div class="tarjeta-compra">
+      
         <div>
-          <p class="estado">Entregado</p>
-          <p>Entregado el 1 de mayo</p>
-          <button class="detalles-btn">Ver detalles</button>
+          <p class="estado"></p>
+          <p>Aun no hay compras realizadas </p>
+          
         </div>
       </div>
     </section>
   </main>
 
   <!-- Modal de detalles de la compra -->
-  <div id="modal-detalles" class="modal">
+  <center><div id="modal-detalles" class="modal">
     <div class="modal-contenido">
       <h3>Detalles</h3>
       <img id="modal-imagen" src="img/images (2).jpeg" alt="Producto">
@@ -107,7 +100,7 @@
 
       <button onclick="cerrarModal()">Regresar</button>
     </div>
-  </div>
+  </div></center>
 
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script src="js/compras.js"></script>
@@ -136,9 +129,100 @@
         </div>
     </footer>
     <script src="js/index.js"></script>
-</body>
+  <script>
+document.querySelectorAll('.detalles-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const tarjeta = this.closest('.tarjeta-compra');
+    const dataProducto = tarjeta.getAttribute('data-producto');
 
-</html>
+    if (dataProducto) {
+      const producto = JSON.parse(dataProducto);
+
+      // Llenar el modal con los datos del producto
+      document.getElementById('modal-nombre').textContent = ` ${producto.nombre}`;
+      document.getElementById('modal-precio').textContent = `Precio: ${producto.precio}`;
+      document.getElementById('modal-estado').textContent = `Estado: ${producto.estado}`;
+      
+      // Obtener imagen dentro de la tarjeta
+      const imagenSrc = tarjeta.querySelector('img').src;
+      document.getElementById('modal-imagen').src = imagenSrc;
+
+      // Mostrar el modal
+      document.getElementById('modal-detalles').style.display = 'block';
+    }
+  });
+});
+
+// Función para cerrar el modal
+function cerrarModal() {
+  document.getElementById('modal-detalles').style.display = 'none';
+  document.querySelector('.modal').classList.add('activo');
+}
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const compras = JSON.parse(localStorage.getItem('compras')) || [];
+  const contenedorCompras = document.querySelector('.compras');
+
+  compras.forEach(producto => {
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'tarjeta-compra';
+
+    tarjeta.innerHTML = `
+      <img src="${producto.imagen}" alt="${producto.nombre}">
+      <div>
+        <p class="estado">${producto.estado}</p>
+        <p>Su compra fue aprobada, ya puede pasar a recogerla</p>
+        <button class="detalles-btn">Ver detalles</button>
+        <button class="cancelar-btn">Cancelar</button>
+      </div>
+    `;
+
+    tarjeta.setAttribute('data-producto', JSON.stringify(producto));
+    contenedorCompras.appendChild(tarjeta);
+  });
+
+  // Reasignar funcionalidad a botones de detalles
+  document.querySelectorAll('.detalles-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const tarjeta = this.closest('.tarjeta-compra');
+      const dataProducto = tarjeta.getAttribute('data-producto');
+      if (dataProducto) {
+        const producto = JSON.parse(dataProducto);
+        document.getElementById('modal-nombre').textContent = ` ${producto.nombre}`;
+        document.getElementById('modal-precio').textContent = `Precio: ${producto.precio}`;
+        document.getElementById('modal-estado').textContent = `Estado: ${producto.estado}`;
+        document.getElementById('modal-imagen').src = tarjeta.querySelector('img').src;
+        document.getElementById('modal-detalles').style.display = 'block';
+      }
+    });
+  });
+});
+</script>
+<script>
+// Escuchar clics en botones "Cancelar"
+document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('cancelar-btn')) {
+    const tarjeta = e.target.closest('.tarjeta-compra');
+    const producto = JSON.parse(tarjeta.getAttribute('data-producto'));
+
+    // Obtener las compras del localStorage
+    let compras = JSON.parse(localStorage.getItem('compras')) || [];
+
+    // Filtrar para eliminar el producto actual
+    compras = compras.filter(item => 
+      item.nombre !== producto.nombre ||
+      item.precio !== producto.precio
+    );
+
+    // Guardar la lista actualizada
+    localStorage.setItem('compras', JSON.stringify(compras));
+
+    // Eliminar del DOM
+    tarjeta.remove();
+  }
+});
+</script>
 </body>
 
 </html>
