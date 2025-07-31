@@ -254,6 +254,39 @@
             </ul>
         </div>
         <script src="js/menu.js"></script>
+        <script>
+  function obtenerCarrito() {
+    return JSON.parse(localStorage.getItem('carrito')) || [];
+  }
+
+  function guardarCarrito(carrito) {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+  }
+
+  function agregarAlCarrito(nombre, precio, imagen) {
+    let carrito = obtenerCarrito();
+
+    // Revisa si ya está en el carrito
+    let existente = carrito.find(p => p.nombre === nombre);
+    if (existente) {
+      existente.cantidad += 1;
+    } else {
+      carrito.push({ nombre, precio, imagen, cantidad: 1 });
+    }
+
+    guardarCarrito(carrito);
+  }
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    const nombre = card.querySelector('h3').innerText;
+    const precio = parseFloat(card.querySelector('.price').innerText.replace('$', ''));
+    const imagen = card.querySelector('img').getAttribute('src');
+
+    card.querySelector('button').addEventListener('click', () => {
+      agregarAlCarrito(nombre, precio, imagen);
+    });
+  });
+</script>
     </footer>
 </body>
 
