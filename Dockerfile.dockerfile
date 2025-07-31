@@ -1,10 +1,10 @@
-FROM php:8.1-apache
+FROM php:8.1-cli
 
-# Copia los archivos a la carpeta por defecto de Apache
-COPY . /var/www/html/
+WORKDIR /var/www/html
 
-# Habilita extensiones necesarias si usas bases de datos
-RUN docker-php-ext-install mysqli
+COPY . /var/www/html
 
-# (Opcional) Si usas .htaccess o URLs amigables
-RUN a2enmod rewrite
+ENV PORT=8080
+EXPOSE 8080
+
+CMD ["sh", "-c", "php -S 0.0.0.0:$PORT"]
