@@ -36,10 +36,10 @@
                         <a href="#" data-submenu-toggle>Categoría</a>
                         <ul class="submenu">
                             <li><a href="submenu/antenas.php">Antenas</a></li>
-                            <li><a href="submenu/camaras.php">Camaras de seguridad</a></li>
+                            <li><a href="submenu/camaras.php">Cámaras de seguridad</a></li>
                             <li><a href="submenu/cables.php">Cables de red</a></li>
                             <li><a href="submenu/conectoresJaks.php">Conectores y jacks</a></li>
-                            <li><a href="submenu/modems.php">Modems</a></li>
+                            <li><a href="submenu/modems.php">Módems</a></li>
                             <li><a href="submenu/switch.php">Switches</a></li>
                             <li><a href="submenu/router.php">Routers</a></li>
                         </ul>
@@ -55,26 +55,26 @@
             <div class="searchBox">
                 <div class="iconUser">
                     <a href="login.php" style="color: white;">
-                    <i class='bx bx-user user'></i></a><!--- Icono de usuario -->
+                        <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
-                    <i class="bx bx-x cancel"></i><!--- Icono de cerrar búsqueda -->
-                    <i class="bx bx-search search"></i><!--- Icono de búsqueda -->
+                    <i class="bx bx-x cancel"></i>
+                    <i class="bx bx-search search"></i>
                 </div>
                 <div class="iconCarrito">
-                    <a href="carrito.php" style="color: white;"> 
-                    <i class='bx bx-cart cart'></i></a>
-                    <span id="productos">0</span><!--- Icono de carrito de compras -->
+                    <a href="carrito.php" style="color: white;">
+                        <i class='bx bx-cart cart'></i></a>
+                    <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                    <input type="text" placeholder="Buscar tus productos preferidos...">
+                    <input type="text" placeholder="Buscar tus productos...">
                     <i class="bx bx-search search"></i>
                 </div>
             </div>
         </div>
     </nav>
-
     <!--------------------------------------------------------------------------->
+    
     <hr>
 
     <!--BANNER DE BIENVENIDA----------------------------------------------------------->

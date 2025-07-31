@@ -105,15 +105,20 @@ nav .nav-bar .logo a {
     display: none;
 }
 
+/*SUBMENU*/
 .nav-links .submenu {
     display: none;
+    /* El submenú estará oculto inicialmente */
     list-style: none;
     margin: 0;
     padding: 0;
     position: absolute;
     top: 100%;
+
+    /* CAMBIOS PARA CENTRAR */
     left: 33%;
     transform: translateX(-50%);
+
     background-color: #1683CE;
     min-width: 200px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -123,13 +128,26 @@ nav .nav-bar .logo a {
 .nav-links .submenu li a {
     display: block;
     padding: 10px 20px;
+    /* Espaciado interno para los elementos del submenú */
     color: #fff;
+    /* Color del texto */
     text-decoration: none;
     white-space: nowrap;
 }
 
+/* Esto oculta el submenú por defecto en el modo de escritorio */
+.has-submenu>.submenu {
+    display: none;
+}
+
+/* Esto muestra el submenú en escritorio y móvil cuando la clase 'active' está presente */
+.has-submenu.active>.submenu {
+    display: block;
+}
+
 .nav-links .has-submenu.submenu-open>.submenu {
     display: block;
+    /* Muestra el submenú cuando el padre tiene la clase submenu-open */
 }
 
 .nav-bar .nav-links {
@@ -511,88 +529,11 @@ nav .nav-bar .logo a {
 /* --- */
 
 /* Adaptaciones Responsivas */
-
-/* Media query para dispositivos con un ancho máximo de 750px */
-@media (max-width: 750px) {
-
-    /* Navegación */
-    nav {
-        padding: 0 20px; /* Reduce el padding para pantallas más pequeñas */
-        height: 80px;
-    }
-    nav .nav-bar .logo a {
-        font-size: 24px;
-    }
-    .nav-bar .nav-links li a {
-        font-size: 16px;
-    }
-
-    /* Banner */
-    .banner {
-        height: 450px;
-    }
-    .banner-text {
-        top: 25%;
-        left: 5%;
-    }
-    .banner-text h2 {
-        font-size: 32px;
-    }
-
-    /* Carrusel */
-    .carrusel h3 {
-        font-size: 24px;
-    }
-    .carrusel-contenedor {
-        max-width: calc(var(--slide-total-width) * 1.5); /* Muestra 1.5 tarjetas a la vez */
-    }
-    .carrusel-slide {
-        min-width: 200px;
-        max-width: 250px;
-    }
-
-    /* Ubicación */
-    #ubicacion {
-        height: auto; /* Permite que la altura se ajuste al contenido */
-        padding-top: 50px;
-        padding-bottom: 50px;
-    }
-    .ubicacion-contenedor {
-        flex-direction: column;
-        text-align: center;
-    }
-    .ubicacion-izquierda h2 {
-        font-size: 2.2em;
-        margin-bottom: 20px;
-    }
-    .redes-sociales {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    .ubicacion-derecha {
-        margin-top: 30px;
-        margin-left: 0;
-    }
-    .ubicacion-derecha i {
-        font-size: 150px;
-    }
-
-    /* Pie de página */
-    .main-footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .footer-section {
-        flex-basis: auto;
-    }
-}
-
-@media (max-width: 790px) {
+@media (max-width: 1090px) {
     nav .nav-bar .sidebarOpen {
         display: block;
     }
+
     .menu {
         position: fixed;
         height: 100%;
@@ -604,51 +545,187 @@ nav .nav-bar .logo a {
         z-index: 100;
         transition: all 0.4s ease;
     }
+
     nav.active .menu {
         left: 0%;
     }
+
     nav.active .nav-bar .navLogo a {
         opacity: 0;
         transition: all 0.3s ease;
     }
+
     .menu .logo-toggle {
         display: flex;
         width: 100%;
         align-items: center;
         justify-content: space-between;
     }
+
     .logo-toggle .sidelbarClose {
         color: var(--text-color);
         font-size: 24px;
         cursor: pointer;
     }
+
     .nav-bar .nav-links {
         flex-direction: column;
         padding-top: 30px;
     }
+
     .nav-links li a {
         display: block;
         margin-top: 20px;
     }
+
     .carrusel-slide {
         flex: 0 0 100%;
     }
+
     .carrusel-contenedor {
         gap: 10px;
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 790px) {
+
+    .nav-links .submenu {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        padding: 0;
+        /* Elimina el padding para asegurar el centrado */
+    }
+
+    /* Muestra el submenú cuando el padre tiene la clase 'active' */
+    .has-submenu.active .submenu {
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* Ajuste para los enlaces del submenú en móvil */
+    .nav-links .submenu li a {
+        padding: 10px 0;
+        display: block;
+    }
+
+    .nav-links .submenu {
+        top: 50%;
+
+        /* CAMBIOS PARA CENTRAR */
+        left: 50%;
+    }
+
+}
+
+/* Media query para dispositivos con un ancho máximo de 750px */
+@media (max-width: 750px) {
+
+    /* Navegación */
+    nav {
+        padding: 0 20px;
+        /* Reduce el padding para pantallas más pequeñas */
+        height: 80px;
+    }
+
+    nav .nav-bar .logo a {
+        font-size: 24px;
+    }
+
+    .nav-bar .nav-links li a {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /* Banner */
+    .banner {
+        height: 450px;
+    }
+
+    .banner-text {
+        top: 25%;
+        left: 5%;
+    }
+
+    .banner-text h2 {
+        font-size: 32px;
+    }
+
+    /* Carrusel */
+    .carrusel h3 {
+        font-size: 24px;
+    }
+
+    .carrusel-contenedor {
+        max-width: calc(var(--slide-total-width) * 1.5);
+        /* Muestra 1.5 tarjetas a la vez */
+    }
+
+    .carrusel-slide {
+        min-width: 200px;
+        max-width: 250px;
+    }
+
+    /* Ubicación */
+    #ubicacion {
+        height: auto;
+        /* Permite que la altura se ajuste al contenido */
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .ubicacion-contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ubicacion-izquierda h2 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+
+    .redes-sociales {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .ubicacion-derecha {
+        margin-top: 30px;
+        margin-left: 0;
+    }
+
+    .ubicacion-derecha i {
+        font-size: 150px;
+    }
+
+    /* Pie de página */
+    .main-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 450px) {
     .searchBox .search-field {
         width: 200px;
     }
+
     .iconUser {
-        font-size: 15px;
+        font-size: 20px;
     }
+
     .iconCarrito {
-        font-size: 18px;
+        font-size: 20px;
     }
+
     .searchToggle i {
-        font-size: 16px;
+        font-size: 20px;
     }
 }

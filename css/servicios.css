@@ -91,7 +91,6 @@ nav .nav-bar .logo a {
     z-index: 1000;
 }
 
-/* Estilos para los enlaces del submenú */
 .nav-links .submenu li a {
     display: block;
     padding: 10px 20px;
@@ -100,6 +99,16 @@ nav .nav-bar .logo a {
     /* Color del texto */
     text-decoration: none;
     white-space: nowrap;
+}
+
+/* Esto oculta el submenú por defecto en el modo de escritorio */
+.has-submenu>.submenu {
+    display: none;
+}
+
+/* Esto muestra el submenú en escritorio y móvil cuando la clase 'active' está presente */
+.has-submenu.active>.submenu {
+    display: block;
 }
 
 /* Mostrar el submenú cuando el cursor está sobre el elemento padre (li) */
@@ -304,8 +313,7 @@ main {
 .service-card {
     display: flex;
     align-items: center;
-    background-color: var(--main-blue);
-    /* Fondo azul de la tarjeta */
+    background-color: var(--main-blue); /* Asumo que tienes definida esta variable */
     color: #fff;
     border-radius: 8px;
     padding: 20px;
@@ -323,7 +331,6 @@ main {
 
 .service-card .service-details {
     flex-grow: 1;
-    /* Permite que los detalles ocupen el espacio restante */
 }
 
 .service-card .service-details h2 {
@@ -337,6 +344,50 @@ main {
     font-weight: bold;
     margin-bottom: 15px;
     color: #40f470;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .service-card {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        text-align: center; /* Centra el texto */
+    }
+
+    .service-card img {
+        width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+        height: auto; /* Mantiene la proporción de la imagen */
+        margin: 0 0 20px 0; /* Ajusta los márgenes */
+    }
+
+    .service-card .service-details h2 {
+        font-size: 2em; /* Reduce el tamaño del título */
+    }
+
+    .service-card .service-details p {
+        font-size: 1.5em; /* Reduce el tamaño del párrafo */
+    }
+
+    .my-cart-title {
+        font-size: 2em; /* Reduce el tamaño del título de la sección */
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card {
+        padding: 15px;
+    }
+    
+    .service-card .service-details h2 {
+        font-size: 1.5em;
+    }
+
+    .service-card .service-details p {
+        font-size: 1.2em;
+    }
+    
+    .my-cart-title {
+        font-size: 1.8em;
+    }
 }
 
 
@@ -399,17 +450,7 @@ main {
 
 
 /* Responsive Design----------------------------------------------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 875px) {
-    nav .nav-bar .logo a {
-        font-size: 15px;
-    }
-
-    nav .nav-bar .nav-links li a {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 790px) {
+@media (max-width: 1090px) {
     nav .nav-bar .sidebarOpen {
         display: block;
     }
@@ -459,20 +500,79 @@ main {
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 790px) {
+
+    .nav-links .submenu {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        padding: 0;
+        /* Elimina el padding para asegurar el centrado */
+    }
+
+    /* Muestra el submenú cuando el padre tiene la clase 'active' */
+    .has-submenu.active .submenu {
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* Ajuste para los enlaces del submenú en móvil */
+    .nav-links .submenu li a {
+        padding: 10px 0;
+        display: block;
+    }
+
+    .nav-links .submenu {
+        top: 50%;
+
+        /* CAMBIOS PARA CENTRAR */
+        left: 50%;
+    }
+}
+
+@media (max-width: 750px) {
+
+    /* Navegación */
+    nav {
+        padding: 0 20px;
+    }
+
+    nav .nav-bar .logo a {
+        font-size: 24px;
+    }
+
+    .nav-bar .nav-links li a {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /* Pie de página */
+    .main-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 450px) {
     .searchBox .search-field {
         width: 200px;
     }
 
     .iconUser {
-        font-size: 15px;
+        font-size: 20px;
     }
 
     .iconCarrito {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .searchToggle i {
-        font-size: 16px;
+        font-size: 20px;
     }
 }

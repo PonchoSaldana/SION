@@ -37,7 +37,7 @@ body {
     overflow: hidden;
 }
 
-/*BARRA DE NAVEGACION*/
+/* Estilos de la barra de navegación */
 nav {
     position: fixed;
     top: 0;
@@ -83,39 +83,35 @@ nav .nav-bar .logo a {
 /*--SUBMENU-------------------------------------*/
 .nav-links .submenu {
     display: none;
-    /* El submenú estará oculto inicialmente */
     list-style: none;
     margin: 0;
     padding: 0;
     position: absolute;
     top: 100%;
-
-    /* CAMBIOS PARA CENTRAR */
     left: 33%;
     transform: translateX(-50%);
-
     background-color: #1683CE;
     min-width: 200px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
 
-
-/* Estilos para los enlaces del submenú */
 .nav-links .submenu li a {
     display: block;
     padding: 10px 20px;
-    /* Espaciado interno para los elementos del submenú */
     color: #fff;
-    /* Color del texto */
     text-decoration: none;
     white-space: nowrap;
 }
+.has-submenu>.submenu {
+    display: none;
+}
 
-/* Mostrar el submenú cuando el cursor está sobre el elemento padre (li) */
+.has-submenu.active>.submenu {
+    display: block;
+}
 .nav-links .has-submenu.submenu-open>.submenu {
     display: block;
-    /* Muestra el submenú cuando el padre tiene la clase submenu-open */
 }
 
 /*---------------------------------------*/
@@ -143,7 +139,6 @@ nav .nav-bar .logo a {
 .nav-links li a:hover {
     transform: scale(1);
     color: rgb(9, 0, 112);
-
 }
 
 /*ICONOS EN LA BARRA DE NAVEGACION*/
@@ -171,7 +166,6 @@ nav .nav-bar .logo a {
     font-size: 30px;
     cursor: pointer;
     transition: transform 0.3s;
-
 }
 
 .iconCarrito i:hover {
@@ -284,85 +278,6 @@ nav .nav-bar .logo a {
     cursor: pointer;
 }
 
-/* Responsive Design----------------------------------------------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 875px) {
-    nav .nav-bar .logo a {
-        font-size: 15px;
-    }
-
-    nav .nav-bar .nav-links li a {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 790px) {
-    nav .nav-bar .sidebarOpen {
-        display: block;
-    }
-
-    .menu {
-        position: fixed;
-        height: 100%;
-        width: 250px;
-        left: -100%;
-        top: 0;
-        padding: 10px;
-        background-color: var(--side-nav);
-        z-index: 100;
-        transition: all 0.4s ease;
-    }
-
-    nav.active .menu {
-        left: 0%;
-    }
-
-    nav.active .nav-bar .navLogo a {
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    .menu .logo-toggle {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .logo-toggle .sidelbarClose {
-        color: var(--text-color);
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .nav-bar .nav-links {
-        flex-direction: column;
-        padding-top: 30px;
-    }
-
-    .nav-links li a {
-        display: block;
-        margin-top: 20px;
-    }
-}
-
-@media (max-width: 390px) {
-    .searchBox .search-field {
-        width: 200px;
-    }
-
-    .iconUser {
-        font-size: 15px;
-    }
-
-    .iconCarrito {
-        font-size: 18px;
-    }
-
-    .searchToggle i {
-        font-size: 16px;
-    }
-}
-
 section {
     padding: 1em;
 }
@@ -409,93 +324,7 @@ section {
 .modal-contenido img {
     width: 100px;
 }
-/* Responsive Design----------------------------------------------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 875px) {
-    nav .nav-bar .logo a {
-        font-size: 15px;
-    }
 
-    nav .nav-bar .nav-links li a {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 790px) {
-    nav .nav-bar .sidebarOpen {
-        display: block;
-    }
-
-    .menu {
-        position: fixed;
-        height: 100%;
-        width: 250px;
-        left: -100%;
-        top: 0;
-        padding: 10px;
-        background-color: var(--side-nav);
-        z-index: 100;
-        transition: all 0.4s ease;
-    }
-
-    nav.active .menu {
-        left: 0%;
-    }
-
-    nav.active .nav-bar .navLogo a {
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    .menu .logo-toggle {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .logo-toggle .sidelbarClose {
-        color: var(--text-color);
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .nav-bar .nav-links {
-        flex-direction: column;
-        padding-top: 30px;
-    }
-
-    .nav-links li a {
-        display: block;
-        margin-top: 20px;
-    }
-
-    .carrusel-slide {
-        flex: 0 0 100%;
-        /* Solo una imagen por vista */
-    }
-
-    .carrusel-contenedor {
-        gap: 10px;
-    }
-}
-
-@media (max-width: 390px) {
-    .searchBox .search-field {
-        width: 200px;
-    }
-
-    .iconUser {
-        font-size: 15px;
-    }
-
-    .iconCarrito {
-        font-size: 18px;
-    }
-
-    .searchToggle i {
-        font-size: 16px;
-    }
-}
 /*PIE DE PAGINA*/
 .main-footer {
     background: linear-gradient(to right, #095b91, #00b4e0);
@@ -549,82 +378,185 @@ section {
 
 .footer-section ul li a:hover {
     color: #f0f0f0;
-    /* Un blanco un poco más claro para el efecto hover */
     text-decoration: underline;
 }
 
-/* Opcional: Estilos para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .ubicacion-contenedor {
-        flex-direction: column;
-        /* Apila los elementos en pantallas pequeñas */
-        text-align: center;
+/* Ajustes para pantallas de hasta 875px (desktop más pequeño) */
+@media (max-width: 875px) {
+    nav .nav-bar .sidebarOpen {
+        display: block;
     }
 
+    .menu {
+        position: fixed;
+        height: 100%;
+        width: 250px;
+        left: -100%;
+        top: 0;
+        padding: 10px;
+        background-color: var(--side-nav);
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu {
+        left: 0%;
+    }
+
+    nav.active .nav-bar .navLogo a {
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .menu .logo-toggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-toggle .sidelbarClose {
+        color: var(--text-color);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-bar .nav-links {
+        flex-direction: column;
+        padding-top: 30px;
+    }
+
+    .nav-links li a {
+        display: block;
+        margin-top: 20px;
+    }
+}
+
+/* Ajustes para pantallas de hasta 790px (tablet y móvil) */
+@media (max-width: 790px) {
+    nav .nav-bar .sidebarOpen {
+        display: block; /* Muestra el icono de hamburguesa */
+    }
+
+    .menu {
+        position: fixed;
+        height: 100%;
+        width: 250px;
+        left: -100%;
+        top: 0;
+        padding: 10px;
+        background-color: var(--side-nav);
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu {
+        left: 0;
+    }
+
+    nav.active .nav-bar .navLogo a {
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .menu .logo-toggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-toggle .sidelbarClose {
+        color: var(--text-color);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-bar .nav-links {
+        flex-direction: column;
+        padding-top: 30px;
+        width: 100%;
+    }
+
+    .nav-links li a {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .nav-links .submenu {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        padding: 0;
+        /* Elimina el padding para asegurar el centrado */
+    }
+
+    .has-submenu.active .submenu {
+        display: block; /* Se muestra con la clase 'active' */
+    }
+
+    .nav-links .submenu {
+        top: 50%;
+
+        /* CAMBIOS PARA CENTRAR */
+        left: 50%;
+    }
+    
+    /* El pie de página se apila en columnas */
     .main-footer {
         flex-direction: column;
         text-align: center;
         align-items: center;
     }
+}
 
-    .ubicacion-contenido-central {
-        margin-bottom: 25px;
-        /* Espacio entre el contenido central y el globo */
+/* Ajustes para pantallas de hasta 600px */
+@media (max-width: 600px) {
+    .tarjeta-compra {
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+    }
+    .tarjeta-compra img {
         width: 100%;
-        /* Asegura que ocupe todo el ancho disponible */
+        height: auto;
+        margin-bottom: 1em;
     }
 
-    .ubicacion-izquierda h2 {
-        font-size: 2em;
-        /* Ajuste de tamaño para móvil */
-        margin-bottom: 20px;
+        /* Navegación */
+    nav {
+        padding: 0 20px;
+        /* Reduce el padding para pantallas más pequeñas */
+        height: 80px;
     }
 
-    .redes-sociales {
-        flex-wrap: wrap;
-        /* Permite que los botones salten de línea si no caben */
-        justify-content: center;
-        gap: 15px;
-        /* Ajuste de espacio para móvil */
+    nav .nav-bar .logo a {
+        font-size: 24px;
     }
 
-    .redes-sociales a i {
-        font-size: 40px;
-        /* Ajuste de tamaño para móvil */
-        /* Si usas bordes circulares, ajusta width/height también */
-        /* width: 50px; */
-        /* height: 50px; */
-    }
-
-    .ubicacion-derecha {
-        margin-left: 0;
-        /* Quita el margen lateral en móvil */
-        margin-top: 20px;
-        /* Añade margen superior en móvil */
-    }
-
-    .ubicacion-derecha i {
-        font-size: 90px;
-        /* Ajuste de tamaño para móvil */
+    .nav-bar .nav-links li a {
+        font-size: 16px;
+        text-align: center;
     }
 }
 
-/* Opcional: Estilos para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .ubicacion-contenedor {
-        flex-direction: column;
-        /* Apila los elementos en pantallas pequeñas */
-        text-align: center;
-        /* Centra el texto en pantallas pequeñas */
+/* Ajustes para pantallas de hasta 450px */
+@media (max-width: 450px) {
+    .searchBox .search-field {
+        width: 200px;
     }
 
-    .ubicacion-izquierda {
-        margin-bottom: 20px;
-        /* Espacio entre el texto y el icono en pantallas pequeñas */
+    .iconUser {
+        font-size: 20px;
     }
 
-    .redes-sociales {
-        justify-content: center;
-        /* Centra los iconos en pantallas pequeñas */
+    .iconCarrito {
+        font-size: 20px;
+    }
+
+    .searchToggle i {
+        font-size: 20px;
     }
 }
