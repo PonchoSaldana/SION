@@ -9,7 +9,7 @@
     <title>Sion Wireless - Inicio</title>
     <!--FAVICON-------------------------------------------------------------->
     <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
-    <!--ESTILO--------------------------------------------------------------->
+    <!--ESTILOS--------------------------------------------------------------->
     <link rel="stylesheet" href="css/index.css">
     <!-- ICONOS DE Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -18,6 +18,7 @@
 </head>
 
 <body>
+
     <!--ENCABEZADO----------------------------------------------------------->
     <nav>
         <div class="nav-bar">
@@ -27,7 +28,7 @@
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="#"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="index.php"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
@@ -46,21 +47,24 @@
                     <li><a href="Servicios.php">Servicios</a></li>
                     <li><a href="ofertas.php">Ofertas</a></li>
                     <li><a href="compras.php">Compras</a></li>
-                    <li><a href="#">Favoritos</a></li>
-                    <li><a href="todos_los_productos.php">Ver todos los productos</a></li>
+                    <li><a href="favoritos.php">Favoritos</a></li>
+                    <li><a href="todos_los_productos.php">Todos los productos</a></li>
                 </ul>
             </div>
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="login.php" style="color: white;"> <i class='bx bx-user user'></i></a><!--- Icono de usuario -->
+                    <a href="login.php" style="color: white;">
+                    <i class='bx bx-user user'></i></a><!--- Icono de usuario -->
                 </div>
                 <div class="searchToggle">
                     <i class="bx bx-x cancel"></i><!--- Icono de cerrar búsqueda -->
                     <i class="bx bx-search search"></i><!--- Icono de búsqueda -->
                 </div>
                 <div class="iconCarrito">
-                    <a href="carrito.php" style="color: white;"> <i class='bx bx-cart cart'></i></a><span id="productos">0</span><!--- Icono de carrito de compras -->
+                    <a href="carrito.php" style="color: white;"> 
+                    <i class='bx bx-cart cart'></i></a>
+                    <span id="productos">0</span><!--- Icono de carrito de compras -->
                 </div>
                 <div class="search-field">
                     <input type="text" placeholder="Buscar tus productos preferidos...">
@@ -69,17 +73,24 @@
             </div>
         </div>
     </nav>
+
+    <!--------------------------------------------------------------------------->
     <hr>
+
+    <!--BANNER DE BIENVENIDA----------------------------------------------------------->
     <section class="banner">
         <div class="banner-text">
-            <h2>Nuestros productos hechos para ti</h2><br>
-            <p>Todo para tu hogar 💒</p>
+            <h2>Bienvenido a SION System Wireless</h2><br>
+            <p>Tu tienda de confianza para productos<br> de tecnología y conectividad.</p>
         </div>
     </section>
+    <!-------------------------------------------------------------------------------->
+
     <svg class="wave " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path fill="#76c8ff" fill-opacity="1" d="M0,128L1440,192L1440,320L0,320Z"></path>
     </svg>
 
+    <!--SECCIÓN DE CARRUSEL DE PRODUCTOS DESTACADOS----------------------------------------->
     <section class="carrusel">
         <h3>Vista rápida</h3><br>
         <div class="carrusel-contenedor" id="contenedor">
@@ -132,7 +143,7 @@
                     <img src="img/descarga (2).jpeg" alt="Producto 6">
                 </div>
                 <div class="texto-slide">
-                    <p>Router ASUS Gigabit Ethernet de Banda Dual RT-AX57, Inalámbrico, 2402 Mbit/s, 4x RJ-45, 2.4/5GHz, 4 Antenas Externas</p>
+                    <p>Router ASUS Gigabit Ethernet de Banda Dual RT-AX57, Inalámbrico, 2402 Mbit/s, 4x RJ-45, 2.4/5GHz</p>
                     <hr><br><a class="btn btn-primary" href="submenu/router.php" role="button">Ver productos</a>
                 </div>
             </div>
@@ -147,22 +158,25 @@
             </div>
         </div>
 
-        <button class="boton prev" onclick="mover(-1)">❮</button>
-        <button class="boton next" onclick="mover(1)">❯</button>
+        <button class="boton prev" onclick="mover(-1)">❮</button><!-- Botón para mover al slide anterior -->
+        <button class="boton next" onclick="mover(1)">❯</button><!-- Botón para mover al siguiente slide -->
         <br><br><br>
 
     </section>
+    <!-------------------------------------------------------------------------------->
+
+    <!--SECCIÓN DE REDES SOCIALES------------------------------------------------------>
     <section id="ubicacion">
         <div class="ubicacion-contenedor">
             <div class="ubicacion-izquierda">
                 <h2>¡Servicio excepcional, resultados extraordinarios!</h2>
                 <h1>Únete a nuestra comunidad</h1>
                 <div class="redes-sociales">
-                    <a href="#" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
-                    <a href="#" target="_blank"><i class='bx bxl-whatsapp'></i></a>
-                    <a href="#" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
-                    <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
-                    <a href="#" target="_blank"><i class='bx bxl-youtube'></i></a>
+                    <a href="#" target="_blank"><i class='bx bxl-facebook-circle'></i></a><!-- Icono de Facebook -->
+                    <a href="#" target="_blank"><i class='bx bxl-whatsapp'></i></a><!-- Icono de WhatsApp -->
+                    <a href="#" target="_blank"><i class='bx bxl-instagram-alt'></i></a><!-- Icono de Instagram -->
+                    <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a><!-- Icono de Twitter -->
+                    <a href="#" target="_blank"><i class='bx bxl-youtube'></i></a><!-- Icono de YouTube -->
                 </div>
             </div>
             <div class="ubicacion-derecha">
@@ -170,6 +184,8 @@
             </div>
         </div>
     </section>
+    <!-------------------------------------------------------------------------------->
+    <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="img/LOGO/sin fondo.png" alt="Logo SION">
@@ -188,11 +204,11 @@
             <ul>
                 <li><a href="#">Política de privacidad</a></li>
                 <li><a href="#">Términos y condiciones</a></li>
-                <li><a href="#">Promoción y ofertas</a></li>
             </ul>
         </div>
     </footer>
-    <script src="js/index.js"></script>
+    <!-------------------------------------------------------------------------------->
+    <script src="js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
 </body>
 
 </html>
