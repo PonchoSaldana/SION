@@ -1,0 +1,155 @@
+/* Reset and general styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #e6f0fa; /* Light blue background similar to the site */
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #0066cc; /* Dark blue header */
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 24px;
+}
+
+.nav-link {
+    color: white !important;
+    font-size: 16px;
+}
+
+.nav-link:hover {
+    background-color: #005bb5;
+}
+
+/* Main Content */
+.container {
+    margin-top: 80px; /* Adjust for fixed nav */
+    padding: 20px;
+}
+
+h2 {
+    color: #0066cc;
+    margin-bottom: 20px;
+}
+
+.nav-tabs .nav-link {
+    color: #0066cc;
+    border: none;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: transparent;
+    border-bottom-color: #0066cc;
+    color: #005bb5;
+}
+
+.tab-content {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+
+.table {
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.btn {
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 5px;
+}
+
+.modal-header {
+    background-color: #0066cc;
+    color: white;
+}
+
+.modal-body .form-label {
+    font-weight: bold;
+}
+
+.modal-body .btn-primary {
+    background-color: #0066cc;
+    border-color: #0066cc;
+}
+
+.modal-body .btn-primary:hover {
+    background-color: #005bb5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .table {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 3px 8px;
+        font-size: 12px;
+    }
+}

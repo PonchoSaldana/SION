@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+$conexion = new mysqli("localhost", "root", "", "sion_db");
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
 
+$productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
+?><!DOCTYPE html><html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sion Wireless - Productos</title>
-    <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/todos_los_productos.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sion Wireless - Productos</title>
+  <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/todos_los_productos.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
-    <!--ENCABEZADO----------------------------------------------------------->
+   <!--ENCABEZADO----------------------------------------------------------->
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
@@ -68,153 +72,38 @@
         </div>
     </nav>
     <!--------------------------------------------------------------------------->
+  <!-- ... tu encabezado HTML sin cambios ... -->  <main>
+    <h1 class="my-cart-title">Todos los productos disponibles</h1>
+    <section>
+      <div class="product-container">
+        <?php while ($row = $productos_bd->fetch_assoc()): ?>
+          <div class="product-card">
+            <img src="uploads/<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre']) ?>">
+            <h3><?= htmlspecialchars($row['nombre']) ?></h3>
+            <p><?= htmlspecialchars($row['descripcion']) ?></p>
+            <p class="price">$<?= number_format($row['precio'], 2) ?></p>
+            <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
+            <a href="#" class="btn btn-outline-info">Más detalles</a>
+          </div>
+        <?php endwhile; ?>
+      </div>
+    </section>
+  </main>  <script>
+    const contadorCarrito = document.getElementById('productos');
+    let productosEnCarrito = 0;
 
-    <main>
-        <h1 class="my-cart-title">Todos los productos disponibles</h1>
+    function actualizarContador() {
+      contadorCarrito.textContent = productosEnCarrito;
+    }
 
-        <section>
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="img/descarga (1).jpeg" alt="Producto 1">
-                    <h3>Router</h3>
-                    <p>Router profesional de oficina</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/descarga (2).jpeg" alt="Producto 2">
-                    <h3>Router 5G</h3>
-                    <p>Router multiusos potente</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/descarga.jpeg" alt="Producto 3">
-                    <h3>Conector multiple</h3>
-                    <p>Conector multiusos</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images (1).jpeg" alt="Producto 4">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-            </div>
-
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="img/images (2).jpeg" alt="Producto 5">
-                    <h3>Camara steren</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images (3).jpeg" alt="Producto 6">
-                    <h3>Router multipuertos</h3>
-                    <p>Router de oficina</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images (4).jpeg" alt="Producto 7">
-                    <h3>Router gaming</h3>
-                    <p>Router para videojuegos</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images.jpeg" alt="Producto 8">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camra de vigilancia de una vista</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-            </div>
-
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="img/images (2).jpeg" alt="Producto 5">
-                    <h3>Camara steren</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images (3).jpeg" alt="Producto 6">
-                    <h3>Router multipuertos</h3>
-                    <p>Router de oficina</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images (4).jpeg" alt="Producto 7">
-                    <h3>Router gaming</h3>
-                    <p>Router para videojuegos</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images.jpeg" alt="Producto 8">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camra de vigilancia de una vista</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-            </div>
-
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="img/images (2).jpeg" alt="Producto 5">
-                    <h3>Camara steren</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images (3).jpeg" alt="Producto 6">
-                    <h3>Router multipuertos</h3>
-                    <p>Router de oficina</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images (4).jpeg" alt="Producto 7">
-                    <h3>Router gaming</h3>
-                    <p>Router para videojuegos</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="img/images.jpeg" alt="Producto 8">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camra de vigilancia de una vista</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
+    const botonesAgregar = document.querySelectorAll('.product-card button');
+    botonesAgregar.forEach(button => {
+      button.addEventListener('click', () => {
+        productosEnCarrito++;
+        actualizarContador();
+      });
+    });
+  </script>
     <script>
         // Script del contador del carrito
         const contadorCarrito = document.getElementById('productos');
@@ -231,7 +120,8 @@
             });
         });
     </script>
-
+    <!-------------------------------------------------------------------------------->
+    <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="img/LOGO/sin fondo.png" alt="Logo SION">
@@ -250,11 +140,13 @@
             <ul>
                 <li><a href="#">Política de privacidad</a></li>
                 <li><a href="#">Términos y condiciones</a></li>
-                <li><a href="#">Promoción y ofertas</a></li>
             </ul>
         </div>
-        <script src="js/menu.js"></script>
-        <script>
+    </footer>
+  
+  <script src="js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
+
+   <script>
   function obtenerCarrito() {
     return JSON.parse(localStorage.getItem('carrito')) || [];
   }
@@ -287,7 +179,5 @@
     });
   });
 </script>
-    </footer>
 </body>
-
 </html>
