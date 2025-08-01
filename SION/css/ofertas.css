@@ -19,7 +19,7 @@ html {
 }
 body {
     height: 100vh;
-    background-color: var(--body-color);
+    color: #76c8ff;
 }
 
 /*BANNER*/

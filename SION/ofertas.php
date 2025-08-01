@@ -46,7 +46,7 @@
 
             <div class="searchBox">
                 <div class="iconUser">
-                   <a href="login.php" style="color: white;"> <i class='bx bx-user user'></i></a><!--- Icono de usuario -->
+                <a href="login.php" style="color: white;"> <i class='bx bx-user user'></i></a><!--- Icono de usuario -->
                 </div>
                 <div class="searchToggle">
                     <i class="bx bx-x cancel"></i><!--- Icono de cerrar búsqueda -->
