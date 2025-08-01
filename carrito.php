@@ -330,24 +330,24 @@
     </footer>
     <script src="js/carrito.js"></script>
     <script>
-  function obtenerCarrito() {
-    return JSON.parse(localStorage.getItem('carrito')) || [];
-  }
+        function obtenerCarrito() {
+            return JSON.parse(localStorage.getItem('carrito')) || [];
+        }
 
-  function mostrarCarrito() {
-    const lista = document.querySelector('.product-list-container');
-    const resumen = document.getElementById('summary-products-count-text');
-    const total = document.getElementById('grand-total');
-    const carrito = obtenerCarrito();
+        function mostrarCarrito() {
+            const lista = document.querySelector('.product-list-container');
+            const resumen = document.getElementById('summary-products-count-text');
+            const total = document.getElementById('grand-total');
+            const carrito = obtenerCarrito();
 
-    lista.innerHTML = '';
-    let suma = 0;
+            lista.innerHTML = '';
+            let suma = 0;
 
-    carrito.forEach((p, i) => {
-      const subtotal = p.precio * p.cantidad;
-      suma += subtotal;
+            carrito.forEach((p, i) => {
+                const subtotal = p.precio * p.cantidad;
+                suma += subtotal;
 
-      lista.innerHTML += `
+                lista.innerHTML += `
         <div class="product-card">
           <img src="${p.imagen}" alt="${p.nombre}">
           <div class="product-details">
@@ -367,55 +367,55 @@
           </div>
         </div>
       `;
-    });
+            });
 
-    resumen.textContent = `Productos (${carrito.length})`;
-    total.textContent = `$${suma.toFixed(2)}`;
-  }
+            resumen.textContent = `Productos (${carrito.length})`;
+            total.textContent = `$${suma.toFixed(2)}`;
+        }
 
-  function eliminar(i) {
-    let carrito = obtenerCarrito();
-    carrito.splice(i, 1);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    mostrarCarrito();
-  }
+        function eliminar(i) {
+            let carrito = obtenerCarrito();
+            carrito.splice(i, 1);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            mostrarCarrito();
+        }
 
-  function cambiarCantidad(i, cambio) {
-    let carrito = obtenerCarrito();
-    carrito[i].cantidad += cambio;
-    if (carrito[i].cantidad < 1) carrito[i].cantidad = 1;
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    mostrarCarrito();
-  }
+        function cambiarCantidad(i, cambio) {
+            let carrito = obtenerCarrito();
+            carrito[i].cantidad += cambio;
+            if (carrito[i].cantidad < 1) carrito[i].cantidad = 1;
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            mostrarCarrito();
+        }
 
-  mostrarCarrito();
-</script>
-<script>
-document.getElementById('comprarTodo').addEventListener('click', () => {
-  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        mostrarCarrito();
+    </script>
+    <script>
+        document.getElementById('comprarTodo').addEventListener('click', () => {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-  if (carrito.length === 0) {
-    alert("Tu carrito está vacío.");
-    return;
-  }
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío.");
+                return;
+            }
 
-  // Recuperar compras existentes o inicializar
-  const compras = JSON.parse(localStorage.getItem('compras')) || [];
+            // Recuperar compras existentes o inicializar
+            const compras = JSON.parse(localStorage.getItem('compras')) || [];
 
-  // Agregar productos con estado
-  const nuevasCompras = carrito.map(producto => ({
-    ...producto,
-    estado: "Esperando al cliente"
-  }));
+            // Agregar productos con estado
+            const nuevasCompras = carrito.map(producto => ({
+                ...producto,
+                estado: "Esperando al cliente"
+            }));
 
-  const actualizadas = [...compras, ...nuevasCompras];
-  localStorage.setItem('compras', JSON.stringify(actualizadas));
+            const actualizadas = [...compras, ...nuevasCompras];
+            localStorage.setItem('compras', JSON.stringify(actualizadas));
 
-  // Vaciar carrito
-  localStorage.removeItem('carrito');
-  window.location.href = "compras.php";
-});
-</script>
+            // Vaciar carrito
+            localStorage.removeItem('carrito');
+            window.location.href = "compras.php";
+        });
+    </script>
 
 
 </body>

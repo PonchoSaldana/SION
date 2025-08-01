@@ -106,9 +106,7 @@
     </div>
   </div></center>
 
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-  <script src="js/compras.js"></script>
-  <script src="js/menu.js"></script>
+  <script src="js/index.js"></script>
 
   <footer class="main-footer">
         <div class="footer-section footer-logo">
@@ -132,7 +130,6 @@
             </ul>
         </div>
     </footer>
-    <script src="js/index.js"></script>
   <script>
 document.querySelectorAll('.detalles-btn').forEach(btn => {
   btn.addEventListener('click', function () {

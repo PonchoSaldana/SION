@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -17,8 +17,7 @@
 </head>
 
 <body>
-    <!--ENCABEZADO----------------------------------------------------------->
-    <nav>
+<nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
             <span class="logo navLogo"><a href="index.php">
@@ -71,7 +70,6 @@
             </div>
         </div>
     </nav>
-    <!--------------------------------------------------------------------------->
 
     <br>
     <br>
@@ -89,6 +87,10 @@
     <br>
     <br>
     <br>
+    <center>EN PROCESO</center>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>
@@ -104,7 +106,6 @@
     <br>
     <br>
 
-    <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="img/LOGO/sin fondo.png" alt="Logo SION">
@@ -126,7 +127,6 @@
             </ul>
         </div>
     </footer>
-    <!-------------------------------------------------------------------------------->
     <script src="js/menu.js"></script>
 </body>
 

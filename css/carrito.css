@@ -75,16 +75,20 @@ nav .nav-bar .logo a {
     display: none;
 }
 
-/*--SUBMENU-------------------------------------*/
+/*SUBMENU*/
 .nav-links .submenu {
     display: none;
+    /* El submenú estará oculto inicialmente */
     list-style: none;
     margin: 0;
     padding: 0;
     position: absolute;
     top: 100%;
-    left: 50%;
+
+    /* CAMBIOS PARA CENTRAR */
+    left: 33%;
     transform: translateX(-50%);
+
     background-color: #1683CE;
     min-width: 200px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -94,19 +98,26 @@ nav .nav-bar .logo a {
 .nav-links .submenu li a {
     display: block;
     padding: 10px 20px;
+    /* Espaciado interno para los elementos del submenú */
     color: #fff;
+    /* Color del texto */
     text-decoration: none;
     white-space: nowrap;
 }
 
-/* Mostrar el submenú en hover para pantallas grandes */
-.nav-links li:hover>.submenu {
+/* Esto oculta el submenú por defecto en el modo de escritorio */
+.has-submenu>.submenu {
+    display: none;
+}
+
+/* Esto muestra el submenú en escritorio y móvil cuando la clase 'active' está presente */
+.has-submenu.active>.submenu {
     display: block;
 }
 
-/* Mostrar el submenú en móvil cuando la clase 'active' está presente */
-.has-submenu.active>.submenu {
+.nav-links .has-submenu.submenu-open>.submenu {
     display: block;
+    /* Muestra el submenú cuando el padre tiene la clase submenu-open */
 }
 
 .nav-bar .nav-links {
@@ -693,6 +704,7 @@ nav .nav-bar .logo a {
 .nav-button.right {
     right: 0;
 }
+
 /* Pie de página */
 .main-footer {
     background: linear-gradient(to right, #095b91, #00b4e0);
@@ -748,15 +760,11 @@ nav .nav-bar .logo a {
     color: #f0f0f0;
     text-decoration: underline;
 }
+
 /* Responsive adjustments para la barra de navegación y el menú de hamburguesa */
 @media (max-width: 1090px) {
     nav .nav-bar .sidebarOpen {
         display: block;
-    }
-
-    .nav-bar .nav-links {
-        display: none;
-        /* Oculta los enlaces de navegación por defecto */
     }
 
     .menu {
@@ -808,7 +816,7 @@ nav .nav-bar .logo a {
     .nav-links .submenu {
         position: static;
         /* El submenú se comporta como un elemento de bloque */
-        background-color: transparent;
+        background-color: rgba(0, 0, 0, 0.2);
         box-shadow: none;
         width: 100%;
         transform: none;
@@ -823,6 +831,16 @@ nav .nav-bar .logo a {
 
     .has-submenu.active>.submenu {
         display: block;
+    }
+
+    .nav-bar .nav-links {
+        flex-direction: column;
+        padding-top: 30px;
+    }
+
+    .nav-links li a {
+        display: block;
+        margin-top: 20px;
     }
 }
 
@@ -882,7 +900,8 @@ nav .nav-bar .logo a {
         /* Ajustamos el ancho para que sea más dinámico */
         right: 10px;
     }
-        /* Pie de página */
+
+    /* Pie de página */
     .main-footer {
         flex-direction: column;
         align-items: center;
@@ -941,14 +960,18 @@ nav .nav-bar .logo a {
         margin: 10px 0 0;
     }
 }
+
 @media (max-width: 380px) {
+
     /* Barra de navegación */
     nav {
         padding: 0 10px;
     }
+
     nav .nav-bar .logo a {
         font-size: 20px;
     }
+
     .sidebarOpen {
         font-size: 24px !important;
     }
@@ -957,23 +980,30 @@ nav .nav-bar .logo a {
     .my-cart-title {
         font-size: 1.5em;
     }
+
     .contenedor-carrito h1 {
         font-size: 25px;
     }
+
     .product-card {
         padding: 10px;
     }
+
     .product-details h5 {
         font-size: 0.9em;
     }
-    .product-details .price, .item-total {
+
+    .product-details .price,
+    .item-total {
         font-size: 0.9em;
     }
+
     .custom-quantity-selector .btn {
         width: 25px;
         height: 25px;
         font-size: 0.8em;
     }
+
     .custom-quantity-selector .form-control {
         width: 30px;
         height: 25px;
@@ -984,9 +1014,11 @@ nav .nav-bar .logo a {
     .summary-item {
         font-size: 1.2em;
     }
+
     .summary-item.total {
         font-size: 1em;
     }
+
     .buy-button {
         padding: 10px 0;
         font-size: 1em;
@@ -996,19 +1028,24 @@ nav .nav-bar .logo a {
     .recently-viewed-container {
         padding: 10px;
     }
+
     .recently-viewed-container h2 {
         font-size: 1.3em;
         margin-bottom: 20px;
     }
+
     .carousel-wrapper {
         padding: 0 5px;
     }
+
     .product-cardxd {
         width: 150px;
     }
+
     .product-image-container {
         height: 120px;
     }
+
     .product-price-section {
         font-size: 1em;
     }
