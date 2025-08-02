@@ -19,14 +19,14 @@
                 <span class="cerrar" onclick="window.location.href='index.php'">🡰</span>
                 <img src="img/LOGO/sin fondo.png" class="logo">
                 <h3>Iniciar sesión</h3>
-                <form>
+                <form action="procesarLogin.php" method="POST">
                     <div class="input-container">
                         <i class="fas fa-envelope icon"></i>
-                        <input type="email" name="" placeholder="Correo electrónico..." required>
+                        <input type="email" name="correo" placeholder="Correo electrónico..." required>
                     </div>
                     <div class="input-container password-container">
                         <i class="fas fa-lock icon"></i>
-                        <input type="password" name="" placeholder="Contraseña..." required id="login-password">
+                        <input type="password" name="password" placeholder="Contraseña..." required id="login-password">
                         <span class="toggle-password" onclick="togglePasswordVisibility('login-password')">👁️</span>
                     </div>
                     <button type="submit">Entrar</button>
@@ -34,11 +34,13 @@
                 <p>¿No tienes una cuenta? <a href="#" onclick="toggleForm()">Regístrate</a></p>
             </div>
 
+
+<!--REGISTRO-------------------------------------------------------------->
             <div class="formulario oculto" id="form-registro">
                 <span class="cerrar" onclick="window.location.href='index.php'">🡰</span>
                 <img src="img/LOGO/sin fondo.png" class="logo">
                 <h3>Registro</h3>
-                <form>
+                <form action="registro.php" method="POST" onsubmit="return validateRegistrationForm()">
                     <div class="input-container">
                         <i class="fas fa-user icon"></i>
                         <input type="text" name="nombre" placeholder="Nombre" maxlength="20" required>
