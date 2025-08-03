@@ -63,6 +63,13 @@
         .alert {
             max-width: 500px;
             margin: 0 auto;
+        } @media (max-width: 360px) {
+            .logo img {
+                height: 60px;
+            }
+            .navbar-nav {
+                font-size: 0.9rem;
+            }
         }
     
     </style>
