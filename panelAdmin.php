@@ -69,10 +69,6 @@
 </head>
 <body>
 
-<?php if (isset($_GET['eliminado']) && $_GET['eliminado'] == 1): ?>
-    <div class="alert alert-success text-center m-3">Producto eliminado con éxito.</div>
-<?php endif; ?>
-
 <nav>
     <div class="container-fluid d-flex justify-content-between align-items-center">
        <div class="logo-toggle">
@@ -85,6 +81,9 @@
         </div>
     </div>
 </nav>
+<?php if (isset($_GET['eliminado']) && $_GET['eliminado'] == 1): ?>
+    <div class="alert alert-success text-center m-3">Producto eliminado con éxito.</div>
+<?php endif; ?>
 
 <div class="container mt-4">
     <ul class="nav nav-tabs" id="adminTabs">
