@@ -1,3 +1,6 @@
+<?php
+    include("sesion.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,12 +46,15 @@
                     <li><a href="compras.php">Compras</a></li>
                     <li><a href="favoritos.php">Favoritos</a></li>
                     <li><a href="todos_los_productos.php">Todos los productos</a></li>
+                    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
+                        <li><a href="panelAdmin.php">Panel de Administración</a></li>
+                     <?php endif; ?>
                 </ul>
             </div>
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="login.php" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">

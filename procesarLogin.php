@@ -22,9 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["id"] = $id;
             $_SESSION["nombre"] = $nombre;
             $_SESSION["rol"] = $rol;
+            $_SESSION["correo"] = $correo;
 
             if ($rol === "admin") {
-                header("Location: panelAdmin.php");
+                header("Location: index.php");
             } else {
                 header("Location: index.php");
             }
@@ -38,5 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
     $db->cerrar();
+    
 }
 ?>

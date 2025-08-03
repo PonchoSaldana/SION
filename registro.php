@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $insert->bind_param("sssssss", $nombre, $apellidos, $correo, $celular, $direccion, $codigo_postal, $password_hash);
 
     if ($insert->execute()) {
-        echo "<script>alert('Registro exitoso'); window.location.href='index.php';</script>";
+        echo "<script>alert('Registro exitoso'); window.location.href='login.php';</script>";
     } else {
         echo "<script>alert('Error al registrar'); window.history.back();</script>";
     }

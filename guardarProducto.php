@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     echo "❌ Error al mover la imagen al servidor.";
                 }
             } else {
-                echo "❌ La imagen excede el tamaño máximo permitido de 2MB.";
+                echo "❌ La imagen excede el tamaño máximo permitido de 20MB.";
             }
         } else {
             echo "❌ Solo se permiten archivos JPG, PNG y WEBP.";

@@ -1,0 +1,669 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu";
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Variables de color */
+:root {
+    --body-color: #E4E9F7;
+    --nav-color: #1683CE;
+    --side-nav: #1683CE;
+    --text-color: #fff;
+    --search-bar: #f2f2f2;
+    --search-text: #010718;
+}
+
+/* Estilos de la página principal */
+body {
+    height: 100vh;
+    background-color: var(--body-color);
+}
+
+p {
+    font-size: 25px;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.banner {
+    background-image: linear-gradient(to right, hsla(221, 100%, 50%, 0), hsla(253, 42%, 19%, 0), hsla(107, 15%, 24%, 0.5)), url(../img/fondoINDEX.webp);
+    width: 100%;
+    height: 650px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-text {
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    color: #fff;
+    text-shadow: 1px 5px 4px #000;
+}
+
+.banner-text h2 {
+    font-size: 40px;
+    margin: 0;
+}
+
+/* Estilos de la barra de navegación */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100%;
+    padding: 0 50px;
+    background-color: var(--nav-color);
+    z-index: 100;
+}
+
+nav .nav-bar {
+    position: relative;
+    height: 100%;
+    max-width: auto;
+    width: 100%;
+    background-color: var(--nav-color);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .nav-bar .sidebarOpen {
+    color: var(--text-color);
+    font-size: 30px;
+    padding: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+nav .nav-bar .logo a {
+    font-size: 30px;
+    font-weight: auto;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.menu .logo-toggle {
+    display: none;
+}
+
+/*SUBMENU*/
+.nav-links .submenu {
+    display: none;
+    /* El submenú estará oculto inicialmente */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+
+    /* CAMBIOS PARA CENTRAR */
+    left: 33%;
+    transform: translateX(-50%);
+
+    background-color: #1683CE;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.nav-links .submenu li a {
+    display: block;
+    padding: 10px 20px;
+    /* Espaciado interno para los elementos del submenú */
+    color: #fff;
+    /* Color del texto */
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Esto oculta el submenú por defecto en el modo de escritorio */
+.has-submenu>.submenu {
+    display: none;
+}
+
+/* Esto muestra el submenú en escritorio y móvil cuando la clase 'active' está presente */
+.has-submenu.active>.submenu {
+    display: block;
+}
+
+.nav-links .has-submenu.submenu-open>.submenu {
+    display: block;
+    /* Muestra el submenú cuando el padre tiene la clase submenu-open */
+}
+
+.nav-bar .nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .nav-links li {
+    margin: 0 6px;
+    list-style: none;
+}
+
+.nav-links li a {
+    position: relative;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px;
+    transition: transform 0.3s;
+}
+
+.nav-links li a:hover {
+    transform: scale(1);
+    color: rgb(9, 0, 112);
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.iconUser {
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.iconUser i:hover {
+    transform: scale(1.3);
+    color: rgb(9, 0, 112);
+}
+
+.iconCarrito {
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.iconCarrito i:hover {
+    transform: scale(1.3);
+    color: rgb(9, 0, 112);
+}
+
+.iconCarrito span {
+    position: absolute;
+    top: -1px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 15px;
+}
+
+.searchToggle i:hover {
+    transform: scale(1.3);
+    color: rgb(9, 0, 112);
+}
+
+.searchToggle {
+    height: 70px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    position: relative;
+}
+
+.searchToggle i {
+    position: absolute;
+    color: var(--text-color);
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.searchToggle i.cancel {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle.active i.cancel {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchToggle.active i.search {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBox .search-field {
+    position: absolute;
+    bottom: -90px;
+    right: 30px;
+    height: 55px;
+    width: 550px;
+    display: flex;
+    align-items: center;
+    background-color: var(--nav-color);
+    padding: 3px;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.searchToggle.active~.search-field {
+    bottom: -74px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-field::before {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: -5px;
+    height: 15px;
+    width: 12px;
+    background-color: var(--nav-color);
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+.search-field input {
+    height: 100%;
+    width: 100%;
+    padding: 0 35px 0 10px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--search-text);
+    background-color: var(--search-bar);
+}
+
+.search-field i {
+    position: absolute;
+    color: var(--nav-color);
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+
+/* Adaptaciones Responsivas */
+@media (max-width: 1090px) {
+    nav .nav-bar .sidebarOpen {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        height: 100%;
+        width: 250px;
+        left: -100%;
+        top: 0;
+        padding: 10px;
+        background-color: var(--side-nav);
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu {
+        left: 0%;
+    }
+
+    nav.active .nav-bar .navLogo a {
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .menu .logo-toggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-toggle .sidelbarClose {
+        color: var(--text-color);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-bar .nav-links {
+        flex-direction: column;
+        padding-top: 30px;
+    }
+
+    .nav-links li a {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .carrusel-slide {
+        flex: 0 0 100%;
+    }
+
+    .carrusel-contenedor {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 790px) {
+
+    .nav-links .submenu {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        padding: 0;
+        /* Elimina el padding para asegurar el centrado */
+    }
+
+    /* Muestra el submenú cuando el padre tiene la clase 'active' */
+    .has-submenu.active .submenu {
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* Ajuste para los enlaces del submenú en móvil */
+    .nav-links .submenu li a {
+        padding: 10px 0;
+        display: block;
+    }
+
+    .nav-links .submenu {
+        top: 50%;
+
+        /* CAMBIOS PARA CENTRAR */
+        left: 50%;
+    }
+
+}
+
+/* Media query para dispositivos con un ancho máximo de 750px */
+@media (max-width: 750px) {
+
+    /* Navegación */
+    nav {
+        padding: 0 20px;
+        /* Reduce el padding para pantallas más pequeñas */
+        height: 80px;
+    }
+
+    nav .nav-bar .logo a {
+        font-size: 24px;
+    }
+
+    .nav-bar .nav-links li a {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /* Banner */
+    .banner {
+        height: 450px;
+    }
+
+    .banner-text {
+        top: 25%;
+        left: 5%;
+    }
+
+    .banner-text h2 {
+        font-size: 32px;
+    }
+
+    /* Carrusel */
+    .carrusel h3 {
+        font-size: 24px;
+    }
+
+    .carrusel-contenedor {
+        max-width: calc(var(--slide-total-width) * 1.5);
+        /* Muestra 1.5 tarjetas a la vez */
+    }
+
+    .carrusel-slide {
+        min-width: 200px;
+        max-width: 250px;
+    }
+
+    /* Ubicación */
+    #ubicacion {
+        height: auto;
+        /* Permite que la altura se ajuste al contenido */
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .ubicacion-contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ubicacion-izquierda h2 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+
+    .redes-sociales {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .ubicacion-derecha {
+        margin-top: 30px;
+        margin-left: 0;
+    }
+
+    .ubicacion-derecha i {
+        font-size: 150px;
+    }
+
+    /* Pie de página */
+    .main-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 450px) {
+    .searchBox .search-field {
+        width: 200px;
+    }
+
+    .iconUser {
+        font-size: 20px;
+    }
+
+    .iconCarrito {
+        font-size: 20px;
+    }
+
+    .searchToggle i {
+        font-size: 20px;
+    }
+}
+
+
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 500px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+
+button:hover {
+    background-color: #1b61c1;
+}
+
+img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+    max-width: 120px;
+    height: auto;
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 95%;
+        padding: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="file"] {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+  .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            padding-top: 80px;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+        }
+        .close {
+            color: red;
+            float: right;
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Banner para datos de usuario */
+/* filepath: c:\laragon\www\INTEGRADORA\SION\css\mi_cuenta.css */
+.datos {
+    background: linear-gradient(to right, #68b2cd, #00b4e0);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 30px auto;
+    max-width: 600px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.datos p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.datos strong {
+    display: inline-block;
+    width: 140px;
+}
+
+
+.acciones-cuenta {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.acciones-cuenta button,
+.acciones-cuenta .btn-cerrar-sesion {
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.acciones-cuenta button {
+    background-color: #287da7;
+    color: #000;
+}
+
+.acciones-cuenta .btn-cerrar-sesion {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.acciones-cuenta button:hover {
+    background-color: white;
+}
+
+.acciones-cuenta .btn-cerrar-sesion:hover {
+    background-color: #c82333;
+}
+.btn-guardar {
+    background-color: #287ba7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
