@@ -77,43 +77,80 @@
                 </div>
             </div>
         </div>
+        <br><br>
     </nav>
+    <bt><br><br><br><br><br>
+     <!-- Contenido principal -->
+    <div class="container">
+        <h2>Favoritos</h2>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <center>EN PROCESO</center>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+        <!-- Producto 1 -->
+        <div class="item">
+            <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="Camara">
+            <div class="item-info">
+                <p>Cámara CCTV a color a tiempo completo 1080P, cámara de seguridad al aire libre con cable de 2 MP, vigilancia de grabación 24/7 4 en 1 TVI/CVI/AHD/CVBS, visión nocturna colorida de 100 pies, cámara DVR para seguridad del hogar, fácil conexión</p>
+                <span class="price">$1,299</span><br>
+                <div class="actions">
+                    <a href="#">Eliminar</a>
+                    <a href="#">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
 
+        <!-- Producto 2 -->
+        <div class="item">
+            <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="Camara">
+            <div class="item-info">
+                <p>Cámara De Seguridad De Doble Lente Wifi 4mp Con Alarma Ip Zoom 10x</p>
+                <span class="price">$365</span><br>
+                <div class="actions">
+                    <a href="#">Eliminar</a>
+                    <a href="#">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="item">
+            <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="Camara">
+            <div class="item-info">
+                <p>Cámara Wifi Con Detección De Cara Marca Treo</p>
+                <span class="price">$1,375</span><br>
+                <div class="actions">
+                    <a href="#">Eliminar</a>
+                    <a href="#">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="item">
+            <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="Camara">
+            <div class="item-info">
+                <p>2pcs Cámara De Seguridad Wifi De 360° Visión Nocturna Alarma</p>
+                <span class="price">$543</span><br>
+                <div class="actions">
+                    <a href="#">Eliminar</a>
+                    <a href="#">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 5 -->
+        <div class="item">
+            <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="Camara">
+            <div class="item-info">
+                <p>Cámara De Seguridad Wifi Foco Hd 1080p Nocturna Alarma 2pcs</p>
+                <span class="price">$432</span><br>
+                <div class="actions">
+                    <a href="#">Eliminar</a>
+                    <a href="#">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="img/LOGO/sin fondo.png" alt="Logo SION">
