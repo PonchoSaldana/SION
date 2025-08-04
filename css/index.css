@@ -259,7 +259,7 @@ nav .nav-bar .logo a {
     position: absolute;
     bottom: -90px;
     right: 30px;
-    height: 55px;
+    height: 50px;
     width: 550px;
     display: flex;
     align-items: center;
@@ -291,24 +291,28 @@ nav .nav-bar .logo a {
 }
 
 .search-field input {
-    height: 100%;
-    width: 100%;
-    padding: 0 55px 0 20px;
-    outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--search-text);
-    background-color: var(--search-bar);
+  height: 45px; /* Altura fija para mejor usabilidad */
+  width: 100%;
+  padding: 0 20px; /* Relleno solo en los lados */
+  padding-right: 240px; /* Espacio para el ícono */
+  outline: none;
+  border: 1px solid #dee2e6; /* Borde sutil */
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: #e9ecef;
+  transition: all 0.3s ease; /* Transición para un efecto suave */
 }
 
-.search-field i {
-    position: absolute;
-    color: var(--nav-color);
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
+.search-field .btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  border-radius: 10px;
+  background-color: #e9ecef;
 }
 
 /* Carrusel */
