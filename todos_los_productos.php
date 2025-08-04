@@ -71,8 +71,10 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                    <input type="text" placeholder="Buscar tus productos...">
-                    <i class="bx bx-search search"></i>
+                   <form action="buscar.php" method="GET">
+                        <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+                        <button type="submit"><i class='bx bx-search'></i></button>
+                    </form>
                 </div>
             </div>
         </div>

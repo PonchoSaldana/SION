@@ -71,6 +71,13 @@
                 font-size: 0.9rem;
             }
         }
+        .modal {
+    overflow-y: auto !important;
+}
+body.modal-open {
+    overflow: hidden;
+}
+
     
     </style>
 </head>
@@ -183,6 +190,7 @@
                                     </div>
 
                                 </div>
+                                
 
                                 <!-- Modal para editar producto -->
                                 <div class="modal fade" id="editModal<?php echo $producto['id']; ?>" tabindex="-1" aria-labelledby="editModalLabel<?php echo $producto['id']; ?>" aria-hidden="true">
