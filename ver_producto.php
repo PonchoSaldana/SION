@@ -42,6 +42,7 @@ if ($producto = $resultado->fetch_assoc()):
             </form>
         </div>
     </div>
+    
 </body>
 </html>
 
