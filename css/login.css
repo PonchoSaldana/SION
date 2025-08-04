@@ -1,0 +1,249 @@
+/* Importar una fuente de Google Fonts para un mejor diseño */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --color-principal: #001828;
+    --color-secundario: #2c3e50;
+    --color-claro: #ecf0f1;
+    --color-texto: #fff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(to right, hsla(222, 100%, 5%, 0.842), hsla(212, 98%, 17%, 0.769), hsla(194, 36%, 21%, 0.724)), url(../img/fondoLOGIN.jpg);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 40px 0;
+}
+
+.contenedor-principal {
+    display: flex;
+    width: 90%;
+    max-width: 900px;
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.contenedor {
+    position: relative;
+    width: 50%;
+    padding: 40px;
+    box-sizing: border-box;
+    background: linear-gradient(to right, #095b91, #00b4e0);
+    transition: width 0.5s ease-in-out; /* Transición para el cambio de ancho */
+}
+
+.imagen-derecha {
+    width: 50%;
+    background: url('../img/fondoDERECHAlogin.jpg') center/cover no-repeat;
+    transition: width 0.5s ease-in-out; /* Transición para el cambio de ancho */
+}
+
+/* Formulario */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.formulario.oculto {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(0);
+}
+
+.formulario h3 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.logo {
+    width: 200px;
+    height: 110px;
+    border-radius: 0%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el botón de cerrar (x) */
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.cerrar:hover {
+    color: #333;
+}
+
+/* Contenedores de entrada y iconos */
+.input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding-right: 50px;
+}
+
+.input-container input:focus {
+    outline: none;
+    border-color: var(--color-principal);
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.input-container .icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--color-secundario);
+}
+
+/* Botón de contraseña y ojo */
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    color: #999;
+}
+
+.toggle-password:hover {
+    color: #333;
+}
+
+/* Botón de envío */
+button {
+    width: 100%;
+    background-color: var(--color-principal);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #043759;
+}
+
+/* Enlace de "Regístrate" / "Inicia sesión" */
+p {
+    font-size: 14px;
+    margin-top: 20px;
+    color: var(--color-texto);
+}
+
+p a {
+    color: var(--color-principal);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* -------------------------------------------------- */
+/* Media Queries para diseño responsive - Mejoradas  */
+/* -------------------------------------------------- */
+
+/* Para tabletas y pantallas medianas */
+@media (max-width: 900px) {
+    .contenedor-principal {
+        width: 95%; /* Se ajusta a la ventana del navegador */
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column; /* Apila los elementos verticalmente */
+    }
+
+    .contenedor,
+    .imagen-derecha {
+        width: 100%; /* Ocupa el 100% del ancho del contenedor padre */
+    }
+
+    .imagen-derecha {
+        height: 200px; /* Altura fija para que la imagen no desaparezca */
+    }
+
+    /* Ajuste de la posición del formulario para la vista móvil */
+    .formulario {
+        position: static; /* Vuelve a su flujo normal */
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .formulario.oculto {
+        display: none; /* Oculta completamente el formulario para móviles */
+    }
+    
+    /* Centra el texto del formulario en móvil */
+    .formulario h3 {
+        text-align: center;
+    }
+}
+
+/* Para dispositivos móviles pequeños */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 0; /* Reduce el padding del body */
+    }
+    .contenedor {
+        padding: 20px; /* Reduce el padding del contenedor de formularios */
+    }
+    .logo {
+        width: 150px; /* Tamaño de logo más apropiado para móviles */
+        height: auto;
+    }
+    h3 {
+        font-size: 1.5em; /* Reduce el tamaño del título */
+    }
+    .input-container input {
+        font-size: 14px; /* Reduce el tamaño de la fuente de los campos de entrada */
+    }
+    button {
+        padding: 12px; /* Reduce el padding del botón */
+        font-size: 16px; /* Reduce el tamaño de la fuente del botón */
+    }
+    p {
+        font-size: 12px; /* Reduce el tamaño de la fuente del texto del enlace */
+    }
+}
