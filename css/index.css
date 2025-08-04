@@ -291,28 +291,33 @@ nav .nav-bar .logo a {
 }
 
 .search-field input {
-  height: 45px; /* Altura fija para mejor usabilidad */
-  width: 100%;
-  padding: 0 20px; /* Relleno solo en los lados */
-  padding-right: 240px; /* Espacio para el ícono */
-  outline: none;
-  border: 1px solid #dee2e6; /* Borde sutil */
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--text-color);
-  background-color: #e9ecef;
-  transition: all 0.3s ease; /* Transición para un efecto suave */
+    height: 45px;
+    /* Altura fija para mejor usabilidad */
+    width: 100%;
+    padding: 0 20px;
+    /* Relleno solo en los lados */
+    padding-right: 240px;
+    /* Espacio para el ícono */
+    outline: none;
+    border: 1px solid #dee2e6;
+    /* Borde sutil */
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-color);
+    background-color: #e9ecef;
+    transition: all 0.3s ease;
+    /* Transición para un efecto suave */
 }
 
 .search-field .btn {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  border-radius: 10px;
-  background-color: #e9ecef;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: #e9ecef;
 }
 
 /* Carrusel */
@@ -731,5 +736,35 @@ nav .nav-bar .logo a {
 
     .searchToggle i {
         font-size: 20px;
+    }
+
+    .search-field input {
+        height: 45px;
+        /* Altura fija para mejor usabilidad */
+        width: 100%;
+        padding: 0 20px;
+        /* Relleno solo en los lados */
+        padding-right: 70px;
+        /* Espacio para el ícono */
+        outline: none;
+        border: 1px solid #dee2e6;
+        /* Borde sutil */
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-color);
+        background-color: #e9ecef;
+        transition: all 0.3s ease;
+        /* Transición para un efecto suave */
+    }
+
+    .search-field .btn {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        border-radius: 10px;
+        background-color: #e9ecef;
     }
 }
