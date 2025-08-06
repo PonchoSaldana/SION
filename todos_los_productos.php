@@ -1,4 +1,7 @@
 <?php
+    include("sesion.php");
+?>
+<?php
 $conexion = new mysqli("localhost", "root", "", "sion_db");
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
@@ -47,12 +50,15 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
                     <li><a href="compras.php">Compras</a></li>
                     <li><a href="favoritos.php">Favoritos</a></li>
                     <li><a href="todos_los_productos.php">Todos los productos</a></li>
+                    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
+                        <li><a href="panelAdmin.php">Panel de Administración</a></li>
+                     <?php endif; ?>
                 </ul>
             </div>
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="login.php" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
@@ -65,14 +71,17 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                    <input type="text" placeholder="Buscar tus productos...">
-                    <i class="bx bx-search search"></i>
+                   <form action="buscar.php" method="GET">
+                        <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+                        <button type="submit"><i class='bx bx-search'></i></button>
+                    </form>
                 </div>
             </div>
         </div>
     </nav>
     <!--------------------------------------------------------------------------->
-  <!-- ... tu encabezado HTML sin cambios ... -->  <main>
+  
+   <main>
     <h1 class="my-cart-title">Todos los productos disponibles</h1>
     <section>
       <div class="product-container">

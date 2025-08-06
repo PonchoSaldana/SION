@@ -1,18 +1,37 @@
 <?php
-    include("sesion.php");
+session_start();
+include("conexion.php");
+
+if (!isset($_SESSION["id"])) {
+    header("Location: login.php");
+    exit();
+}
+
+$id_usuario = $_SESSION["id"];
+
+$conexion = (new conexion_db())->conectar();
+$stmt = $conexion->prepare("SELECT nombre, apellidos, correo, celular, direccion, codigo_postal FROM usuarios WHERE id = ?");
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+$stmt->bind_result($nombre, $apellidos, $correo, $celular, $direccion, $codigo_postal);
+$stmt->fetch();
+$stmt->close();
 ?>
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sion Wireless - Favoritos</title>
+    <!--TITULO----------------------------------------------------------->
+    <title>Sion Wireless - Inicio</title>
     <!--FAVICON-------------------------------------------------------------->
     <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
     <!--ESTILOS--------------------------------------------------------------->
-    <link rel="stylesheet" href="css/favorito.css">
+    <link rel="stylesheet" href="css/index.css">
+      <link rel="stylesheet" href="css/mi_cuenta.css">
     <!-- ICONOS DE Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!--BOTON DE Boxicons----------------------------------------------------------->
@@ -20,7 +39,9 @@
 </head>
 
 <body>
-<nav>
+
+    <!--ENCABEZADO----------------------------------------------------------->
+    <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
             <span class="logo navLogo"><a href="index.php">
@@ -49,17 +70,15 @@
                     <li><a href="compras.php">Compras</a></li>
                     <li><a href="favoritos.php">Favoritos</a></li>
                     <li><a href="todos_los_productos.php">Todos los productos</a></li>
-                    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
-                        <li><a href="panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
                 </ul>
             </div>
 
             <div class="searchBox">
-                <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
-                        <i class='bx bx-user user'></i></a>
-                </div>
+               <div class="iconUser">
+    <a href="<?php echo isset($_SESSION['correo']) ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
+        <i class='bx bx-user user'></i>
+    </a>
+</div>
                 <div class="searchToggle">
                     <i class="bx bx-x cancel"></i>
                     <i class="bx bx-search search"></i>
@@ -70,50 +89,60 @@
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                   <form action="buscar.php" method="GET">
-                        <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
-                        <button type="submit"><i class='bx bx-search'></i></button>
-                    </form>
+                    <input type="text" placeholder="Buscar tus productos...">
+                    <i class="bx bx-search search"></i>
                 </div>
             </div>
         </div>
     </nav>
+    <br><br><br><br>
+    <div class="datos">
+        <center><h2>Mi Cuenta</h2></center>
+        <p><strong>Nombre:</strong> <?= htmlspecialchars($nombre) ?></p>
+        <p><strong>Apellidos:</strong> <?= htmlspecialchars($apellidos) ?></p>
+        <p><strong>Correo:</strong> <?= htmlspecialchars($correo) ?></p>
+        <p><strong>Celular:</strong> <?= htmlspecialchars($celular) ?></p>
+        <p><strong>Dirección:</strong> <?= htmlspecialchars($direccion) ?></p>
+        <p><strong>Código Postal:</strong> <?= htmlspecialchars($codigo_postal) ?></p>
+        <div class="acciones-cuenta">
+    <button onclick="document.getElementById('modalEditar').style.display='block'">Editar datos</button>
+    <a href="cerrarSesion.php" class="btn-cerrar-sesion">Cerrar sesión</a>
+</div>
+    </div>
+    
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <center>EN PROCESO</center>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <!-- Modal -->
+    <div id="modalEditar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('modalEditar').style.display='none'">&times;</span>
+            <h3>Editar información</h3>
+            <form action="actualizar_usuario.php" method="POST">
+                <input type="hidden" name="id" value="<?= $id_usuario ?>">
 
+                <label>Nombre:</label>
+                <input type="text" name="nombre" value="<?= htmlspecialchars($nombre) ?>" required><br>
+
+                <label>Apellidos:</label>
+                <input type="text" name="apellidos" value="<?= htmlspecialchars($apellidos) ?>" required><br>
+
+                <label>Correo:</label>
+                <input type="email" name="correo" value="<?= htmlspecialchars($correo) ?>" required><br>
+
+                <label>Celular:</label>
+                <input type="text" name="celular" value="<?= htmlspecialchars($celular) ?>"><br>
+
+                <label>Dirección:</label>
+                <input type="text" name="direccion" value="<?= htmlspecialchars($direccion) ?>"><br>
+
+                <label>Código postal:</label>
+                <input type="text" name="codigo_postal" value="<?= htmlspecialchars($codigo_postal) ?>"><br>
+
+                <button class="btn-guardar" type="submit">Guardar cambios</button>
+            </form>
+        </div>
+    </div>
+
+     <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="img/LOGO/sin fondo.png" alt="Logo SION">
@@ -135,7 +164,16 @@
             </ul>
         </div>
     </footer>
-    <script src="js/menu.js"></script>
-</body>
 
+    <script>
+        // Cierra el modal si se hace clic fuera de él
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalEditar');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
+</body>
 </html>

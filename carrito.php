@@ -1,3 +1,6 @@
+<?php
+    include("sesion.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -43,12 +46,15 @@
                     <li><a href="compras.php">Compras</a></li>
                     <li><a href="favoritos.php">Favoritos</a></li>
                     <li><a href="todos_los_productos.php">Todos los productos</a></li>
+                    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
+                        <li><a href="panelAdmin.php">Panel de Administración</a></li>
+                     <?php endif; ?>
                 </ul>
             </div>
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="login.php" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
@@ -61,8 +67,10 @@
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                    <input type="text" placeholder="Buscar tus productos...">
-                    <i class="bx bx-search search"></i>
+                  <form action="buscar.php" method="GET">
+                        <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+                        <button type="submit"><i class='bx bx-search'></i></button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -372,6 +380,65 @@
             resumen.textContent = `Productos (${carrito.length})`;
             total.textContent = `$${suma.toFixed(2)}`;
         }
+
+        function mostrarCarrito() {
+    const lista = document.querySelector('.product-list-container');
+    const resumen = document.getElementById('summary-products-count-text');
+    const total = document.getElementById('grand-total');
+    const carrito = obtenerCarrito();
+
+    lista.innerHTML = '';
+    let sumaTotal = 0;
+
+    carrito.forEach((producto, index) => {
+        const subtotal = producto.precio * producto.cantidad;
+        sumaTotal += subtotal;
+
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <div class="product-details">
+                <h5>${producto.nombre}</h5>
+                <div class="product-actions">
+                    <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
+                    <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${index})">Eliminar</button>
+                    <span class="price">Precio $${producto.precio}</span>
+                </div>
+            </div>
+            <div class="quantity-control-container">
+                <div class="input-group custom-quantity-selector" data-price="${producto.precio}">
+                    <button class="btn btn-outline-secondary" type="button" data-action="minus" onclick="actualizarCantidad(${index}, -1)">-</button>
+                    <input type="number" class="form-control" value="${producto.cantidad}" min="1" readonly>
+                    <button class="btn btn-outline-secondary" type="button" data-action="plus" onclick="actualizarCantidad(${index}, 1)">+</button>
+                </div>
+                <span class="item-total">$${subtotal}</span>
+            </div>
+        `;
+        lista.appendChild(card);
+    });
+
+    resumen.textContent = `Productos ( ${carrito.length} )`;
+    total.textContent = `$${sumaTotal}`;
+}
+
+function eliminarProducto(index) {
+    const carrito = obtenerCarrito();
+    carrito.splice(index, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito();
+}
+
+function actualizarCantidad(index, cambio) {
+    const carrito = obtenerCarrito();
+    carrito[index].cantidad += cambio;
+    if (carrito[index].cantidad < 1) carrito[index].cantidad = 1;
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito();
+}
+
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', mostrarCarrito);
 
         function eliminar(i) {
             let carrito = obtenerCarrito();
