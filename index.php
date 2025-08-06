@@ -73,9 +73,10 @@
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                     <form action="buscar.php" method="GET" class="d-flex">
-                    <input type="text" name="q" placeholder="Buscar tus productos..." required class="form-control me-2">
-                    <button type="submit" class="btn btn-light"><i class="bx bx-search"></i></button>
+                    <form action="buscar.php" method="GET" class="d-flex">
+                    <input type="text" name="q" placeholder="Buscar tus productos..." required class="form-control me-2"><!--BUSCADOR-->
+                    <button type="submit" class="btn">
+                        <i class='bx bx-search'></i>
                 </form>
                 </div>
             </div>
