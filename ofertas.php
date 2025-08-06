@@ -1,6 +1,3 @@
-<?php
-    include("sesion.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,15 +43,12 @@
                     <li><a href="compras.php">Compras</a></li>
                     <li><a href="favoritos.php">Favoritos</a></li>
                     <li><a href="todos_los_productos.php">Todos los productos</a></li>
-                    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
-                        <li><a href="panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
                 </ul>
             </div>
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
+                    <a href="login.php" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
@@ -67,49 +61,51 @@
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                 <form action="buscar.php" method="GET">
-                        <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
-                        <button type="submit"><i class='bx bx-search'></i></button>
-                    </form>
+                    <input type="text" placeholder="Buscar tus productos...">
+                    <i class="bx bx-search search"></i>
                 </div>
             </div>
         </div>
     </nav>
     <!--------------------------------------------------------------------------->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <center>EN PROCESO</center>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
+    <div class="banner ofertas-banner">
+        <h1>Encuentra las ofertas del día</h1>
+    </div>
+
+    <div class="productos">
+
+        <div class="producto">
+            <img src="img/imagen1ofertas.webp" alt="Router">
+            <h3>TL-WR841N</h3>
+            <p>$250</p>
+            <button>Agregar al iconCarrito</button>
+        </div>
+
+        <div class="producto">
+            <img src="img/imagen2ofertas.jpg" alt="Camara">
+            <h3>Cámara CCTV</h3>
+            <p>$120</p>
+            <button>Agregar al iconCarrito</button>
+        </div>
+
+        <div class="producto">
+            <img src="img/imagen1ofertas.webp" alt="Router">
+            <h3>TL-WR840N</h3>
+            <p>$200</p>
+            <button>Agregar al iconCarrito</button>
+        </div>
+
+        <div class="producto">
+            <img src="img/imagen1ofertas.webp" alt="Router">
+            <h3>TL-WR841N</h3>
+            <p>$250</p>
+            <button>Agregar al iconCarrito</button>
+        </div>
+
+    </div>
+
+    
     <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
