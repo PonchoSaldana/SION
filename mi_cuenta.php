@@ -18,7 +18,7 @@ $stmt->fetch();
 $stmt->close();
 ?>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -31,7 +31,7 @@ $stmt->close();
     <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
     <!--ESTILOS--------------------------------------------------------------->
     <link rel="stylesheet" href="css/index.css">
-      <link rel="stylesheet" href="css/mi_cuenta.css">
+    <link rel="stylesheet" href="css/mi_cuenta.css">
     <!-- ICONOS DE Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!--BOTON DE Boxicons----------------------------------------------------------->
@@ -74,11 +74,11 @@ $stmt->close();
             </div>
 
             <div class="searchBox">
-               <div class="iconUser">
-    <a href="<?php echo isset($_SESSION['correo']) ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
-        <i class='bx bx-user user'></i>
-    </a>
-</div>
+                <div class="iconUser">
+                    <a href="<?php echo isset($_SESSION['correo']) ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
+                        <i class='bx bx-user user'></i>
+                    </a>
+                </div>
                 <div class="searchToggle">
                     <i class="bx bx-x cancel"></i>
                     <i class="bx bx-search search"></i>
@@ -89,15 +89,19 @@ $stmt->close();
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                    <input type="text" placeholder="Buscar tus productos...">
-                    <i class="bx bx-search search"></i>
+                    <form action="buscar.php" method="GET">
+                        <input type="text" name="q" placeholder="Buscar productos..." required class="form-control me-2" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+                        <button type="submit"><i class='bx bx-search'></i></button>
+                    </form>
                 </div>
             </div>
         </div>
     </nav>
     <br><br><br><br>
     <div class="datos">
-        <center><h2>Mi Cuenta</h2></center>
+        <center>
+            <h2>Mi Cuenta</h2>
+        </center>
         <p><strong>Nombre:</strong> <?= htmlspecialchars($nombre) ?></p>
         <p><strong>Apellidos:</strong> <?= htmlspecialchars($apellidos) ?></p>
         <p><strong>Correo:</strong> <?= htmlspecialchars($correo) ?></p>
@@ -105,11 +109,11 @@ $stmt->close();
         <p><strong>Dirección:</strong> <?= htmlspecialchars($direccion) ?></p>
         <p><strong>Código Postal:</strong> <?= htmlspecialchars($codigo_postal) ?></p>
         <div class="acciones-cuenta">
-    <button onclick="document.getElementById('modalEditar').style.display='block'">Editar datos</button>
-    <a href="cerrarSesion.php" class="btn-cerrar-sesion">Cerrar sesión</a>
-</div>
+            <button onclick="document.getElementById('modalEditar').style.display='block'">Editar datos</button>
+            <a href="cerrarSesion.php" class="btn-cerrar-sesion">Cerrar sesión</a>
+        </div>
     </div>
-    
+
 
     <!-- Modal -->
     <div id="modalEditar" class="modal">
@@ -142,7 +146,7 @@ $stmt->close();
         </div>
     </div>
 
-     <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
+    <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="img/LOGO/sin fondo.png" alt="Logo SION">
@@ -176,12 +180,13 @@ $stmt->close();
     </script>
     <script src="js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
     <script>
-// Si el usuario usa el botón "atrás", forzamos recarga para validar la sesión
-window.addEventListener("pageshow", function (event) {
-    if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
-        window.location.reload();
-    }
-});
-</script>
+        // Si el usuario usa el botón "atrás", forzamos recarga para validar la sesión
+        window.addEventListener("pageshow", function(event) {
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                window.location.reload();
+            }
+        });
+    </script>
 </body>
+
 </html>
