@@ -24,21 +24,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["rol"] = $rol;
             $_SESSION["correo"] = $correo;
 
-            if ($rol === "admin") {
-                header("Location: index.php");
-            } else {
-                header("Location: index.php");
-            }
+            // Redirigir según el rol (admin o usuario)
+            header("Location: index.php");
             exit();
         } else {
-            echo "<script>alert('Contraseña incorrecta'); window.history.back();</script>";
+            // Contraseña incorrecta
+            header("Location: login.php?error=incorrecta");
+            exit();
         }
     } else {
-        echo "<script>alert('Correo no registrado'); window.history.back();</script>";
+        // Correo no registrado
+        header("Location: login.php?error=correo");
+        exit();
     }
 
     $stmt->close();
     $db->cerrar();
-    
 }
 ?>

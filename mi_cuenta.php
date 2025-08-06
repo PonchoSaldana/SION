@@ -175,5 +175,13 @@ $stmt->close();
         }
     </script>
     <script src="js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
+    <script>
+// Si el usuario usa el botón "atrás", forzamos recarga para validar la sesión
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+        window.location.reload();
+    }
+});
+</script>
 </body>
 </html>
