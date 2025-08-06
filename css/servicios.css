@@ -230,17 +230,50 @@ nav .nav-bar .logo a {
     position: absolute;
     bottom: -90px;
     right: 30px;
-    height: 55px;
-    width: 550px;
+    height: 50px;
+    width: 570px;
     display: flex;
     align-items: center;
-    background-color: var(--nav-color);
+    background-color: #fff;
     padding: 3px;
     border-radius: 6px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1683CE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
+    max-width: 440px;
+}
+
+/* Formulario de búsqueda */
+.search-field form {
+    display: flex;
+    width: 100%;
+}
+
+/* Campo de entrada de texto */
+.search-field input[type="text"] {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 8px 10px;
+    font-size: 16px;
+    color: #000;
+    background-color: transparent;
+}
+
+/* Botón de búsqueda */
+.search-field button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    width: 40px;
+    align-items: center;
+}
+
+/* Ícono de búsqueda */
+.search-field button i {
+    font-size: 20px;
 }
 
 .searchToggle.active~.search-field {
@@ -262,24 +295,15 @@ nav .nav-bar .logo a {
 }
 
 .search-field input {
-    height: 100%;
-    width: 100%;
-    padding: 0 35px 0 10px;
+    height: 45px;
+    /*altura del buscador*/
+    width: auto;
+    /*ancho del buscador*/
+    padding-right: 308px;
     outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--search-text);
-    background-color: var(--search-bar);
-}
-
-.search-field i {
-    position: absolute;
-    color: var(--nav-color);
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #e9ecef;
 }
 
 :root {
@@ -313,7 +337,8 @@ main {
 .service-card {
     display: flex;
     align-items: center;
-    background-color: var(--main-blue); /* Asumo que tienes definida esta variable */
+    background-color: var(--main-blue);
+    /* Asumo que tienes definida esta variable */
     color: #fff;
     border-radius: 8px;
     padding: 20px;
@@ -345,51 +370,6 @@ main {
     margin-bottom: 15px;
     color: #40f470;
 }
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 768px) {
-    .service-card {
-        flex-direction: column; /* Apila los elementos verticalmente */
-        text-align: center; /* Centra el texto */
-    }
-
-    .service-card img {
-        width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
-        height: auto; /* Mantiene la proporción de la imagen */
-        margin: 0 0 20px 0; /* Ajusta los márgenes */
-    }
-
-    .service-card .service-details h2 {
-        font-size: 2em; /* Reduce el tamaño del título */
-    }
-
-    .service-card .service-details p {
-        font-size: 1.5em; /* Reduce el tamaño del párrafo */
-    }
-
-    .my-cart-title {
-        font-size: 2em; /* Reduce el tamaño del título de la sección */
-    }
-}
-
-@media (max-width: 480px) {
-    .service-card {
-        padding: 15px;
-    }
-    
-    .service-card .service-details h2 {
-        font-size: 1.5em;
-    }
-
-    .service-card .service-details p {
-        font-size: 1.2em;
-    }
-    
-    .my-cart-title {
-        font-size: 1.8em;
-    }
-}
-
 
 /*PIE DE PAGINA*/
 .main-footer {
@@ -447,10 +427,7 @@ main {
     /* Un blanco un poco más claro para el efecto hover */
     text-decoration: underline;
 }
-
-
-/* Responsive Design----------------------------------------------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 1090px) {
+@media (max-width: 1200px) {
     nav .nav-bar .sidebarOpen {
         display: block;
     }
@@ -497,17 +474,14 @@ main {
     .nav-links li a {
         display: block;
         margin-top: 20px;
+        font-size: 15px;
     }
-}
-
-@media (max-width: 790px) {
 
     .nav-links .submenu {
         position: relative;
         background-color: rgba(0, 0, 0, 0.2);
         box-shadow: none;
         padding: 0;
-        /* Elimina el padding para asegurar el centrado */
     }
 
     /* Muestra el submenú cuando el padre tiene la clase 'active' */
@@ -525,12 +499,16 @@ main {
 
     .nav-links .submenu {
         top: 50%;
-
-        /* CAMBIOS PARA CENTRAR */
         left: 50%;
+    }
+
+    .nav-bar .nav-links li a {
+        font-size: 16px;
+        text-align: center;
     }
 }
 
+/* RESPONSIVE DESIGN */
 @media (max-width: 750px) {
 
     /* Navegación */
@@ -547,6 +525,37 @@ main {
         text-align: center;
     }
 
+    .service-card {
+        flex-direction: column;
+        /* Apila los elementos verticalmente */
+        text-align: center;
+        /* Centra el texto */
+    }
+
+    .service-card img {
+        width: 100%;
+        /* La imagen ocupa todo el ancho de la tarjeta */
+        height: auto;
+        /* Mantiene la proporción de la imagen */
+        margin: 0 0 20px 0;
+        /* Ajusta los márgenes */
+    }
+
+    .service-card .service-details h2 {
+        font-size: 2em;
+        /* Reduce el tamaño del título */
+    }
+
+    .service-card .service-details p {
+        font-size: 1.5em;
+        /* Reduce el tamaño del párrafo */
+    }
+
+    .my-cart-title {
+        font-size: 2em;
+        /* Reduce el tamaño del título de la sección */
+    }
+
     /* Pie de página */
     .main-footer {
         flex-direction: column;
@@ -560,6 +569,22 @@ main {
 }
 
 @media (max-width: 450px) {
+    .service-card {
+        padding: 15px;
+    }
+
+    .service-card .service-details h2 {
+        font-size: 1.5em;
+    }
+
+    .service-card .service-details p {
+        font-size: 1.2em;
+    }
+
+    .my-cart-title {
+        font-size: 1.8em;
+    }
+
     .searchBox .search-field {
         width: 200px;
     }
@@ -575,4 +600,13 @@ main {
     .searchToggle i {
         font-size: 20px;
     }
+
+    .searchBox .search-field {
+        position: absolute;
+        bottom: -50px;
+        right: 10px;
+        height: 50px;
+        width: 300px;
+    }
 }
+

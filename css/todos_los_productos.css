@@ -233,17 +233,50 @@ nav .nav-bar .logo a {
     position: absolute;
     bottom: -90px;
     right: 30px;
-    height: 55px;
-    width: 550px;
+    height: 50px;
+    width: 570px;
     display: flex;
     align-items: center;
-    background-color: var(--nav-color);
+    background-color: #fff;
     padding: 3px;
     border-radius: 6px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1683CE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
+    max-width: 440px;
+}
+
+/* Formulario de búsqueda */
+.search-field form {
+    display: flex;
+    width: 100%;
+}
+
+/* Campo de entrada de texto */
+.search-field input[type="text"] {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 8px 10px;
+    font-size: 16px;
+    color: #000;
+    background-color: transparent;
+}
+
+/* Botón de búsqueda */
+.search-field button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    width: 40px;
+    align-items: center;
+}
+
+/* Ícono de búsqueda */
+.search-field button i {
+    font-size: 20px;
 }
 
 .searchToggle.active~.search-field {
@@ -265,25 +298,17 @@ nav .nav-bar .logo a {
 }
 
 .search-field input {
-    height: 100%;
-    width: 100%;
-    padding: 0 35px 0 10px;
+    height: 45px;
+    /*altura del buscador*/
+    width: auto;
+    /*ancho del buscador*/
+    padding-right: 308px;
     outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--search-text);
-    background-color: var(--search-bar);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #e9ecef;
 }
 
-.search-field i {
-    position: absolute;
-    color: var(--nav-color);
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
-}
 
 
 /* PRODUCTOS */
@@ -688,7 +713,7 @@ h1 {
     transition: background-color 0.2s ease;
 }
 
-@media (max-width: 1090px) {
+@media (max-width: 1200px) {
     nav .nav-bar .sidebarOpen {
         display: block;
     }
@@ -735,6 +760,37 @@ h1 {
     .nav-links li a {
         display: block;
         margin-top: 20px;
+        font-size: 15px;
+    }
+
+    .nav-links .submenu {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        padding: 0;
+    }
+
+    /* Muestra el submenú cuando el padre tiene la clase 'active' */
+    .has-submenu.active .submenu {
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* Ajuste para los enlaces del submenú en móvil */
+    .nav-links .submenu li a {
+        padding: 10px 0;
+        display: block;
+    }
+
+    .nav-links .submenu {
+        top: 50%;
+        left: 50%;
+    }
+
+    .nav-bar .nav-links li a {
+        font-size: 16px;
+        text-align: center;
     }
 }
 
@@ -765,117 +821,73 @@ h1 {
     .footer-section {
         flex-basis: auto;
     }
-
-    .nav-links .submenu {
-        position: relative;
-        background-color: rgba(0, 0, 0, 0.2);
-        box-shadow: none;
-        padding: 0;
-        /* Elimina el padding para asegurar el centrado */
-    }
-
-    /* Muestra el submenú cuando el padre tiene la clase 'active' */
-    .has-submenu.active .submenu {
-        display: block;
-        padding: 0;
-        text-align: center;
-    }
-
-    /* Ajuste para los enlaces del submenú en móvil */
-    .nav-links .submenu li a {
-        padding: 10px 0;
-        display: block;
-    }
-
-    .nav-links .submenu {
-        top: 50%;
-
-        /* CAMBIOS PARA CENTRAR */
-        left: 50%;
-    }
 }
 
 /* responsivo */
-@media (max-width: 768px) {
-
-    nav {
-        padding: 0 20px;
-    }
-
-    nav .nav-bar .logo a {
-        font-size: 24px;
-    }
-
-    .nav-bar .nav-links li a {
-        font-size: 16px;
-        text-align: center;
-    }
-
-    .nav-links .submenu {
-        position: relative;
-        background-color: rgba(0, 0, 0, 0.2);
-        box-shadow: none;
-        padding: 0;
-        /* Elimina el padding para asegurar el centrado */
-    }
-
-    /* Muestra el submenú cuando el padre tiene la clase 'active' */
-    .has-submenu.active .submenu {
-        display: block;
-        padding: 0;
-        text-align: center;
-    }
-
-    /* Ajuste para los enlaces del submenú en móvil */
-    .nav-links .submenu li a {
-        padding: 10px 0;
-        display: block;
-    }
-
-    .main-footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-section {
-        flex-basis: auto;
-    }
+@media (max-width: 750px) {
 
     .modal-content-fullscreen {
+        display: flex;
         flex-direction: column;
-        /* Apilar la imagen y el contenido en pantallas pequeñas */
-        width: 90%;
-        /* Más ancho en móviles */
+        width: 100%;
         max-width: none;
-        /* Sin límite de ancho máximo */
     }
 
     .modal-image-section {
-        flex: none;
-        /* Eliminar el ancho fijo */
+        flex: 0 0 auto;
         width: 100%;
-        /* Ocupar todo el ancho disponible */
-        border-right: none;
-        /* Quitar el borde */
         border-bottom: 1px solid #eee;
-        /* Añadir borde inferior */
-        padding-bottom: 15px;
+        padding: 10px;
+        /* Aumenta el padding para una mejor separación */
+
+        /* Propiedades para centrar la imagen */
+        display: flex;
+        justify-content: center;
+        /* Centra horizontalmente */
+        align-items: center;
+        /* Centra verticalmente */
     }
 
+    /* Imagen principal dentro del modal */
     .modal-main-image {
-        /* Asegurarse de que esta clase apunte a la imagen dentro de la sección */
         max-height: 250px;
-        /* Ajustar altura para móvil */
+        object-fit: contain;
+        width: 100%;
+
+        /* Evita que se mueva al seleccionar */
+        outline: none;
     }
 
+    /* Sección del contenido y detalles */
     .modal-details-content {
-        padding: 20px;
+        flex: 1 1 auto;
+        padding: 15px;
+        overflow-y: auto;
     }
 
     .modal-content-fullscreen h2 {
-        /* Ajuste para el título en móvil */
         font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .modal-content-fullscreen p {
+        font-size: 1.1em;
+        /* Aumenta el tamaño de la fuente para mejor legibilidad */
+        margin-bottom: 15px;
+        /* Agrega un margen inferior */
+    }
+
+    .modal-thumbnails {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .modal-details-content .add-to-cart-modal {
+        width: 100%;
+        margin-top: 20px;
+        /* Aumenta el margen superior para separación */
     }
 
 }
@@ -895,5 +907,13 @@ h1 {
 
     .searchToggle i {
         font-size: 20px;
+    }
+
+    .searchBox .search-field {
+        position: absolute;
+        bottom: -50px;
+        right: 10px;
+        height: 50px;
+        width: 300px;
     }
 }
