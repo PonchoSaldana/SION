@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 <?php
 include("sesion.php");
 ?>
->>>>>>> cde31a10a8b562c01b7a1b33fec8b2dc9a86399a
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,12 +46,9 @@ include("sesion.php");
                     <li><a href="compras.php">Compras</a></li>
                     <li><a href="favoritos.php">Favoritos</a></li>
                     <li><a href="todos_los_productos.php">Todos los productos</a></li>
-<<<<<<< HEAD
-=======
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li><a href="panelAdmin.php">Panel de Administración</a></li>
                     <?php endif; ?>
->>>>>>> cde31a10a8b562c01b7a1b33fec8b2dc9a86399a
                 </ul>
             </div>
 
@@ -73,15 +67,10 @@ include("sesion.php");
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-<<<<<<< HEAD
-                    <input type="text" placeholder="Buscar tus productos...">
-                    <i class="bx bx-search search"></i>
-=======
                     <form action="buscar.php" method="GET">
                         <input type="text" name="q" placeholder="Buscar productos..." required class="form-control me-2" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>
->>>>>>> cde31a10a8b562c01b7a1b33fec8b2dc9a86399a
                 </div>
             </div>
         </div>
