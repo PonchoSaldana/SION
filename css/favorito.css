@@ -25,7 +25,10 @@ html {
 /* Estilos de la página principal */
 body {
     height: 100vh;
-    background-color: var(--body-color);
+}
+
+header{
+    background-color: #76c8ff;
 }
 /* Estilos de la barra de navegación */
 nav {
@@ -224,17 +227,50 @@ nav .nav-bar .logo a {
     position: absolute;
     bottom: -90px;
     right: 30px;
-    height: 55px;
-    width: 550px;
+    height: 50px;
+    width: 570px;
     display: flex;
     align-items: center;
-    background-color: var(--nav-color);
+    background-color: #fff;
     padding: 3px;
     border-radius: 6px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1683CE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
+    max-width: 440px;
+}
+
+/* Formulario de búsqueda */
+.search-field form {
+    display: flex;
+    width: 100%;
+}
+
+/* Campo de entrada de texto */
+.search-field input[type="text"] {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 8px 10px;
+    font-size: 16px;
+    color: #000;
+    background-color: transparent;
+}
+
+/* Botón de búsqueda */
+.search-field button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    width: 40px;
+    align-items: center;
+}
+
+/* Ícono de búsqueda */
+.search-field button i {
+    font-size: 20px;
 }
 
 .searchToggle.active~.search-field {
@@ -256,24 +292,15 @@ nav .nav-bar .logo a {
 }
 
 .search-field input {
-    height: 100%;
-    width: 100%;
-    padding: 0 35px 0 10px;
+    height: 45px;
+    /*altura del buscador*/
+    width: auto;
+    /*ancho del buscador*/
+    padding-right: 308px;
     outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--search-text);
-    background-color: var(--search-bar);
-}
-
-.search-field i {
-    position: absolute;
-    color: var(--nav-color);
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #e9ecef;
 }
 /* Pie de página */
 .main-footer {
@@ -332,8 +359,115 @@ nav .nav-bar .logo a {
 }
 /* --- */
 
+
+/* Estilos para el contenedor principal de la lista */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1683CE;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del título "Favoritos" */
+.container h2 {
+    font-size: 2em;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+
+    text-align: center;
+    font-size: 35px;
+    color: #ffffff;
+    text-shadow: 2px 0px 10px #000;
+}
+
+/* Estilos para cada item de la lista de productos */
+.item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+.item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo de la imagen del producto */
+.item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 5px;
+}
+
+/* Estilo de la información del producto */
+.item-info {
+    flex-grow: 1;
+}
+
+/* Estilo de la descripción del producto */
+.item-info p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #000;
+    margin: 0 0 10px 0;
+}
+
+/* Estilo del precio */
+.price {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Estilos para los botones de acción */
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.actions a {
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.actions a:first-child { /* Estilo para el botón de "Eliminar" */
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.actions a:last-child { /* Estilo para el botón de "Agregar al carrito" */
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.actions a:first-child:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.actions a:last-child:hover {
+    background-color: #0056b3;
+}
+
 /* Adaptaciones Responsivas */
-@media (max-width: 1090px) {
+@media (max-width: 1200px) {
     nav .nav-bar .sidebarOpen {
         display: block;
     }
@@ -380,17 +514,14 @@ nav .nav-bar .logo a {
     .nav-links li a {
         display: block;
         margin-top: 20px;
+        font-size: 15px;
     }
-}
-
-@media (max-width: 790px) {
 
     .nav-links .submenu {
         position: relative;
         background-color: rgba(0, 0, 0, 0.2);
         box-shadow: none;
         padding: 0;
-        /* Elimina el padding para asegurar el centrado */
     }
 
     /* Muestra el submenú cuando el padre tiene la clase 'active' */
@@ -408,11 +539,15 @@ nav .nav-bar .logo a {
 
     .nav-links .submenu {
         top: 50%;
-        /* CAMBIOS PARA CENTRAR */
         left: 50%;
     }
 
+    .nav-bar .nav-links li a {
+        font-size: 16px;
+        text-align: center;
+    }
 }
+
 
 /* Media query para dispositivos con un ancho máximo de 750px */
 @media (max-width: 750px) {
@@ -443,8 +578,37 @@ nav .nav-bar .logo a {
     .footer-section {
         flex-basis: auto;
     }
-}
 
+    .container {
+        max-width: 720px;
+        padding: 15px;
+    }
+
+    .container h2 {
+        font-size: 2em;
+    }
+
+    .item {
+        gap: 20px;
+        flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no hay espacio */
+        text-align: center;
+        justify-content: center;
+    }
+
+    .item img {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+    
+    .item-info {
+        text-align: center;
+    }
+
+    .actions {
+        justify-content: center; /* Centra los botones en tabletas */
+    }
+}
 @media (max-width: 450px) {
     .searchBox .search-field {
         width: 200px;
@@ -461,65 +625,52 @@ nav .nav-bar .logo a {
     .searchToggle i {
         font-size: 20px;
     }
+
+    .searchBox .search-field {
+        position: absolute;
+        bottom: -50px;
+        right: 10px;
+        height: 50px;
+        width: 300px;
+    }
+    .container {
+        padding: 10px;
+    }
+    
+    .container h2 {
+        font-size: 1.8em;
+    }
+
+    .item {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .item img {
+        width: 80px;
+        height: 80px;
+        margin: 0;
+    }
+    
+    .item-info p {
+        font-size: 0.9em;
+    }
+
+    .price {
+        font-size: 1.3em;
+    }
+    
+    .actions {
+        flex-direction: column; /* Apila los botones verticalmente */
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .actions a {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box; /* Asegura que el padding no desborde el botón */
+    }
 }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--body-color);
-}
-        /* Contenido principal */
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-        h2 {
-            text-align: center;
-            color: #000;
-        }
-        .item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            background-color: white;
-        }
-        .item img {
-            width: 100px;
-        }
-        .item-info {
-            flex: 1;
-            margin-left: 20px;
-        }
-        .price {
-            color: green;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .actions a {
-            text-decoration: none;
-            margin-right: 10px;
-            color: #007bff;
-            font-weight: bold;
-        }
-        /* Pie de página */
-        footer {
-            background-color: #007bff;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            margin-top: 30px;
-        }
-        footer .links {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 10px;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-        }

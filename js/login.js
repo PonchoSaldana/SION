@@ -31,11 +31,11 @@ function validateRegistrationForm() {
     // Validaciones de formato
     const soloNumeros = /^\d+$/;
     if (!soloNumeros.test(celular)) {
-        alert("El número de celular solo debe contener dígitos numéricos.");
+        alert("El número de celular debe contener dígitos numéricos.");
         return false;
     }
     if (!soloNumeros.test(codigoPostal)) {
-        alert("El código postal solo debe contener dígitos numéricos.");
+        alert("El código postal debe contener dígitos numéricos.");
         return false;
     }
 

@@ -1,5 +1,5 @@
 <?php
-    include("sesion.php");
+include("sesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -10,9 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sion Wireless - Carrito</title>
     <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/carrito.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!--BOTON DE Boxicons----------------------------------------------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -48,7 +49,7 @@
                     <li><a href="todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li><a href="panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -67,8 +68,8 @@
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                  <form action="buscar.php" method="GET">
-                        <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+                    <form action="buscar.php" method="GET">
+                        <input type="text" name="q" placeholder="Buscar productos..." required class="form-control me-2" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>
                 </div>
@@ -91,106 +92,8 @@
                             <div style="flex: 1; text-align: center;">Cantidad</div>
                             <div style="flex: 1; text-align: right;">Total</div>
                         </div>
-
                         <div class="product-list-container">
-                            <div class="product-card">
-                                <img src="img/descarga (1).jpeg" alt="Cámara de seguridad">
-                                <div class="product-details">
-                                    <h5>Cámara de seguridad analógica 1080P al aire libre IP66 cámara de vigilancia CCTV impermeab Irfora Cámara AHD</h5>
-                                    <div class="product-actions">
-                                        <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
-                                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                                        <span class="price">Precio $400</span>
-                                    </div>
-                                </div>
-                                <div class="quantity-control-container">
-                                    <div class="input-group custom-quantity-selector" data-price="400">
-                                        <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
-                                        <input type="number" class="form-control" value="1" min="1" aria-label="Cantidad" readonly>
-                                        <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
-                                    </div>
-                                    <span class="item-total">$400</span>
-                                </div>
-                            </div>
-
-                            <div class="product-card">
-                                <img src="img/descarga (2).jpeg" alt="Cámara CCTV">
-                                <div class="product-details">
-                                    <h5>Cámara CCTV a color a tiempo completo 1080P, cámara de seguridad al aire libre con cable de 2 MP</h5>
-                                    <div class="product-actions">
-                                        <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
-                                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                                        <span class="price">Precio $500</span>
-                                    </div>
-                                </div>
-                                <div class="quantity-control-container">
-                                    <div class="input-group custom-quantity-selector" data-price="500">
-                                        <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
-                                        <input type="number" class="form-control" value="2" min="1" aria-label="Cantidad" readonly>
-                                        <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
-                                    </div>
-                                    <span class="item-total">$1000</span>
-                                </div>
-                            </div>
-
-                            <div class="product-card">
-                                <img src="img/images (1).jpeg" alt="Router">
-                                <div class="product-details">
-                                    <h5>Router CISCO1941-SEC-K9 2U 2 Puertos PoE Ports Puerto de gestion 4 Ranuras</h5>
-                                    <div class="product-actions">
-                                        <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
-                                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                                        <span class="price">Precio $600</span>
-                                    </div>
-                                </div>
-                                <div class="quantity-control-container">
-                                    <div class="input-group custom-quantity-selector" data-price="600">
-                                        <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
-                                        <input type="number" class="form-control" value="1" min="1" aria-label="Cantidad" readonly>
-                                        <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
-                                    </div>
-                                    <span class="item-total">$600</span>
-                                </div>
-                            </div>
-
-                            <div class="product-card">
-                                <img src="img/images (2).jpeg" alt="Disco Duro">
-                                <div class="product-details">
-                                    <h5>Disco Duro Externo USB 3.0 de 1TB Seagate Expansion Portable Hard Drive</h5>
-                                    <div class="product-actions">
-                                        <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
-                                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                                        <span class="price">Precio $80</span>
-                                    </div>
-                                </div>
-                                <div class="quantity-control-container">
-                                    <div class="input-group custom-quantity-selector" data-price="80">
-                                        <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
-                                        <input type="number" class="form-control" value="3" min="1" aria-label="Cantidad" readonly>
-                                        <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
-                                    </div>
-                                    <span class="item-total">$240</span>
-                                </div>
-                            </div>
-                            <div class="product-card">
-                                <img src="img/images (2).jpeg" alt="Disco Duro">
-                                <div class="product-details">
-                                    <h5>Disco Duro Externo USB 3.0 de 1TB Seagate Expansion Portable Hard Drive</h5>
-                                    <div class="product-actions">
-                                        <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
-                                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                                        <span class="price">Precio $80</span>
-                                    </div>
-                                </div>
-                                <div class="quantity-control-container">
-                                    <div class="input-group custom-quantity-selector" data-price="80">
-                                        <button class="btn btn-outline-secondary" type="button" data-action="minus">-</button>
-                                        <input type="number" class="form-control" value="3" min="1" aria-label="Cantidad" readonly>
-                                        <button class="btn btn-outline-secondary" type="button" data-action="plus">+</button>
-                                    </div>
-                                    <span class="item-total">$240</span>
-                                </div>
-                            </div>
+                            <!--PRODUCTOS AGREGADOS POR EL ADMINISTRADOR-->
                         </div>
                     </div>
                 </div>
@@ -382,21 +285,21 @@
         }
 
         function mostrarCarrito() {
-    const lista = document.querySelector('.product-list-container');
-    const resumen = document.getElementById('summary-products-count-text');
-    const total = document.getElementById('grand-total');
-    const carrito = obtenerCarrito();
+            const lista = document.querySelector('.product-list-container');
+            const resumen = document.getElementById('summary-products-count-text');
+            const total = document.getElementById('grand-total');
+            const carrito = obtenerCarrito();
 
-    lista.innerHTML = '';
-    let sumaTotal = 0;
+            lista.innerHTML = '';
+            let sumaTotal = 0;
 
-    carrito.forEach((producto, index) => {
-        const subtotal = producto.precio * producto.cantidad;
-        sumaTotal += subtotal;
+            carrito.forEach((producto, index) => {
+                const subtotal = producto.precio * producto.cantidad;
+                sumaTotal += subtotal;
 
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
             <img src="${producto.imagen}" alt="${producto.nombre}">
             <div class="product-details">
                 <h5>${producto.nombre}</h5>
@@ -415,30 +318,30 @@
                 <span class="item-total">$${subtotal}</span>
             </div>
         `;
-        lista.appendChild(card);
-    });
+                lista.appendChild(card);
+            });
 
-    resumen.textContent = `Productos ( ${carrito.length} )`;
-    total.textContent = `$${sumaTotal}`;
-}
+            resumen.textContent = `Productos ( ${carrito.length} )`;
+            total.textContent = `$${sumaTotal}`;
+        }
 
-function eliminarProducto(index) {
-    const carrito = obtenerCarrito();
-    carrito.splice(index, 1);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    mostrarCarrito();
-}
+        function eliminarProducto(index) {
+            const carrito = obtenerCarrito();
+            carrito.splice(index, 1);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            mostrarCarrito();
+        }
 
-function actualizarCantidad(index, cambio) {
-    const carrito = obtenerCarrito();
-    carrito[index].cantidad += cambio;
-    if (carrito[index].cantidad < 1) carrito[index].cantidad = 1;
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    mostrarCarrito();
-}
+        function actualizarCantidad(index, cambio) {
+            const carrito = obtenerCarrito();
+            carrito[index].cantidad += cambio;
+            if (carrito[index].cantidad < 1) carrito[index].cantidad = 1;
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            mostrarCarrito();
+        }
 
-// Ejecutar al cargar la página
-document.addEventListener('DOMContentLoaded', mostrarCarrito);
+        // Ejecutar al cargar la página
+        document.addEventListener('DOMContentLoaded', mostrarCarrito);
 
         function eliminar(i) {
             let carrito = obtenerCarrito();
@@ -457,6 +360,7 @@ document.addEventListener('DOMContentLoaded', mostrarCarrito);
 
         mostrarCarrito();
     </script>
+    
     <script>
         document.getElementById('comprarTodo').addEventListener('click', () => {
             const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -483,7 +387,6 @@ document.addEventListener('DOMContentLoaded', mostrarCarrito);
             window.location.href = "compras.php";
         });
     </script>
-
 
 </body>
 

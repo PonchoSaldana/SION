@@ -23,19 +23,12 @@ html {
 
 body {
     height: 100vh;
-    background-color: var(--body-color);
 }
 
-/*BANNER*/
-.banner {
-    width: 100%;
-    height: 60px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    overflow: hidden;
+header {
+    background-color: #76c8ff;
 }
+
 
 /* Estilos de la barra de navegación */
 nav {
@@ -103,6 +96,7 @@ nav .nav-bar .logo a {
     text-decoration: none;
     white-space: nowrap;
 }
+
 .has-submenu>.submenu {
     display: none;
 }
@@ -110,6 +104,7 @@ nav .nav-bar .logo a {
 .has-submenu.active>.submenu {
     display: block;
 }
+
 .nav-links .has-submenu.submenu-open>.submenu {
     display: block;
 }
@@ -226,17 +221,50 @@ nav .nav-bar .logo a {
     position: absolute;
     bottom: -90px;
     right: 30px;
-    height: 55px;
-    width: 550px;
+    height: 50px;
+    width: 570px;
     display: flex;
     align-items: center;
-    background-color: var(--nav-color);
+    background-color: #fff;
     padding: 3px;
     border-radius: 6px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1683CE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
+    max-width: 440px;
+}
+
+/* Formulario de búsqueda */
+.search-field form {
+    display: flex;
+    width: 100%;
+}
+
+/* Campo de entrada de texto */
+.search-field input[type="text"] {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 8px 10px;
+    font-size: 16px;
+    color: #000;
+    background-color: transparent;
+}
+
+/* Botón de búsqueda */
+.search-field button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    width: 40px;
+    align-items: center;
+}
+
+/* Ícono de búsqueda */
+.search-field button i {
+    font-size: 20px;
 }
 
 .searchToggle.active~.search-field {
@@ -258,25 +286,73 @@ nav .nav-bar .logo a {
 }
 
 .search-field input {
-    height: 100%;
-    width: 100%;
-    padding: 0 35px 0 10px;
+    height: 45px;
+    /*altura del buscador*/
+    width: auto;
+    /*ancho del buscador*/
+    padding-right: 308px;
     outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--search-text);
-    background-color: var(--search-bar);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #e9ecef;
 }
 
-.search-field i {
-    position: absolute;
-    color: var(--nav-color);
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
+/*--------------------------------------------------------*/
+
+main {
+    max-width: 90%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Estilos para las secciones principales (Compras e Historial) */
+.compras,
+.historial {
+    margin-bottom: 30px;
+}
+
+.compras h2,
+.historial h2 {
+    font-size: 2em;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+
+    text-align: center;
+    font-size: 35px;
+    color: #ffffff;
+    text-shadow: 2px 0px 10px #000;
+}
+
+/* Estilos para la tarjeta de compra o el mensaje de historial */
+.tarjeta-compra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.tarjeta-compra p {
+    font-size: 1.2em;
+    color: #ffffff;
+}
+
+.tarjeta-compra .estado {
+    font-weight: bold;
+    color: #000;
+}
+
+
+/*--------------------------------------------------------*/
+
 
 section {
     padding: 1em;
@@ -301,29 +377,7 @@ section {
     font-weight: bold;
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
 
-.modal-contenido {
-    background: #b7e6ff;
-    padding: 80px;
-    border-radius: 10px;
-    text-align: center;
-    width: 300px;
-}
-
-.modal-contenido img {
-    width: 100px;
-}
 
 /*PIE DE PAGINA*/
 .main-footer {
@@ -381,8 +435,101 @@ section {
     text-decoration: underline;
 }
 
-/* Ajustes para pantallas de hasta 875px (desktop más pequeño) */
-@media (max-width: 875px) {
+/* Estilo general para todos los botones */
+button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    margin: 6px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Botón específico para cancelar (puedes usar una clase si luego decides hacerlo más dinámico) */
+.cancelar-btn {
+    background-color: #e53935;
+}
+
+.cancelar-btn:hover {
+    background-color: #c62828;
+}
+
+/* Botón de detalles */
+.detalles-btn {
+    background-color: #43a047;
+}
+
+.detalles-btn:hover {
+    background-color: #388e3c;
+}
+
+/* Botón de regresar en el modal */
+#modal-detalles button {
+    background-color: #3a93bd;
+}
+
+#modal-detalles button:hover {
+    background-color: #339bcc;
+}
+
+/* Estilos para el contenedor del modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Clase para mostrar el modal */
+.modal.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Contenido del modal */
+.modal-contenido {
+    background-color: #ffffff;
+    /* Fondo blanco para mayor claridad */
+    padding: 30px;
+    /* Reduce el padding para un diseño más compacto */
+    border-radius: 12px;
+    /* Aumenta el radio para bordes más suaves */
+    text-align: center;
+    width: 90%;
+    /* Ancho responsivo por defecto */
+    max-width: 400px;
+    /* Ancho máximo para evitar que sea demasiado grande */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* Sombra para darle profundidad */
+    transform: scale(0.95);
+    /* Animación de entrada */
+    transition: transform 0.3s ease;
+}
+
+/* Animación al mostrar el modal */
+.modal.activo .modal-contenido {
+    transform: scale(1);
+}
+
+/* Imagen dentro del modal */
+.modal-contenido img {
+    width: 120px;
+    /* Aumenta el tamaño de la imagen */
+    margin-bottom: 20px;
+    /* Agrega más espacio debajo de la imagen */
+}
+
+@media (max-width: 1200px) {
     nav .nav-bar .sidebarOpen {
         display: block;
     }
@@ -429,60 +576,7 @@ section {
     .nav-links li a {
         display: block;
         margin-top: 20px;
-    }
-}
-
-/* Ajustes para pantallas de hasta 790px (tablet y móvil) */
-@media (max-width: 790px) {
-    nav .nav-bar .sidebarOpen {
-        display: block; /* Muestra el icono de hamburguesa */
-    }
-
-    .menu {
-        position: fixed;
-        height: 100%;
-        width: 250px;
-        left: -100%;
-        top: 0;
-        padding: 10px;
-        background-color: var(--side-nav);
-        z-index: 100;
-        transition: all 0.4s ease;
-    }
-
-    nav.active .menu {
-        left: 0;
-    }
-
-    nav.active .nav-bar .navLogo a {
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    .menu .logo-toggle {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .logo-toggle .sidelbarClose {
-        color: var(--text-color);
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .nav-bar .nav-links {
-        flex-direction: column;
-        padding-top: 30px;
-        width: 100%;
-    }
-
-    .nav-links li a {
-        display: block;
-        margin-top: 20px;
-        text-align: center;
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .nav-links .submenu {
@@ -490,42 +584,68 @@ section {
         background-color: rgba(0, 0, 0, 0.2);
         box-shadow: none;
         padding: 0;
-        /* Elimina el padding para asegurar el centrado */
     }
 
+    /* Muestra el submenú cuando el padre tiene la clase 'active' */
     .has-submenu.active .submenu {
-        display: block; /* Se muestra con la clase 'active' */
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* Ajuste para los enlaces del submenú en móvil */
+    .nav-links .submenu li a {
+        padding: 10px 0;
+        display: block;
     }
 
     .nav-links .submenu {
         top: 50%;
-
-        /* CAMBIOS PARA CENTRAR */
         left: 50%;
     }
-    
-    /* El pie de página se apila en columnas */
-    .main-footer {
-        flex-direction: column;
+
+    .nav-bar .nav-links li a {
+        font-size: 16px;
         text-align: center;
-        align-items: center;
     }
 }
 
+
 /* Ajustes para pantallas de hasta 600px */
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .tarjeta-compra {
+        display: flex;
+        /* Asegura el uso de flexbox */
         flex-direction: column;
+        align-items: center;
+        /* Centra los elementos horizontalmente */
         text-align: center;
-        gap: 0;
-    }
-    .tarjeta-compra img {
-        width: 100%;
-        height: auto;
-        margin-bottom: 1em;
+        padding: 15px;
+        /* Agrega un padding para un mejor espaciado interno */
+        border: 1px solid #e0e0e0;
+        /* Agrega un borde suave para definir la tarjeta */
+        border-radius: 10px;
+        /* Borde redondeado para un diseño moderno */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Sombra sutil para profundidad */
+        gap: 10px;
+        /* Usa gap para un espaciado consistente entre elementos */
     }
 
-        /* Navegación */
+    .tarjeta-compra img {
+        width: 200px;
+        /* Establece un ancho fijo para la imagen */
+        height: 200px;
+        /* Establece una altura fija para la imagen */
+        object-fit: cover;
+        /* Recorta la imagen para que encaje sin distorsionarse */
+        border-radius: 8px;
+        /* Borde redondeado para la imagen */
+        margin-bottom: 0;
+        /* Elimina el margen inferior si usas gap */
+    }
+
+    /* Navegación */
     nav {
         padding: 0 20px;
         /* Reduce el padding para pantallas más pequeñas */
@@ -540,9 +660,19 @@ section {
         font-size: 16px;
         text-align: center;
     }
+
+    /* Pie de página */
+    .main-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        flex-basis: auto;
+    }
 }
 
-/* Ajustes para pantallas de hasta 450px */
 @media (max-width: 450px) {
     .searchBox .search-field {
         width: 200px;
@@ -559,84 +689,12 @@ section {
     .searchToggle i {
         font-size: 20px;
     }
-}
 
-/* Estilo general para todos los botones */
-button {
-  background-color: #1a73e8;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  margin: 6px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Efecto hover */
-button:hover {
-  background-color: #155ab6;
-}
-
-/* Botón específico para cancelar (puedes usar una clase si luego decides hacerlo más dinámico) */
-.cancelar-btn {
-  background-color: #e53935;
-}
-
-.cancelar-btn:hover {
-  background-color: #c62828;
-}
-
-/* Botón de detalles */
-.detalles-btn {
-  background-color: #43a047;
-}
-
-.detalles-btn:hover {
-  background-color: #388e3c;
-}
-
-/* Botón de regresar en el modal */
-#modal-detalles button {
-  background-color: #5bb9e5;
-}
-
-#modal-detalles button:hover {
-  background-color: #5bb9e5;
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-contenido {
-  background: #fff;
-  padding: 20px 30px;
-  border-radius: 10px;
-  max-width: 400px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.modal-contenido img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-.modal.activo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    .searchBox .search-field {
+        position: absolute;
+        bottom: -50px;
+        right: 10px;
+        height: 50px;
+        width: 300px;
+    }
 }

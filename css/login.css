@@ -247,3 +247,34 @@ p a:hover {
         font-size: 12px; /* Reduce el tamaño de la fuente del texto del enlace */
     }
 }
+
+        /* Estilo para los modales flotantes */
+        .modal-alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out, top 0.4s ease-in-out;
+            pointer-events: none;
+        }
+
+        .modal-alert.show {
+            opacity: 1;
+            top: 40px;
+            pointer-events: auto;
+        }
+
+        .modal-alert.success {
+            background-color: #28a745;
+        }
+
+        .modal-alert.error {
+            background-color: #dc3545;
+        }

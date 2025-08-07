@@ -1,5 +1,5 @@
 <?php
-    include("sesion.php");
+include("sesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,12 +11,12 @@
   <title>Sion Wireless - Compras</title>
   <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="css/compras.css">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- ICONOS DE Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!--ENCABEZADO----------------------------------------------------------->
+  <!--ENCABEZADO----------------------------------------------------------->
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
@@ -47,8 +47,7 @@
                     <li><a href="favoritos.php">Favoritos</a></li>
                     <li><a href="todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
-                        <li><a href="panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
+                        <li><a href="panelAdmin.php">Panel de Administración</a></li><?php endif; ?>
                 </ul>
             </div>
 
@@ -67,8 +66,8 @@
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                   <form action="buscar.php" method="GET">
-                        <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+                    <form action="buscar.php" method="GET">
+                        <input type="text" name="q" placeholder="Buscar productos..." required class="form-control me-2" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>
                 </div>
@@ -76,108 +75,113 @@
         </div>
     </nav>
     <!--------------------------------------------------------------------------->
-  <br><br><br><br>
-  <main>
-    <section class="compras">
-      <center>
-        <h2>Compras 🛒</h2>
-      </center>
-       
-      </div>
-    </section>
 
-    <section class="historial">
-      <center>
-        <h2>Historial ⏱️</h2>
-      </center>
-      <div class="tarjeta-compra">
-      
-        <div>
-          <p class="estado"></p>
-          <p>Aun no hay compras realizadas </p>
-          
+  <header>
+    <br><br><br><br><br><br><br>
+    <main>
+      <section class="compras">
+        <center>
+          <h2>Compras</h2><br>
+        </center>
+
+        </div>
+      </section>
+
+      <section class="historial">
+        <center>
+          <h2>Historial</h2>
+        </center>
+        <div class="tarjeta-compra">
+
+          <div>
+            <p class="estado"></p>
+            <p>Aun no hay compras realizadas </p>
+
+          </div>
+        </div>
+      </section>
+    </main>
+    <br><br><br>
+    <!-- Modal de detalles de la compra -->
+    <center>
+      <div id="modal-detalles" class="modal">
+        <div class="modal-contenido">
+          <h3>Detalles</h3><br>
+          <img id="modal-imagen" src="img/images (2).jpeg" alt="Producto">
+          <p id="modal-nombre"></p>
+          <p id="modal-estado"></p>
+          <p id="modal-precio"></p>
+
+          <button onclick="cerrarModal()">Regresar</button>
         </div>
       </div>
-    </section>
-  </main>
+    </center>
 
-  <!-- Modal de detalles de la compra -->
-  <center><div id="modal-detalles" class="modal">
-    <div class="modal-contenido">
-      <h3>Detalles</h3>
-      <img id="modal-imagen" src="img/images (2).jpeg" alt="Producto">
-      <p id="modal-nombre"></p>
-      <p id="modal-estado"></p>
-      <p id="modal-precio"></p>
+    <script src="js/index.js"></script>
 
-      <button onclick="cerrarModal()">Regresar</button>
-    </div>
-  </div></center>
-
-  <script src="js/index.js"></script>
-
-  <footer class="main-footer">
-        <div class="footer-section footer-logo">
-            <img src="img/LOGO/sin fondo.png" alt="Logo SION">
-            <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
-        </div>
-        <div class="footer-section">
-            <h4>Contacto</h4>
-            <ul>
-                <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
-                <li><a href="tel:+525555555555">55-5555-5555</a></li>
-                <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Empresa</h4>
-            <ul>
-                <li><a href="#">Política de privacidad</a></li>
-                <li><a href="#">Términos y condiciones</a></li>
-                <li><a href="#">Promoción y ofertas</a></li>
-            </ul>
-        </div>
+    <footer class="main-footer">
+      <div class="footer-section footer-logo">
+        <img src="img/LOGO/sin fondo.png" alt="Logo SION">
+        <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
+          <li><a href="tel:+525555555555">55-5555-5555</a></li>
+          <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Promoción y ofertas</a></li>
+        </ul>
+      </div>
     </footer>
+  </header>
   <script>
-document.querySelectorAll('.detalles-btn').forEach(btn => {
-  btn.addEventListener('click', function () {
-    const tarjeta = this.closest('.tarjeta-compra');
-    const dataProducto = tarjeta.getAttribute('data-producto');
+    document.querySelectorAll('.detalles-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const tarjeta = this.closest('.tarjeta-compra');
+        const dataProducto = tarjeta.getAttribute('data-producto');
 
-    if (dataProducto) {
-      const producto = JSON.parse(dataProducto);
+        if (dataProducto) {
+          const producto = JSON.parse(dataProducto);
 
-      // Llenar el modal con los datos del producto
-      document.getElementById('modal-nombre').textContent = ` ${producto.nombre}`;
-      document.getElementById('modal-precio').textContent = `Precio: ${producto.precio}`;
-      document.getElementById('modal-estado').textContent = `Estado: ${producto.estado}`;
-      
-      // Obtener imagen dentro de la tarjeta
-      const imagenSrc = tarjeta.querySelector('img').src;
-      document.getElementById('modal-imagen').src = imagenSrc;
+          // Llenar el modal con los datos del producto
+          document.getElementById('modal-nombre').textContent = ` ${producto.nombre}`;
+          document.getElementById('modal-precio').textContent = `Precio: ${producto.precio}`;
+          document.getElementById('modal-estado').textContent = `Estado: ${producto.estado}`;
 
-      // Mostrar el modal
-      document.getElementById('modal-detalles').style.display = 'block';
+          // Obtener imagen dentro de la tarjeta
+          const imagenSrc = tarjeta.querySelector('img').src;
+          document.getElementById('modal-imagen').src = imagenSrc;
+
+          // Mostrar el modal
+          document.getElementById('modal-detalles').style.display = 'block';
+        }
+      });
+    });
+
+    // Función para cerrar el modal
+    function cerrarModal() {
+      document.getElementById('modal-detalles').style.display = 'none';
+      document.querySelector('.modal').classList.add('activo');
     }
-  });
-});
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const compras = JSON.parse(localStorage.getItem('compras')) || [];
+      const contenedorCompras = document.querySelector('.compras');
 
-// Función para cerrar el modal
-function cerrarModal() {
-  document.getElementById('modal-detalles').style.display = 'none';
-  document.querySelector('.modal').classList.add('activo');
-}
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const compras = JSON.parse(localStorage.getItem('compras')) || [];
-  const contenedorCompras = document.querySelector('.compras');
+      compras.forEach(producto => {
+        const tarjeta = document.createElement('div');
+        tarjeta.className = 'tarjeta-compra';
 
-  compras.forEach(producto => {
-    const tarjeta = document.createElement('div');
-    tarjeta.className = 'tarjeta-compra';
-
-    tarjeta.innerHTML = `
+        tarjeta.innerHTML = `
       <img src="${producto.imagen}" alt="${producto.nombre}">
       <div>
         <p class="estado">${producto.estado}</p>
@@ -187,51 +191,51 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     `;
 
-    tarjeta.setAttribute('data-producto', JSON.stringify(producto));
-    contenedorCompras.appendChild(tarjeta);
-  });
+        tarjeta.setAttribute('data-producto', JSON.stringify(producto));
+        contenedorCompras.appendChild(tarjeta);
+      });
 
-  // Reasignar funcionalidad a botones de detalles
-  document.querySelectorAll('.detalles-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const tarjeta = this.closest('.tarjeta-compra');
-      const dataProducto = tarjeta.getAttribute('data-producto');
-      if (dataProducto) {
-        const producto = JSON.parse(dataProducto);
-        document.getElementById('modal-nombre').textContent = ` ${producto.nombre}`;
-        document.getElementById('modal-precio').textContent = `Precio: ${producto.precio}`;
-        document.getElementById('modal-estado').textContent = `Estado: ${producto.estado}`;
-        document.getElementById('modal-imagen').src = tarjeta.querySelector('img').src;
-        document.getElementById('modal-detalles').style.display = 'block';
+      // Reasignar funcionalidad a botones de detalles
+      document.querySelectorAll('.detalles-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const tarjeta = this.closest('.tarjeta-compra');
+          const dataProducto = tarjeta.getAttribute('data-producto');
+          if (dataProducto) {
+            const producto = JSON.parse(dataProducto);
+            document.getElementById('modal-nombre').textContent = ` ${producto.nombre}`;
+            document.getElementById('modal-precio').textContent = `Precio: ${producto.precio}`;
+            document.getElementById('modal-estado').textContent = `Estado: ${producto.estado}`;
+            document.getElementById('modal-imagen').src = tarjeta.querySelector('img').src;
+            document.getElementById('modal-detalles').style.display = 'block';
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    // Escuchar clics en botones "Cancelar"
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('cancelar-btn')) {
+        const tarjeta = e.target.closest('.tarjeta-compra');
+        const producto = JSON.parse(tarjeta.getAttribute('data-producto'));
+
+        // Obtener las compras del localStorage
+        let compras = JSON.parse(localStorage.getItem('compras')) || [];
+
+        // Filtrar para eliminar el producto actual
+        compras = compras.filter(item =>
+          item.nombre !== producto.nombre ||
+          item.precio !== producto.precio
+        );
+
+        // Guardar la lista actualizada
+        localStorage.setItem('compras', JSON.stringify(compras));
+
+        // Eliminar del DOM
+        tarjeta.remove();
       }
     });
-  });
-});
-</script>
-<script>
-// Escuchar clics en botones "Cancelar"
-document.addEventListener('click', function (e) {
-  if (e.target.classList.contains('cancelar-btn')) {
-    const tarjeta = e.target.closest('.tarjeta-compra');
-    const producto = JSON.parse(tarjeta.getAttribute('data-producto'));
-
-    // Obtener las compras del localStorage
-    let compras = JSON.parse(localStorage.getItem('compras')) || [];
-
-    // Filtrar para eliminar el producto actual
-    compras = compras.filter(item => 
-      item.nombre !== producto.nombre ||
-      item.precio !== producto.precio
-    );
-
-    // Guardar la lista actualizada
-    localStorage.setItem('compras', JSON.stringify(compras));
-
-    // Eliminar del DOM
-    tarjeta.remove();
-  }
-});
-</script>
+  </script>
 </body>
 
 </html>

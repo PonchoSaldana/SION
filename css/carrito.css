@@ -230,17 +230,50 @@ nav .nav-bar .logo a {
     position: absolute;
     bottom: -90px;
     right: 30px;
-    height: 55px;
-    width: 550px;
+    height: 50px;
+    width: 570px;
     display: flex;
     align-items: center;
-    background-color: var(--nav-color);
+    background-color: #fff;
     padding: 3px;
     border-radius: 6px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1683CE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
+    max-width: 440px;
+}
+
+/* Formulario de búsqueda */
+.search-field form {
+    display: flex;
+    width: 100%;
+}
+
+/* Campo de entrada de texto */
+.search-field input[type="text"] {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 8px 10px;
+    font-size: 16px;
+    color: #000;
+    background-color: transparent;
+}
+
+/* Botón de búsqueda */
+.search-field button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    width: 40px;
+    align-items: center;
+}
+
+/* Ícono de búsqueda */
+.search-field button i {
+    font-size: 20px;
 }
 
 .searchToggle.active~.search-field {
@@ -262,25 +295,17 @@ nav .nav-bar .logo a {
 }
 
 .search-field input {
-    height: 100%;
-    width: 100%;
-    padding: 0 35px 0 10px;
+    height: 45px;
+    /*altura del buscador*/
+    width: auto;
+    /*ancho del buscador*/
+    padding-right: 308px;
     outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--search-text);
-    background-color: var(--search-bar);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #e9ecef;
 }
 
-.search-field i {
-    position: absolute;
-    color: var(--nav-color);
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
-}
 
 /*TEXTO MI CARRITO*/
 .contenedor-carrito h1 {
@@ -372,15 +397,14 @@ nav .nav-bar .logo a {
     margin-bottom: 15px;
     display: flex;
     align-items: flex-start;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.107);
+    border: 2px solid #dee2e6;
     flex-wrap: wrap;
-    /* Permitimos que los elementos internos del producto se envuelvan */
 }
 
 .product-card img {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
     margin-right: 15px;
     border: 1px solid #e9ecef;
@@ -395,19 +419,6 @@ nav .nav-bar .logo a {
     /* Evita que el texto se aplaste */
 }
 
-.product-details h5 {
-    font-size: 1em;
-    margin-bottom: 5px;
-    color: #343a40;
-    line-height: 1.3;
-}
-
-.product-details .price {
-    color: #28a745;
-    font-weight: bold;
-    font-size: 0.95em;
-    margin-top: 5px;
-}
 
 .product-actions {
     display: flex;
@@ -499,6 +510,10 @@ nav .nav-bar .logo a {
     white-space: nowrap;
     min-width: 60px;
     text-align: right;
+}
+
+.price{
+    color: #28a745;
 }
 
 /* Estilos para el Resumen de Compra */
@@ -762,7 +777,7 @@ nav .nav-bar .logo a {
 }
 
 /* Responsive adjustments para la barra de navegación y el menú de hamburguesa */
-@media (max-width: 1090px) {
+@media (max-width: 1200px) {
     nav .nav-bar .sidebarOpen {
         display: block;
     }
@@ -801,10 +816,9 @@ nav .nav-bar .logo a {
         cursor: pointer;
     }
 
-    .nav-links {
+    .nav-bar .nav-links {
         flex-direction: column;
         padding-top: 30px;
-        align-items: center;
     }
 
     .nav-links li a {
@@ -814,38 +828,35 @@ nav .nav-bar .logo a {
     }
 
     .nav-links .submenu {
-        position: static;
-        /* El submenú se comporta como un elemento de bloque */
+        position: relative;
         background-color: rgba(0, 0, 0, 0.2);
         box-shadow: none;
-        width: 100%;
-        transform: none;
-        display: none;
-        /* Oculto por defecto, se mostrará con JS */
+        padding: 0;
     }
 
+    /* Muestra el submenú cuando el padre tiene la clase 'active' */
+    .has-submenu.active .submenu {
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* Ajuste para los enlaces del submenú en móvil */
     .nav-links .submenu li a {
-        padding: 5px 0;
+        padding: 10px 0;
+        display: block;
+    }
+
+    .nav-links .submenu {
+        top: 50%;
+        left: 50%;
+    }
+
+    .nav-bar .nav-links li a {
         font-size: 16px;
+        text-align: center;
     }
 
-    .has-submenu.active>.submenu {
-        display: block;
-    }
-
-    .nav-bar .nav-links {
-        flex-direction: column;
-        padding-top: 30px;
-    }
-
-    .nav-links li a {
-        display: block;
-        margin-top: 20px;
-    }
-}
-
-/* Nuevos Media Queries para el Carrito */
-@media (max-width: 992px) {
     .contenido-carrito {
         flex-direction: column;
         gap: 30px;
@@ -862,24 +873,8 @@ nav .nav-bar .logo a {
     }
 }
 
-/* Responsive adjustments para el footer */
-@media (max-width: 768px) {
-    .main-footer {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
 
-    .footer-section {
-        flex-basis: 100%;
-        margin-bottom: 25px;
-    }
 
-    .footer-section h4 {
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-}
 
 /* Responsive adjustments para la barra de búsqueda y elementos más pequeños */
 @media (max-width: 750px) {
@@ -893,12 +888,7 @@ nav .nav-bar .logo a {
 
     .nav-bar .nav-links li a {
         font-size: 16px;
-    }
-
-    .searchBox .search-field {
-        width: calc(100% - 60px);
-        /* Ajustamos el ancho para que sea más dinámico */
-        right: 10px;
+        text-align: center;
     }
 
     /* Pie de página */
@@ -930,123 +920,64 @@ nav .nav-bar .logo a {
         font-size: 20px;
     }
 
-    .search-field input {
-        font-size: 14px;
-    }
-
-    .iconCarrito span {
-        font-size: 12px;
-        padding: 1px 4px;
-    }
-
+    /* Contenedor de la tarjeta del producto */
     .product-card {
-        flex-direction: column;
-        /* Apila los elementos del producto */
-        text-align: center;
-    }
-
-    .product-card img {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .product-actions {
         flex-direction: column;
         align-items: center;
-        width: 100%;
-    }
-
-    .quantity-control-container {
-        margin: 10px 0 0;
-    }
-}
-
-@media (max-width: 380px) {
-
-    /* Barra de navegación */
-    nav {
-        padding: 0 10px;
-    }
-
-    nav .nav-bar .logo a {
-        font-size: 20px;
-    }
-
-    .sidebarOpen {
-        font-size: 24px !important;
-    }
-
-    /* Carrito de compras */
-    .my-cart-title {
-        font-size: 1.5em;
-    }
-
-    .contenedor-carrito h1 {
-        font-size: 25px;
-    }
-
-    .product-card {
+        /* Centra los elementos horizontalmente */
+        text-align: center;
         padding: 10px;
+        /* Añade un padding para mejor espaciado interno */
     }
 
-    .product-details h5 {
-        font-size: 0.9em;
+    /* Imagen del producto */
+    .product-card img {
+        margin: 0 auto 10px;
+        /* Centra la imagen y añade margen inferior */
+        width: 100px;
+        /* Aumenta el tamaño de la imagen para que sea más visible */
+        height: 100px;
+        object-fit: contain;
+        /* Asegura que la imagen no se distorsione */
     }
 
-    .product-details .price,
-    .item-total {
-        font-size: 0.9em;
+    /* Contenedor de acciones (botones y controles) */
+    .product-actions {
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+        /* Añade un margen superior para separarlo de la imagen */
     }
 
-    .custom-quantity-selector .btn {
-        width: 25px;
-        height: 25px;
-        font-size: 0.8em;
+    /* Controles de cantidad */
+    .quantity-control-container {
+        margin: 10px 0;
+        /* Margen superior e inferior para separar de otros elementos */
+        display: flex;
+        /* Asegura que los botones y el input estén en una fila */
+        align-items: center;
+        justify-content: center;
     }
 
-    .custom-quantity-selector .form-control {
+    /* Botones de control de cantidad (ej. +, -) */
+    .quantity-control-container button {
         width: 30px;
-        height: 25px;
-        font-size: 0.8em;
-    }
-
-    /* Resumen de compra */
-    .summary-item {
+        height: 30px;
         font-size: 1.2em;
     }
 
-    .summary-item.total {
-        font-size: 1em;
+    /* El input de la cantidad */
+    .quantity-control-container input {
+        width: 40px;
+        text-align: center;
+        margin: 0 5px;
     }
 
-    .buy-button {
-        padding: 10px 0;
-        font-size: 1em;
-    }
-
-    /* Carrusel de productos */
-    .recently-viewed-container {
-        padding: 10px;
-    }
-
-    .recently-viewed-container h2 {
-        font-size: 1.3em;
-        margin-bottom: 20px;
-    }
-
-    .carousel-wrapper {
-        padding: 0 5px;
-    }
-
-    .product-cardxd {
-        width: 150px;
-    }
-
-    .product-image-container {
-        height: 120px;
-    }
-
-    .product-price-section {
-        font-size: 1em;
+    .searchBox .search-field {
+        position: absolute;
+        bottom: -50px;
+        right: 10px;
+        height: 50px;
+        width: 300px;
     }
 }
