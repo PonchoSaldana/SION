@@ -480,79 +480,79 @@ nav .nav-bar .logo a {
 /* ------------------- */
 /* BANNER DE OFERTAS */
 .banner.ofertas-banner {
-  height: 400px;
-  background-image: url(../img/camaradeseguridadOfertas.jpeg);
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  margin-top: 40px;
+    height: 400px;
+    background-image: url(../img/camaradeseguridadOfertas.jpeg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-top: 40px;
 }
 
 .banner.ofertas-banner h1 {
-  position: absolute;
-  bottom: 20px;
-  right: 30px;
-  font-size: 36px;
-  color: white;
-  background: none;
-  padding: 0;
-  margin: 0;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    font-size: 36px;
+    color: rgb(243, 243, 243);
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 /* SECCIÓN DE PRODUCTOS */
 .productos {
-  max-width: 1200px;
-  margin: 40px auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 0 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
 }
 
 .producto {
-  background-color: var(--nav-color); 
-  color: var(--text-color);
-  width: 200px;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
+    background-color: var(--nav-color); 
+    color: var(--text-color);
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
 }
 
 .producto:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .producto img {
-  width: 100%;
-  height: 140px;
-  object-fit: contain;
-  margin-bottom: 10px;
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+    margin-bottom: 10px;
 }
 
 .producto h3 {
-  font-size: 18px;
-  margin: 10px 0 5px;
+    font-size: 18px;
+    margin: 10px 0 5px;
 }
 
 .producto p {
-  margin: 5px 0;
-  font-weight: bold;
+    margin: 5px 0;
+    font-weight: bold;
 }
 
 .producto button {
-  margin-top: 10px;
-  background-color: #003249;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+    margin-top: 10px;
+    background-color: #003249;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .producto button:hover {
-  background-color: #005b82;
+    background-color: #005b82;
 }
