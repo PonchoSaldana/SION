@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $precio = $_POST["precio"] ?? 0;
     $cantidad = $_POST["cantidad"] ?? 0;
     $categoria = $_POST["categoria"] ?? '';
+    $oferta = isset($_POST["oferta"]) ? 1 : 0;
 
     // Verificar que se haya subido una imagen válida
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] === 0) {
@@ -29,8 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta_imagen)) {
                     // Guardamos solo el nombre de la imagen (no la ruta completa)
-                    $stmt = $conexion->prepare("INSERT INTO productos (nombre, descripcion, precio, cantidad, categoria, imagen) VALUES (?, ?, ?, ?, ?, ?)");
-                    $stmt->bind_param("ssdiis", $nombre, $descripcion, $precio, $cantidad, $categoria, $nombre_imagen);
+                    $stmt = $conexion->prepare("INSERT INTO productos (nombre, descripcion, precio, cantidad, categoria, oferta, imagen) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                    $stmt->bind_param("ssdiiss", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $nombre_imagen);
 
                     if ($stmt->execute()) {
                         header("Location: admin_panel.php?exito=1");

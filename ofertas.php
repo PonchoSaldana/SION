@@ -1,5 +1,6 @@
 <?php
 include("sesion.php");
+$conexion = new mysqli("localhost", "root", "", "sion_db");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,41 +78,26 @@ include("sesion.php");
     </nav>
     <!--------------------------------------------------------------------------->
 
+
     <div class="banner ofertas-banner">
         <h1>Encuentra las ofertas del día</h1>
+                    </div>
+   <div class="productos">
+<?php
+$sql = "SELECT * FROM productos WHERE oferta = 1";
+$resultado = $conexion->query($sql);
+
+while ($producto = $resultado->fetch_assoc()):
+?>
+    <div class="producto">
+        <img src="uploads/<?php echo htmlspecialchars($producto['imagen']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+        <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
+        <p>$<?php echo number_format($producto['precio'], 2); ?></p>
+        <button>Agregar al Carrito</button>
     </div>
+<?php endwhile; ?>
+</div>
 
-    <div class="productos">
-
-        <div class="producto">
-            <img src="img/imagen1ofertas.webp" alt="Router">
-            <h3>TL-WR841N</h3>
-            <p>$250</p>
-            <button>Agregar al iconCarrito</button>
-        </div>
-
-        <div class="producto">
-            <img src="img/imagen2ofertas.jpg" alt="Camara">
-            <h3>Cámara CCTV</h3>
-            <p>$120</p>
-            <button>Agregar al iconCarrito</button>
-        </div>
-
-        <div class="producto">
-            <img src="img/imagen1ofertas.webp" alt="Router">
-            <h3>TL-WR840N</h3>
-            <p>$200</p>
-            <button>Agregar al iconCarrito</button>
-        </div>
-
-        <div class="producto">
-            <img src="img/imagen1ofertas.webp" alt="Router">
-            <h3>TL-WR841N</h3>
-            <p>$250</p>
-            <button>Agregar al iconCarrito</button>
-        </div>
-
-    </div>
 
     
     <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->

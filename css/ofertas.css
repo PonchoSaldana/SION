@@ -494,7 +494,7 @@ nav .nav-bar .logo a {
     .searchToggle i {
         font-size: 20px;
     }
-<<<<<<< HEAD
+
 }
 
 /* ------------------- */
@@ -576,7 +576,7 @@ nav .nav-bar .logo a {
 .producto button:hover {
     background-color: #005b82;
 }
-=======
+
 
     .searchBox .search-field {
         position: absolute;
@@ -585,5 +585,3 @@ nav .nav-bar .logo a {
         height: 50px;
         width: 300px;
     }
-}
->>>>>>> cde31a10a8b562c01b7a1b33fec8b2dc9a86399a

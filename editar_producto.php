@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
     $precio = $_POST['precio'];
     $cantidad = $_POST['cantidad'];
     $categoria = $_POST['categoria'];
+    $oferta = isset($_POST['oferta']) ? 1 : 0; // ✅ checkbox de oferta
 
     $conexion = new mysqli("localhost", "root", "", "sion_db");
 
@@ -15,24 +16,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
 
     // Si se sube nueva imagen
     if (!empty($_FILES["imagen"]["name"])) {
-        $imagen = "uploads/" . basename($_FILES["imagen"]["name"]);
-        move_uploaded_file($_FILES["imagen"]["tmp_name"], $imagen);
+        $carpeta = "uploads/";
+        $nombreImagen = time() . "_" . basename($_FILES["imagen"]["name"]);
+        $rutaImagen = $carpeta . $nombreImagen;
 
-        // Eliminar imagen anterior
-        $res = $conexion->query("SELECT imagen FROM productos WHERE id = $id");
-        if ($fila = $res->fetch_assoc()) {
-            if (file_exists($fila['imagen'])) {
-                unlink($fila['imagen']);
-            }
+        move_uploaded_file($_FILES["imagen"]["tmp_name"], $rutaImagen);
+
+        // Eliminar imagen anterior (segura)
+        $res = $conexion->prepare("SELECT imagen FROM productos WHERE id = ?");
+        $res->bind_param("i", $id);
+        $res->execute();
+        $res->bind_result($imagenAnterior);
+        if ($res->fetch() && file_exists("uploads/" . $imagenAnterior)) {
+            unlink("uploads/" . $imagenAnterior);
         }
+        $res->close();
 
-        $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=?, imagen=? WHERE id=?";
+        $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=?, oferta=$oferta, imagen=? WHERE id=?";
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssdisii", $nombre, $descripcion, $precio, $cantidad, $categoria, $imagen, $id);
+        $stmt->bind_param("ssdiissi", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $nombreImagen, $id);
     } else {
-        $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=? WHERE id=?";
+        // Sin cambiar imagen
+        $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=?, oferta=? WHERE id=?";
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssdisi", $nombre, $descripcion, $precio, $cantidad, $categoria, $id);
+        $stmt->bind_param("ssdiisii", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $id);
     }
 
     $stmt->execute();
