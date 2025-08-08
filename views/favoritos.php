@@ -177,7 +177,7 @@
     </footer>
 </header>
 
-    <script src="js/menu.js"></script>
+    <script src="../public/js/menu.js"></script>
 </body>
 
 </html>

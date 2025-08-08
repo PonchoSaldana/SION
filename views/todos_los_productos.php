@@ -36,13 +36,13 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
                         <ul class="submenu">
-                            <li><a href="submenu/antenas.php">Antenas</a></li>
-                            <li><a href="submenu/camaras.php">Cámaras de seguridad</a></li>
-                            <li><a href="submenu/cables.php">Cables de red</a></li>
-                            <li><a href="submenu/conectoresJaks.php">Conectores y jacks</a></li>
-                            <li><a href="submenu/modems.php">Módems</a></li>
-                            <li><a href="submenu/switch.php">Switches</a></li>
-                            <li><a href="submenu/router.php">Routers</a></li>
+                            <li><a href="../public/submenu/antenas.php">Antenas</a></li>
+                            <li><a href="../public/submenu/camaras.php">Cámaras de seguridad</a></li>
+                            <li><a href="../public/submenu/cables.php">Cables de red</a></li>
+                            <li><a href="../public/submenu/conectoresJaks.php">Conectores y jacks</a></li>
+                            <li><a href="../public/submenu/modems.php">Módems</a></li>
+                            <li><a href="../public/submenu/switch.php">Switches</a></li>
+                            <li><a href="../public/submenu/router.php">Routers</a></li>
                         </ul>
                     </li>
                     <li><a href="Servicios.php">Servicios</a></li>
@@ -152,8 +152,8 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
             </ul>
         </div>
     </footer>
-  
-  <script src="js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
+
+  <script src="../public/js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
 
    <script>
   function obtenerCarrito() {

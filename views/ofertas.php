@@ -123,7 +123,7 @@ while ($producto = $resultado->fetch_assoc()):
         </div>
     </footer>
     <!-------------------------------------------------------------------------------->
-    <script src="js/menu.js"></script>
+    <script src="../public/js/menu.js"></script>
 </body>
 
 </html>
