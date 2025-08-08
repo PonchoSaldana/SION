@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (in_array($_FILES["imagen"]["type"], $permitidos)) {
             if ($_FILES["imagen"]["size"] <= $max_size) {
-                $carpeta_destino = "uploads/";
+                $carpeta_destino = "../public/uploads/";
                 if (!file_exists($carpeta_destino)) {
                     mkdir($carpeta_destino, 0777, true);
                 }
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $stmt->bind_param("ssdiiss", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $nombre_imagen);
 
                     if ($stmt->execute()) {
-                        header("Location: admin_panel.php?exito=1");
+                        header("Location: ../views/panelAdmin.php?exito=1");
                         exit();
                     } else {
                         echo "Error al insertar en la base de datos: " . $stmt->error;

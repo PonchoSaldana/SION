@@ -1,5 +1,5 @@
 <?php
-    include("sesion.php");
+    include("../config/sesion.php");
 ?>
 <?php
 $conexion = new mysqli("localhost", "root", "", "sion_db");
@@ -14,8 +14,8 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sion Wireless - Productos</title>
-  <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/todos_los_productos.css">
+  <link rel="shortcut icon" href="../public/img/LOGO/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="../public/css/todos_los_productos.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -24,12 +24,12 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="index.php">
-                    <img src="img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
+            <span class="logo navLogo"><a href="../public/index.php">
+                    <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="index.php"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
@@ -71,7 +71,7 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                   <form action="buscar.php" method="GET">
+                   <form action="../app/controllers/buscar.php" method="GET">
                         <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>
@@ -87,7 +87,7 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
       <div class="product-container">
         <?php while ($row = $productos_bd->fetch_assoc()): ?>
           <div class="product-card">
-            <img src="uploads/<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre']) ?>">
+            <img src="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre']) ?>">
             <h3><?= htmlspecialchars($row['nombre']) ?></h3>
             <p><?= htmlspecialchars($row['descripcion']) ?></p>
             <p class="price">$<?= number_format($row['precio'], 2) ?></p>
@@ -133,7 +133,7 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
     <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
-            <img src="img/LOGO/sin fondo.png" alt="Logo SION">
+            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
             <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
         </div>
         <div class="footer-section">

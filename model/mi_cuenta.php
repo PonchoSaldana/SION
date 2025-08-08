@@ -1,9 +1,9 @@
 <?php
 session_start();
-include("conexion.php");
+include("../config/conexion.php");
 
 if (!isset($_SESSION["id"])) {
-    header("Location: login.php");
+    header("Location: ../views/login.php");
     exit();
 }
 
@@ -28,10 +28,10 @@ $stmt->close();
     <!--TITULO----------------------------------------------------------->
     <title>Sion Wireless - Inicio</title>
     <!--FAVICON-------------------------------------------------------------->
-    <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../public/img/LOGO/favicon.png" type="image/x-icon">
     <!--ESTILOS--------------------------------------------------------------->
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/mi_cuenta.css">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="../public/css/mi_cuenta.css">
     <!-- ICONOS DE Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!--BOTON DE Boxicons----------------------------------------------------------->
@@ -44,38 +44,40 @@ $stmt->close();
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="index.php">
-                    <img src="img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
+            <span class="logo navLogo"><a href="../public/index.php">
+                    <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="index.php"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
                         <ul class="submenu">
-                            <li><a href="submenu/antenas.php">Antenas</a></li>
-                            <li><a href="submenu/camaras.php">Cámaras de seguridad</a></li>
-                            <li><a href="submenu/cables.php">Cables de red</a></li>
-                            <li><a href="submenu/conectoresJaks.php">Conectores y jacks</a></li>
-                            <li><a href="submenu/modems.php">Módems</a></li>
-                            <li><a href="submenu/switch.php">Switches</a></li>
-                            <li><a href="submenu/router.php">Routers</a></li>
+                            <li><a href="../public/submenu/antenas.php">Antenas</a></li>
+                            <li><a href="../public/submenu/camaras.php">Cámaras de seguridad</a></li>
+                            <li><a href="../public/submenu/cables.php">Cables de red</a></li>
+                            <li><a href="../public/submenu/conectoresJaks.php">Conectores y jacks</a></li>
+                            <li><a href="../public/submenu/modems.php">Módems</a></li>
+                            <li><a href="../public/submenu/switch.php">Switches</a></li>
+                            <li><a href="../public/submenu/router.php">Routers</a></li>
                         </ul>
                     </li>
-                    <li><a href="Servicios.php">Servicios</a></li>
-                    <li><a href="ofertas.php">Ofertas</a></li>
-                    <li><a href="compras.php">Compras</a></li>
-                    <li><a href="favoritos.php">Favoritos</a></li>
-                    <li><a href="todos_los_productos.php">Todos los productos</a></li>
+                    <li><a href="../views/Servicios.php">Servicios</a></li>
+                    <li><a href="../views/ofertas.php">Ofertas</a></li>
+                    <li><a href="../views/compras.php">Compras</a></li>
+                    <li><a href="../views/favoritos.php">Favoritos</a></li>
+                    <li><a href="../views/todos_los_productos.php">Todos los productos</a></li>
+                    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
+                        <li><a href="../views/panelAdmin.php">Panel de Administración</a></li><?php endif; ?>
                 </ul>
             </div>
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo isset($_SESSION['correo']) ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
+                    <a href="<?php echo isset($_SESSION['correo']) ? '../model/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i>
                     </a>
                 </div>
@@ -84,12 +86,12 @@ $stmt->close();
                     <i class="bx bx-search search"></i>
                 </div>
                 <div class="iconCarrito">
-                    <a href="carrito.php" style="color: white;">
+                    <a href="../views/carrito.php" style="color: white;">
                         <i class='bx bx-cart cart'></i></a>
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                    <form action="buscar.php" method="GET">
+                    <form action="../app/controllers/buscar.php" method="GET">
                         <input type="text" name="q" placeholder="Buscar productos..." required class="form-control me-2" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>
@@ -110,7 +112,7 @@ $stmt->close();
         <p><strong>Código Postal:</strong> <?= htmlspecialchars($codigo_postal) ?></p>
         <div class="acciones-cuenta">
             <button onclick="document.getElementById('modalEditar').style.display='block'">Editar datos</button>
-            <a href="cerrarSesion.php" class="btn-cerrar-sesion">Cerrar sesión</a>
+            <a href="../app/controllers/cerrarSesion.php" class="btn-cerrar-sesion">Cerrar sesión</a>
         </div>
     </div>
 
@@ -149,7 +151,7 @@ $stmt->close();
     <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
-            <img src="img/LOGO/sin fondo.png" alt="Logo SION">
+            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
             <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
         </div>
         <div class="footer-section">

@@ -1,5 +1,5 @@
 <?php
-include("sesion.php");
+include("../config/sesion.php");
 ?>
 
 <!DOCTYPE html>
@@ -28,39 +28,39 @@ include("sesion.php");
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
             <span class="logo navLogo"><a href="index.php">
-                    <img src="img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
+                    <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="index.php"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
                         <ul class="submenu">
-                            <li><a href="submenu/antenas.php">Antenas</a></li>
-                            <li><a href="submenu/camaras.php">Cámaras de seguridad</a></li>
-                            <li><a href="submenu/cables.php">Cables de red</a></li>
-                            <li><a href="submenu/conectoresJaks.php">Conectores y jacks</a></li>
-                            <li><a href="submenu/modems.php">Módems</a></li>
-                            <li><a href="submenu/switch.php">Switches</a></li>
+                            <li><a href="../public/submenu/antenas.php">Antenas</a></li>
+                            <li><a href="../public/submenu/camaras.php">Cámaras de seguridad</a></li>
+                            <li><a href="../public/submenu/cables.php">Cables de red</a></li>
+                            <li><a href="../public/submenu/conectoresJaks.php">Conectores y jacks</a></li>
+                            <li><a href="../public/submenu/modems.php">Módems</a></li>
+                            <li><a href="../public/submenu/switch.php">Switches</a></li>
                             <li><a href="submenu/router.php">Routers</a></li>
                         </ul>
                     </li>
-                    <li><a href="Servicios.php">Servicios</a></li>
-                    <li><a href="ofertas.php">Ofertas</a></li>
-                    <li><a href="compras.php">Compras</a></li>
-                    <li><a href="favoritos.php">Favoritos</a></li>
-                    <li><a href="todos_los_productos.php">Todos los productos</a></li>
+                    <li><a href="../views/Servicios.php">Servicios</a></li>
+                    <li><a href="../views/ofertas.php">Ofertas</a></li>
+                    <li><a href="../views/compras.php">Compras</a></li>
+                    <li><a href="../views/favoritos.php">Favoritos</a></li>
+                    <li><a href="../views/todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
-                        <li><a href="panelAdmin.php">Panel de Administración</a></li><?php endif; ?>
+                        <li><a href="../views/panelAdmin.php">Panel de Administración</a></li><?php endif; ?>
                 </ul>
             </div>
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
@@ -68,12 +68,12 @@ include("sesion.php");
                     <i class="bx bx-search search"></i>
                 </div>
                 <div class="iconCarrito">
-                    <a href="carrito.php" style="color: white;">
+                    <a href="../views/carrito.php" style="color: white;">
                         <i class='bx bx-cart cart'></i></a>
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                    <form action="buscar.php" method="GET">
+                    <form action="../app/controllers/buscar.php" method="GET">
                         <input type="text" name="q" placeholder="Buscar productos..." required class="form-control me-2" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>
@@ -103,65 +103,65 @@ include("sesion.php");
         <h3>Vista rápida</h3><br>
         <div class="carrusel-contenedor" id="contenedor">
             <div class="carrusel-slide">
-                <div class="imagen-wrapper"> <img src="img/antena.webp" alt="Antenas">
+                <div class="imagen-wrapper"> <img src="../public/img/antena.webp" alt="Antenas">
                 </div>
                 <div class="texto-slide">
                     <p>Antena aérea para TV HD, giratoria 360∞ con control, Volteck</p>
-                    <hr><br><a class="btn btn-primary" href="submenu/antenas.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="../public/submenu/antenas.php" role="button">Ver productos</a>
                 </div>
             </div>
             <div class="carrusel-slide">
                 <div class="imagen-wrapper">
-                    <img src="img/cables.jpeg" alt="Producto 2">
+                    <img src="../public/img/cables.jpeg" alt="Producto 2">
                 </div>
                 <div class="texto-slide">
                     <p>Cable de Red LAN Ponchado 5m - Listo para usar (Cat-5)</p>
-                    <hr><br><a class="btn btn-primary" href="submenu/cables.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="../public/submenu/cables.php" role="button">Ver productos</a>
                 </div>
             </div>
             <div class="carrusel-slide">
                 <div class="imagen-wrapper">
-                    <img src="img/images (1).jpeg" alt="Otro Producto">
+                    <img src="../public/img/images (1).jpeg" alt="Otro Producto">
                 </div>
                 <div class="texto-slide">
                     <p>Cámara de Seguridad Wifi 2 lentes movimiento y audio</p>
-                    <hr><br><a class="btn btn-primary" href="submenu/camaras.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="../public/submenu/camaras.php" role="button">Ver productos</a>
                 </div>
             </div>
             <div class="carrusel-slide">
                 <div class="imagen-wrapper">
-                    <img src="img/jack.webp" alt="Producto 4">
+                    <img src="../public/img/jack.webp" alt="Producto 4">
                 </div>
                 <div class="texto-slide">
                     <p>Jack RJ45 de 8 contactos a 90° CAT 6, tipo Keystone, blanco</p>
-                    <hr><br><a class="btn btn-primary" href="submenu/conectoresJaks.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="../public/submenu/conectoresJaks.php" role="button">Ver productos</a>
                 </div>
             </div>
             <div class="carrusel-slide">
                 <div class="imagen-wrapper">
-                    <img src="img/modem.jpeg" alt="Producto 5">
+                    <img src="../public/img/modem.jpeg" alt="Producto 5">
                 </div>
                 <div class="texto-slide">
                     <p>Modem Internet Prepago 4.5g Internet Hogar</p>
-                    <hr><br><a class="btn btn-primary" href="submenu/modems.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="../public/submenu/modems.php" role="button">Ver productos</a>
                 </div>
             </div>
             <div class="carrusel-slide">
                 <div class="imagen-wrapper">
-                    <img src="img/descarga (2).jpeg" alt="Producto 6">
+                    <img src="../public/img/descarga (2).jpeg" alt="Producto 6">
                 </div>
                 <div class="texto-slide">
                     <p>Router ASUS Gigabit Ethernet de Banda Dual RT-AX57, Inalámbrico, 2402 Mbit/s, 4x RJ-45, 2.4/5GHz</p>
-                    <hr><br><a class="btn btn-primary" href="submenu/router.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="../public/submenu/router.php" role="button">Ver productos</a>
                 </div>
             </div>
             <div class="carrusel-slide">
                 <div class="imagen-wrapper">
-                    <img src="img/images (3).jpeg" alt="Producto 7">
+                    <img src="../public/img/images (3).jpeg" alt="Producto 7">
                 </div>
                 <div class="texto-slide">
                     <p>Switches Cisco Catalyst de la serie 2960-XR</p>
-                    <hr><br><a class="btn btn-primary" href="submenu/switch.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="../public/submenu/switch.php" role="button">Ver productos</a>
                 </div>
             </div>
         </div>
@@ -188,7 +188,7 @@ include("sesion.php");
                 </div>
             </div>
             <div class="ubicacion-derecha">
-                <img src="img/ubicacion.png" height="300px">
+                <img src="../public/img/ubicacion.png" height="300px">
             </div>
         </div>
     </section>

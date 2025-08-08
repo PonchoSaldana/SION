@@ -1,5 +1,5 @@
 <?php
-    include("../sesion.php");
+    include("../../config/sesion.php");
 ?><!DOCTYPE html>
 <html lang="es">
 
@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sion Wireless - Routers</title>
+    <title>Sion Wireless - Conectores y Jacks</title>
     <link rel="shortcut icon" href="../img/LOGO/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/todos_los_productos.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -81,12 +81,12 @@
     </nav>
 
     <main>
-        <h1 class="my-cart-title">Categoria - Routers</h1>
+        <h1 class="my-cart-title">Categoria - Conectores y Jacks</h1>
 
         <section>
             <div class="product-container">
                 <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 1">
+                    <img src="../img/jack.webp" alt="Producto 1">
                     <h3>Router</h3>
                     <p>Router profesional de oficina</p>
                     <p class="price">$100.00</p>
@@ -94,7 +94,7 @@
                     <a href="#" class="btn btn-outline-info">Más detalles</a>
                 </div>
                 <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 2">
+                    <img src="../img/jack.webp" alt="Producto 2">
                     <h3>Router 5G</h3>
                     <p>Router multiusos potente</p>
                     <p class="price">$200.00</p>
@@ -102,7 +102,7 @@
                     <a href="#" class="btn btn-outline-info">Más detalles</a>
                 </div>
                 <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 3">
+                    <img src="../img/jack.webp" alt="Producto 3">
                     <h3>Conector multiple</h3>
                     <p>Conector multiusos</p>
                     <p class="price">$100.00</p>
@@ -110,7 +110,7 @@
                     <a href="#" class="btn btn-outline-info">Más detalles</a>
                 </div>
                 <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 4">
+                    <img src="../img/jack.webp" alt="Producto 4">
                     <h3>Camara de vigilancia</h3>
                     <p>Camara de vigilancia 360 grados</p>
                     <p class="price">$20.00</p>
@@ -121,10 +121,18 @@
 
             <div class="product-container">
                 <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 5">
+                    <img src="../img/jack.webp" alt="Producto 5">
                     <h3>Camara steren</h3>
                     <p>Camara de vigilancia 360 grados</p>
                     <p class="price">$10.00</p>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
+                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                </div>
+                <div class="product-card">
+                    <img src="../img/jack.webp" alt="Producto 6">
+                    <h3>Router multipuertos</h3>
+                    <p>Router de oficina</p>
+                    <p class="price">$200.00</p>
                     <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
                     <a href="#" class="btn btn-outline-info">Más detalles</a>
                 </div>

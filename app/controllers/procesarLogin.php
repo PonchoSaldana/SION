@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("../../config/conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = $_POST["correo"];
@@ -25,16 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["correo"] = $correo;
 
             // Redirigir según el rol (admin o usuario)
-            header("Location: index.php");
+            header("Location: ../../public/index.php");
             exit();
         } else {
             // Contraseña incorrecta
-            header("Location: login.php?error=incorrecta");
+            header("Location: ../../views/login.php?error=incorrecta");
             exit();
         }
     } else {
         // Correo no registrado
-        header("Location: login.php?error=correo");
+        header("Location: ../../views/login.php?error=correo");
         exit();
     }
 

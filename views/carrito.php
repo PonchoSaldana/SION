@@ -10,7 +10,7 @@ include("sesion.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sion Wireless - Carrito</title>
     <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="../public/css/carrito.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!--BOTON DE Boxicons----------------------------------------------------------->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@ include("sesion.php");
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../model/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
@@ -68,7 +68,7 @@ include("sesion.php");
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                    <form action="buscar.php" method="GET">
+                    <form action="../app/controllers/buscar.php" method="GET">
                         <input type="text" name="q" placeholder="Buscar productos..." required class="form-control me-2" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>

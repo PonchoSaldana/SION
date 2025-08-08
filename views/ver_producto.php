@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include("../config/conexion.php");
 
 if (!isset($_GET["id"])) {
     echo "Producto no especificado.";
@@ -27,7 +27,7 @@ if ($producto = $resultado->fetch_assoc()):
 </head>
 <body>
     <div class="detalle-producto">
-        <img src="uploads/<?php echo htmlspecialchars($producto["imagen"]); ?>" alt="<?php echo htmlspecialchars($producto["nombre"]); ?>" style="width:300px; height:auto;">
+        <img src="../public/uploads/<?php echo htmlspecialchars($producto["imagen"]); ?>" alt="<?php echo htmlspecialchars($producto["nombre"]); ?>" style="width:300px; height:auto;">
         
         <div class="info">
             <h1><?php echo htmlspecialchars($producto["nombre"]); ?></h1>
@@ -36,9 +36,9 @@ if ($producto = $resultado->fetch_assoc()):
             <p><strong>Stock:</strong> <?php echo htmlspecialchars($producto["cantidad"]); ?></p>
             <p><strong>Categoría:</strong> <?php echo htmlspecialchars($producto["categoria"]); ?></p>
 
-            <form action="agregar_carrito.php" method="POST">
+            <form action="../app/controllers/agregar_carrito.php" method="POST">
                 <input type="hidden" name="id_producto" value="<?php echo $producto['id']; ?>">
-                <button type="submit">🛒 Agregar al carrito</button>
+                <button type="submit">Agregar al carrito</button>
             </form>
         </div>
     </div>

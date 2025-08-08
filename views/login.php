@@ -8,11 +8,11 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Sion Wireless - Login</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../public/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--FAVICON-------------------------------------------------------------->
-    <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../public/img/LOGO/favicon.png" type="image/x-icon">
 
 </head>
 
@@ -22,10 +22,10 @@ session_start();
         <div class="contenedor">
             <!-- Login -->
             <div class="formulario" id="form-login">
-                <span class="cerrar" onclick="window.location.href='index.php'">🡰</span>
-                <img src="img/LOGO/sin fondo.png" class="logo">
+                <span class="cerrar" onclick="window.location.href='../public/index.php'">🡰</span>
+                <img src="../public/img/LOGO/sin fondo.png" class="logo">
                 <h3>Iniciar sesión</h3>
-                <form action="procesarLogin.php" method="POST">
+                <form action="../app/controllers/procesarLogin.php" method="POST">
                     <div class="input-container">
                         <i class="fas fa-envelope icon"></i>
                         <input type="email" name="correo" placeholder="Correo electrónico..." required>
@@ -42,10 +42,10 @@ session_start();
 
             <!-- Registro -->
             <div class="formulario oculto" id="form-registro">
-                <span class="cerrar" onclick="window.location.href='index.php'">🡰</span>
-                <img src="img/LOGO/sin fondo.png" class="logo">
+                <span class="cerrar" onclick="window.location.href='../public/index.php'">🡰</span>
+                <img src="../public/img/LOGO/sin fondo.png" class="logo">
                 <h3>Registro</h3>
-                <form action="registro.php" method="POST" onsubmit="return validateRegistrationForm()">
+                <form action="../app/controllers/registro.php" method="POST" onsubmit="return validateRegistrationForm()">
                     <div class="input-container">
                         <i class="fas fa-user icon"></i>
                         <input type="text" name="nombre" placeholder="Nombre" maxlength="20" required>

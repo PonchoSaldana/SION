@@ -1,5 +1,5 @@
 <?php
-include("sesion.php");
+include("../config/sesion.php");
 $conexion = new mysqli("localhost", "root", "", "sion_db");
 ?>
 <!DOCTYPE html>
@@ -10,8 +10,8 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sion Wireless - Ofertas</title>
-    <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/ofertas.css">
+    <link rel="shortcut icon" href="../public/img/LOGO/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../public/css/ofertas.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -21,24 +21,24 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="index.php">
-                    <img src="img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
+            <span class="logo navLogo"><a href="../public/index.php">
+                    <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="index.php"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
                         <ul class="submenu">
-                            <li><a href="submenu/antenas.php">Antenas</a></li>
-                            <li><a href="submenu/camaras.php">Cámaras de seguridad</a></li>
-                            <li><a href="submenu/cables.php">Cables de red</a></li>
-                            <li><a href="submenu/conectoresJaks.php">Conectores y jacks</a></li>
-                            <li><a href="submenu/modems.php">Módems</a></li>
-                            <li><a href="submenu/switch.php">Switches</a></li>
+                            <li><a href="../public/submenu/antenas.php">Antenas</a></li>
+                            <li><a href="../public/submenu/camaras.php">Cámaras de seguridad</a></li>
+                            <li><a href="../public/submenu/cables.php">Cables de red</a></li>
+                            <li><a href="../public/submenu/conectoresJaks.php">Conectores y jacks</a></li>
+                            <li><a href="../public/submenu/modems.php">Módems</a></li>
+                            <li><a href="../public/submenu/switch.php">Switches</a></li>
                             <li><a href="submenu/router.php">Routers</a></li>
                         </ul>
                     </li>
@@ -53,9 +53,9 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                 </ul>
             </div>
 
-            <div class="searchBox">
+           <div class="searchBox">
                 <div class="iconUser">
-                    <a href="login.php" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
@@ -68,7 +68,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                     <span id="productos">0</span>
                 </div>
                 <div class="search-field">
-                    <form action="buscar.php" method="GET">
+                    <form action="../app/controllers/buscar.php" method="GET">
                         <input type="text" name="q" placeholder="Buscar productos..." required class="form-control me-2" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>
@@ -90,7 +90,7 @@ $resultado = $conexion->query($sql);
 while ($producto = $resultado->fetch_assoc()):
 ?>
     <div class="producto">
-        <img src="uploads/<?php echo htmlspecialchars($producto['imagen']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+        <img src="../public/uploads/<?php echo htmlspecialchars($producto['imagen']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
         <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
         <p>$<?php echo number_format($producto['precio'], 2); ?></p>
         <button>Agregar al Carrito</button>
@@ -103,7 +103,7 @@ while ($producto = $resultado->fetch_assoc()):
     <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
-            <img src="img/LOGO/sin fondo.png" alt="Logo SION">
+            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
             <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
         </div>
         <div class="footer-section">

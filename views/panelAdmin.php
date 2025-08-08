@@ -8,7 +8,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel de Administración - Sion Wireless</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../public/img/LOGO/favicon.png" type="image/x-icon">
   <style>
     body {
         background-color: #fff;
@@ -87,12 +87,10 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
 <nav>
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <div class="logo-toggle">
-      <span class="logo"><a href="index.php"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+      <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
     </div>
     <center><h2 style="color: white;">Panel de Administración</h2></center>
-    <div class="navbar-nav">
-      <a class="nav-link" href="cerrarSesion.php">Cerrar Sesión</a>
-    </div>
+    
   </div>
 </nav>
 
@@ -119,7 +117,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
       <div class="modal" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <form id="addProductForm" enctype="multipart/form-data" method="POST" action="guardarProducto.php">
+            <form id="addProductForm" enctype="multipart/form-data" method="POST" action="../model/guardarProducto.php">
               <div class="modal-header">
                 <h5 class="modal-title" id="addProductModalLabel">Agregar Producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -160,7 +158,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
           <?php while ($producto = $resultado->fetch_assoc()): ?>
             <div class="col-md-4">
               <div class="card">
-                <img src="uploads/<?php echo $producto['imagen']; ?>" class="card-img-top" style="height:200px; object-fit:cover;">
+                <img src="../public/uploads/<?php echo $producto['imagen']; ?>" class="card-img-top" style="height:200px; object-fit:cover;">
                 <div class="card-body">
                   <h5><?php echo $producto['nombre']; ?></h5>
                   <p><?php echo $producto['descripcion']; ?></p>
@@ -169,7 +167,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                   <p><strong>Categoría:</strong> <?php echo $producto['categoria']; ?></p>
                   <p><strong>Oferta:</strong> <?php echo ($producto['oferta']) ? 'Sí' : 'No'; ?></p>
                   <div class="d-flex gap-2 mt-2">
-                    <form action="eliminar.php" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
+                    <form action="../app/controllers/eliminar.php" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
                       <input type="hidden" name="id" value="<?php echo $producto['id']; ?>">
                       <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                     </form>
@@ -180,7 +178,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                 <!-- Modal editar -->
                 <div class="modal" id="editModal<?php echo $producto['id']; ?>" tabindex="-1" aria-labelledby="editModalLabel<?php echo $producto['id']; ?>" aria-hidden="true">
                   <div class="modal-dialog">
-                    <form class="modal-content form-editar" method="POST" action="editar_producto.php" enctype="multipart/form-data">
+                    <form class="modal-content form-editar" method="POST" action="../app/controllers/editar_producto.php" enctype="multipart/form-data">
                       <div class="modal-header">
                         <h5 class="modal-title" id="editModalLabel<?php echo $producto['id']; ?>">Editar Producto</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -240,7 +238,7 @@ document.querySelectorAll('.form-editar').forEach(form => {
 
     const formData = new FormData(form);
 
-    fetch('editar_producto.php', {
+    fetch('../app/controllers/editar_producto.php', {
       method: 'POST',
       body: formData
     })

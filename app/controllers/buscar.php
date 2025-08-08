@@ -1,7 +1,7 @@
 <?php
 $conexion = new mysqli("localhost", "root", "", "sion_db");
 
-    include("sesion.php");
+    include("../../config/sesion.php");
 
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
@@ -26,9 +26,9 @@ $resultado = $stmt->get_result();
     <!--TITULO----------------------------------------------------------->
     <title>Sion Wireless - Inicio</title>
     <!--FAVICON-------------------------------------------------------------->
-    <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../public/img/LOGO/favicon.png" type="image/x-icon">
     <!--ESTILOS--------------------------------------------------------------->
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../../public/css/index.css">
     <!-- ICONOS DE Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!--BOTON DE Boxicons----------------------------------------------------------->
@@ -53,28 +53,28 @@ $resultado = $stmt->get_result();
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
                         <ul class="submenu">
-                            <li><a href="submenu/antenas.php">Antenas</a></li>
-                            <li><a href="submenu/camaras.php">Cámaras de seguridad</a></li>
-                            <li><a href="submenu/cables.php">Cables de red</a></li>
-                            <li><a href="submenu/conectoresJaks.php">Conectores y jacks</a></li>
-                            <li><a href="submenu/modems.php">Módems</a></li>
-                            <li><a href="submenu/switch.php">Switches</a></li>
-                            <li><a href="submenu/router.php">Routers</a></li>
+                            <li><a href="../../public/submenu/antenas.php">Antenas</a></li>
+                            <li><a href="../../public/submenu/camaras.php">Cámaras de seguridad</a></li>
+                            <li><a href="../../public/submenu/cables.php">Cables de red</a></li>
+                            <li><a href="../../public/submenu/conectoresJaks.php">Conectores y jacks</a></li>
+                            <li><a href="../../public/submenu/modems.php">Módems</a></li>
+                            <li><a href="../../public/submenu/switch.php">Switches</a></li>
+                            <li><a href="../../public/submenu/router.php">Routers</a></li>
                         </ul>
                     </li>
-                    <li><a href="Servicios.php">Servicios</a></li>
-                    <li><a href="ofertas.php">Ofertas</a></li>
-                    <li><a href="compras.php">Compras</a></li>
-                    <li><a href="favoritos.php">Favoritos</a></li>
-                    <li><a href="todos_los_productos.php">Todos los productos</a></li>
+                    <li><a href="../../views/Servicios.php">Servicios</a></li>
+                    <li><a href="../../views/ofertas.php">Ofertas</a></li>
+                    <li><a href="../../views/compras.php">Compras</a></li>
+                    <li><a href="../../views/favoritos.php">Favoritos</a></li>
+                    <li><a href="../../views/todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
-                    <li><a href="panelAdmin.php">Panel de Administración</a></li><?php endif; ?>
+                    <li><a href="../../views/panelAdmin.php">Panel de Administración</a></li><?php endif; ?>
                 </ul>
             </div>
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? '../../views/mi_cuenta.php' : '../../views/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
@@ -83,7 +83,7 @@ $resultado = $stmt->get_result();
                 </div>
 
                 <div class="iconCarrito">
-                    <a href="carrito.php" style="color: white;">
+                    <a href="../../views/carrito.php" style="color: white;">
                         <i class="bx bx-cart"></i>
                         <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                         </span>
@@ -92,7 +92,7 @@ $resultado = $stmt->get_result();
                 </div>
 
                 <div class="search-field">
-                    <form action="buscar.php" method="GET">
+                    <form action="../app/controllers/buscar.php" method="GET">
                         <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>
@@ -108,7 +108,7 @@ $resultado = $stmt->get_result();
                 <?php while ($row = $resultado->fetch_assoc()) : ?>
                     <div class="col-md-4 mb-4">
                         <div class="card h-100">
-                            <img src="uploads/<?= htmlspecialchars($row['imagen']) ?>" class="card-img-top" alt="<?= htmlspecialchars($row['nombre']) ?>">
+                            <img src="../../public/uploads/<?= htmlspecialchars($row['imagen']) ?>" class="card-img-top" alt="<?= htmlspecialchars($row['nombre']) ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?= htmlspecialchars($row['nombre']) ?></h5>
                                 <p class="card-text">$<?= number_format($row['precio'], 2) ?></p>
@@ -126,7 +126,7 @@ $resultado = $stmt->get_result();
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="uploads/<?= htmlspecialchars($row['imagen']) ?>" class="img-fluid mb-3" alt="<?= htmlspecialchars($row['nombre']) ?>">
+                                    <img src="../../public/uploads/<?= htmlspecialchars($row['imagen']) ?>" class="img-fluid mb-3" alt="<?= htmlspecialchars($row['nombre']) ?>">
                                     <p><?= htmlspecialchars($row['descripcion']) ?></p>
                                     <p><strong>Precio:</strong> $<?= number_format($row['precio'], 2) ?></p>
                                 </div>
@@ -135,7 +135,7 @@ $resultado = $stmt->get_result();
                                         id: <?= $row["id"] ?>,
                                         nombre: "<?= addslashes($row["nombre"]) ?>",
                                         precio: <?= $row["precio"] ?>,
-                                        imagen: "uploads/<?= $row["imagen"] ?>",
+                                        imagen: "../../public/uploads/<?= $row["imagen"] ?>",
                                         cantidad: 1
                                     })'>Agregar al carrito</button>
                                     <form action="agregar_favorito.php" method="POST" class="d-inline">
@@ -176,7 +176,7 @@ function agregarAlCarrito(producto) {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="../../public/js/index.js"></script>
 </body>
 </html>
 
