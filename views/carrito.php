@@ -9,7 +9,7 @@ include("sesion.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sion Wireless - Carrito</title>
-    <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../public/img/LOGO/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../public/css/carrito.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!--BOTON DE Boxicons----------------------------------------------------------->
@@ -21,25 +21,25 @@ include("sesion.php");
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="index.php">
-                    <img src="img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
+            <span class="logo navLogo"><a href="../public/index.php">
+                    <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="index.php"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
                         <ul class="submenu">
-                            <li><a href="submenu/antenas.php">Antenas</a></li>
-                            <li><a href="submenu/camaras.php">Cámaras de seguridad</a></li>
-                            <li><a href="submenu/cables.php">Cables de red</a></li>
-                            <li><a href="submenu/conectoresJaks.php">Conectores y jacks</a></li>
-                            <li><a href="submenu/modems.php">Módems</a></li>
-                            <li><a href="submenu/switch.php">Switches</a></li>
-                            <li><a href="submenu/router.php">Routers</a></li>
+                            <li><a href="../public/submenu/antenas.php">Antenas</a></li>
+                            <li><a href="../public/submenu/camaras.php">Cámaras de seguridad</a></li>
+                            <li><a href="../public/submenu/cables.php">Cables de red</a></li>
+                            <li><a href="../public/submenu/conectoresJaks.php">Conectores y jacks</a></li>
+                            <li><a href="../public/submenu/modems.php">Módems</a></li>
+                            <li><a href="../public/submenu/switch.php">Switches</a></li>
+                            <li><a href="../public/submenu/router.php">Routers</a></li>
                         </ul>
                     </li>
                     <li><a href="Servicios.php">Servicios</a></li>
@@ -93,7 +93,7 @@ include("sesion.php");
                             <div style="flex: 1; text-align: right;">Total</div>
                         </div>
                         <div class="product-list-container">
-                            <!--PRODUCTOS AGREGADOS POR EL ADMINISTRADOR-->
+                            
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ include("sesion.php");
                 <div class="carousel" id="productCarousel">
                     <div class="product-cardxd">
                         <div class="product-image-container">
-                            <img src="img/descarga (1).jpeg" alt="Cámara de seguridad analógica 1080P al aire libre" class="product-image">
+                            <img src="../public/img/descarga (1).jpeg" alt="Cámara de seguridad analógica 1080P al aire libre" class="product-image">
                         </div>
                         <div class="product-details">
                             <p class="product-description">Cámara de seguridad analógica 1080P al aire libre IP66 cámara de vigilancia CCTV...</p>
@@ -140,7 +140,7 @@ include("sesion.php");
                     </div>
                     <div class="product-cardxd">
                         <div class="product-image-container">
-                            <img src="img/images.jpeg" alt="Cámara CCTV a color a tiempo completo 1080P" class="product-image">
+                            <img src="../public/img/images.jpeg" alt="Cámara CCTV a color a tiempo completo 1080P" class="product-image">
                         </div>
                         <div class="product-details">
                             <p class="product-description">Cámara CCTV a color a tiempo completo 1080P, cámara de seguridad al aire libre con cable de 2 MP...</p>
@@ -152,7 +152,7 @@ include("sesion.php");
                     </div>
                     <div class="product-cardxd">
                         <div class="product-image-container">
-                            <img src="img/images (4).jpeg" alt="Antena de TV Mitzu Interior Negro TV-8000" class="product-image">
+                            <img src="../public/img/images (4).jpeg" alt="Antena de TV Mitzu Interior Negro TV-8000" class="product-image">
                         </div>
                         <div class="product-details">
                             <p class="product-description">Antena de TV Mitzu Interior Negro TV-8000</p>
@@ -164,7 +164,7 @@ include("sesion.php");
                     </div>
                     <div class="product-cardxd">
                         <div class="product-image-container">
-                            <img src="img/descarga.jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
+                            <img src="../public/img/descarga.jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
                         </div>
                         <div class="product-details">
                             <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
@@ -176,7 +176,7 @@ include("sesion.php");
                     </div>
                     <div class="product-cardxd">
                         <div class="product-image-container">
-                            <img src="img/images (3).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
+                            <img src="../public/img/images (3).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
                         </div>
                         <div class="product-details">
                             <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
@@ -188,7 +188,7 @@ include("sesion.php");
                     </div>
                     <div class="product-cardxd">
                         <div class="product-image-container">
-                            <img src="img/descarga (1).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
+                            <img src="../public/img/descarga (1).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
                         </div>
                         <div class="product-details">
                             <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
@@ -200,7 +200,7 @@ include("sesion.php");
                     </div>
                     <div class="product-cardxd">
                         <div class="product-image-container">
-                            <img src="img/images (2).jpeg" alt="Switch Gigabit Ethernet de 24 puertos" class="product-image">
+                            <img src="../public/img/images (2).jpeg" alt="Switch Gigabit Ethernet de 24 puertos" class="product-image">
                         </div>
                         <div class="product-details">
                             <p class="product-description">Switch Gigabit Ethernet de 24 puertos</p>
@@ -219,7 +219,7 @@ include("sesion.php");
     <!-- Pie de página -->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
-            <img src="img/LOGO/sin fondo.png" alt="Logo SION">
+            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
             <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
         </div>
         <div class="footer-section">
@@ -239,7 +239,7 @@ include("sesion.php");
             </ul>
         </div>
     </footer>
-    <script src="js/carrito.js"></script>
+    <script src="../public/js/carrito.js"></script>
     <script>
         function obtenerCarrito() {
             return JSON.parse(localStorage.getItem('carrito')) || [];

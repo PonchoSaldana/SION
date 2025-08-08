@@ -13,5 +13,5 @@ header("Pragma: no-cache");
 header("Expires: 0");
 
 // Redirigir al login
-header("Location: ../views/login.php");
+header("Location: ../../views/login.php");
 exit();

@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
     $stmt->close();
     $conexion->close();
 
-    header("Location: panelAdmin.php?editado=1");
+    header("Location: ../../views/panelAdmin.php?editado=1");
     exit();
 }
 ?>

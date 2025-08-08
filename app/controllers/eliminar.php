@@ -23,11 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
     $conexion->close();
 
     // Redirige de vuelta al panel de admin
-    header("Location: panelAdmin.php?eliminado=1");
+    header("Location: ../../views/panelAdmin.php?eliminado=1");
     exit();
 } else {
     // Si alguien accede sin POST válido, redirige también
-    header("Location: panelAdmin.php");
+    header("Location: ../../views/panelAdmin.php");
     exit();
 }
 ?>

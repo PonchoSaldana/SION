@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("../../config/conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST["id"];
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssssi", $nombre, $apellidos, $correo, $celular, $direccion, $codigo_postal, $id);
 
     if ($stmt->execute()) {
-        header("Location: mi_cuenta.php?exito=1");
+        header("Location: ../../model/mi_cuenta.php?exito=1");
         exit();
     } else {
         echo "Error al actualizar los datos.";

@@ -1,5 +1,5 @@
 <?php
-    include("sesion.php");
+    include("../config/sesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sion Wireless - Favoritos</title>
     <!--FAVICON-------------------------------------------------------------->
-    <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../public/img/LOGO/favicon.png" type="image/x-icon">
     <!--ESTILOS--------------------------------------------------------------->
-    <link rel="stylesheet" href="css/favorito.css">
+    <link rel="stylesheet" href="../public/css/favorito.css">
     <!-- ICONOS DE Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!--BOTON DE Boxicons----------------------------------------------------------->
@@ -23,25 +23,25 @@
 <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="index.php">
-                    <img src="img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
+            <span class="logo navLogo"><a href="../public/index.php">
+                    <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="index.php"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
                     <li class="has-submenu">
                         <a href="#" data-submenu-toggle>Categoría</a>
                         <ul class="submenu">
-                            <li><a href="submenu/antenas.php">Antenas</a></li>
-                            <li><a href="submenu/camaras.php">Cámaras de seguridad</a></li>
-                            <li><a href="submenu/cables.php">Cables de red</a></li>
-                            <li><a href="submenu/conectoresJaks.php">Conectores y jacks</a></li>
-                            <li><a href="submenu/modems.php">Módems</a></li>
-                            <li><a href="submenu/switch.php">Switches</a></li>
-                            <li><a href="submenu/router.php">Routers</a></li>
+                            <li><a href="../public/submenu/antenas.php">Antenas</a></li>
+                            <li><a href="../public/submenu/camaras.php">Cámaras de seguridad</a></li>
+                            <li><a href="../public/submenu/cables.php">Cables de red</a></li>
+                            <li><a href="../public/submenu/conectoresJaks.php">Conectores y jacks</a></li>
+                            <li><a href="../public/submenu/modems.php">Módems</a></li>
+                            <li><a href="../public/submenu/switch.php">Switches</a></li>
+                            <li><a href="../public/submenu/router.php">Routers</a></li>
                         </ul>
                     </li>
                     <li><a href="Servicios.php">Servicios</a></li>
@@ -57,7 +57,7 @@
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../public/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">

@@ -41,12 +41,12 @@ $resultado = $stmt->get_result();
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="index.php">
-                    <img src="img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
+            <span class="logo navLogo"><a href="../../public/index.php">
+                    <img src="../../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="index.php"><img src="img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="../../public/index.php"><img src="../../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">

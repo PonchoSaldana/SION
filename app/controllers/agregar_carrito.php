@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $_SESSION["carrito"][$id] = $producto;
 
-        header("Location: carrito.php");
+        header("Location: ../../views/carrito.php");
         exit();
     }
 }
