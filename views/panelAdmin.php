@@ -87,7 +87,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
 <nav>
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <div class="logo-toggle">
-      <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+      <span class="logo"><a href="../index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
     </div>
     <center><h2 style="color: white;">Panel de Administración</h2></center>
     

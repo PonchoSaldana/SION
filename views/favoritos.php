@@ -23,7 +23,7 @@
 <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="../public/index.php">
+            <span class="logo navLogo"><a href="../index.php">
                     <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
@@ -57,7 +57,7 @@
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../public/login.php'; ?>" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
@@ -156,7 +156,7 @@
     
     <footer class="main-footer">
         <div class="footer-section footer-logo">
-            <img src="img/LOGO/sin fondo.png" alt="Logo SION">
+            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
             <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
         </div>
         <div class="footer-section">

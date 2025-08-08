@@ -24,7 +24,7 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="../public/index.php">
+            <span class="logo navLogo"><a href="../index.php">
                     <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
@@ -58,7 +58,7 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? 'mi_cuenta.php' : 'login.php'; ?>" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">

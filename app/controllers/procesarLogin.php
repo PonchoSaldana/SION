@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["correo"] = $correo;
 
             // Redirigir según el rol (admin o usuario)
-            header("Location: ../../public/index.php");
+            header("Location: ../../index.php");
             exit();
         } else {
             // Contraseña incorrecta

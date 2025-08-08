@@ -21,7 +21,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="../public/index.php">
+            <span class="logo navLogo"><a href="../index.php">
                     <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">

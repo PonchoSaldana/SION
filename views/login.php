@@ -22,7 +22,7 @@ session_start();
         <div class="contenedor">
             <!-- Login -->
             <div class="formulario" id="form-login">
-                <span class="cerrar" onclick="window.location.href='../public/index.php'">🡰</span>
+                <span class="cerrar" onclick="window.location.href='../index.php'">🡰</span>
                 <img src="../public/img/LOGO/sin fondo.png" class="logo">
                 <h3>Iniciar sesión</h3>
                 <form action="../app/controllers/procesarLogin.php" method="POST">
@@ -42,7 +42,7 @@ session_start();
 
             <!-- Registro -->
             <div class="formulario oculto" id="form-registro">
-                <span class="cerrar" onclick="window.location.href='../public/index.php'">🡰</span>
+                <span class="cerrar" onclick="window.location.href='../index.php'">🡰</span>
                 <img src="../public/img/LOGO/sin fondo.png" class="logo">
                 <h3>Registro</h3>
                 <form action="../app/controllers/registro.php" method="POST" onsubmit="return validateRegistrationForm()">

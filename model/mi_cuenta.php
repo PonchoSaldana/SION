@@ -44,12 +44,12 @@ $stmt->close();
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="../public/index.php">
+            <span class="logo navLogo"><a href="../index.php">
                     <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="../index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
@@ -122,7 +122,7 @@ $stmt->close();
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('modalEditar').style.display='none'">&times;</span>
             <h3>Editar información</h3>
-            <form action="actualizar_usuario.php" method="POST">
+            <form action="../app/controllers/actualizar_usuario.php" method="POST">
                 <input type="hidden" name="id" value="<?= $id_usuario ?>">
 
                 <label>Nombre:</label>
@@ -180,7 +180,7 @@ $stmt->close();
             }
         }
     </script>
-    <script src="js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
+    <script src="../public/js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
     <script>
         // Si el usuario usa el botón "atrás", forzamos recarga para validar la sesión
         window.addEventListener("pageshow", function(event) {

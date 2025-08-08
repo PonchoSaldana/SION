@@ -20,7 +20,7 @@
             <i class="bx bx-menu sidebarOpen"></i>
 
             <span class="logo navLogo">
-                <a href="../index.php">
+                <a href="../../index.php">
                     <img src="../img/LOGO/sin fondo.png" alt="Logo SION" height="100">
                 </a>
             </span>
@@ -28,7 +28,7 @@
             <div class="menu">
                 <div class="logo-toggle">
                     <span class="logo">
-                        <a href="../index.php">
+                        <a href="../../index.php">
                             <img src="../img/LOGO/sin fondo.png" alt="Logo SION" height="90">
                         </a>
                     </span>

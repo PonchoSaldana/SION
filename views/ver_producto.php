@@ -23,7 +23,6 @@ if ($producto = $resultado->fetch_assoc()):
 <head>
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($producto["nombre"]); ?> - Detalles</title>
-    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <div class="detalle-producto">

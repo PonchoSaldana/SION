@@ -1,5 +1,5 @@
 <?php
-include("sesion.php");
+include("../config/sesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,12 +21,12 @@ include("sesion.php");
     <nav>
         <div class="nav-bar">
             <i class="bx bx-menu sidebarOpen"></i>
-            <span class="logo navLogo"><a href="../public/index.php">
+            <span class="logo navLogo"><a href="../index.php">
                     <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="100"></a>
             </span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                    <span class="logo"><a href="../index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                     <i class="bx bx-x sidelbarClose"></i>
                 </div>
                 <ul class="nav-links">
@@ -55,7 +55,7 @@ include("sesion.php");
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../model/login.php'; ?>" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
