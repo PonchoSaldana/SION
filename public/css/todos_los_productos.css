@@ -892,7 +892,7 @@ h1 {
 
 }
 
-@media (max-width: 450px) {
+@media (max-width: 520px) {
     .searchBox .search-field {
         width: 200px;
     }

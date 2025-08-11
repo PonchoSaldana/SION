@@ -648,8 +648,6 @@ button {
     /* Navegación */
     nav {
         padding: 0 20px;
-        /* Reduce el padding para pantallas más pequeñas */
-        height: 80px;
     }
 
     nav .nav-bar .logo a {
@@ -673,7 +671,7 @@ button {
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 520px) {
     .searchBox .search-field {
         width: 200px;
     }

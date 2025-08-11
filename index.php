@@ -12,7 +12,7 @@ include("config/sesion.php");
     <!--TITULO----------------------------------------------------------->
     <title>Sion Wireless - Inicio</title>
     <!--FAVICON-------------------------------------------------------------->
-    <link rel="shortcut icon" href="img/LOGO/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="public/img/LOGO/favicon.png" type="image/x-icon">
     <!--ESTILOS--------------------------------------------------------------->
     <link rel="stylesheet" href="public/css/index.css">
     <!-- ICONOS DE Boxicons -->
@@ -54,7 +54,7 @@ include("config/sesion.php");
                     <li><a href="views/favoritos.php">Favoritos</a></li>
                     <li><a href="views/todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
-                        <li><a href="views/panelAdmin.php">Panel de Administración</a></li><?php endif; ?>
+                    <li><a href="views/panelAdmin.php">Panel de Administración</a></li><?php endif; ?>
                 </ul>
             </div>
 

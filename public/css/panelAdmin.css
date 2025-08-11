@@ -1,0 +1,70 @@
+body {
+        background-color: #fff;
+    }
+    nav {
+        background-color: #0d6efd;
+        padding: 1rem;
+    }
+    .navbar-brand {
+        color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+        color: white;
+        font-weight: 500;
+    }
+    h2, h3 {
+        color: #343a40;
+    }
+    .card {
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+        transform: scale(1.02);
+    }
+    .card h5 {
+        font-weight: bold;
+        color: #0d6efd;
+    }
+    .card p {
+        margin-bottom: 5px;
+    }
+    .btn {
+        font-weight: 500;
+    }
+    .modal-title {
+        font-weight: bold;
+    }
+    .alert {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    @media (max-width: 360px) {
+        .logo img {
+            height: 60px;
+        }
+        .navbar-nav {
+            font-size: 0.9rem;
+        }
+    }
+    .modal {
+        overflow-y: auto;
+        z-index: 1055;
+    }
+    .modal-backdrop {
+        z-index: 1050;
+    }
+    body.modal-open {
+        overflow: hidden;
+    }
+    .modal-dialog {
+        margin-top: 10vh;
+    }
+    .card-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
