@@ -23,18 +23,57 @@ html {
 
 body {
     height: 100vh;
-    color: #76c8ff;
+    background-color: var(--body-color);
 }
 
-/*BANNER*/
+p {
+    font-size: 25px;
+}
+
+header{
+    background-color: #3796d6;
+}
+
+/* Estilos por defecto */
 .banner {
+    background-image: linear-gradient(to right, hsla(201, 100%, 68%, 0), hsla(185, 100%, 35%, 0), hsla(0, 0%, 0%, 0.701)), url(../img/ofertASXX.jpg);
     width: 100%;
-    height: 60px;
+    height: 650px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
     overflow: hidden;
+}
+
+.banner-text {
+    position: absolute;
+    top: 35%;
+    right: 10%;
+    color: #fff;
+    text-shadow: 2px 4px 6px #000;
+}
+
+.banner-text h2 {
+    font-size: 40px;
+    margin: 0;
+}
+
+/* --- Media Query para 750px --- */
+@media screen and (max-width: 750px) {
+    .banner {
+        height: 500px;
+    }
+
+    .banner-text {
+        top: 30%;
+        right: 5%;
+        text-align: center;
+    }
+
+    .banner-text h2 {
+        font-size: 32px;
+    }
 }
 
 /*BARRA DE NAVEGACION*/
@@ -109,6 +148,7 @@ nav .nav-bar .logo a {
     text-decoration: none;
     white-space: nowrap;
 }
+
 /* Esto oculta el submenú por defecto en el modo de escritorio */
 .has-submenu>.submenu {
     display: none;
@@ -118,6 +158,7 @@ nav .nav-bar .logo a {
 .has-submenu.active>.submenu {
     display: block;
 }
+
 /* Mostrar el submenú cuando el cursor está sobre el elemento padre (li) */
 .nav-links .has-submenu.submenu-open>.submenu {
     display: block;
@@ -239,7 +280,7 @@ nav .nav-bar .logo a {
     bottom: -90px;
     right: 30px;
     height: 50px;
-    width: 570px;
+    width: 600px;
     display: flex;
     align-items: center;
     background-color: #fff;
@@ -252,6 +293,7 @@ nav .nav-bar .logo a {
     transition: all 0.3s ease;
     max-width: 440px;
 }
+
 /* Formulario de búsqueda */
 .search-field form {
     display: flex;
@@ -277,10 +319,12 @@ nav .nav-bar .logo a {
     width: 40px;
     align-items: center;
 }
+
 /* Ícono de búsqueda */
 .search-field button i {
     font-size: 20px;
 }
+
 .searchToggle.active~.search-field {
     bottom: -74px;
     opacity: 1;
@@ -310,6 +354,7 @@ nav .nav-bar .logo a {
     font-size: 1rem;
     background-color: #e9ecef;
 }
+
 /* Pie de página */
 .main-footer {
     background: linear-gradient(to right, #095b91, #00b4e0);
@@ -368,7 +413,7 @@ nav .nav-bar .logo a {
 
 /* --- */
 @media (max-width: 1200px) {
-     nav .nav-bar .sidebarOpen {
+    nav .nav-bar .sidebarOpen {
         display: block;
     }
 
@@ -478,7 +523,7 @@ nav .nav-bar .logo a {
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
     .searchBox .search-field {
         width: 200px;
     }
@@ -495,6 +540,13 @@ nav .nav-bar .logo a {
         font-size: 20px;
     }
 
+    .searchBox .search-field {
+        position: absolute;
+        bottom: -50px;
+        right: 10px;
+        height: 50px;
+        width: 300px;
+    }
 }
 
 /* ------------------- */
@@ -517,7 +569,7 @@ nav .nav-bar .logo a {
     background: none;
     padding: 0;
     margin: 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* SECCIÓN DE PRODUCTOS */
@@ -532,13 +584,13 @@ nav .nav-bar .logo a {
 }
 
 .producto {
-    
-    color: var(--text-color);
+
+    color: #fff;
     width: 200px;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
 }
 
@@ -578,10 +630,10 @@ nav .nav-bar .logo a {
 }
 
 
-    .searchBox .search-field {
-        position: absolute;
-        bottom: -50px;
-        right: 10px;
-        height: 50px;
-        width: 300px;
-    }
+.searchBox .search-field {
+    position: absolute;
+    bottom: -50px;
+    right: 10px;
+    height: 50px;
+    width: 300px;
+}

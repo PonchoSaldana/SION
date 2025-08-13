@@ -53,7 +53,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                 </ul>
             </div>
 
-           <div class="searchBox">
+            <div class="searchBox">
                 <div class="iconUser">
                     <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
@@ -78,50 +78,57 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
     </nav>
     <!--------------------------------------------------------------------------->
 
-
-    <div class="banner ofertas-banner">
-        <h1>Encuentra las ofertas del día</h1>
-                    </div>
-   <div class="productos">
-<?php
-$sql = "SELECT * FROM productos WHERE oferta = 1";
-$resultado = $conexion->query($sql);
-
-while ($producto = $resultado->fetch_assoc()):
-?>
-    <div class="producto">
-        <img src="../public/uploads/<?php echo htmlspecialchars($producto['imagen']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
-        <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
-        <p>$<?php echo number_format($producto['precio'], 2); ?></p>
-        <button>Agregar al Carrito</button>
-    </div>
-<?php endwhile; ?>
-</div>
+    <header>
+        <section class="banner">
+            <div class="banner-text">
+                <h2>Ofertas increibles para tu hogar!</h2><br>
+                <p>¡Encuentra precios unicos cada dia! <img src="../public/img/ofertaico.png" height="100" alt="Icono de ofertas"></p>
+            </div>
+        </section>
 
 
-    
-    <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
-    <footer class="main-footer">
-        <div class="footer-section footer-logo">
-            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
-            <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
+        <div class="productos">
+            <?php
+            $sql = "SELECT * FROM productos WHERE oferta = 1";
+            $resultado = $conexion->query($sql);
+
+            while ($producto = $resultado->fetch_assoc()):
+            ?>
+                <div class="producto">
+                    <img src="../public/uploads/<?php echo htmlspecialchars($producto['imagen']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                    <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
+                    <p>$<?php echo number_format($producto['precio'], 2); ?></p>
+                    <button>Agregar al Carrito</button>
+                </div>
+            <?php endwhile; ?>
         </div>
-        <div class="footer-section">
-            <h4>Contacto</h4>
-            <ul>
-                <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
-                <li><a href="tel:+525555555555">55-5555-5555</a></li>
-                <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Empresa</h4>
-            <ul>
-                <li><a href="#">Política de privacidad</a></li>
-                <li><a href="#">Términos y condiciones</a></li>
-            </ul>
-        </div>
-    </footer>
+
+
+
+
+        <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
+        <footer class="main-footer">
+            <div class="footer-section footer-logo">
+                <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
+                <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
+                    <li><a href="tel:+525555555555">55-5555-5555</a></li>
+                    <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                </ul>
+            </div>
+        </footer>
+    </header>
     <!-------------------------------------------------------------------------------->
     <script src="../public/js/menu.js"></script>
 </body>

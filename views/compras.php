@@ -43,7 +43,7 @@ include("../config/sesion.php");
               <li><a href="../public/submenu/conectoresJaks.php">Conectores y jacks</a></li>
               <li><a href="../public/submenu/modems.php">Módems</a></li>
               <li><a href="../public/submenu/switch.php">Switches</a></li>
-              <li><a href="submenu/router.php">Routers</a></li>
+              <li><a href="../public/submenu/submenu/router.php">Routers</a></li>
             </ul>
           </li>
           <li><a href="Servicios.php">Servicios</a></li>

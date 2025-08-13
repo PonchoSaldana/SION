@@ -90,7 +90,7 @@ include("../config/sesion.php");
                     <!-- Los productos se cargarán dinámicamente con JavaScript -->
                 </div>
             </div>
-        </div>
+        </div><br><br><br><br><br><br><br><br><br><br><br>
 
         <!-- Modal de confirmación -->
         <div class="modal fade" id="mensajeModal" tabindex="-1" aria-hidden="true">
