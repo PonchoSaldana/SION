@@ -89,7 +89,7 @@ include("../config/sesion.php");
                 <div class="service-details">
                     <h2>Instalación de cámara de seguridad</h2>
                     <p>$450</p>
-                    <button type="button" class="btn btn-primary btn-lg">Solicitar</button>
+                    <button type="button" class="btn btn-success btn-lg">Solicitar</button>
                 </div>
             </div>
             <div class="service-card">
@@ -97,7 +97,7 @@ include("../config/sesion.php");
                 <div class="service-details">
                     <h2>Instalación de antena</h2>
                     <p>$600</p>
-                    <button type="button" class="btn btn-primary btn-lg">Solicitar</button>
+                    <button type="button" class="btn btn-success btn-lg">Solicitar</button>
                 </div>
             </div>
         </section>

@@ -364,11 +364,11 @@ main {
     font-size: 2.5em;
 }
 
-.service-card .service-details p {
+.service-card .service-details p {/*COLOR PARA EL PRECIO*/
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #40f470;
+    color: #e1ff00;
 }
 
 /*PIE DE PAGINA*/

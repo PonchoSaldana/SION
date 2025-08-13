@@ -871,6 +871,10 @@ nav .nav-bar .logo a {
     .summary-container {
         margin-top: 20px;
     }
+    .header-row{
+        color: transparent;
+        display: none;;
+    }
 }
 
 

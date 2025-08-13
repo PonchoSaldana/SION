@@ -376,7 +376,7 @@ include("../config/sesion.php");
             // Agregar productos con estado
             const nuevasCompras = carrito.map(producto => ({
                 ...producto,
-                estado: "Esperando al cliente"
+                estado: "Esperando al cliente..."
             }));
 
             const actualizadas = [...compras, ...nuevasCompras];

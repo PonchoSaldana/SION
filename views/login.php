@@ -37,7 +37,8 @@ session_start();
                     </div>
                     <button type="submit">Entrar</button>
                 </form>
-                <p>¿No tienes una cuenta? <a href="#" onclick="toggleForm()">Regístrate</a></p>
+                <p>¿No tienes una cuenta? <a href="#" onclick="toggleForm()">Regístrate</a><br>
+                <a href="../model/recuperarContrasena.php">¿Olvidaste tu contraseña?</a></p>
             </div>
 
             <!-- Registro -->
