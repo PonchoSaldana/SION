@@ -115,8 +115,8 @@ include("../config/sesion.php");
                             <span>Total</span>
                             <span class="value" id="grand-total">$0</span>
                         </div>
-                      <!-- Botón de Comprar en el resumen -->
-                        <button class="buy-button" type="button" id="confirmarCompraBtn">Comprar</button>
+                    <!-- Botón de Comprar en el resumen -->
+<button class="buy-button" type="button" id="confirmarCompraBtn">Comprar</button>
 
                         <!-- Modal de confirmación de compra -->
                         <div class="modal fade" id="confirmarCompraModal" tabindex="-1" aria-labelledby="confirmarCompraLabel" aria-hidden="true">
@@ -134,6 +134,9 @@ include("../config/sesion.php");
                                 <button type="button" class="btn btn-success" id="confirmarCompraModalBtn">Realizar compra</button>
                             </div>
                             </div>
+                        </div>
+                        </div>
+                            
                         </div>
                         </div>
                         
@@ -407,18 +410,10 @@ include("../config/sesion.php");
         modal.show();
     });
 
-<<<<<<< HEAD
     // Botón dentro del modal para confirmar la compra
     document.getElementById('confirmarCompraModalBtn').addEventListener('click', () => {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const compras = JSON.parse(localStorage.getItem('compras')) || [];
-=======
-            // Agregar productos con estado
-            const nuevasCompras = carrito.map(producto => ({
-                ...producto,
-                estado: "Esperando al cliente..."
-            }));
->>>>>>> 3510c0672c1f1fb42c3d47b0cb35c3976f62253d
 
         // Guardar los productos del carrito en las compras
         const nuevasCompras = carrito.map(producto => ({

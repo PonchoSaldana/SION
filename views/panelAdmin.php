@@ -88,8 +88,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
           </div>
         </div>
 
-        <header>
-          <?php
+        <?php
         $resultado = $conexion->query("SELECT * FROM productos");
         if ($resultado->num_rows > 0): ?>
           <div class="row">
@@ -105,12 +104,31 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                     <p><strong>Categoría:</strong> <?php echo $producto['categoria']; ?></p>
                     <p><strong>Oferta:</strong> <?php echo (isset($producto['oferta']) && $producto['oferta']) ? 'Sí' : 'No'; ?></p>
                     <div class="d-flex gap-2 mt-2">
-                      <form action="../app/controllers/eliminar.php" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
+                      <form id="eliminarForm<?php echo $producto['id']; ?>" action="../app/controllers/eliminar.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $producto['id']; ?>">
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal<?php echo $producto['id']; ?>">Eliminar</button>
                       </form>
                       <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $producto['id']; ?>">Editar</button>
-                      <input class="form-check-input" type="checkbox" name="oferta" id="oferta<?php echo $producto['id']; ?>" <?php echo (isset($producto['oferta']) && ($producto['oferta'] == 1 || $producto['oferta'] === '1')) ? 'checked' : ''; ?>>
+                      <input class="form-check-input" type="checkbox" name="oferta" id="oferta<?php echo $producto['id']; ?>" <?php echo (isset($producto['oferta']) && ($producto['oferta'] == 1 || $producto['oferta'] === '1')) ? 'checked' : ''; ?> disabled>
+                    </div>
+                  </div>
+
+                  <!-- Modal de confirmación de eliminación -->
+                  <div class="modal fade" id="confirmDeleteModal<?php echo $producto['id']; ?>" tabindex="-1" aria-labelledby="confirmDeleteLabel<?php echo $producto['id']; ?>" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="confirmDeleteLabel<?php echo $producto['id']; ?>">Confirmar eliminación</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                          ¿Estás seguro de que deseas eliminar este producto?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="submit" class="btn btn-danger" form="eliminarForm<?php echo $producto['id']; ?>">Confirmar</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -168,8 +186,42 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
       </div>
     </div>
   </div>
-        </header>
 
+  <!-- Modal de éxito para edición -->
+  <div class="modal fade" id="successEditModal" tabindex="-1" aria-labelledby="successEditLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successEditLabel">Éxito</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          Los datos del producto se han actualizado correctamente.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="acceptSuccessEdit" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de error para edición -->
+  <div class="modal fade" id="errorEditModal" tabindex="-1" aria-labelledby="errorEditLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorEditLabel">Error</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body" id="errorMessage">
+          Ha ocurrido un error al actualizar los datos.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -178,6 +230,9 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
         e.preventDefault();
 
         const formData = new FormData(form);
+        const modalElement = form.closest('.modal');
+        const successModal = new bootstrap.Modal(document.getElementById('successEditModal'));
+        const errorModal = new bootstrap.Modal(document.getElementById('errorEditModal'));
 
         fetch('../app/controllers/editar_producto.php', {
             method: 'POST',
@@ -186,17 +241,20 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
           .then(resp => resp.text())
           .then(respuesta => {
             if (respuesta.includes("actualizado=1") || respuesta.trim() === "") {
-              const modalElement = form.closest('.modal');
-              const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+              const modal = bootstrap.Modal.getInstance(modalElement);
               modal.hide();
-
-              location.reload();
+              successModal.show();
+              document.getElementById('acceptSuccessEdit').addEventListener('click', () => {
+                location.reload();
+              }, { once: true });
             } else {
-              alert("Error al actualizar: " + respuesta);
+              document.getElementById('errorMessage').textContent = "Error al actualizar: " + respuesta;
+              errorModal.show();
             }
           })
           .catch(error => {
-            console.error("Error al enviar el formulario:", error);
+            document.getElementById('errorMessage').textContent = "Error al enviar el formulario: " + error.message;
+            errorModal.show();
           });
       });
     });

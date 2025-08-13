@@ -75,15 +75,15 @@
 }
 
 #confirmarCompraModal .btn-success {
-  background-color: #1a6642;
-  border-color: #1a6642;
+  background-color: #268de7;
+  border-color: #268de7;
   color: #fff;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 #confirmarCompraModal .btn-success:hover {
-  background-color: #145332;
-  border-color: #145332;
+  background-color: #14458e;
+  border-color: #14458e;
 }
 
 #addProductModal .btn-primary,
