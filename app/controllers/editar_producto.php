@@ -32,14 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
         }
         $res->close();
 
-        $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=?, oferta=$oferta, imagen=? WHERE id=?";
-        $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssdiissi", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $nombreImagen, $id);
+    $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=?, oferta=?, imagen=? WHERE id=?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("ssdiissi", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $nombreImagen, $id);
     } else {
         // Sin cambiar imagen
-        $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=?, oferta=? WHERE id=?";
-        $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssdiisii", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $id);
+    $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=?, oferta=? WHERE id=?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("ssdiisi", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $id);
     }
 
     $stmt->execute();

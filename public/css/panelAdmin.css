@@ -1,70 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu";
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Variables de color */
+:root {
+    --body-color: #E4E9F7;
+    --nav-color: #1683CE;
+    --side-nav: #1683CE;
+    --text-color: #fff;
+    --search-bar: #f2f2f2;
+    --search-text: #010718;
+}
+
+/* Estilos de la página principal */
 body {
-        background-color: #fff;
+    height: 100vh;
+}
+
+
+
+/* Estilos de la barra de navegación */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100%;
+    padding: 0 50px;
+    background-color: var(--nav-color);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 12px rgba(22, 131, 206, 0.12);
+}
+
+.logo-toggle .logo img {
+    height: 70px;
+    margin-right: 18px;
+}
+
+nav h2 {
+    color: var(--text-color);
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.container {
+    margin-top: 120px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(44, 62, 80, 0.08);
+    padding: 32px 24px;
+    max-width: 1200px;
+}
+
+.nav-tabs {
+    border-bottom: 2px solid #1683CE;
+}
+
+.nav-tabs .nav-link {
+    color: #1683CE;
+    font-weight: 500;
+    border-radius: 8px 8px 0 0;
+    margin-right: 8px;
+    background: #f2f2f2;
+    border: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-tabs .nav-link.active {
+    background: #1683CE;
+    color: #fff;
+}
+
+.card {
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.10);
+    margin-bottom: 24px;
+    border: none;
+    background: #f8f9fa;
+}
+
+.card-img-top {
+    border-radius: 16px 16px 0 0;
+}
+
+.card-body h5 {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #1683CE;
+}
+
+.card-body p {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.btn {
+    font-size: 1em;
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 8px 18px;
+    box-shadow: 0 2px 8px rgba(22, 131, 206, 0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-success {
+    background: #1683CE;
+    color: #fff;
+    border: none;
+}
+
+.btn-success:hover {
+    background: #0d5fa5;
+    color: #fff;
+}
+
+.btn-primary {
+    background: #1683CE;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #0d5fa5;
+    color: #fff;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background: #a71d2a;
+    color: #fff;
+}
+
+.modal-content {
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(44, 62, 80, 0.10);
+}
+
+.modal-header,
+.modal-footer {
+    border: none;
+}
+
+.modal-title {
+    color: #1683CE;
+    font-weight: 600;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #1683CE;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1.5px solid #1683CE;
+    box-shadow: 0 2px 8px rgba(22, 131, 206, 0.08);
+    font-size: 1em;
+}
+
+.form-check-input:checked {
+    background-color: #1683CE;
+    border-color: #1683CE;
+}
+
+.alert-success {
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 500;
+    background: linear-gradient(90deg, #43e97b 60%, #1683CE 100%);
+    color: #fff;
+    border: none;
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding: 18px 8px;
+        max-width: 98vw;
     }
+
     nav {
-        background-color: #0d6efd;
-        padding: 1rem;
+        padding: 0 12px;
     }
-    .navbar-brand {
-        color: white;
-        font-weight: bold;
-        font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 110px;
+        padding: 8px 2px;
     }
-    .navbar-nav .nav-link {
-        color: white;
-        font-weight: 500;
-    }
-    h2, h3 {
-        color: #343a40;
-    }
+
     .card {
-        margin-bottom: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease-in-out;
+        margin-bottom: 16px;
     }
-    .card:hover {
-        transform: scale(1.02);
+
+    nav h2 {
+        font-size: 1.2em;
     }
-    .card h5 {
-        font-weight: bold;
-        color: #0d6efd;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 6px 2px;
+        max-width: 99vw;
+        margin-top: 100px;
     }
-    .card p {
-        margin-bottom: 5px;
+
+    .nav-tabs {
+        flex-direction: column;
+        border-bottom: none;
     }
-    .btn {
-        font-weight: 500;
+
+    .nav-tabs .nav-link {
+        margin-bottom: 6px;
+        font-size: 1em;
+        padding: 10px 8px;
     }
+
+    .card {
+        margin-bottom: 12px;
+        box-shadow: 0 1px 6px rgba(44, 62, 80, 0.10);
+    }
+
+    .modal-content {
+        padding: 8px 2px;
+    }
+
+    .form-label,
     .modal-title {
-        font-weight: bold;
+        font-size: 1em;
     }
-    .alert {
-        max-width: 500px;
-        margin: 0 auto;
+
+    nav {
+        height: 70px;
+        padding: 0 4px;
     }
-    @media (max-width: 360px) {
-        .logo img {
-            height: 60px;
-        }
-        .navbar-nav {
-            font-size: 0.9rem;
-        }
+
+    nav h2 {
+        font-size: 1em;
     }
-    .modal {
-        overflow-y: auto;
-        z-index: 1055;
+
+    .logo-toggle .logo img {
+        height: 40px;
     }
-    .modal-backdrop {
-        z-index: 1050;
-    }
-    body.modal-open {
-        overflow: hidden;
-    }
-    .modal-dialog {
-        margin-top: 10vh;
-    }
-    .card-img-top {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
+}
