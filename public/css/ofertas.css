@@ -532,7 +532,7 @@ nav .nav-bar .logo a {
 }
 
 .producto {
-    background-color: var(--nav-color); 
+    
     color: var(--text-color);
     width: 200px;
     padding: 15px;

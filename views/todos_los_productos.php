@@ -239,6 +239,7 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
       </ul>
     </div>
   </footer>
+  <script src="../public/js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
