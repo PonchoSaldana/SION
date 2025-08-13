@@ -407,10 +407,18 @@ include("../config/sesion.php");
         modal.show();
     });
 
+<<<<<<< HEAD
     // Botón dentro del modal para confirmar la compra
     document.getElementById('confirmarCompraModalBtn').addEventListener('click', () => {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const compras = JSON.parse(localStorage.getItem('compras')) || [];
+=======
+            // Agregar productos con estado
+            const nuevasCompras = carrito.map(producto => ({
+                ...producto,
+                estado: "Esperando al cliente..."
+            }));
+>>>>>>> 3510c0672c1f1fb42c3d47b0cb35c3976f62253d
 
         // Guardar los productos del carrito en las compras
         const nuevasCompras = carrito.map(producto => ({
