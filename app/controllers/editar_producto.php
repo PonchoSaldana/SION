@@ -1,52 +1,90 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
-    $id = $_POST['id'];
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $precio = $_POST['precio'];
-    $cantidad = $_POST['cantidad'];
-    $categoria = $_POST['categoria'];
-    $oferta = isset($_POST['oferta']) ? 1 : 0; // ✅ checkbox de oferta
+    // Sanitizar y validar entradas
+    $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
+    $nombre = filter_var(trim($_POST['nombre']), FILTER_SANITIZE_STRING);
+    $descripcion = filter_var(trim($_POST['descripcion']), FILTER_SANITIZE_STRING);
+    $precio = filter_var($_POST['precio'], FILTER_VALIDATE_FLOAT);
+    $cantidad = filter_var($_POST['cantidad'], FILTER_VALIDATE_INT);
+    $categoria = filter_var(trim($_POST['categoria']), FILTER_SANITIZE_STRING);
+    $oferta = isset($_POST['oferta']) ? 1 : 0;
+
+    // Validar campos requeridos
+    if (!$id || !$nombre || !$descripcion || !$precio || !$cantidad || !$categoria) {
+        header("Location: ../../views/panelAdmin.php?error=datos_invalidos");
+        exit();
+    }
+
+    // Validar categoría
+    $categorias_validas = ['Antenas', 'Cámaras', 'Cables', 'Conectores', 'Módems', 'Switches', 'Routers'];
+    if (!in_array($categoria, $categorias_validas)) {
+        header("Location: ../../views/panelAdmin.php?error=categoria_invalida");
+        exit();
+    }
 
     $conexion = new mysqli("localhost", "root", "", "sion_db");
 
     if ($conexion->connect_error) {
-        die("Conexión fallida: " . $conexion->connect_error);
+        header("Location: ../../views/panelAdmin.php?error=conexion_fallida");
+        exit();
     }
 
-    // Si se sube nueva imagen
+    // Manejo de la imagen
+    $nombreImagen = null;
     if (!empty($_FILES["imagen"]["name"])) {
-        $carpeta = "uploads/";
+        $carpeta = "../public/uploads/";
         $nombreImagen = time() . "_" . basename($_FILES["imagen"]["name"]);
         $rutaImagen = $carpeta . $nombreImagen;
 
-        move_uploaded_file($_FILES["imagen"]["tmp_name"], $rutaImagen);
+        // Validar tipo y tamaño de la imagen
+        $tiposPermitidos = ['image/jpeg', 'image/png', 'image/gif'];
+        $tamanoMaximo = 5 * 1024 * 1024; // 5MB
+        if (!in_array($_FILES["imagen"]["type"], $tiposPermitidos) || $_FILES["imagen"]["size"] > $tamanoMaximo) {
+            header("Location: ../../views/panelAdmin.php?error=imagen_invalida");
+            exit();
+        }
 
-        // Eliminar imagen anterior (segura)
+        if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $rutaImagen)) {
+            header("Location: ../../views/panelAdmin.php?error=error_subida_imagen");
+            exit();
+        }
+
+        // Eliminar imagen anterior
         $res = $conexion->prepare("SELECT imagen FROM productos WHERE id = ?");
         $res->bind_param("i", $id);
         $res->execute();
         $res->bind_result($imagenAnterior);
-        if ($res->fetch() && file_exists("uploads/" . $imagenAnterior)) {
-            unlink("uploads/" . $imagenAnterior);
+        if ($res->fetch() && $imagenAnterior && file_exists("../public/uploads/" . $imagenAnterior)) {
+            unlink("../public/uploads/" . $imagenAnterior);
         }
         $res->close();
+    }
 
-        $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=?, oferta=$oferta, imagen=? WHERE id=?";
+    // Preparar la consulta SQL
+    if ($nombreImagen) {
+        $sql = "UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, cantidad = ?, categoria = ?, oferta = ?, imagen = ? WHERE id = ?";
         $stmt = $conexion->prepare($sql);
         $stmt->bind_param("ssdiissi", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $nombreImagen, $id);
     } else {
-        // Sin cambiar imagen
-        $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, cantidad=?, categoria=?, oferta=? WHERE id=?";
+        $sql = "UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, cantidad = ?, categoria = ?, oferta = ? WHERE id = ?";
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssdiisii", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $id);
+        $stmt->bind_param("ssdiisi", $nombre, $descripcion, $precio, $cantidad, $categoria, $oferta, $id);
     }
 
-    $stmt->execute();
-    $stmt->close();
-    $conexion->close();
-
-    header("Location: ../../views/panelAdmin.php?editado=1");
+    // Ejecutar y manejar errores
+    if ($stmt->execute()) {
+        $stmt->close();
+        $conexion->close();
+        header("Location: ../../views/panelAdmin.php?editado=1");
+        exit();
+    } else {
+        $stmt->close();
+        $conexion->close();
+        header("Location: ../../views/panelAdmin.php?error=error_actualizacion");
+        exit();
+    }
+} else {
+    header("Location: ../../views/panelAdmin.php?error=datos_no_enviados");
     exit();
 }
 ?>

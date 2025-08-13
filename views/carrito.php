@@ -11,12 +11,16 @@ include("../config/sesion.php");
     <title>Sion Wireless - Carrito</title>
     <link rel="shortcut icon" href="../public/img/LOGO/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../public/css/carrito.css">
+    <link rel="stylesheet" href="../public/css/modales.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!--BOTON DE Boxicons----------------------------------------------------------->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </head>
 
 <body>
+
     <!--ENCABEZADO----------------------------------------------------------->
     <nav>
         <div class="nav-bar">
@@ -111,7 +115,28 @@ include("../config/sesion.php");
                             <span>Total</span>
                             <span class="value" id="grand-total">$0</span>
                         </div>
-                        <button class="buy-button" id="comprarTodo">Comprar</button>
+                      <!-- Botón de Comprar en el resumen -->
+                        <button class="buy-button" type="button" id="confirmarCompraBtn">Comprar</button>
+
+                        <!-- Modal de confirmación de compra -->
+                        <div class="modal fade" id="confirmarCompraModal" tabindex="-1" aria-labelledby="confirmarCompraLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmarCompraLabel">Confirmar compra</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            </div>
+                            <div class="modal-body">
+                                ¿Estás seguro que quieres realizar esta compra?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success" id="confirmarCompraModalBtn">Realizar compra</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        
                     </div>
                 </div>
 
@@ -362,31 +387,61 @@ include("../config/sesion.php");
     </script>
     
     <script>
-        document.getElementById('comprarTodo').addEventListener('click', () => {
-            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    document.addEventListener('DOMContentLoaded', () => {
+    // Botón principal de "Comprar" que abre el modal
+    document.getElementById('confirmarCompraBtn').addEventListener('click', () => {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-            if (carrito.length === 0) {
-                alert("Tu carrito está vacío.");
-                return;
-            }
+        if (carrito.length === 0) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Carrito vacío',
+                text: 'No tienes productos en tu carrito.',
+                confirmButtonText: 'Ok'
+            });
+            return;
+        }
 
-            // Recuperar compras existentes o inicializar
-            const compras = JSON.parse(localStorage.getItem('compras')) || [];
+        // Mostrar el modal de confirmación
+        const modal = new bootstrap.Modal(document.getElementById('confirmarCompraModal'));
+        modal.show();
+    });
 
-            // Agregar productos con estado
-            const nuevasCompras = carrito.map(producto => ({
-                ...producto,
-                estado: "Esperando al cliente"
-            }));
+    // Botón dentro del modal para confirmar la compra
+    document.getElementById('confirmarCompraModalBtn').addEventListener('click', () => {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const compras = JSON.parse(localStorage.getItem('compras')) || [];
 
-            const actualizadas = [...compras, ...nuevasCompras];
-            localStorage.setItem('compras', JSON.stringify(actualizadas));
+        // Guardar los productos del carrito en las compras
+        const nuevasCompras = carrito.map(producto => ({
+            ...producto,
+            estado: "Esperando al cliente"
+        }));
 
-            // Vaciar carrito
-            localStorage.removeItem('carrito');
-            window.location.href = "compras.php";
+        const actualizadas = [...compras, ...nuevasCompras];
+        localStorage.setItem('compras', JSON.stringify(actualizadas));
+
+        // Limpiar el carrito
+        localStorage.removeItem('carrito');
+
+        // Mostrar mensaje de éxito
+        Swal.fire({
+            icon: 'success',
+            title: 'Compra realizada',
+            text: 'Tu pedido ha sido registrado.',
+            confirmButtonText: 'Ver mis compras'
+        }).then(() => {
+            window.location.href = 'compras.php';
         });
+
+        // Cerrar el modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('confirmarCompraModal'));
+        modal.hide();
+    });
+});
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

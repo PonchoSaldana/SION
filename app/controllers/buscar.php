@@ -94,7 +94,7 @@ $resultado = $stmt->get_result();
                 </div>
 
                 <div class="search-field">
-                    <form action="../app/controllers/buscar.php" method="GET">
+                    <form action="../../app/controllers/buscar.php" method="GET">
                         <input type="text" name="q" placeholder="Buscar productos..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                         <button type="submit"><i class='bx bx-search'></i></button>
                     </form>

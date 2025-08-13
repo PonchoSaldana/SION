@@ -8,7 +8,9 @@ if ($conexion->connect_error) {
 }
 
 $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
-?><!DOCTYPE html><html lang="es">
+?>
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,100 +95,152 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
             <p class="price">$<?= number_format($row['precio'], 2) ?></p>
             <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
             <a href="#" class="btn btn-outline-info">Más detalles</a>
+            
+            <!-- Botón de favorito -->
+            <button type="button" 
+                    class="btn btn-outline-danger btn-fav" 
+                    style="margin-top:5px; display: inline-flex; align-items: center; gap: 5px;"
+                    data-nombre="<?= htmlspecialchars($row['nombre']) ?>"
+                    data-precio="<?= number_format($row['precio'], 2) ?>"
+                    data-imagen="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>">
+                <i class='bx bx-heart'></i> Favorito
+            </button>
           </div>
         <?php endwhile; ?>
-      </div>
+      </div>     
     </section>
-  </main>  <script>
-    const contadorCarrito = document.getElementById('productos');
-    let productosEnCarrito = 0;
+  </main>  
 
-    function actualizarContador() {
-      contadorCarrito.textContent = productosEnCarrito;
+  <!-- Modal de notificación -->
+  <div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <i id="modalIcono" class="bx"></i>
+          <p id="modalTexto"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script favoritos y carrito -->
+  <script>
+    // ----------- FUNCIONES FAVORITOS ------------
+    function obtenerFavoritos() {
+      return JSON.parse(localStorage.getItem('favoritos')) || [];
     }
 
-    const botonesAgregar = document.querySelectorAll('.product-card button');
-    botonesAgregar.forEach(button => {
-      button.addEventListener('click', () => {
-        productosEnCarrito++;
-        actualizarContador();
+    function guardarFavoritos(favoritos) {
+      localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    }
+
+    function mostrarModal(mensaje, icono, color) {
+      document.getElementById("modalTexto").innerText = mensaje;
+      const iconElem = document.getElementById("modalIcono");
+      iconElem.className = `bx ${icono}`;
+      iconElem.style.fontSize = "2rem";
+      iconElem.style.color = color;
+
+      const modal = new bootstrap.Modal(document.getElementById("mensajeModal"));
+      modal.show();
+
+      setTimeout(() => {
+        modal.hide();
+      }, 1500);
+    }
+
+    function toggleFavorito(nombre, precio, imagen, boton) {
+      let favoritos = obtenerFavoritos();
+      let existe = favoritos.find(p => p.nombre === nombre);
+
+      if (existe) {
+        // Si el producto ya está en favoritos, eliminarlo
+        favoritos = favoritos.filter(p => p.nombre !== nombre);
+        guardarFavoritos(favoritos);
+        boton.classList.remove('active');
+        mostrarModal("Eliminado de favoritos", "bx-heart", "gray");
+      } else {
+        // Si no está en favoritos, agregarlo
+        favoritos.push({ nombre, precio, imagen });
+        guardarFavoritos(favoritos);
+        boton.classList.add('active');
+        mostrarModal("Agregado a favoritos", "bx-heart", "red");
+      }
+    }
+
+    // ----------- FUNCIONES CARRITO ------------
+    function obtenerCarrito() {
+      return JSON.parse(localStorage.getItem('carrito')) || [];
+    }
+
+    function guardarCarrito(carrito) {
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+
+    function agregarAlCarrito(nombre, precio, imagen) {
+      let carrito = obtenerCarrito();
+      let existente = carrito.find(p => p.nombre === nombre);
+      if (existente) {
+        existente.cantidad += 1;
+      } else {
+        carrito.push({ nombre, precio, imagen, cantidad: 1 });
+      }
+      guardarCarrito(carrito);
+      mostrarModal("Agregado al carrito", "bx-cart", "green");
+    }
+
+    // Asignar eventos a los botones al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+      const favoritos = obtenerFavoritos();
+
+      document.querySelectorAll('.product-card').forEach(card => {
+        const nombre = card.querySelector('h3').innerText;
+        const precio = parseFloat(card.querySelector('.price').innerText.replace('$', ''));
+        const imagen = card.querySelector('img').getAttribute('src');
+        const botonFavorito = card.querySelector('.btn-fav');
+
+        // Verificar si el producto está en favoritos y aplicar clase 'active'
+        if (favoritos.some(p => p.nombre === nombre)) {
+          botonFavorito.classList.add('active');
+        }
+
+        // Evento para el botón de favoritos
+        botonFavorito.addEventListener('click', (e) => {
+          e.preventDefault(); // Evitar comportamiento predeterminado
+          toggleFavorito(nombre, precio, imagen, botonFavorito);
+        });
+
+        // Evento para el botón de carrito
+        card.querySelector('.btn-outline-success').addEventListener('click', () => {
+          agregarAlCarrito(nombre, precio, imagen);
+        });
       });
     });
   </script>
-    <script>
-        // Script del contador del carrito
-        const contadorCarrito = document.getElementById('productos');
-        let productosEnCarrito = 0;
 
-        function actualizarContador() {
-            contadorCarrito.textContent = productosEnCarrito;
-        }
-        const botonesAgregar = document.querySelectorAll('.product-card button');
-        botonesAgregar.forEach(button => {
-            button.addEventListener('click', () => {
-                productosEnCarrito++;
-                actualizarContador();
-            });
-        });
-    </script>
-    <!-------------------------------------------------------------------------------->
-    <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
-    <footer class="main-footer">
-        <div class="footer-section footer-logo">
-            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
-            <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
-        </div>
-        <div class="footer-section">
-            <h4>Contacto</h4>
-            <ul>
-                <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
-                <li><a href="tel:+525555555555">55-5555-5555</a></li>
-                <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Empresa</h4>
-            <ul>
-                <li><a href="#">Política de privacidad</a></li>
-                <li><a href="#">Términos y condiciones</a></li>
-            </ul>
-        </div>
-    </footer>
+  <footer class="main-footer">
+    <div class="footer-section footer-logo">
+      <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
+      <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
+        <li><a href="tel:+525555555555">55-5555-5555</a></li>
+        <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Términos y condiciones</a></li>
+      </ul>
+    </div>
+  </footer>
 
-  <script src="../public/js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
-
-   <script>
-  function obtenerCarrito() {
-    return JSON.parse(localStorage.getItem('carrito')) || [];
-  }
-
-  function guardarCarrito(carrito) {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-  }
-
-  function agregarAlCarrito(nombre, precio, imagen) {
-    let carrito = obtenerCarrito();
-
-    // Revisa si ya está en el carrito
-    let existente = carrito.find(p => p.nombre === nombre);
-    if (existente) {
-      existente.cantidad += 1;
-    } else {
-      carrito.push({ nombre, precio, imagen, cantidad: 1 });
-    }
-
-    guardarCarrito(carrito);
-  }
-
-  document.querySelectorAll('.product-card').forEach(card => {
-    const nombre = card.querySelector('h3').innerText;
-    const precio = parseFloat(card.querySelector('.price').innerText.replace('$', ''));
-    const imagen = card.querySelector('img').getAttribute('src');
-
-    card.querySelector('button').addEventListener('click', () => {
-      agregarAlCarrito(nombre, precio, imagen);
-    });
-  });
-</script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

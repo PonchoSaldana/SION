@@ -672,3 +672,58 @@ nav .nav-bar .logo a {
         box-sizing: border-box; /* Asegura que el padding no desborde el botón */
     }
 }
+
+/* Contenedor de productos */
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Estilo de la tarjeta de producto */
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de la imagen */
+.product-card img {
+  width: 100%;
+  height: 120px; /* Tamaño más pequeño, consistente con todos_los_productos.php */
+  object-fit: cover; /* Recorta sin deformar */
+  border-radius: 8px;
+}
+
+/* Estilo del título */
+.product-card h3 {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+/* Estilo de la descripción */
+.product-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+/* Estilo del precio */
+.product-card .price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  margin: 10px 0;
+}
+
+/* Estilo de los botones */
+.product-card .btn {
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px;
+  font-size: 0.9rem;
+}
