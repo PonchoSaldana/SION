@@ -917,3 +917,63 @@ h1 {
         width: 300px;
     }
 }
+
+
+
+  .btn-info { background-color: #17a2b8; border-color: #17a2b8; }
+  .btn-info:hover { background-color: #138496; }
+  .btn-fav.active i { color: #dc3545; }
+  .btn-fav i { color: #6c757d; }
+
+  .modal-body {
+    background-color: #e9f5f8; /* Light blue background like the image */
+    padding: 20px;
+  }
+
+  .modal-image {
+    flex: 0 0 200px;
+    margin-right: 20px;
+  }
+
+  .modal-details {
+    flex: 1;
+  }
+
+  .modal-details p {
+    margin: 5px 0;
+    color: #333;
+  }
+
+  .modal-footer .btn-outline-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+  }
+
+  .modal-footer .btn-outline-success:hover {
+    background-color: #218838;
+  }
+
+  .modal-footer .btn-outline-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+  }
+
+  .modal-footer .btn-outline-danger:hover {
+    background-color: #c82333;
+  }
+
+  .modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+  }
+
+  .modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+
+  .modal-footer {
+    justify-content: space-between;
+  }

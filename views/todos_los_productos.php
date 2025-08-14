@@ -1,13 +1,11 @@
 <?php
-    include("../config/sesion.php");
-?>
-<?php
+include("../config/sesion.php");
 $conexion = new mysqli("localhost", "root", "", "sion_db");
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-$productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
+$productos_bd = $conexion->query("SELECT id, nombre, precio, imagen, descripcion FROM productos ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,6 +18,16 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
   <link rel="stylesheet" href="../public/css/todos_los_productos.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .btn-info { background-color: #17a2b8; border-color: #17a2b8; }
+    .btn-info:hover { background-color: #138496; }
+    .btn-fav.active i { color: #dc3545; }
+    .btn-fav i { color: #6c757d; }
+    /* Ensure modals don't have conflicting animations */
+    .modal.fade .modal-dialog {
+      transition: transform 0.3s ease-out;
+    }
+  </style>
 </head>
 <body>
    <!--ENCABEZADO----------------------------------------------------------->
@@ -54,7 +62,7 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
                     <li><a href="todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li><a href="panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -91,10 +99,9 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
           <div class="product-card">
             <img src="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre']) ?>">
             <h3><?= htmlspecialchars($row['nombre']) ?></h3>
-            <p><?= htmlspecialchars($row['descripcion']) ?></p>
             <p class="price">$<?= number_format($row['precio'], 2) ?></p>
-            <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-            <a href="#" class="btn btn-outline-info">Más detalles</a>
+            <button type="button" class="btn btn-outline-success" data-nombre="<?= htmlspecialchars($row['nombre']) ?>" data-precio="<?= number_format($row['precio'], 2) ?>" data-imagen="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>">Agregar al carrito</button><br>
+            <button type="button" class="btn btn-outline-info details-btn" data-id="<?= $row['id'] ?>" data-nombre="<?= htmlspecialchars($row['nombre']) ?>" data-precio="<?= number_format($row['precio'], 2) ?>" data-imagen="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>" data-marca="<?= htmlspecialchars($row['marca'] ?? '') ?>" data-color="<?= htmlspecialchars($row['color'] ?? '') ?>" data-impedancia="<?= htmlspecialchars($row['impedancia'] ?? '') ?>" data-dimensiones="<?= htmlspecialchars($row['dimensiones'] ?? '') ?>" data-fabricante="<?= htmlspecialchars($row['fabricante'] ?? '') ?>" data-descripcion="<?= htmlspecialchars($row['descripcion'] ?? 'Sin descripción disponible.') ?>">Más detalles</button>
             
             <!-- Botón de favorito -->
             <button type="button" 
@@ -109,7 +116,38 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
         <?php endwhile; ?>
       </div>     
     </section>
-  </main>  
+</main>
+
+<!-- Modal para detalles del producto -->
+<div class="modal fade" id="productDetailsModal" tabindex="-1" aria-labelledby="productDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productDetailsModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body d-flex">
+        <div class="modal-image">
+          <img id="modalImage" src="" alt="Product Image" class="img-fluid" style="max-height: 200px; object-fit: contain;">
+        </div>
+        <div class="modal-details">
+          <p><strong>Marca:</strong> <span id="modalBrand"></span></p>
+          <p><strong>Color:</strong> <span id="modalColor"></span></p>
+          <p><strong>Impedancia:</strong> <span id="modalImpedance"></span></p>
+          <p><strong>Dimensiones del producto:</strong> <span id="modalDimensions"></span></p>
+          <p><strong>Fabricante:</strong> <span id="modalManufacturer"></span></p>
+          <p><strong>Precio:</strong> <span id="modalPrice"></span></p>
+          <p><strong>Descripción:</strong> <span id="modalDescription"></span></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" id="addToCartModalBtn">Agregar al carrito</button>
+        <button type="button" class="btn btn-outline-danger btn-fav" id="addToFavoritesModalBtn">Favoritos</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Modal de notificación -->
   <div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
@@ -154,16 +192,14 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
       let existe = favoritos.find(p => p.nombre === nombre);
 
       if (existe) {
-        // Si el producto ya está en favoritos, eliminarlo
         favoritos = favoritos.filter(p => p.nombre !== nombre);
         guardarFavoritos(favoritos);
-        boton.classList.remove('active');
+        if (boton) boton.classList.remove('active');
         mostrarModal("Eliminado de favoritos", "bx-heart", "gray");
       } else {
-        // Si no está en favoritos, agregarlo
         favoritos.push({ nombre, precio, imagen });
         guardarFavoritos(favoritos);
-        boton.classList.add('active');
+        if (boton) boton.classList.add('active');
         mostrarModal("Agregado a favoritos", "bx-heart", "red");
       }
     }
@@ -175,6 +211,7 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
 
     function guardarCarrito(carrito) {
       localStorage.setItem('carrito', JSON.stringify(carrito));
+      actualizarContadorCarrito();
     }
 
     function agregarAlCarrito(nombre, precio, imagen) {
@@ -189,15 +226,25 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
       mostrarModal("Agregado al carrito", "bx-cart", "green");
     }
 
-    // Asignar eventos a los botones al cargar la página
+    function actualizarContadorCarrito() {
+      let carrito = obtenerCarrito();
+      const count = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+      document.getElementById('productos').textContent = count;
+    }
+
+    // ----------- FUNCIONES MODAL DETALLES ------------
     document.addEventListener('DOMContentLoaded', () => {
+      actualizarContadorCarrito();
       const favoritos = obtenerFavoritos();
+      const modal = document.getElementById('productDetailsModal');
 
       document.querySelectorAll('.product-card').forEach(card => {
         const nombre = card.querySelector('h3').innerText;
         const precio = parseFloat(card.querySelector('.price').innerText.replace('$', ''));
         const imagen = card.querySelector('img').getAttribute('src');
         const botonFavorito = card.querySelector('.btn-fav');
+        const botonCarrito = card.querySelector('.btn-outline-success');
+        const botonDetalles = card.querySelector('.details-btn');
 
         // Verificar si el producto está en favoritos y aplicar clase 'active'
         if (favoritos.some(p => p.nombre === nombre)) {
@@ -206,14 +253,65 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
 
         // Evento para el botón de favoritos
         botonFavorito.addEventListener('click', (e) => {
-          e.preventDefault(); // Evitar comportamiento predeterminado
+          e.preventDefault();
           toggleFavorito(nombre, precio, imagen, botonFavorito);
         });
 
         // Evento para el botón de carrito
-        card.querySelector('.btn-outline-success').addEventListener('click', () => {
+        botonCarrito.addEventListener('click', () => {
           agregarAlCarrito(nombre, precio, imagen);
         });
+
+        // Evento para el botón de detalles
+        botonDetalles.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          // Populate modal with product data
+          document.getElementById('productDetailsModalLabel').textContent = botonDetalles.dataset.nombre;
+          document.getElementById('modalImage').src = botonDetalles.dataset.imagen;
+          document.getElementById('modalBrand').textContent = botonDetalles.dataset.marca;
+          document.getElementById('modalColor').textContent = botonDetalles.dataset.color;
+          document.getElementById('modalImpedance').textContent = botonDetalles.dataset.impedancia;
+          document.getElementById('modalDimensions').textContent = botonDetalles.dataset.dimensiones;
+          document.getElementById('modalManufacturer').textContent = botonDetalles.dataset.fabricante;
+          document.getElementById('modalPrice').textContent = `$ ${botonDetalles.dataset.precio}`;
+          document.getElementById('modalDescription').textContent = botonDetalles.dataset.descripcion;
+
+          // Set data for Add to Cart and Favorites buttons
+          document.getElementById('addToCartModalBtn').dataset.nombre = botonDetalles.dataset.nombre;
+          document.getElementById('addToCartModalBtn').dataset.precio = botonDetalles.dataset.precio;
+          document.getElementById('addToCartModalBtn').dataset.imagen = botonDetalles.dataset.imagen;
+          document.getElementById('addToFavoritesModalBtn').dataset.nombre = botonDetalles.dataset.nombre;
+          document.getElementById('addToFavoritesModalBtn').dataset.precio = botonDetalles.dataset.precio;
+          document.getElementById('addToFavoritesModalBtn').dataset.imagen = botonDetalles.dataset.imagen;
+
+          // Store reference to the original favorite button
+          const originalFavButton = card.querySelector('.btn-fav');
+          document.getElementById('addToFavoritesModalBtn').dataset.originalButtonId = originalFavButton.getAttribute('data-nombre'); // Use name as a unique identifier
+
+          new bootstrap.Modal(modal).show();
+        });
+      });
+
+      // Evento para agregar al carrito desde el modal
+      document.getElementById('addToCartModalBtn').addEventListener('click', () => {
+        const nombre = document.getElementById('addToCartModalBtn').dataset.nombre;
+        const precio = document.getElementById('addToCartModalBtn').dataset.precio;
+        const imagen = document.getElementById('addToCartModalBtn').dataset.imagen;
+        agregarAlCarrito(nombre, precio, imagen);
+        bootstrap.Modal.getInstance(modal).hide();
+      });
+
+      // Evento para agregar a favoritos desde el modal
+      document.getElementById('addToFavoritesModalBtn').addEventListener('click', () => {
+        const nombre = document.getElementById('addToFavoritesModalBtn').dataset.nombre;
+        const precio = document.getElementById('addToFavoritesModalBtn').dataset.precio;
+        const imagen = document.getElementById('addToFavoritesModalBtn').dataset.imagen;
+        const originalButtonId = document.getElementById('addToFavoritesModalBtn').dataset.originalButtonId;
+        const originalFavButton = document.querySelector(`.btn-fav[data-nombre="${originalButtonId}"]`);
+        toggleFavorito(nombre, precio, imagen, originalFavButton);
+        bootstrap.Modal.getInstance(modal).hide();
       });
     });
   </script>
@@ -239,9 +337,7 @@ $productos_bd = $conexion->query("SELECT * FROM productos ORDER BY id DESC");
       </ul>
     </div>
   </footer>
-  <script src="../public/js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
-
-  <!-- Bootstrap JS -->
+  <script src="../public/js/index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

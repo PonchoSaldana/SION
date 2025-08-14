@@ -637,3 +637,127 @@ nav .nav-bar .logo a {
     height: 50px;
     width: 300px;
 }
+
+/* Estilos para el banner */
+.my-cart-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+/* Estilos para los productos */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-card h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.price {
+    font-size: 1.1em;
+    color: #28a745;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Espacio uniforme entre botones */
+}
+
+.btn-outline-success,
+.btn-outline-info,
+.btn-outline-danger {
+    width: 100%; /* Asegura que todos los botones tengan el mismo ancho */
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+.btn-outline-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-outline-info:hover {
+    background-color: #138496;
+}
+
+.btn-outline-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn-fav.active i {
+    color: #dc3545;
+}
+
+.btn-fav i {
+    color: #6c757d;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.main-footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-section {
+    margin: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    color: #17a2b8;
+}
