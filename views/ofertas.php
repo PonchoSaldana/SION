@@ -18,11 +18,25 @@ if ($conexion->connect_error) {
     <link rel="stylesheet" href="../public/css/ofertas.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        .btn-info { background-color: #17a2b8; border-color: #17a2b8; }
-        .btn-info:hover { background-color: #138496; }
-        .btn-fav.active i { color: #dc3545; }
-        .btn-fav i { color: #6c757d; }
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        .btn-fav.active i {
+            color: #dc3545;
+        }
+
+        .btn-fav i {
+            color: #6c757d;
+        }
+
         .modal.fade .modal-dialog {
             transition: transform 0.3s ease-out;
         }
@@ -91,8 +105,17 @@ if ($conexion->connect_error) {
     </nav>
     <!--------------------------------------------------------------------------->
 
-    <main>
-        <h1 class="my-cart-title">Ofertas Exclusivas</h1>
+    <section class="banner">
+        <div class="banner-text">
+            <h2></h2><br>
+            <h1>Ofertas Exclusivas! <img width="100" height="100" src="https://img.icons8.com/fluency/96/hot-price.png" alt="hot-price"/></h1>
+            <p>¡Aprovecha los descuentos y ahorra en tus compras!</p>
+            <h1></h1>
+        </div>
+    </section>
+
+    <header><br><br>
+        <h1 class="my-cart-title"><img src="../public/img/ofertaico.png" height="100">¡Aprovecha los descuentos y ahorra en tus compras!<img src="../public/img/ofertaico.png" height="100"></h1>
         <section>
             <div class="product-container">
                 <?php
@@ -102,16 +125,16 @@ if ($conexion->connect_error) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()):
                 ?>
-                    <div class="product-card">
-                        <img src="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre']) ?>">
-                        <h3><?= htmlspecialchars($row['nombre']) ?></h3>
-                        <p class="price">$<?= number_format($row['precio'], 2) ?></p>
-                        <button type="button" class="btn btn-outline-success" data-nombre="<?= htmlspecialchars($row['nombre']) ?>" data-precio="<?= number_format($row['precio'], 2) ?>" data-imagen="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>">Agregar al carrito</button><br>
-                        <button type="button" class="btn btn-outline-info details-btn" data-id="<?= $row['id'] ?>" data-nombre="<?= htmlspecialchars($row['nombre']) ?>" data-precio="<?= number_format($row['precio'], 2) ?>" data-imagen="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>" data-descripcion="<?= htmlspecialchars($row['descripcion'] ?? 'Sin descripción disponible.') ?>">Más detalles</button>
-                        <button type="button" class="btn btn-outline-danger btn-fav" style="margin-top:5px; display: inline-flex; align-items: center; gap: 5px;" data-nombre="<?= htmlspecialchars($row['nombre']) ?>" data-precio="<?= number_format($row['precio'], 2) ?>" data-imagen="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>">
-                            <i class='bx bx-heart'></i> Favorito
-                        </button>
-                    </div>
+                        <div class="product-card">
+                            <img src="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre']) ?>">
+                            <h3><?= htmlspecialchars($row['nombre']) ?></h3>
+                            <p class="price">$<?= number_format($row['precio'], 2) ?></p>
+                            <button type="button" class="btn btn-outline-success" data-nombre="<?= htmlspecialchars($row['nombre']) ?>" data-precio="<?= number_format($row['precio'], 2) ?>" data-imagen="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>">Agregar al carrito</button><br>
+                            <button type="button" class="btn btn-outline-info details-btn" data-id="<?= $row['id'] ?>" data-nombre="<?= htmlspecialchars($row['nombre']) ?>" data-precio="<?= number_format($row['precio'], 2) ?>" data-imagen="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>" data-descripcion="<?= htmlspecialchars($row['descripcion'] ?? 'Sin descripción disponible.') ?>">Más detalles</button>
+                            <button type="button" class="btn btn-outline-danger btn-fav" style="margin-top:5px; display: inline-flex; align-items: center; gap: 5px;" data-nombre="<?= htmlspecialchars($row['nombre']) ?>" data-precio="<?= number_format($row['precio'], 2) ?>" data-imagen="../public/uploads/<?= htmlspecialchars($row['imagen']) ?>">
+                                <i class='bx bx-heart'></i> Favorito
+                            </button>
+                        </div>
                 <?php
                     endwhile;
                 } else {
@@ -121,67 +144,67 @@ if ($conexion->connect_error) {
                 ?>
             </div>
         </section>
-    </main>
 
-    <!-- Modal para detalles del producto -->
-    <div class="modal fade" id="productDetailsModal" tabindex="-1" aria-labelledby="productDetailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="productDetailsModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body d-flex">
-                    <div class="modal-image">
-                        <img id="modalImage" src="" alt="Product Image" class="img-fluid" style="max-height: 200px; object-fit: contain;">
+        <!-- Modal para detalles del producto -->
+        <div class="modal fade" id="productDetailsModal" tabindex="-1" aria-labelledby="productDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productDetailsModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
-                    <div class="modal-details">
-                        <p><strong>Descripción:</strong> <span id="modalDescription"></span></p>
+                    <div class="modal-body d-flex">
+                        <div class="modal-image">
+                            <img id="modalImage" src="" alt="Product Image" class="img-fluid" style="max-height: 200px; object-fit: contain;">
+                        </div>
+                        <div class="modal-details">
+                            <p><strong>Descripción:</strong> <span id="modalDescription"></span></p>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success" id="addToCartModalBtn">Agregar al carrito</button>
-                    <button type="button" class="btn btn-outline-danger btn-fav" id="addToFavoritesModalBtn">Favoritos</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" id="addToCartModalBtn">Agregar al carrito</button>
+                        <button type="button" class="btn btn-outline-danger btn-fav" id="addToFavoritesModalBtn">Favoritos</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal de notificación -->
-    <div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <i id="modalIcono" class="bx"></i>
-                    <p id="modalTexto"></p>
+        <!-- Modal de notificación -->
+        <div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <i id="modalIcono" class="bx"></i>
+                        <p id="modalTexto"></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
-    <footer class="main-footer">
-        <div class="footer-section footer-logo">
-            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
-            <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
-        </div>
-        <div class="footer-section">
-            <h4>Contacto</h4>
-            <ul>
-                <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
-                <li><a href="tel:+525555555555">55-5555-5555</a></li>
-                <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Empresa</h4>
-            <ul>
-                <li><a href="#">Política de privacidad</a></li>
-                <li><a href="#">Términos y condiciones</a></li>
-            </ul>
-        </div>
-    </footer>
+        <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
+        <footer class="main-footer">
+            <div class="footer-section footer-logo">
+                <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
+                <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
+                    <li><a href="tel:+525555555555">55-5555-5555</a></li>
+                    <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                </ul>
+            </div>
+        </footer>
+    </header>
     <!-------------------------------------------------------------------------------->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
@@ -221,7 +244,11 @@ if ($conexion->connect_error) {
                 boton.classList.remove('active');
                 mostrarModal("Eliminado de favoritos", "bx-heart", "#6c757d");
             } else {
-                favoritos.push({ nombre, precio, imagen });
+                favoritos.push({
+                    nombre,
+                    precio,
+                    imagen
+                });
                 guardarFavoritos(favoritos);
                 boton.classList.add('active');
                 mostrarModal("Agregado a favoritos", "bx-heart", "#dc3545");
@@ -244,7 +271,12 @@ if ($conexion->connect_error) {
             if (existente) {
                 existente.cantidad += 1;
             } else {
-                carrito.push({ nombre, precio, imagen, cantidad: 1 });
+                carrito.push({
+                    nombre,
+                    precio,
+                    imagen,
+                    cantidad: 1
+                });
             }
             guardarCarrito(carrito);
             mostrarModal("Agregado al carrito", "bx-cart", "#28a745");

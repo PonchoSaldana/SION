@@ -22,13 +22,6 @@ html {
     --search-text: #010718;
 }
 
-/* Estilos de la página principal */
-body {
-    height: 100vh;
-}
-
-
-
 /* Estilos de la barra de navegación */
 nav {
     position: fixed;
@@ -43,7 +36,9 @@ nav {
     align-items: center;
     box-shadow: 0 2px 12px rgba(22, 131, 206, 0.12);
 }
-
+header{
+    background: #76c8ff;
+}
 .logo-toggle .logo img {
     height: 70px;
     margin-right: 18px;
@@ -57,9 +52,18 @@ nav h2 {
     margin: 0;
 }
 
+.xd{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+
+}
+
 .container {
     margin-top: 120px;
-    background: #fff;
+    background: #1683CE;
     border-radius: 18px;
     box-shadow: 0 2px 16px rgba(44, 62, 80, 0.08);
     padding: 32px 24px;
@@ -71,11 +75,11 @@ nav h2 {
 }
 
 .nav-tabs .nav-link {
-    color: #1683CE;
+    color: #0069ae;
     font-weight: 500;
     border-radius: 8px 8px 0 0;
     margin-right: 8px;
-    background: #f2f2f2;
+    background: #f1f1f1;
     border: none;
     transition: background 0.2s, color 0.2s;
 }
@@ -87,7 +91,7 @@ nav h2 {
 
 .card {
     border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.10);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.758);
     margin-bottom: 24px;
     border: none;
     background: #f8f9fa;
@@ -191,7 +195,61 @@ nav h2 {
     color: #fff;
     border: none;
 }
+/* Pie de página */
+.main-footer {
+    background: linear-gradient(to right, #095b91, #00b4e0);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
+.footer-section {
+    flex-basis: 200px;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    max-height: 90px;
+    width: auto;
+}
+
+.footer-logo p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #f0f0f0;
+    text-decoration: underline;
+}
 @media (max-width: 900px) {
     .container {
         padding: 18px 8px;
@@ -199,7 +257,16 @@ nav h2 {
     }
 
     nav {
-        padding: 0 12px;
+        padding: 0 20px;
+    }
+
+    nav .nav-bar .logo a {
+        font-size: 24px;
+    }
+
+    .nav-bar .nav-links li a {
+        font-size: 16px;
+        text-align: center;
     }
 }
 
@@ -216,6 +283,16 @@ nav h2 {
     nav h2 {
         font-size: 1.2em;
     }
+        /* Pie de página */
+    .main-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        flex-basis: auto;
+    }
 }
 
 @media (max-width: 500px) {
@@ -223,11 +300,6 @@ nav h2 {
         padding: 6px 2px;
         max-width: 99vw;
         margin-top: 100px;
-    }
-
-    .nav-tabs {
-        flex-direction: column;
-        border-bottom: none;
     }
 
     .nav-tabs .nav-link {
@@ -251,7 +323,7 @@ nav h2 {
     }
 
     nav {
-        height: 70px;
+        height: 100px;
         padding: 0 4px;
     }
 
