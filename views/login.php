@@ -93,72 +93,125 @@ session_start();
     <div id="modal-alert" class="modal-alert"></div>
 
     <!-- JS -->
-    <script>
-        function togglePasswordVisibility(id) {
-            const input = document.getElementById(id);
-            input.type = input.type === 'password' ? 'text' : 'password';
-        }
+  <script>
+function togglePasswordVisibility(id) {
+    const input = document.getElementById(id);
+    input.type = input.type === 'password' ? 'text' : 'password';
+}
 
-        function toggleForm() {
-            const login = document.getElementById('form-login');
-            const registro = document.getElementById('form-registro');
-            login.classList.toggle('oculto');
-            registro.classList.toggle('oculto');
-        }
+function toggleForm() {
+    const login = document.getElementById('form-login');
+    const registro = document.getElementById('form-registro');
+    login.classList.toggle('oculto');
+    registro.classList.toggle('oculto');
+}
 
-        function showModal(message, type = 'error') {
-            const modal = document.getElementById('modal-alert');
-            modal.textContent = message;
-            modal.className = 'modal-alert show ' + type;
-            setTimeout(() => {
-                modal.classList.remove('show');
-            }, 3000);
-        }
+function showModal(message, type = 'error') {
+    const modal = document.getElementById('modal-alert');
+    modal.textContent = message;
+    modal.className = 'modal-alert show ' + type;
+    setTimeout(() => {
+        modal.classList.remove('show');
+    }, 3000);
+}
 
-        function validateRegistrationForm() {
-            const celular = document.querySelector('input[name="celular"]').value.trim();
-            const codigoPostal = document.querySelector('input[name="codigo_postal"]').value.trim();
-            const password = document.getElementById('register-password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
+function validateRegistrationForm(event) {
+    event.preventDefault(); // Evitar envío inmediato para depuración
+    const celular = document.querySelector('input[name="celular"]').value.trim();
+    const codigoPostal = document.querySelector('input[name="codigo_postal"]').value.trim();
+    const password = document.getElementById('register-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const correoInput = document.querySelector('input[name="correo"]');
+    const correo = correoInput.value.trim();
 
-            if (!/^\d{10}$/.test(celular)) {
-                showModal("El número de celular debe tener exactamente 10 dígitos numéricos.");
-                return false;
-            }
+    // Depuración avanzada
+    console.log("Correo ingresado (raw): '" + correoInput.value + "'");
+    console.log("Correo procesado (trim): '" + correo + "' (longitud: " + correo.length + ")");
+    console.log("Tipo de input: " + correoInput.type);
 
-            if (!/^\d{5}$/.test(codigoPostal)) {
-                showModal("El código postal debe tener exactamente 5 dígitos numéricos.");
-                return false;
-            }
+    // Desactivar validación HTML nativa temporalmente
+    correoInput.setAttribute('type', 'text');
 
-            if (password !== confirmPassword) {
-                showModal("Las contraseñas no coinciden.");
-                return false;
-            }
+    // Validar formato de correo
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    if (!emailRegex.test(correo)) {
+        console.log("Correo rechazado por regex");
+        showModal("Por favor, ingresa un correo electrónico válido.");
+        correoInput.setAttribute('type', 'email'); // Restaurar tipo
+        return false;
+    }
 
-            showModal("¡Registro exitoso!", "success");
+    // Restaurar tipo de input
+    correoInput.setAttribute('type', 'email');
 
-            return true; 
-        }
+    // Validar celular
+    if (!/^\d{10}$/.test(celular)) {
+        showModal("El número de celular debe tener exactamente 10 dígitos numéricos.");
+        return false;
+    }
 
-        const params = new URLSearchParams(window.location.search);
+    // Validar código postal
+    if (!/^\d{5}$/.test(codigoPostal)) {
+        showModal("El código postal debe tener exactamente 5 dígitos numéricos.");
+        return false;
+    }
 
+    // Validar contraseñas
+    if (password !== confirmPassword) {
+        showModal("Las contraseñas no coinciden.");
+        return false;
+    }
+
+    console.log("Formulario válido, permitiendo envío...");
+    event.target.submit(); // Enviar formulario manualmente
+    return true;
+}
+
+// Manejo de parámetros de URL para mensajes
+const params = new URLSearchParams(window.location.search);
 if (params.get("error") === "login") {
     showModal("Correo o contraseña incorrectos.");
 }
-
-if (params.get("registro") === "ok") {
-    showModal("¡Registro exitoso!", "success");
+if (params.get("success") === "registro") {
+    showModal("¡Registro exitoso! Revisa tu correo para verificar tu cuenta.", "success");
 }
-
 if (params.get("error") === "incorrecta") {
     showModal("Contraseña incorrecta.");
 }
-
 if (params.get("error") === "correo") {
     showModal("Correo no registrado.");
 }
-    </script>
+if (params.get("error") === "noverificado") {
+    showModal("Por favor, verifica tu correo antes de iniciar sesión.");
+}
+if (params.get("error") === "contrasenas") {
+    showModal("Las contraseñas no coinciden.");
+}
+if (params.get("error") === "correo_invalido") {
+    showModal("El correo electrónico no es válido (backend).");
+}
+if (params.get("error") === "correo_registrado") {
+    showModal("Este correo ya está registrado.");
+}
+if (params.get("error") === "correo_fallido") {
+    showModal("Error al enviar el correo de verificación.");
+}
+if (params.get("error") === "registro_fallido") {
+    showModal("Error al registrar el usuario.");
+}
+if (params.get("success") === "verificado") {
+    showModal("Correo verificado correctamente. Ahora puedes iniciar sesión.", "success");
+}
+if (params.get("error") === "verificacion_fallida") {
+    showModal("Error al verificar el correo.");
+}
+if (params.get("error") === "token_invalido") {
+    showModal("Token inválido o ya verificado.");
+}
+if (params.get("error") === "token_no_proporcionado") {
+    showModal("Token no proporcionado.");
+}
+</script>
     
     
 </body>

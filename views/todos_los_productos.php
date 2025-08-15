@@ -131,11 +131,6 @@ $productos_bd = $conexion->query("SELECT id, nombre, precio, imagen, descripcion
           <img id="modalImage" src="" alt="Product Image" class="img-fluid" style="max-height: 200px; object-fit: contain;">
         </div>
         <div class="modal-details">
-          <p><strong>Marca:</strong> <span id="modalBrand"></span></p>
-          <p><strong>Color:</strong> <span id="modalColor"></span></p>
-          <p><strong>Impedancia:</strong> <span id="modalImpedance"></span></p>
-          <p><strong>Dimensiones del producto:</strong> <span id="modalDimensions"></span></p>
-          <p><strong>Fabricante:</strong> <span id="modalManufacturer"></span></p>
           <p><strong>Precio:</strong> <span id="modalPrice"></span></p>
           <p><strong>Descripción:</strong> <span id="modalDescription"></span></p>
         </div>
@@ -270,11 +265,6 @@ $productos_bd = $conexion->query("SELECT id, nombre, precio, imagen, descripcion
           // Populate modal with product data
           document.getElementById('productDetailsModalLabel').textContent = botonDetalles.dataset.nombre;
           document.getElementById('modalImage').src = botonDetalles.dataset.imagen;
-          document.getElementById('modalBrand').textContent = botonDetalles.dataset.marca;
-          document.getElementById('modalColor').textContent = botonDetalles.dataset.color;
-          document.getElementById('modalImpedance').textContent = botonDetalles.dataset.impedancia;
-          document.getElementById('modalDimensions').textContent = botonDetalles.dataset.dimensiones;
-          document.getElementById('modalManufacturer').textContent = botonDetalles.dataset.fabricante;
           document.getElementById('modalPrice').textContent = `$ ${botonDetalles.dataset.precio}`;
           document.getElementById('modalDescription').textContent = botonDetalles.dataset.descripcion;
 
