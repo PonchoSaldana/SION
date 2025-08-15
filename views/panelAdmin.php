@@ -36,7 +36,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
   <?php endif; ?>
 
   <header><br><br>
-    <div class="alert alert-info text-center m-3">Bienvenido al panel de administración. Aquí puedes gestionar productos y pedidos.</div>
+    <div class="alert alert-info text-center m-3">Bienvenido al panel de administración. Aquí puedes gestionar productos, servicios y pedidos.</div>
   <div class="container mt-4">
     <ul class="nav nav-tabs" id="adminTabs">
       <li class="nav-item">
@@ -44,6 +44,10 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
       </li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="tab" href="#orders">Pedidos</a>
+      </li>
+          </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#services">Servicios</a>
       </li>
     </ul>
 
@@ -183,7 +187,10 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
       </div>
 
       <div class="tab-pane fade" id="orders">
-        <div class="xd"><h1>Aquí puedes gestionar los pedidos (funcionalidad pendiente).</h1></div>
+        <div class="xd"><h1>Aquí puedes gestionar los Pedidos.</h1></div>
+      </div>
+       <div class="tab-pane fade" id="services">
+        <div class="xd"><h1>Aquí puedes gestionar los Servicios.</h1></div>
       </div>
     </div>
   </div>
