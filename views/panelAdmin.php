@@ -35,6 +35,8 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
     <div class="alert alert-success text-center m-3">Producto eliminado con éxito.</div>
   <?php endif; ?>
 
+  <header><br><br>
+    <div class="alert alert-info text-center m-3">Bienvenido al panel de administración. Aquí puedes gestionar productos y pedidos.</div>
   <div class="container mt-4">
     <ul class="nav nav-tabs" id="adminTabs">
       <li class="nav-item">
@@ -47,7 +49,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
 
     <div class="tab-content mt-3">
       <div class="tab-pane fade show active" id="products">
-        <h3>Gestión de Productos</h3>
+        <div class="xd">Gestión de Productos</div>
         <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">Agregar Producto</button>
 
         <!-- Modal para agregar producto -->
@@ -58,7 +60,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                 <div class="modal-header">
                   <h5 class="modal-title" id="addProductModalLabel">Agregar Producto</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
+                </div><div class="alert alert-warning text-center m-3">Recuerda que cualquier cambio que realices aquí afectará directamente a la tienda.</div>
                 <div class="modal-body">
                   <div class="mb-3"><label class="form-label">Nombre</label><input type="text" class="form-control" name="nombre" required></div>
                   <div class="mb-3"><label class="form-label">Descripción</label><input type="text" class="form-control" name="descripcion" required></div>
@@ -181,11 +183,34 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
       </div>
 
       <div class="tab-pane fade" id="orders">
-        <h3>Pedidos</h3>
-        <p>Aquí puedes gestionar los pedidos (funcionalidad pendiente).</p>
+        <div class="xd"><h1>Aquí puedes gestionar los pedidos (funcionalidad pendiente).</h1></div>
       </div>
     </div>
   </div>
+  <br><br><br><br><br><br><br>
+  <footer class="main-footer">
+        <div class="footer-section footer-logo">
+            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
+            <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
+                <li><a href="tel:+525555555555">55-5555-5555</a></li>
+                <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Empresa</h4>
+            <ul>
+                <li><a href="#">Política de privacidad</a></li>
+                <li><a href="#">Términos y condiciones</a></li>
+                <li><a href="#">Promoción y ofertas</a></li>
+            </ul>
+        </div>
+    </footer>
+  </header>
 
   <!-- Modal de éxito para edición -->
   <div class="modal fade" id="successEditModal" tabindex="-1" aria-labelledby="successEditLabel" aria-hidden="true">
