@@ -193,6 +193,7 @@ include("config/sesion.php");
         </div>
     </section>
     <!-------------------------------------------------------------------------------->
+
     <!--SECCIÓN DE PIE DE PÁGINA--------------------------------------------------------->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
@@ -216,6 +217,7 @@ include("config/sesion.php");
         </div>
     </footer>
     <!-------------------------------------------------------------------------------->
+    
     <script src="public/js/index.js"></script><!-- Script para el carrusel y menu responsivo-->
 </body>
 
