@@ -162,7 +162,7 @@ if (isset($_GET['success'])) {
                 <div class="carousel" id="productCarousel">
                     <div class="product-cardxd">
                         <div class="product-image-container">
-                            <img src="../public/img/descarga (1).jpeg" alt="Cámara de seguridad analógica 1080P al aire libre" class="product-image">
+                            <img src="../public/img/imagen2ofertas.jpg" alt="Cámara de seguridad analógica 1080P al aire libre" class="product-image">
                         </div>
                         <div class="product-details">
                             <p class="product-description">Cámara de seguridad analógica 1080P al aire libre IP66 cámara de vigilancia CCTV...</p>
@@ -186,7 +186,7 @@ if (isset($_GET['success'])) {
                     </div>
                     <div class="product-cardxd">
                         <div class="product-image-container">
-                            <img src="../public/img/images (4).jpeg" alt="Antena de TV Mitzu Interior Negro TV-8000" class="product-image">
+                            <img src="../public/img/antena 1.2.jpg" alt="Antena de TV Mitzu Interior Negro TV-8000" class="product-image">
                         </div>
                         <div class="product-details">
                             <p class="product-description">Antena de TV Mitzu Interior Negro TV-8000</p>
@@ -205,7 +205,7 @@ if (isset($_GET['success'])) {
                             <div class="product-price-section">
                                 $700
                             </div>
-                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 700, '../public/img/descarga.jpeg')">Agregar al carrito</button>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 2099, '../public/img/descarga.jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                     <div class="product-cardxd">
@@ -213,7 +213,7 @@ if (isset($_GET['success'])) {
                             <img src="../public/img/images (3).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
                         </div>
                         <div class="product-details">
-                            <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
+                            <p class="product-description">TL-WR940N 4500Mbps Wireless X Switch</p>
                             <div class="product-price-section">
                                 $700
                             </div>
@@ -225,11 +225,11 @@ if (isset($_GET['success'])) {
                             <img src="../public/img/descarga (1).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
                         </div>
                         <div class="product-details">
-                            <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
+                            <p class="product-description">TL 4510Mbps Cisco Router</p>
                             <div class="product-price-section">
                                 $700
                             </div>
-                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 700, '../public/img/descarga (1).jpeg')">Agregar al carrito</button>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 600, '../public/img/descarga (1).jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                     <div class="product-cardxd">
@@ -237,11 +237,23 @@ if (isset($_GET['success'])) {
                             <img src="../public/img/images (2).jpeg" alt="Switch Gigabit Ethernet de 24 puertos" class="product-image">
                         </div>
                         <div class="product-details">
-                            <p class="product-description">Switch Gigabit Ethernet de 24 puertos</p>
+                            <p class="product-description">Camara de seguridad para hogar en 4k 1080p</p>
                             <div class="product-price-section">
                                 $2500
                             </div>
                             <button class="add-to-cart-button" onclick="agregarAlCarrito('Switch Gigabit 24 puertos', 2500, '../public/img/images (2).jpeg')">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="product-cardxd">
+                        <div class="product-image-container">
+                            <img src="../public/img/images (4).jpeg" alt="Switch Gigabit Ethernet de 24 puertos" class="product-image">
+                        </div>
+                        <div class="product-details">
+                            <p class="product-description">Roueter para internet con mayor intensidad</p>
+                            <div class="product-price-section">
+                                $2500
+                            </div>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('Switch Gigabit 24 puertos', 4999, '../public/img/images (2).jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                 </div>
@@ -289,7 +301,12 @@ if (isset($_GET['success'])) {
             if (productoExistente) {
                 productoExistente.cantidad += 1;
             } else {
-                carrito.push({ nombre, precio: parseFloat(precio), imagen, cantidad: 1 });
+                carrito.push({
+                    nombre,
+                    precio: parseFloat(precio),
+                    imagen,
+                    cantidad: 1
+                });
             }
             localStorage.setItem('carrito', JSON.stringify(carrito));
             mostrarCarrito();
@@ -401,40 +418,40 @@ if (isset($_GET['success'])) {
 
                 // Enviar datos como JSON
                 fetch('../app/controllers/test.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json', // Cambiado a JSON
-                    },
-                    body: JSON.stringify(carrito) // Enviar el carrito como JSON puro
-                })
-                .then(response => {
-                    console.log('Respuesta cruda:', response); // Depuración
-                    if (!response.ok) {
-                        throw new Error('Error en la respuesta del servidor: ' + response.status);
-                    }
-                    return response.text();
-                })
-                .then(message => {
-                    console.log('Respuesta del servidor:', message); // Depuración
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Compra realizada',
-                        text: 'Tu compra ha sido procesada exitosamente.',
-                        confirmButtonText: 'Ok'
-                    }).then(() => {
-                        localStorage.removeItem('carrito');
-                        window.location.href = 'compras.php?success=Compra realizada con éxito';
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json', // Cambiado a JSON
+                        },
+                        body: JSON.stringify(carrito) // Enviar el carrito como JSON puro
+                    })
+                    .then(response => {
+                        console.log('Respuesta cruda:', response); // Depuración
+                        if (!response.ok) {
+                            throw new Error('Error en la respuesta del servidor: ' + response.status);
+                        }
+                        return response.text();
+                    })
+                    .then(message => {
+                        console.log('Respuesta del servidor:', message); // Depuración
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Compra realizada',
+                            text: 'Tu compra ha sido procesada exitosamente.',
+                            confirmButtonText: 'Ok'
+                        }).then(() => {
+                            localStorage.removeItem('carrito');
+                            window.location.href = 'compras.php?success=Compra realizada con éxito';
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error en la solicitud:', error); // Depuración
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo procesar la compra. Detalle: ' + error.message,
+                            confirmButtonText: 'Ok'
+                        });
                     });
-                })
-                .catch(error => {
-                    console.error('Error en la solicitud:', error); // Depuración
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'No se pudo procesar la compra. Detalle: ' + error.message,
-                        confirmButtonText: 'Ok'
-                    });
-                });
 
                 const modal = bootstrap.Modal.getInstance(document.getElementById('confirmarCompraModal'));
                 modal.hide();

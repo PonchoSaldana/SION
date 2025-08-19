@@ -1,5 +1,5 @@
 <?php
-    include("../../config/sesion.php");
+include("../../config/sesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,7 +55,7 @@
                     <li><a href="../../views/todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li><a href="../../views/panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -92,9 +92,9 @@
                     <p class="price">$299.00</p>
                     <a href="#" class="btn btn-outline-info open-product-modal"
                         data-product-id="antena_001"
-                        data-product-name="GE Antena de TV para Exteriores, Largo Alcance, Resistente a la Interperie, Compatible con 4K, 1080p, UHF, VHF, Antena Digital HDTV, Montaje Tipo J para Variedad de Montajes, Multiples TVs, 29884"
+                        data-product-name="GE Antena de TV para Exteriores, Largo Alcance, Resistente a la Interperie, Compatible con 4K, 1080p"
                         data-product-price="299.00"
-                        data-product-description="La antena de TV para exteriores GE ofrece un rendimiento excepcional con un alcance de hasta 70 millas, ideal para áreas rurales o suburbanas. Su diseño resistente a la intemperie garantiza durabilidad y fiabilidad en cualquier clima. Compatible con televisores 4K y 1080p, esta antena es perfecta para disfrutar de una amplia variedad de canales sin necesidad de suscripción. Incluye un montaje tipo J que se adapta a diferentes configuraciones de instalación."
+                        data-product-description="La antena de TV para exteriores GE tiene un alcance de hasta 70 millas, es resistente a la intemperie y compatible con TVs 4K y 1080p. Permite ver canales sin suscripción y viene con un montaje tipo J para una fácil instalación."
                         data-product-specs='[
                    {"label": "Marca", "value": "GE"},
                    {"label": "Color", "value": "Montaje en exterior/ático"},
@@ -119,7 +119,7 @@
                         data-product-id="antena_002"
                         data-product-name="Master Antena Exterior HD 37 Elementos para TV Digital Alta Recepción en Zonas de Señal Débil UHF/VHF Compatible con TDT y HDTV"
                         data-product-price="499.00"
-                        data-product-description="La Antena Exterior TVANT-20ELEM está diseñada para captar señales de televisión digital en alta definición (HD) en frecuencias VHF/UHF. Fabricada en aluminio y con 37 elementos, esta antena ofrece una ganancia de 16 dB en VHF y 18 dB en UHF, garantizando una recepción superior. Ideal para uso en exteriores, es perfecta para zonas de baja cobertura de señal."
+                        data-product-description="La antena exterior TVANT-20ELEM está fabricada en aluminio con 37 elementos y capta señales de TV digital HD (VHF/UHF). Ofrece una alta ganancia (16 dB en VHF y 18 dB en UHF) y es ideal para zonas con baja cobertura de señal."
                         data-product-specs='[
                    {"label": "Marca", "value": "Master"},
                    {"label": "Color", "value": "Gris"},
@@ -133,15 +133,36 @@
                 </div>
 
                 <div class="product-card">
+                    <img src="../img/antena1.jpg" alt="Cámara de vigilancia">
+                    <h3>LiteBeam 2x2 MIMO airMAX AC GEN2 CPE hasta 450 Mbps.</h3><br>
+                    <p>Montaje mejorado y protección anti-estática.</p>
+                    <p class="price">$599.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_003"
+                        data-product-name="LiteBeam 2x2 MIMO airMAX AC GEN2 CPE hasta 450 Mbps, 5 GHz (5150 - 5875 MHz) con antena integrada de 23 dBi"
+                        data-product-price="599.00"
+                        data-product-description="airOS®8 ofrece funciones potentes, que incluyen compatibilidad con el protocolo airMAX® AC, análisis de RF en tiempo real y un diseño completamente nuevo para una mejor usabilidad."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "LBE-5AC-GEN2"},
+                   {"label": "Marca", "value": "UBIQUITI"},
+                   {"label": "Código SAT", "value": "43222640"},
+                   {"label": "Garantía", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/antena1.jpg"
+                        data-thumbnails='["../img/antena1.jpg", "../img/antena2.png", "../img/antena3.png"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
+                </div>
+
+                <div class="product-card">
                     <img src="../img/antena 2.1.jpg" alt="Cámara de vigilancia">
                     <h3>LINK BITS EXHD03 Antena Exterior aérea HDTV</h3><br>
-                    <p>(fácil de Instalar)</p>
+                    <p>Antena de largo alcance, amplificada, 12 elementos, alta definición, fácil de instalar.</p>
                     <p class="price">$399.00</p>
                     <a href="#" class="btn btn-outline-info open-product-modal"
                         data-product-id="antena_003"
                         data-product-name="LINK BITS EXHD03 Antena Exterior aérea HDTV de Largo Alcance, Alcance Amplificado, 12 Elementos, Alta definición, (fácil de Instalar)."
                         data-product-price="399.00"
-                        data-product-description="Alta definición: Nuestra Antena tv exterior HDTV para Alta Definición UHF. Capta señales digitales de TV especialmente UHF, ideal en pantallas de nueva generación. Podrás tener imagen de tus programas favoritos de TV abierta con esta antena tv exterior largo alcance."
+                        data-product-description="Esta antena de TV exterior HDTV capta señales digitales de alta definición (UHF). Es ideal para pantallas de nueva generación y te permite ver tus canales de TV abierta favoritos."
                         data-product-specs='[
                    {"label": "Marca", "value": "LINK BITS"},
                    {"label": "Color", "value": "plata"},
@@ -226,7 +247,7 @@
         </div>
         <script src="../js/menu.js"></script>
     </footer>
-    
+
 </body>
 
 </html>
