@@ -13,7 +13,6 @@ include("../config/sesion.php");
     <link rel="stylesheet" href="../public/css/servicios.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -81,15 +80,29 @@ include("../config/sesion.php");
         <!--------------------------------------------------------------------------->
     </section>
     <br><br><br><br>
+
     <main>
         <section class="services-section">
             <h1 class="my-cart-title">Servicios</h1>
+            <?php
+            // Mostrar mensajes de éxito o error
+            if (isset($_GET['success'])) {
+                echo '<div class="alert alert-success text-center m-3">' . htmlspecialchars($_GET['success']) . '</div>';
+            }
+            if (isset($_GET['error'])) {
+                echo '<div class="alert alert-danger text-center m-3">' . htmlspecialchars($_GET['error']) . '</div>';
+            }
+            ?>
             <div class="service-card">
                 <img src="../public/img/instalacion camaras de seguridad.jpg" alt="Instalación de cámara de seguridad">
                 <div class="service-details">
                     <h2>Instalación de cámara de seguridad</h2>
                     <p>$450</p>
-                    <button type="button" class="btn btn-success btn-lg">Solicitar</button>
+                    <form action="../app/controllers/procesar_solicitud.php" method="POST">
+                        <input type="hidden" name="servicio_nombre" value="Instalación de cámara de seguridad">
+                        <input type="hidden" name="precio" value="450">
+                        <button type="submit" class="btn btn-success btn-lg">Solicitar</button>
+                    </form>
                 </div>
             </div>
             <div class="service-card">
@@ -97,13 +110,17 @@ include("../config/sesion.php");
                 <div class="service-details">
                     <h2>Instalación de antena</h2>
                     <p>$600</p>
-                    <button type="button" class="btn btn-success btn-lg">Solicitar</button>
+                    <form action="../app/controllers/procesar_solicitud.php" method="POST">
+                        <input type="hidden" name="servicio_nombre" value="Instalación de antena">
+                        <input type="hidden" name="precio" value="600">
+                        <button type="submit" class="btn btn-success btn-lg">Solicitar</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- fooder(pie de pagina) -->
+    <!-- footer (pie de pagina) -->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">

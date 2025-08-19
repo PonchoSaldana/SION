@@ -1,5 +1,19 @@
 <?php
 $conexion = new mysqli("localhost", "root", "", "sion_db");
+
+// Verificar la conexión
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+
+session_start();
+include("../config/sesion.php"); // Asegúrate de que este archivo contenga la verificación del rol
+
+// Verificar si el usuario es administrador
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    header("Location: ../index.php?error=Acceso denegado");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,7 +59,6 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="tab" href="#orders">Pedidos</a>
       </li>
-          </li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="tab" href="#services">Servicios</a>
       </li>
@@ -56,7 +69,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
         <div class="xd">Gestión de Productos</div>
         <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">Agregar Producto</button>
 
-        <!-- Modal para agregar producto -->
+        <!-- Modal para agregar producto (sin cambios) -->
         <div class="modal" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -119,7 +132,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                     </div>
                   </div>
 
-                  <!-- Modal de confirmación de eliminación -->
+                  <!-- Modal de confirmación de eliminación (sin cambios) -->
                   <div class="modal fade" id="confirmDeleteModal<?php echo $producto['id']; ?>" tabindex="-1" aria-labelledby="confirmDeleteLabel<?php echo $producto['id']; ?>" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-sm">
                       <div class="modal-content">
@@ -138,7 +151,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                     </div>
                   </div>
 
-                  <!-- Modal editar -->
+                  <!-- Modal editar (sin cambios) -->
                   <div class="modal" id="editModal<?php echo $producto['id']; ?>" tabindex="-1" aria-labelledby="editModalLabel<?php echo $producto['id']; ?>" aria-hidden="true">
                     <div class="modal-dialog">
                       <form class="modal-content form-editar" method="POST" action="../app/controllers/editar_producto.php" enctype="multipart/form-data">
@@ -174,52 +187,143 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
                       </form>
                     </div>
                   </div>
-
                 </div>
               </div>
             <?php endwhile; ?>
           </div>
         <?php else: ?>
           <p>No hay productos.</p>
-        <?php endif;
-        $conexion->close();
-        ?>
+        <?php endif; ?>
       </div>
 
       <div class="tab-pane fade" id="orders">
-        <div class="xd"><h1>Aquí puedes gestionar los Pedidos.</h1></div>
-      </div>
-       <div class="tab-pane fade" id="services">
-        <div class="xd"><h1>Aquí puedes gestionar los Servicios.</h1></div>
+       <div class="tab-pane fade" id="orders">
+    <?php
+session_start();
+$conexion = new mysqli("localhost", "root", "", "sion_db");
+
+if ($_SESSION['rol'] !== 'admin') {
+    header("Location: ../index.php");
+    exit();
+}
+
+$query = "SELECT p.*, u.nombre AS usuario 
+          FROM pedidos p
+          INNER JOIN usuarios u ON p.usuario_id = u.id
+          ORDER BY p.fecha_pedido DESC";
+$result = $conexion->query($query);
+?>
+
+<h2>Pedidos de Usuarios</h2>
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID Pedido</th>
+        <th>Usuario</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+    </tr>
+    <?php while($pedido = $result->fetch_assoc()): ?>
+    <tr>
+        <td><?= $pedido['id'] ?></td>
+        <td><?= htmlspecialchars($pedido['usuario']) ?></td>
+        <td><?= htmlspecialchars($pedido['producto_nombre']) ?></td>
+        <td><?= $pedido['cantidad'] ?></td>
+        <td>$<?= number_format($pedido['precio'] * $pedido['cantidad'], 2) ?></td>
+        <td><?= $pedido['estado'] ?></td>
+        <td><?= $pedido['fecha_pedido'] ?></td>
+        <td>
+            <a href="cambiar_estado.php?id=<?= $pedido['id'] ?>&estado=aprobado">Aprobar</a> |
+            <a href="cambiar_estado.php?id=<?= $pedido['id'] ?>&estado=cancelado">Cancelar</a>
+        </td>
+    </tr>
+    <?php endwhile; ?>
+</table>
+
+      <div class="tab-pane fade" id="services">
+        <div class="xd">Gestión de Servicios</div>
+        <?php
+        // Consulta para obtener las solicitudes de servicios con teléfono y dirección
+        $query = "SELECT ss.id, ss.servicio_nombre, ss.precio, ss.fecha_solicitud, 
+                         u.nombre, u.apellidos, u.celular, u.direccion, 
+                         CONCAT(u.nombre, ' ', u.apellidos) AS nombre_completo 
+                  FROM solicitudes_servicios ss 
+                  JOIN usuarios u ON ss.usuario_id = u.id 
+                  ORDER BY ss.fecha_solicitud DESC";
+        $result = $conexion->query($query);
+
+        if ($result->num_rows > 0): ?>
+          <table class="table table-striped mt-3">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Servicio</th>
+                <th>Precio</th>
+                <th>Usuario</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Fecha</th>
+                <th>Completado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php while ($solicitud = $result->fetch_assoc()): ?>
+                <tr>
+                  <td><?php echo $solicitud['id']; ?></td>
+                  <td><?php echo htmlspecialchars($solicitud['servicio_nombre']); ?></td>
+                  <td>$<?php echo number_format($solicitud['precio'], 2); ?></td>
+                  <td><?php echo htmlspecialchars($solicitud['nombre_completo']); ?></td>
+                  <td><?php echo htmlspecialchars($solicitud['celular']); ?></td>
+                  <td><?php echo htmlspecialchars($solicitud['direccion']); ?></td>
+                  <td><?php echo $solicitud['fecha_solicitud']; ?></td>
+                  <td>
+                      <input type="hidden" name="solicitud_id" value="<?php echo $solicitud['id']; ?>">
+                      <input type="checkbox" name="completado" onchange="this.form.submit()" 
+                             <?php echo !empty($solicitud['completado']) && $solicitud['completado'] == 1 ? 'checked' : ''; ?>>
+                  </td>
+                  <td>
+                    <!-- Acciones adicionales si las necesitas -->
+                  </td>
+                </tr>
+              <?php endwhile; ?>
+            </tbody>
+          </table>
+        <?php else: ?>
+          <p>No hay solicitudes de servicios.</p>
+        <?php endif; ?>
       </div>
     </div>
   </div>
   <br><br><br><br><br><br><br>
   <footer class="main-footer">
-        <div class="footer-section footer-logo">
-            <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
-            <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
-        </div>
-        <div class="footer-section">
-            <h4>Contacto</h4>
-            <ul>
-                <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
-                <li><a href="tel:+525555555555">55-5555-5555</a></li>
-                <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Empresa</h4>
-            <ul>
-                <li><a href="#">Política de privacidad</a></li>
-                <li><a href="#">Términos y condiciones</a></li>
-                <li><a href="#">Promoción y ofertas</a></li>
-            </ul>
-        </div>
-    </footer>
+    <div class="footer-section footer-logo">
+      <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
+      <p>© 2025 SION System Wireless. <br>Todos los derechos reservados.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:correo@ejemplo.com">SION@gmail.com</a></li>
+        <li><a href="tel:+525555555555">55-5555-5555</a></li>
+        <li><a href="https://maps.google.com/?q=ubicacion_de_la_tienda" target="_blank">Tienda Física</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Términos y condiciones</a></li>
+        <li><a href="#">Promoción y ofertas</a></li>
+      </ul>
+    </div>
+  </footer>
   </header>
 
-  <!-- Modal de éxito para edición -->
+  <!-- Modal de éxito para edición (sin cambios) -->
   <div class="modal fade" id="successEditModal" tabindex="-1" aria-labelledby="successEditLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
@@ -237,7 +341,7 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
     </div>
   </div>
 
-  <!-- Modal de error para edición -->
+  <!-- Modal de error para edición (sin cambios) -->
   <div class="modal fade" id="errorEditModal" tabindex="-1" aria-labelledby="errorEditLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
@@ -295,3 +399,4 @@ $conexion = new mysqli("localhost", "root", "", "sion_db");
 </body>
 
 </html>
+<?php $conexion->close(); ?>

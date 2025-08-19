@@ -1,5 +1,19 @@
 <?php
 include("../config/sesion.php");
+
+// Conexión a la base de datos (solo para consistencia, aunque no se usa directamente aquí)
+$conexion = new mysqli("localhost", "root", "", "sion_db");
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+
+// Mostrar mensaje de éxito o error si existe
+$message = '';
+if (isset($_GET['success'])) {
+    $message = '<div class="alert alert-success text-center">' . htmlspecialchars($_GET['success']) . '</div>';
+} elseif (isset($_GET['error'])) {
+    $message = '<div class="alert alert-danger text-center">' . htmlspecialchars($_GET['error']) . '</div>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,14 +27,12 @@ include("../config/sesion.php");
     <link rel="stylesheet" href="../public/css/carrito.css">
     <link rel="stylesheet" href="../public/css/modales.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <!--BOTON DE Boxicons----------------------------------------------------------->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
 </head>
 
 <body>
-
     <!--ENCABEZADO----------------------------------------------------------->
     <nav>
         <div class="nav-bar">
@@ -56,7 +68,6 @@ include("../config/sesion.php");
                     <?php endif; ?>
                 </ul>
             </div>
-
             <div class="searchBox">
                 <div class="iconUser">
                     <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
@@ -96,53 +107,48 @@ include("../config/sesion.php");
                             <div style="flex: 1; text-align: center;">Cantidad</div>
                             <div style="flex: 1; text-align: right;">Total</div>
                         </div>
-                        <div class="product-list-container">
-                            
+                        <div class="product-list-container" id="productListContainer">
+                            <!-- Productos se cargan dinámicamente con JavaScript -->
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-4 col-md-5 col-sm-12 mb-4">
-                    <div class="summary-container"><br>
+                    <div class="summary-container">
+                        <br>
                         <div class="summary-header">
                             Resumen de compra
                         </div>
                         <div class="summary-item">
-                            <span id="summary-products-count-text">Productos ( 0 )</span>
+                            <span id="summary-products-count-text">Productos (0)</span>
                             <span></span>
                         </div>
                         <div class="summary-item total">
                             <span>Total</span>
                             <span class="value" id="grand-total">$0</span>
                         </div>
-                    <!-- Botón de Comprar en el resumen -->
-<button class="buy-button" type="button" id="confirmarCompraBtn">Comprar</button>
+                        <!-- Botón de Comprar en el resumen -->
+                        <button class="buy-button" type="button" id="confirmarCompraBtn">Comprar</button>
 
                         <!-- Modal de confirmación de compra -->
                         <div class="modal fade" id="confirmarCompraModal" tabindex="-1" aria-labelledby="confirmarCompraLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="confirmarCompraLabel">Confirmar compra</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                            </div>
-                            <div class="modal-body">
-                                ¿Estás seguro que quieres realizar esta compra?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-success" id="confirmarCompraModalBtn">Realizar compra</button>
-                            </div>
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmarCompraLabel">Confirmar compra</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Estás seguro que quieres realizar esta compra?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-success" id="confirmarCompraModalBtn">Realizar compra</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                            
-                        </div>
-                        </div>
-                        
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -163,7 +169,7 @@ include("../config/sesion.php");
                             <div class="product-price-section">
                                 $400
                             </div>
-                            <button class="add-to-cart-button">Agregar al carrito</button>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('Cámara de seguridad analógica 1080P', 400, '../public/img/descarga (1).jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                     <div class="product-cardxd">
@@ -175,7 +181,7 @@ include("../config/sesion.php");
                             <div class="product-price-section">
                                 $500
                             </div>
-                            <button class="add-to-cart-button">Agregar al carrito</button>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('Cámara CCTV a color 1080P', 500, '../public/img/images.jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                     <div class="product-cardxd">
@@ -187,7 +193,7 @@ include("../config/sesion.php");
                             <div class="product-price-section">
                                 $200
                             </div>
-                            <button class="add-to-cart-button">Agregar al carrito</button>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('Antena de TV Mitzu', 200, '../public/img/images (4).jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                     <div class="product-cardxd">
@@ -199,7 +205,7 @@ include("../config/sesion.php");
                             <div class="product-price-section">
                                 $700
                             </div>
-                            <button class="add-to-cart-button">Agregar al carrito</button>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 700, '../public/img/descarga.jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                     <div class="product-cardxd">
@@ -211,7 +217,7 @@ include("../config/sesion.php");
                             <div class="product-price-section">
                                 $700
                             </div>
-                            <button class="add-to-cart-button">Agregar al carrito</button>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 700, '../public/img/images (3).jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                     <div class="product-cardxd">
@@ -223,7 +229,7 @@ include("../config/sesion.php");
                             <div class="product-price-section">
                                 $700
                             </div>
-                            <button class="add-to-cart-button">Agregar al carrito</button>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 700, '../public/img/descarga (1).jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                     <div class="product-cardxd">
@@ -235,7 +241,7 @@ include("../config/sesion.php");
                             <div class="product-price-section">
                                 $2500
                             </div>
-                            <button class="add-to-cart-button">Agregar al carrito</button>
+                            <button class="add-to-cart-button" onclick="agregarAlCarrito('Switch Gigabit 24 puertos', 2500, '../public/img/images (2).jpeg')">Agregar al carrito</button>
                         </div>
                     </div>
                 </div>
@@ -267,55 +273,45 @@ include("../config/sesion.php");
             </ul>
         </div>
     </footer>
-    <script src="../public/js/carrito.js"></script>
+
     <script>
+        // Funciones para el carrusel
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('productCarousel');
+            carousel.scrollLeft += direction * 300;
+        }
+
+        // Función para agregar al carrito
+        function agregarAlCarrito(nombre, precio, imagen) {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const productoExistente = carrito.find(p => p.nombre === nombre && p.imagen === imagen);
+
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio: parseFloat(precio), imagen, cantidad: 1 });
+            }
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            mostrarCarrito();
+            Swal.fire({
+                icon: 'success',
+                title: 'Agregado',
+                text: 'Producto agregado al carrito.',
+                confirmButtonText: 'Ok'
+            });
+        }
+
+        // Función para obtener el carrito
         function obtenerCarrito() {
             return JSON.parse(localStorage.getItem('carrito')) || [];
         }
 
+        // Función para mostrar el carrito
         function mostrarCarrito() {
-            const lista = document.querySelector('.product-list-container');
+            const lista = document.getElementById('productListContainer');
             const resumen = document.getElementById('summary-products-count-text');
             const total = document.getElementById('grand-total');
-            const carrito = obtenerCarrito();
-
-            lista.innerHTML = '';
-            let suma = 0;
-
-            carrito.forEach((p, i) => {
-                const subtotal = p.precio * p.cantidad;
-                suma += subtotal;
-
-                lista.innerHTML += `
-        <div class="product-card">
-          <img src="${p.imagen}" alt="${p.nombre}">
-          <div class="product-details">
-            <h5>${p.nombre}</h5>
-            <div class="product-actions">
-              <button class="btn btn-danger btn-sm" onclick="eliminar(${i})">Eliminar</button>
-              <span class="price">$${p.precio}</span>
-            </div>
-          </div>
-          <div class="quantity-control-container">
-            <div class="input-group custom-quantity-selector">
-              <button class="btn btn-outline-secondary" onclick="cambiarCantidad(${i}, -1)">-</button>
-              <input type="number" class="form-control" value="${p.cantidad}" readonly>
-              <button class="btn btn-outline-secondary" onclick="cambiarCantidad(${i}, 1)">+</button>
-            </div>
-            <span class="item-total">$${subtotal.toFixed(2)}</span>
-          </div>
-        </div>
-      `;
-            });
-
-            resumen.textContent = `Productos (${carrito.length})`;
-            total.textContent = `$${suma.toFixed(2)}`;
-        }
-
-        function mostrarCarrito() {
-            const lista = document.querySelector('.product-list-container');
-            const resumen = document.getElementById('summary-products-count-text');
-            const total = document.getElementById('grand-total');
+            const productosSpan = document.querySelector('.iconCarrito #productos');
             const carrito = obtenerCarrito();
 
             lista.innerHTML = '';
@@ -328,40 +324,42 @@ include("../config/sesion.php");
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <div class="product-details">
-                <h5>${producto.nombre}</h5>
-                <div class="product-actions">
-                    <a href="#" class="btn btn-primary btn-sm">Más detalles</a>
-                    <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${index})">Eliminar</button>
-                    <span class="price">Precio $${producto.precio}</span>
-                </div>
-            </div>
-            <div class="quantity-control-container">
-                <div class="input-group custom-quantity-selector" data-price="${producto.precio}">
-                    <button class="btn btn-outline-secondary" type="button" data-action="minus" onclick="actualizarCantidad(${index}, -1)">-</button>
-                    <input type="number" class="form-control" value="${producto.cantidad}" min="1" readonly>
-                    <button class="btn btn-outline-secondary" type="button" data-action="plus" onclick="actualizarCantidad(${index}, 1)">+</button>
-                </div>
-                <span class="item-total">$${subtotal}</span>
-            </div>
-        `;
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <div class="product-details">
+                        <h5>${producto.nombre}</h5>
+                        <div class="product-actions">
+                            <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${index})">Eliminar</button>
+                            <span class="price">$${producto.precio.toFixed(2)}</span>
+                        </div>
+                    </div>
+                    <div class="quantity-control-container">
+                        <div class="input-group custom-quantity-selector" data-index="${index}">
+                            <button class="btn btn-outline-secondary" type="button" onclick="actualizarCantidad(${index}, -1)">-</button>
+                            <input type="number" class="form-control" value="${producto.cantidad}" min="1" readonly>
+                            <button class="btn btn-outline-secondary" type="button" onclick="actualizarCantidad(${index}, 1)">+</button>
+                        </div>
+                        <span class="item-total">$${subtotal.toFixed(2)}</span>
+                    </div>
+                `;
                 lista.appendChild(card);
             });
 
-            resumen.textContent = `Productos ( ${carrito.length} )`;
-            total.textContent = `$${sumaTotal}`;
+            resumen.textContent = `Productos (${carrito.length})`;
+            total.textContent = `$${sumaTotal.toFixed(2)}`;
+            productosSpan.textContent = carrito.length; // Actualizar contador en el ícono del carrito
         }
 
+        // Función para eliminar un producto
         function eliminarProducto(index) {
-            const carrito = obtenerCarrito();
+            let carrito = obtenerCarrito();
             carrito.splice(index, 1);
             localStorage.setItem('carrito', JSON.stringify(carrito));
             mostrarCarrito();
         }
 
+        // Función para actualizar la cantidad
         function actualizarCantidad(index, cambio) {
-            const carrito = obtenerCarrito();
+            let carrito = obtenerCarrito();
             carrito[index].cantidad += cambio;
             if (carrito[index].cantidad < 1) carrito[index].cantidad = 1;
             localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -369,83 +367,88 @@ include("../config/sesion.php");
         }
 
         // Ejecutar al cargar la página
-        document.addEventListener('DOMContentLoaded', mostrarCarrito);
-
-        function eliminar(i) {
-            let carrito = obtenerCarrito();
-            carrito.splice(i, 1);
-            localStorage.setItem('carrito', JSON.stringify(carrito));
+        document.addEventListener('DOMContentLoaded', () => {
             mostrarCarrito();
-        }
 
-        function cambiarCantidad(i, cambio) {
-            let carrito = obtenerCarrito();
-            carrito[i].cantidad += cambio;
-            if (carrito[i].cantidad < 1) carrito[i].cantidad = 1;
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-            mostrarCarrito();
-        }
-
-        mostrarCarrito();
-    </script>
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    // Botón principal de "Comprar" que abre el modal
-    document.getElementById('confirmarCompraBtn').addEventListener('click', () => {
-        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-        if (carrito.length === 0) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Carrito vacío',
-                text: 'No tienes productos en tu carrito.',
-                confirmButtonText: 'Ok'
+            // Botón principal de "Comprar" que abre el modal
+            document.getElementById('confirmarCompraBtn').addEventListener('click', () => {
+                const carrito = obtenerCarrito();
+                if (carrito.length === 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Carrito vacío',
+                        text: 'No tienes productos en tu carrito.',
+                        confirmButtonText: 'Ok'
+                    });
+                    return;
+                }
+                const modal = new bootstrap.Modal(document.getElementById('confirmarCompraModal'));
+                modal.show();
             });
-            return;
-        }
 
-        // Mostrar el modal de confirmación
-        const modal = new bootstrap.Modal(document.getElementById('confirmarCompraModal'));
-        modal.show();
-    });
+            // Botón de confirmación en el modal
+            document.getElementById('confirmarCompraModalBtn').addEventListener('click', () => {
+                const carrito = obtenerCarrito();
+                if (carrito.length === 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Carrito vacío',
+                        text: 'No tienes productos en tu carrito.',
+                        confirmButtonText: 'Ok'
+                    });
+                    return;
+                }
 
-    // Botón dentro del modal para confirmar la compra
-    document.getElementById('confirmarCompraModalBtn').addEventListener('click', () => {
-        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-        const compras = JSON.parse(localStorage.getItem('compras')) || [];
+                // Enviar datos como JSON
+                fetch('../app/controllers/test.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Cambiado a JSON
+                    },
+                    body: JSON.stringify(carrito) // Enviar el carrito como JSON puro
+                })
+                .then(response => {
+                    console.log('Respuesta cruda:', response); // Depuración
+                    if (!response.ok) {
+                        throw new Error('Error en la respuesta del servidor: ' + response.status);
+                    }
+                    return response.text();
+                })
+                .then(message => {
+                    console.log('Respuesta del servidor:', message); // Depuración
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Compra realizada',
+                        text: 'Tu compra ha sido procesada exitosamente.',
+                        confirmButtonText: 'Ok'
+                    }).then(() => {
+                        localStorage.removeItem('carrito');
+                        window.location.href = 'compras.php?success=Compra realizada con éxito';
+                    });
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud:', error); // Depuración
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo procesar la compra. Detalle: ' + error.message,
+                        confirmButtonText: 'Ok'
+                    });
+                });
 
-        // Guardar los productos del carrito en las compras
-        const nuevasCompras = carrito.map(producto => ({
-            ...producto,
-            estado: "Esperando al cliente"
-        }));
-
-        const actualizadas = [...compras, ...nuevasCompras];
-        localStorage.setItem('compras', JSON.stringify(actualizadas));
-
-        // Limpiar el carrito
-        localStorage.removeItem('carrito');
-
-        // Mostrar mensaje de éxito
-        Swal.fire({
-            icon: 'success',
-            title: 'Compra realizada',
-            text: 'Tu pedido ha sido registrado.',
-            confirmButtonText: 'Ver mis compras'
-        }).then(() => {
-            window.location.href = 'compras.php';
+                const modal = bootstrap.Modal.getInstance(document.getElementById('confirmarCompraModal'));
+                modal.hide();
+            });
         });
 
-        // Cerrar el modal
-        const modal = bootstrap.Modal.getInstance(document.getElementById('confirmarCompraModal'));
-        modal.hide();
-    });
-});
+        // Función para el carrusel
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('productCarousel');
+            carousel.scrollLeft += direction * 300;
+        }
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>
+<?php $conexion->close(); ?>
