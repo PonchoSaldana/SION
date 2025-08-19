@@ -1,4 +1,5 @@
 <?php
+session_start();
 $conexion = new mysqli("localhost", "root", "", "sion_db");
 
 // Verificar la conexión
@@ -6,7 +7,6 @@ if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-session_start();
 include("../config/sesion.php"); // Asegúrate de que este archivo contenga la verificación del rol
 
 // Verificar si el usuario es administrador
@@ -69,7 +69,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
         <div class="xd">Gestión de Productos</div>
         <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">Agregar Producto</button>
 
-        <!-- Modal para agregar producto (sin cambios) -->
+        <!-- Modal para agregar producto -->
         <div class="modal" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -77,7 +77,8 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
                 <div class="modal-header">
                   <h5 class="modal-title" id="addProductModalLabel">Agregar Producto</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div><div class="alert alert-warning text-center m-3">Recuerda que cualquier cambio que realices aquí afectará directamente a la tienda.</div>
+                </div>
+                <div class="alert alert-warning text-center m-3">Recuerda que cualquier cambio que realices aquí afectará directamente a la tienda.</div>
                 <div class="modal-body">
                   <div class="mb-3"><label class="form-label">Nombre</label><input type="text" class="form-control" name="nombre" required></div>
                   <div class="mb-3"><label class="form-label">Descripción</label><input type="text" class="form-control" name="descripcion" required></div>
@@ -132,7 +133,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
                     </div>
                   </div>
 
-                  <!-- Modal de confirmación de eliminación (sin cambios) -->
+                  <!-- Modal de confirmación de eliminación -->
                   <div class="modal fade" id="confirmDeleteModal<?php echo $producto['id']; ?>" tabindex="-1" aria-labelledby="confirmDeleteLabel<?php echo $producto['id']; ?>" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-sm">
                       <div class="modal-content">
@@ -151,7 +152,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
                     </div>
                   </div>
 
-                  <!-- Modal editar (sin cambios) -->
+                  <!-- Modal editar -->
                   <div class="modal" id="editModal<?php echo $producto['id']; ?>" tabindex="-1" aria-labelledby="editModalLabel<?php echo $producto['id']; ?>" aria-hidden="true">
                     <div class="modal-dialog">
                       <form class="modal-content form-editar" method="POST" action="../app/controllers/editar_producto.php" enctype="multipart/form-data">
@@ -197,121 +198,182 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
       </div>
 
       <div class="tab-pane fade" id="orders">
-       <div class="tab-pane fade" id="orders">
-    <div class="xd"><h1>Gestión de Pedidos</h1></div>
-    <?php
-    $query = "SELECT p.id, p.producto_nombre, p.precio, p.estado, p.fecha_pedido, p.qr_token, p.expiracion,
-                     CONCAT(u.nombre, ' ', u.apellidos) AS nombre_completo, u.celular, u.direccion 
-              FROM pedidos p 
-              JOIN usuarios u ON p.usuario_id = u.id 
-              ORDER BY p.fecha_pedido DESC";
+        <div class="xd"><h1>Gestión de Pedidos</h1></div>
+        <?php
+        // Consulta para obtener los pedidos con detalles y datos del usuario
+    // Consulta para obtener los pedidos con detalles y datos del usuario
+    $query = "SELECT p.id AS pedido_id, p.fecha AS fecha_pedido, p.total, p.estado, p.expiracion,
+                     u.id AS usuario_id, CONCAT(u.nombre, ' ', u.apellidos) AS nombre_completo, u.celular, u.direccion,
+                     pd.id AS detalle_id, pd.nombre_producto, pd.cantidad, pd.subtotal
+              FROM pedidos p
+              LEFT JOIN usuarios u ON p.id_usuario = u.id
+              LEFT JOIN pedido_detalles pd ON p.id = pd.id_pedido
+              ORDER BY p.fecha DESC";
     $result = $conexion->query($query);
 
-    if ($result->num_rows > 0): ?>
+    if (!$result) {
+        die("Error en la consulta: " . $conexion->error);
+    }
+
+    if ($result->num_rows > 0):
+        $pedidos = [];
+        while ($row = $result->fetch_assoc()) {
+            $pedido_id = $row['pedido_id'];
+            if (!isset($pedidos[$pedido_id])) {
+                $pedidos[$pedido_id] = [
+                    'fecha_pedido' => $row['fecha_pedido'],
+                    'total' => $row['total'],
+                    'estado' => $row['estado'],
+                    'expiracion' => $row['expiracion'],
+                    'usuario_id' => $row['usuario_id'],
+                    'nombre_completo' => $row['nombre_completo'],
+                    'celular' => $row['celular'],
+                    'direccion' => $row['direccion'],
+                    'detalles' => []
+                ];
+            }
+            if ($row['detalle_id']) {
+                $pedidos[$pedido_id]['detalles'][] = [
+                    'nombre_producto' => $row['nombre_producto'],
+                    'cantidad' => $row['cantidad'],
+                    'subtotal' => $row['subtotal']
+                ];
+            }
+        }
+    ?>
         <table class="table table-striped mt-3">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Producto</th>
-                    <th>Precio</th>
+                    <th>ID Pedido</th>
+                    <th>Fecha</th>
                     <th>Usuario</th>
                     <th>Teléfono</th>
                     <th>Dirección</th>
-                    <th>Fecha</th>
+                    <th>Productos</th>
+                    <th>Total</th>
                     <th>Expiración</th>
-                    <th>QR</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <?php while ($pedido = $result->fetch_assoc()): ?>
+                <?php foreach ($pedidos as $pedido_id => $pedido): ?>
                     <tr>
-                        <td><?php echo $pedido['id']; ?></td>
-                        <td><?php echo htmlspecialchars($pedido['producto_nombre']); ?></td>
-                        <td>$<?php echo number_format($pedido['precio'], 2); ?></td>
-                        <td><?php echo htmlspecialchars($pedido['nombre_completo']); ?></td>
-                        <td><?php echo htmlspecialchars($pedido['celular']); ?></td>
-                        <td><?php echo htmlspecialchars($pedido['direccion']); ?></td>
-                        <td><?php echo $pedido['fecha_pedido']; ?></td>
-                        <td><?php echo $pedido['expiracion']; ?></td>
-                        <td><img src="../public/verificar_qr<?php echo $pedido['qr_token']; ?>.png" alt="QR" style="width: 100px;"></td>
-                        <td><?php echo $pedido['estado']; ?></td>
+                        <td><?php echo htmlspecialchars($pedido_id); ?></td>
+                        <td><?php echo htmlspecialchars($pedido['fecha_pedido']); ?></td>
+                        <td><?php echo htmlspecialchars($pedido['nombre_completo'] ?? 'No especificado'); ?></td>
+                        <td><?php echo htmlspecialchars($pedido['celular'] ?? 'No especificado'); ?></td>
+                        <td><?php echo htmlspecialchars($pedido['direccion'] ?? 'No especificado'); ?></td>
                         <td>
-                            <form action="../app/controllers/actualizar_estado_pedido.php" method="POST" style="display:inline;">
-                                <input type="hidden" name="pedido_id" value="<?php echo $pedido['id']; ?>">
-                                <select name="estado" onchange="this.form.submit()" class="form-select form-select-sm">
-                                    <option value="pendiente" <?php echo $pedido['estado'] === 'pendiente' ? 'selected' : ''; ?>>Pendiente</option>
-                                    <option value="aprobado" <?php echo $pedido['estado'] === 'aprobado' ? 'selected' : ''; ?>>Aprobado</option>
-                                    <option value="cancelado" <?php echo $pedido['estado'] === 'cancelado' ? 'selected' : ''; ?>>Cancelado</option>
-                                </select>
-                            </form>
+                            <ul class="list-unstyled">
+                                <?php foreach ($pedido['detalles'] as $detalle): ?>
+                                    <li>
+                                        <?php echo htmlspecialchars($detalle['nombre_producto'] ?? ''); ?>
+                                        - Cantidad: <?php echo intval($detalle['cantidad'] ?? 0); ?>
+                                        - $<?php echo number_format($detalle['subtotal'] ?? 0, 2); ?>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </td>
+                        <td>$<?php echo number_format($pedido['total'], 2); ?></td>
+                        <td><?php echo htmlspecialchars($pedido['expiracion']); ?></td>
+                        <td><?php echo htmlspecialchars($pedido['estado']); ?></td>
+                        <td>
+                           <td>
+    <?php if ($pedido['estado'] !== 'completado'): ?>
+        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#confirmEstadoModal<?php echo $pedido_id; ?>" data-estado="completado">Completar</button>
+        
+
+        <!-- Modal de confirmación de cambio de estado -->
+        <div class="modal fade" id="confirmEstadoModal<?php echo $pedido_id; ?>" tabindex="-1" aria-labelledby="confirmEstadoLabel<?php echo $pedido_id; ?>" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmEstadoLabel<?php echo $pedido_id; ?>">Confirmar acción</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body">
+                ¿Estás seguro de cambiar el estado del pedido <?php echo $pedido_id; ?>?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="cambiarEstadoModal(<?php echo $pedido_id; ?>, '<?php echo $pedido['estado']; ?>')">Confirmar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    <?php else: ?>
+        <span class="badge bg-success">Completado</span>
+    <?php endif; ?>
+</td>
+
                         </td>
                     </tr>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     <?php else: ?>
         <p>No hay pedidos.</p>
     <?php endif; ?>
 </div>
-      </div>
 
-      <div class="tab-pane fade" id="services">
-        <div class="xd">Gestión de Servicios</div>
-        <?php
-        // Consulta para obtener las solicitudes de servicios con teléfono y dirección
-        $query = "SELECT ss.id, ss.servicio_nombre, ss.precio, ss.fecha_solicitud, 
-                         u.nombre, u.apellidos, u.celular, u.direccion, 
-                         CONCAT(u.nombre, ' ', u.apellidos) AS nombre_completo 
-                  FROM solicitudes_servicios ss 
-                  JOIN usuarios u ON ss.usuario_id = u.id 
-                  ORDER BY ss.fecha_solicitud DESC";
-        $result = $conexion->query($query);
 
-        if ($result->num_rows > 0): ?>
-          <table class="table table-striped mt-3">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Servicio</th>
-                <th>Precio</th>
-                <th>Usuario</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
-                <th>Fecha</th>
-                <th>Completado</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php while ($solicitud = $result->fetch_assoc()): ?>
-                <tr>
-                  <td><?php echo $solicitud['id']; ?></td>
-                  <td><?php echo htmlspecialchars($solicitud['servicio_nombre']); ?></td>
-                  <td>$<?php echo number_format($solicitud['precio'], 2); ?></td>
-                  <td><?php echo htmlspecialchars($solicitud['nombre_completo']); ?></td>
-                  <td><?php echo htmlspecialchars($solicitud['celular']); ?></td>
-                  <td><?php echo htmlspecialchars($solicitud['direccion']); ?></td>
-                  <td><?php echo $solicitud['fecha_solicitud']; ?></td>
-                  <td>
-                      <input type="hidden" name="solicitud_id" value="<?php echo $solicitud['id']; ?>">
-                      <input type="checkbox" name="completado" onchange="this.form.submit()" 
-                             <?php echo !empty($solicitud['completado']) && $solicitud['completado'] == 1 ? 'checked' : ''; ?>>
-                  </td>
-                  <td>
-                    <!-- Acciones adicionales si las necesitas -->
-                  </td>
-                </tr>
-              <?php endwhile; ?>
-            </tbody>
-          </table>
-        <?php else: ?>
-          <p>No hay solicitudes de servicios.</p>
-        <?php endif; ?>
-      </div>
-    </div>
-  </div>
+     <div class="tab-pane fade" id="services">
+    <div class="xd">Gestión de Servicios</div>
+    <?php
+    // Consulta para obtener las solicitudes de servicios con teléfono, dirección y fecha del servicio
+    $query = "SELECT ss.id, ss.servicio_nombre, ss.precio, ss.fecha_solicitud, ss.fecha_servicio, 
+                     u.nombre, u.apellidos, u.celular, u.direccion, 
+                     CONCAT(u.nombre, ' ', u.apellidos) AS nombre_completo 
+              FROM solicitudes_servicios ss 
+              JOIN usuarios u ON ss.usuario_id = u.id 
+              ORDER BY ss.fecha_solicitud DESC";
+    $result = $conexion->query($query);
+
+    if ($result->num_rows > 0): ?>
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Servicio</th>
+            <th>Precio</th>
+            <th>Usuario</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Fecha Solicitud</th>
+            <th>Fecha Servicio</th>
+            <th>Completado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php while ($solicitud = $result->fetch_assoc()): ?>
+            <tr>
+              <td><?php echo $solicitud['id']; ?></td>
+              <td><?php echo htmlspecialchars($solicitud['servicio_nombre']); ?></td>
+              <td>$<?php echo number_format($solicitud['precio'], 2); ?></td>
+              <td><?php echo htmlspecialchars($solicitud['nombre_completo']); ?></td>
+              <td><?php echo htmlspecialchars($solicitud['celular']); ?></td>
+              <td><?php echo htmlspecialchars($solicitud['direccion']); ?></td>
+              <td><?php echo $solicitud['fecha_solicitud']; ?></td>
+              <td><?php echo $solicitud['fecha_servicio']; ?></td>
+              <td>
+                  <input type="hidden" name="solicitud_id" value="<?php echo $solicitud['id']; ?>">
+                  <input type="checkbox" name="completado" onchange="this.form.submit()" 
+                         <?php echo !empty($solicitud['completado']) && $solicitud['completado'] == 1 ? 'checked' : ''; ?>>
+              </td>
+              <td>
+                <!-- Acciones adicionales si las necesitas -->
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+    <?php else: ?>
+      <p>No hay solicitudes de servicios.</p>
+    <?php endif; ?>
+</div>
+
   <br><br><br><br><br><br><br>
   <footer class="main-footer">
     <div class="footer-section footer-logo">
@@ -337,7 +399,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
   </footer>
   </header>
 
-  <!-- Modal de éxito para edición (sin cambios) -->
+  <!-- Modal de éxito para edición -->
   <div class="modal fade" id="successEditModal" tabindex="-1" aria-labelledby="successEditLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
@@ -355,7 +417,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
     </div>
   </div>
 
-  <!-- Modal de error para edición (sin cambios) -->
+  <!-- Modal de error para edición -->
   <div class="modal fade" id="errorEditModal" tabindex="-1" aria-labelledby="errorEditLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
@@ -408,9 +470,48 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
           });
       });
     });
+
+    // Función para cambiar el estado del pedido
+    function cambiarEstado(pedidoId, nuevoEstado) {
+      if (confirm(`¿Estás seguro de cambiar el estado a "${nuevoEstado}"?`)) {
+        fetch('../app/controllers/cambiar_estado.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `id=${pedidoId}&estado=${nuevoEstado}`
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Éxito',
+              text: data.message,
+              confirmButtonText: 'Ok'
+            }).then(() => {
+              location.reload();
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: data.message,
+              confirmButtonText: 'Ok'
+            });
+          }
+        })
+        .catch(error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo actualizar el estado. Detalle: ' + error.message,
+            confirmButtonText: 'Ok'
+          });
+        });
+      }
+    }
   </script>
-
 </body>
-
 </html>
 <?php $conexion->close(); ?>

@@ -1,46 +1,56 @@
 <?php
 session_start();
-include("../config/conexion.php");
+header("Content-Type: application/json");
 
-// Verifica si el usuario ha iniciado sesión
-if (!isset($_SESSION['id'])) {
-    header("Location: ../../public/login.php?error=Debes iniciar sesión para comprar");
-    exit();
+// Conexión a la base de datos
+$conexion = new mysqli("localhost", "root", "", "sion_db");
+if ($conexion->connect_error) {
+    http_response_code(500);
+    echo json_encode(["error" => "Error de conexión: " . $conexion->connect_error]);
+    exit;
 }
 
-// Si se recibe por POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario_id = $_SESSION['id'];
-    $nombre = $_POST['nombre'];
-    $precio = $_POST['precio'];
-    $imagen = $_POST['imagen'];
-    $cantidad = $_POST['cantidad'];
-    $estado = "pendiente";
-
-    $conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-    if ($conexion->connect_error) {
-        die("Error de conexión: " . $conexion->connect_error);
-    }
-
-    $query = "INSERT INTO pedidos (usuario_id, producto_nombre, precio, imagen, estado, cantidad, fecha_pedido) 
-              VALUES (?, ?, ?, ?, ?, ?, NOW())";
-
-    $stmt = $conexion->prepare($query);
-    if ($stmt) {
-        // CORREGIDO: tipos de datos
-        $stmt->bind_param("isdssi", $usuario_id, $nombre, $precio, $imagen, $estado, $cantidad);
-        $stmt->execute();
-        $stmt->close();
-    }
-
-    $conexion->close();
-
-    // Redirige con mensaje de éxito
-    header("Location: ../../public/compras.php?success=Compra realizada con éxito");
-    exit();
-} else {
-    header("Location: ../../public/index.php");
-    exit();
+// Verificar si hay usuario logueado
+if (!isset($_SESSION['id_usuario'])) {
+    http_response_code(401);
+    echo json_encode(["error" => "Usuario no autenticado"]);
+    exit;
 }
-?>
+
+$id_usuario = $_SESSION['id_usuario'];
+
+// Obtener datos JSON del carrito
+$data = json_decode(file_get_contents("php://input"), true);
+
+if (!$data || count($data) === 0) {
+    http_response_code(400);
+    echo json_encode(["error" => "Carrito vacío"]);
+    exit;
+}
+
+// Calcular total
+$total = 0;
+foreach ($data as $producto) {
+    $total += $producto['precio'] * $producto['cantidad'];
+}
+
+// Insertar en tabla pedidos
+$stmt = $conexion->prepare("INSERT INTO pedidos (id_usuario, total) VALUES (?, ?)");
+$stmt->bind_param("id", $id_usuario, $total);
+$stmt->execute();
+$id_pedido = $stmt->insert_id;
+$stmt->close();
+
+// Insertar productos en tabla pedido_detalles
+$stmt = $conexion->prepare("INSERT INTO pedido_detalles (id_pedido, nombre_producto, precio, cantidad, subtotal) VALUES (?, ?, ?, ?, ?)");
+foreach ($data as $producto) {
+    $subtotal = $producto['precio'] * $producto['cantidad'];
+    $stmt->bind_param("isdis", $id_pedido, $producto['nombre'], $producto['precio'], $producto['cantidad'], $subtotal);
+    $stmt->execute();
+}
+$stmt->close();
+
+$conexion->close();
+
+// Respuesta al cliente
+echo json_encode(["success" => true, "message" => "Compra registrada con éxito"]);

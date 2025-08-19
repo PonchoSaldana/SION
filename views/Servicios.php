@@ -78,6 +78,7 @@ include("../config/sesion.php");
             </div>
         </nav>
         <!--------------------------------------------------------------------------->
+
     </section>
     <br><br><br><br>
 
@@ -85,7 +86,6 @@ include("../config/sesion.php");
         <section class="services-section">
             <h1 class="my-cart-title">Servicios</h1>
             <?php
-            // Mostrar mensajes de éxito o error
             if (isset($_GET['success'])) {
                 echo '<div class="alert alert-success text-center m-3">' . htmlspecialchars($_GET['success']) . '</div>';
             }
@@ -93,34 +93,81 @@ include("../config/sesion.php");
                 echo '<div class="alert alert-danger text-center m-3">' . htmlspecialchars($_GET['error']) . '</div>';
             }
             ?>
+
+            <!-- Servicio 1 -->
             <div class="service-card">
                 <img src="../public/img/instalacion camaras de seguridad.jpg" alt="Instalación de cámara de seguridad">
                 <div class="service-details">
                     <h2>Instalación de cámara de seguridad</h2>
                     <p>$450</p>
-                    <form action="../app/controllers/procesar_solicitud.php" method="POST">
-                        <input type="hidden" name="servicio_nombre" value="Instalación de cámara de seguridad">
-                        <input type="hidden" name="precio" value="450">
-                        <button type="submit" class="btn btn-success btn-lg">Solicitar</button>
-                    </form>
+                    <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#modalServicio1">
+                        Solicitar
+                    </button>
                 </div>
             </div>
+
+            <div class="modal fade" id="modalServicio1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form action="../app/controllers/procesar_solicitud.php" method="POST">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalLabel1">Solicitar: Instalación de cámara de seguridad</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                      <input type="hidden" name="servicio_nombre" value="Instalación de cámara de seguridad">
+                      <input type="hidden" name="precio" value="450">
+                      <label for="fecha_servicio1">Selecciona la fecha del servicio:</label>
+                      <input type="date" class="form-control" id="fecha_servicio1" name="fecha_servicio" required>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-success">Confirmar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Servicio 2 -->
             <div class="service-card">
                 <img src="../public/img/instalacion camaras de antena.jpg" alt="Instalación de antena">
                 <div class="service-details">
                     <h2>Instalación de antena</h2>
                     <p>$600</p>
-                    <form action="../app/controllers/procesar_solicitud.php" method="POST">
-                        <input type="hidden" name="servicio_nombre" value="Instalación de antena">
-                        <input type="hidden" name="precio" value="600">
-                        <button type="submit" class="btn btn-success btn-lg">Solicitar</button>
-                    </form>
+                    <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#modalServicio2">
+                        Solicitar
+                    </button>
                 </div>
             </div>
+
+            <div class="modal fade" id="modalServicio2" tabindex="-1" aria-labelledby="modalLabel2" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form action="../app/controllers/procesar_solicitud.php" method="POST">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalLabel2">Solicitar: Instalación de antena</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                      <input type="hidden" name="servicio_nombre" value="Instalación de antena">
+                      <input type="hidden" name="precio" value="600">
+                      <label for="fecha_servicio2">Selecciona la fecha del servicio:</label>
+                      <input type="date" class="form-control" id="fecha_servicio2" name="fecha_servicio" required>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-success">Confirmar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
         </section>
     </main>
 
-    <!-- footer (pie de pagina) -->
+    <!-- footer -->
     <footer class="main-footer">
         <div class="footer-section footer-logo">
             <img src="../public/img/LOGO/sin fondo.png" alt="Logo SION">
@@ -143,7 +190,9 @@ include("../config/sesion.php");
             </ul>
         </div>
     </footer>
+
     <script src="../public/js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

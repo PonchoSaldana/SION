@@ -76,7 +76,7 @@ $resultado = $stmt->get_result();
 
             <div class="searchBox">
                 <div class="iconUser">
-                    <a href="<?php echo $usuarioLogueado ? '../../views/mi_cuenta.php' : '../../views/login.php'; ?>" style="color: white;">
+                    <a href="<?php echo $usuarioLogueado ? '../../model/mi_cuenta.php' : '../../views/login.php'; ?>" style="color: white;">
                         <i class='bx bx-user user'></i></a>
                 </div>
                 <div class="searchToggle">
@@ -143,7 +143,7 @@ $resultado = $stmt->get_result();
                                         imagen: "../../public/uploads/<?= $row["imagen"] ?>",
                                         cantidad: 1
                                     })'>Agregar al carrito</button>
-                                        <form action="agregar_favorito.php" method="POST" class="d-inline">
+                                        <form action="agregarFavoritos.php" method="POST" class="d-inline">
                                             <input type="hidden" name="id_producto" value="<?= $row['id'] ?>">
                                             <button type="submit" class="btn btn-warning">Agregar a favoritos</button>
                                         </form>
