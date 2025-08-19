@@ -134,7 +134,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Jack RJ45 de 8 contactos a 90° CAT 6, tipo Keystone, blanco</p>
-                    <hr><br><a class="btn btn-primary" href="../public/submenu/conectoresJaks.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="public/submenu/conectoresJaks.php" role="button">Ver productos</a>
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -143,7 +143,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Modem Internet Prepago 4.5g Internet Hogar</p>
-                    <hr><br><a class="btn btn-primary" href="../public/submenu/modems.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="public/submenu/modems.php" role="button">Ver productos</a>
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -152,7 +152,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Router ASUS Gigabit Ethernet de Banda Dual RT-AX57, Inalámbrico, 2402 Mbit/s, 4x RJ-45, 2.4/5GHz</p>
-                    <hr><br><a class="btn btn-primary" href="../public/submenu/router.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="public/submenu/router.php" role="button">Ver productos</a>
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -161,7 +161,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Switches Cisco Catalyst de la serie 2960-XR</p>
-                    <hr><br><a class="btn btn-primary" href="../public/submenu/switch.php" role="button">Ver productos</a>
+                    <hr><br><a class="btn btn-primary" href="public/submenu/switch.php" role="button">Ver productos</a>
                 </div>
             </div>
         </div>
