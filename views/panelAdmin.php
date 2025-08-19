@@ -198,50 +198,64 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
 
       <div class="tab-pane fade" id="orders">
        <div class="tab-pane fade" id="orders">
+    <div class="xd"><h1>Gestión de Pedidos</h1></div>
     <?php
-session_start();
-$conexion = new mysqli("localhost", "root", "", "sion_db");
+    $query = "SELECT p.id, p.producto_nombre, p.precio, p.estado, p.fecha_pedido, p.qr_token, p.expiracion,
+                     CONCAT(u.nombre, ' ', u.apellidos) AS nombre_completo, u.celular, u.direccion 
+              FROM pedidos p 
+              JOIN usuarios u ON p.usuario_id = u.id 
+              ORDER BY p.fecha_pedido DESC";
+    $result = $conexion->query($query);
 
-if ($_SESSION['rol'] !== 'admin') {
-    header("Location: ../index.php");
-    exit();
-}
-
-$query = "SELECT p.*, u.nombre AS usuario 
-          FROM pedidos p
-          INNER JOIN usuarios u ON p.usuario_id = u.id
-          ORDER BY p.fecha_pedido DESC";
-$result = $conexion->query($query);
-?>
-
-<h2>Pedidos de Usuarios</h2>
-<table border="1" cellpadding="10">
-    <tr>
-        <th>ID Pedido</th>
-        <th>Usuario</th>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Estado</th>
-        <th>Fecha</th>
-        <th>Acciones</th>
-    </tr>
-    <?php while($pedido = $result->fetch_assoc()): ?>
-    <tr>
-        <td><?= $pedido['id'] ?></td>
-        <td><?= htmlspecialchars($pedido['usuario']) ?></td>
-        <td><?= htmlspecialchars($pedido['producto_nombre']) ?></td>
-        <td><?= $pedido['cantidad'] ?></td>
-        <td>$<?= number_format($pedido['precio'] * $pedido['cantidad'], 2) ?></td>
-        <td><?= $pedido['estado'] ?></td>
-        <td><?= $pedido['fecha_pedido'] ?></td>
-        <td>
-            <a href="cambiar_estado.php?id=<?= $pedido['id'] ?>&estado=aprobado">Aprobar</a> |
-            <a href="cambiar_estado.php?id=<?= $pedido['id'] ?>&estado=cancelado">Cancelar</a>
-        </td>
-    </tr>
-    <?php endwhile; ?>
-</table>
+    if ($result->num_rows > 0): ?>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Usuario</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Fecha</th>
+                    <th>Expiración</th>
+                    <th>QR</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($pedido = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo $pedido['id']; ?></td>
+                        <td><?php echo htmlspecialchars($pedido['producto_nombre']); ?></td>
+                        <td>$<?php echo number_format($pedido['precio'], 2); ?></td>
+                        <td><?php echo htmlspecialchars($pedido['nombre_completo']); ?></td>
+                        <td><?php echo htmlspecialchars($pedido['celular']); ?></td>
+                        <td><?php echo htmlspecialchars($pedido['direccion']); ?></td>
+                        <td><?php echo $pedido['fecha_pedido']; ?></td>
+                        <td><?php echo $pedido['expiracion']; ?></td>
+                        <td><img src="../public/verificar_qr<?php echo $pedido['qr_token']; ?>.png" alt="QR" style="width: 100px;"></td>
+                        <td><?php echo $pedido['estado']; ?></td>
+                        <td>
+                            <form action="../app/controllers/actualizar_estado_pedido.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="pedido_id" value="<?php echo $pedido['id']; ?>">
+                                <select name="estado" onchange="this.form.submit()" class="form-select form-select-sm">
+                                    <option value="pendiente" <?php echo $pedido['estado'] === 'pendiente' ? 'selected' : ''; ?>>Pendiente</option>
+                                    <option value="aprobado" <?php echo $pedido['estado'] === 'aprobado' ? 'selected' : ''; ?>>Aprobado</option>
+                                    <option value="cancelado" <?php echo $pedido['estado'] === 'cancelado' ? 'selected' : ''; ?>>Cancelado</option>
+                                </select>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>No hay pedidos.</p>
+    <?php endif; ?>
+</div>
+      </div>
 
       <div class="tab-pane fade" id="services">
         <div class="xd">Gestión de Servicios</div>

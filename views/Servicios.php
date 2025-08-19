@@ -56,7 +56,7 @@ include("../config/sesion.php");
 
                 <div class="searchBox">
                     <div class="iconUser">
-                        <a href="<?php echo $usuarioLogueado ? '../views/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
+                        <a href="<?php echo $usuarioLogueado ? '../model/mi_cuenta.php' : '../views/login.php'; ?>" style="color: white;">
                             <i class='bx bx-user user'></i></a>
                     </div>
                     <div class="searchToggle">
