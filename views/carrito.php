@@ -341,7 +341,7 @@ if (isset($_GET['success'])) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'No se pudo procesar la compra. Detalle: ' + error.message,
+                        text: 'No se pudo procesar la compra. Detalle: Debe de iniciar sesión para realizar la compra.',
                         confirmButtonText: 'Ok'
                     });
                 });

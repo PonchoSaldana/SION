@@ -188,7 +188,7 @@ include("config/sesion.php");
                 </div>
             </div>
             <div class="ubicacion-derecha">
-                <img src="../public/img/ubicacion.png" height="300px">
+                <img src="public/img/ubicacion.png" height="300px">
             </div>
         </div>
     </section>
