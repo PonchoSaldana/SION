@@ -88,7 +88,7 @@ include("../config/sesion.php");
             <div id="favoritos-container" class="favoritos-grid">
                 <!-- Los productos se cargarán dinámicamente con JavaScript -->
             </div>
-        </div><br><br><br><br><br><br>
+        </div><br><br><br><br><br><br><br><br>
 
         <!-- Modal de confirmación -->
         <div class="modal fade" id="mensajeModal" tabindex="-1" aria-hidden="true">
