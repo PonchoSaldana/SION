@@ -107,7 +107,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Antena aérea para TV HD, giratoria 360∞ con control, Volteck</p>
-                    <hr><br><a class="btn btn-primary" href="public/submenu/antenas.php" role="button">Ver productos</a>
+                    
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -116,7 +116,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Cable de Red LAN Ponchado 5m - Listo para usar (Cat-5)</p>
-                    <hr><br><a class="btn btn-primary" href="public/submenu/cables.php" role="button">Ver productos</a>
+                    
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -125,7 +125,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Cámara de Seguridad Wifi 2 lentes movimiento y audio</p>
-                    <hr><br><a class="btn btn-primary" href="public/submenu/camaras.php" role="button">Ver productos</a>
+                    
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -134,7 +134,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Jack RJ45 de 8 contactos a 90° CAT 6, tipo Keystone, blanco</p>
-                    <hr><br><a class="btn btn-primary" href="public/submenu/conectoresJaks.php" role="button">Ver productos</a>
+                    
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -143,7 +143,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Modem Internet Prepago 4.5g Internet Hogar</p>
-                    <hr><br><a class="btn btn-primary" href="public/submenu/modems.php" role="button">Ver productos</a>
+                    
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -152,7 +152,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Router ASUS Gigabit Ethernet de Banda Dual RT-AX57, Inalámbrico, 2402 Mbit/s, 4x RJ-45, 2.4/5GHz</p>
-                    <hr><br><a class="btn btn-primary" href="public/submenu/router.php" role="button">Ver productos</a>
+                    
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -161,7 +161,7 @@ include("config/sesion.php");
                 </div>
                 <div class="texto-slide">
                     <p>Switches Cisco Catalyst de la serie 2960-XR</p>
-                    <hr><br><a class="btn btn-primary" href="public/submenu/switch.php" role="button">Ver productos</a>
+                    
                 </div>
             </div>
         </div>
