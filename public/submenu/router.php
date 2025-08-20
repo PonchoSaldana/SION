@@ -86,47 +86,117 @@
         <section>
             <div class="product-container">
                 <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 1">
-                    <h3>Router</h3>
-                    <p>Router profesional de oficina</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/images (4).jpeg" alt="GE Antena de TV para Exteriores">
+                    <h3>ROG STRIX GS-AX5400</h3><br>
+                    <p>Router de juegos WiFi 6 de doble banda GS-AX5400, compatible con PS5</p>
+                    <p class="price">$2999.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_001"
+                        data-product-name="ROG STRIX GS-AX5400"
+                        data-product-price="2999.00"
+                        data-product-description="Router de juegos WiFi 6 de doble banda GS-AX5400, compatible con PS5, modo de juego móvil, VPN Fusion, seguridad de Internet gratuita de por vida, Instant Guard, Gear Accelerator, puerto de juegos, QoS adaptable, reenvío de puertos, ASUS Aura RGB"
+                        data-product-specs='[
+                   {"label": "1", "value": "¡Diseñado para ganar!"},
+                   {"label": "2", "value": "La mejor conexión para gaming"},
+                   {"label": "3", "value": "Velocidad de hasta 5400 Mbps"},
+                   {"label": "4", "value": "Tecnología WiFi 6 (802.11ax)"},
+                   {"label": "5", "value": "Procesador de 4 núcleos a 1.5 GHz"},
+                   {"label": "6", "value": "Puertos LAN 2.5G y USB 3.2 Gen 1"}
+               ]'
+                        data-main-image="../img/images (4).jpeg"
+                        data-thumbnails='["../img/images (4).jpeg", "../img/router.png", "../img/router1.png"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 2">
-                    <h3>Router 5G</h3>
-                    <p>Router multiusos potente</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/routerxd.png" alt="Cámara de vigilancia">
+                    <h3>Router Inalámbrico doble banda AC</h3><br>
+                    <p>Señal potente en toda la casa, cobertura máxima</p>
+                    <p class="price">$4999.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_002"
+                        data-product-name="Router Inalámbrico doble banda AC, 2.4 GHz y 5 GHz Hasta 1200 Mbps, 4 antenas externas omnidireccional, 4 Puertos LAN 10/100 Mbps, 1 Puerto WAN 10/100 Mbps, Versión 6"
+                        data-product-price="4999.00"
+                        data-product-description="El dispositivo ofrece una señal potente y una cobertura máxima en toda la casa gracias a su WiFi de doble banda y alta potencia. Con dimensiones compactas, cuenta con control parental avanzado y filtrado de URL. Además, posee certificaciones de seguridad como FCC, CE y RoHS."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "ARCHERC50"},
+                   {"label": "Marca", "value": "TP-LINK"},
+                   {"label": "Código SAT", "value": "43222609"},
+                   {"label": "Garantía", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/routerxd.png"
+                        data-thumbnails='["../img/routerxd.png", "../img/routerxd1.png", "../img/routerxd2.png"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 3">
-                    <h3>Conector multiple</h3>
-                    <p>Conector multiusos</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/router11.jpg" alt="Router Mesh WiFi 6">
+                    <h3>Router Mesh WiFi 6 AX1800</h3><br>
+                    <p>Cobertura total, ideal para casas grandes y oficinas</p>
+                    <p class="price">$3899.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="router_003"
+                        data-product-name="Router Mesh WiFi 6 AX1800, doble banda, hasta 1800 Mbps, tecnología de malla, 4 antenas internas, 3 puertos LAN, 1 puerto WAN, control parental, app móvil"
+                        data-product-price="3899.00"
+                        data-product-description="El Router Mesh WiFi 6 AX1800 ofrece cobertura total y velocidad superior en toda la casa u oficina. Su tecnología de malla permite conectar varios dispositivos sin perder señal. Incluye control parental, app móvil y seguridad avanzada."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "DECO X20"},
+                   {"label": "Marca", "value": "TP-LINK"},
+                   {"label": "Código SAT", "value": "43222609"},
+                   {"label": "Garantía", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/router11.jpg"
+                        data-thumbnails='["../img/router11.jpg", "../img/router12.jpg", "../img/router13.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 4">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/router0.jpg" alt="Router Profesional Gigabit">
+                    <h3>Router Profesional Gigabit AX6000</h3><br>
+                    <p>Velocidad extrema y estabilidad para empresas y gamers</p>
+                    <p class="price">$7999.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="router_004"
+                        data-product-name="Router Profesional Gigabit AX6000, WiFi 6, hasta 6000 Mbps, 8 antenas externas, 8 puertos LAN Gigabit, 2 puertos USB 3.0, QoS avanzado, seguridad WPA3"
+                        data-product-price="7999.00"
+                        data-product-description="El Router AX6000 está diseñado para usuarios exigentes: empresas, gamers y streamers. Ofrece velocidad extrema, estabilidad y seguridad de última generación. Incluye QoS avanzado, múltiples puertos y control total desde app móvil."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "ARCHER AX6000"},
+                   {"label": "Marca", "value": "TP-LINK"},
+                   {"label": "Código SAT", "value": "43222609"},
+                   {"label": "Garantía", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/router0.jpg"
+                        data-thumbnails='["../img/router0.jpg", "../img/router01.jpg", "../img/router001.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
             </div>
 
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="../img/descarga (2).jpeg" alt="Producto 5">
-                    <h3>Camara steren</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+            <div id="productDetailsModal" class="modal-fullscreen" style="display: none;">
+                <div class="modal-content-fullscreen">
+                    <div class="modal-image-gallery">
+                        <img src="" alt="Imagen principal del producto" class="modal-main-image" id="mainModalImage">
+                        <div class="modal-thumbnails" id="modalThumbnailsContainer">
+                        </div>
+                    </div>
+
+                    <div class="modal-details-content">
+                        <span class="close-button" id="closeModalBtn">&times;</span>
+                        <div class="modal-details-header">
+                            <h2 id="modalProductName"></h2>
+                            <hr>
+                            <div id="modalProductSpecs">
+                            </div>
+                            <hr>
+                        </div>
+                        <p class="price" id="modalProductPrice"></p>
+                        <hr>
+                        <div class="description-section">
+                            <p id="modalProductDescription"></p>
+                        </div>
+                        <button type="button" class="btn btn-primary add-to-cart-modal">Agregar al carrito</button><br>
+                        <button type="button" class="btn btn-danger add-to-favorites-modal">Favoritos</button>
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,5 +1,5 @@
 <?php
-    include("../../config/sesion.php");
+include("../../config/sesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,7 +55,7 @@
                     <li><a href="../../views/todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li><a href="../../views/panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -87,55 +87,115 @@
         <section>
             <div class="product-container">
                 <div class="product-card">
-                    <img src="../img/images (3).jpeg" alt="Producto 1">
-                    <h3>Router</h3>
-                    <p>Router profesional de oficina</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/swi.jpg" alt="Switch TP-Link TL-SG108">
+                    <h3>TP-Link TL-SG108</h3><br>
+                    <p>Switch de escritorio 8 puertos Gigabit, sin gestión, carcasa metálica</p>
+                    <p class="price">$699.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="switch_001"
+                        data-product-name="TP-Link TL-SG108, Switch 8 puertos Gigabit, sin gestión, metálico"
+                        data-product-price="699.00"
+                        data-product-description="El TL-SG108 es un switch de escritorio con 8 puertos Gigabit, ideal para expandir la red en casa u oficina. Plug & Play, carcasa metálica, bajo consumo y funcionamiento silencioso."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "TL-SG108"},
+                   {"label": "Marca", "value": "TP-Link"},
+                   {"label": "Puertos", "value": "8 Gigabit"},
+                   {"label": "Garantía", "value": "3 años"}
+               ]'
+                        data-main-image="../img/swi.jpg"
+                        data-thumbnails='["../img/swi.jpg", "../img/swi1.jpg", "../img/swi2.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/images (3).jpeg" alt="Producto 2">
-                    <h3>Router 5G</h3>
-                    <p>Router multiusos potente</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/swit.jpg" alt="Switch Cisco SG350-10">
+                    <h3>Cisco SG350-10</h3><br>
+                    <p>Switch administrable 10 puertos Gigabit, funciones avanzadas, VLAN</p>
+                    <p class="price">$3,499.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="switch_002"
+                        data-product-name="Cisco SG350-10, Switch administrable 10 puertos Gigabit, VLAN"
+                        data-product-price="3499.00"
+                        data-product-description="El SG350-10 es un switch administrable con 10 puertos Gigabit, ideal para redes empresariales. Soporta VLAN, QoS, seguridad avanzada y administración web."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "SG350-10"},
+                   {"label": "Marca", "value": "Cisco"},
+                   {"label": "Puertos", "value": "10 Gigabit"},
+                   {"label": "Garantía", "value": "5 años"}
+               ]'
+                        data-main-image="../img/swit.jpg"
+                        data-thumbnails='["../img/swit.jpg", "../img/swit1.jpg", "../img/swit2.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/images (3).jpeg" alt="Producto 3">
-                    <h3>Conector multiple</h3>
-                    <p>Conector multiusos</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/s.jpg" alt="Switch Ubiquiti UniFi US-24">
+                    <h3>Ubiquiti UniFi US-24</h3><br>
+                    <p>Switch 24 puertos Gigabit, PoE, administración UniFi Controller</p>
+                    <p class="price">$5,999.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="switch_003"
+                        data-product-name="Ubiquiti UniFi US-24, Switch 24 puertos Gigabit, PoE, UniFi Controller"
+                        data-product-price="5999.00"
+                        data-product-description="El US-24 es un switch de 24 puertos Gigabit con PoE, ideal para redes empresariales y proyectos de videovigilancia. Se administra desde UniFi Controller y soporta VLAN, QoS y seguridad avanzada."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "US-24"},
+                   {"label": "Marca", "value": "Ubiquiti"},
+                   {"label": "Puertos", "value": "24 Gigabit"},
+                   {"label": "Garantía", "value": "2 años"}
+               ]'
+                        data-main-image="../img/s.jpg"
+                        data-thumbnails='["../img/s.jpg", "../img/s1.jpg", "../img/s2.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/images (3).jpeg" alt="Producto 4">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/sq.png" alt="Switch D-Link DGS-1008A">
+                    <h3>D-Link DGS-1008A</h3><br>
+                    <p>Switch 8 puertos Gigabit, plástico, bajo consumo, Plug & Play</p>
+                    <p class="price">$499.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="switch_004"
+                        data-product-name="D-Link DGS-1008A, Switch 8 puertos Gigabit, Plug & Play, plástico"
+                        data-product-price="499.00"
+                        data-product-description="El DGS-1008A es un switch de 8 puertos Gigabit, carcasa plástica, bajo consumo y funcionamiento silencioso. Ideal para expandir la red en casa u oficina. Plug & Play, sin configuración."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "DGS-1008A"},
+                   {"label": "Marca", "value": "D-Link"},
+                   {"label": "Puertos", "value": "8 Gigabit"},
+                   {"label": "Garantía", "value": "2 años"}
+               ]'
+                        data-main-image="../img/sq.png"
+                        data-thumbnails='["../img/sq.png", "../img/sq1.png", "../img/sq2.png"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
             </div>
 
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="../img/images (3).jpeg" alt="Producto 5">
-                    <h3>Camara steren</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="../img/images (3).jpeg" alt="Producto 6">
-                    <h3>Router multipuertos</h3>
-                    <p>Router de oficina</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+            <div id="productDetailsModal" class="modal-fullscreen" style="display: none;">
+                <div class="modal-content-fullscreen">
+                    <div class="modal-image-gallery">
+                        <img src="" alt="Imagen principal del producto" class="modal-main-image" id="mainModalImage">
+                        <div class="modal-thumbnails" id="modalThumbnailsContainer">
+                        </div>
+                    </div>
+
+                    <div class="modal-details-content">
+                        <span class="close-button" id="closeModalBtn">&times;</span>
+                        <div class="modal-details-header">
+                            <h2 id="modalProductName"></h2>
+                            <hr>
+                            <div id="modalProductSpecs">
+                            </div>
+                            <hr>
+                        </div>
+                        <p class="price" id="modalProductPrice"></p>
+                        <hr>
+                        <div class="description-section">
+                            <p id="modalProductDescription"></p>
+                        </div>
+                        <button type="button" class="btn btn-primary add-to-cart-modal">Agregar al carrito</button><br>
+                        <button type="button" class="btn btn-danger add-to-favorites-modal">Favoritos</button>
+                    </div>
                 </div>
             </div>
         </section>

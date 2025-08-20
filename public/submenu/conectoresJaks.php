@@ -1,6 +1,7 @@
 <?php
-    include("../../config/sesion.php");
-?><!DOCTYPE html>
+include("../../config/sesion.php");
+?>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -54,7 +55,7 @@
                     <li><a href="../../views/todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li><a href="../../views/panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -86,55 +87,136 @@
         <section>
             <div class="product-container">
                 <div class="product-card">
-                    <img src="../img/jack.webp" alt="Producto 1">
-                    <h3>Router</h3>
-                    <p>Router profesional de oficina</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/jack.webp" alt="GE Antena de TV para Exteriores">
+                    <h3>Módulo Jack de cobre</h3><br>
+                    <p>Cumple ANSI/TIA-1096-A con los contactos chapados con 50 micro pulgadas de oro para un rendimiento superior</p>
+                    <p class="price">$299.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_001"
+                        data-product-name="Conector Jack RJ45 Estilo TG, Mini-Com, Categoría 6A, de 8 posiciones y 8 cables"
+                        data-product-price="299.00"
+                        data-product-description="El módulo de conector UTP Categoría 6A/Clase EA de 8 posiciones, se termina en un cable de par trenzado sin blindaje de 4 pares, 22 - 26 AWG d 100 ohms y no requiere el uso de una herramienta de impacto."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "CJ6X88TGBU"},
+                   {"label": "Marca", "value": "PANDUIT"},
+                   {"label": "Codigo SAT", "value": "39121462"},
+                   {"label": "Garantia", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/jack.webp"
+                        data-thumbnails='["../img/jack.webp", "../img/jackxd.webp", "../img/jack2.webp"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/jack.webp" alt="Producto 2">
-                    <h3>Router 5G</h3>
-                    <p>Router multiusos potente</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/jackazul.png" alt="Cámara de vigilancia">
+                    <h3>Conector Jack RJ45 Estilo TG con Llaveado Azul</h3><br>
+                    <p>Mini-Com, Categoría 6, de 8 posiciones y 8 cables</p>
+                    <p class="price">$499.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_002"
+                        data-product-name="Conector Jack RJ45 Estilo TG con Llaveado Azul, Mini-Com, Categoría 6, de 8 posiciones y 8 cables"
+                        data-product-price="499.00"
+                        data-product-description="El módulo de conector con llave Mini-Com® Cat 6 UTP RJ45 TG está diseñado para terminar un cable de par trenzado 22-26 AWG de 4 pares y solo permite insertar cables de conexión Panduit con llave del mismo color. Cada módulo se prueba al 100% en fábrica para superar los requisitos de rendimiento estándar de la industria."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "CJK688TGBU"},
+                   {"label": "Marca", "value": "PANDUIT"},
+                   {"label": "Código SAT", "value": "39121462"},
+                   {"label": "Garantía", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/jackazul.png"
+                        data-thumbnails='["../img/jackazul.png", "../img/jackazul2.jpg", "../img/jackazul1.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/jack.webp" alt="Producto 3">
-                    <h3>Conector multiple</h3>
-                    <p>Conector multiusos</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/jack1.webp" alt="Jack RJ45 Negro">
+                    <h3>Jack RJ45 Blindado Negro Cat6A</h3><br>
+                    <p>Blindaje total para máxima protección contra interferencias</p>
+                    <p class="price">$599.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="jack_007"
+                        data-product-name="Jack RJ45 Blindado Negro Cat6A, Mini-Com, 8 posiciones, 8 cables, protección EMI"
+                        data-product-price="599.00"
+                        data-product-description="Este jack blindado Cat6A ofrece máxima protección contra interferencias electromagnéticas, ideal para ambientes industriales y redes de alto rendimiento. Cumple con los estándares ANSI/TIA-568-C.2."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "CJ6X88TGBK"},
+                   {"label": "Marca", "value": "PANDUIT"},
+                   {"label": "Código SAT", "value": "39121462"},
+                   {"label": "Garantía", "value": "5 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/jack1.webp"
+                        data-thumbnails='["../img/jack1.webp", "../img/jack3.webp", "../img/jack4.webp"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/jack.webp" alt="Producto 4">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/1.jpg" alt="Jack RJ45 Naranja">
+                    <h3>Jack RJ45 Naranja Cat5e</h3><br>
+                    <p>Ideal para cableado estructurado en oficinas y hogares</p>
+                    <p class="price">$399.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="jack_008"
+                        data-product-name="Jack RJ45 Naranja Cat5e, Mini-Com, 8 posiciones, 8 cables, fácil instalación"
+                        data-product-price="399.00"
+                        data-product-description="Jack Cat5e de color naranja, perfecto para identificar segmentos de red. Fácil de instalar y compatible con cables UTP estándar."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "CJ5E88TGNJ"},
+                   {"label": "Marca", "value": "PANDUIT"},
+                   {"label": "Código SAT", "value": "39121462"},
+                   {"label": "Garantía", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/1.jpg"
+                        data-thumbnails='["../img/1.jpg", "../img/2.jpg", "../img/3.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="../img/0.webp" alt="Jack RJ45 Gris">
+                    <h3>Jack RJ45 Gris Cat6 para Paneles</h3><br>
+                    <p>Especial para paneles de parcheo y racks de telecomunicaciones</p>
+                    <p class="price">$449.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="jack_009"
+                        data-product-name="Jack RJ45 Gris Cat6, Mini-Com, 8 posiciones, 8 cables, uso en paneles"
+                        data-product-price="449.00"
+                        data-product-description="Jack Cat6 color gris, diseñado para paneles de parcheo y racks. Ofrece excelente desempeño y fácil integración en sistemas de cableado estructurado."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "CJ6X88TGGR"},
+                   {"label": "Marca", "value": "PANDUIT"},
+                   {"label": "Código SAT", "value": "39121462"},
+                   {"label": "Garantía", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/0.webp"
+                        data-thumbnails='["../img/0.webp", "../img/00.webp", "../img/000.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
             </div>
 
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="../img/jack.webp" alt="Producto 5">
-                    <h3>Camara steren</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="../img/jack.webp" alt="Producto 6">
-                    <h3>Router multipuertos</h3>
-                    <p>Router de oficina</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+            <div id="productDetailsModal" class="modal-fullscreen" style="display: none;">
+                <div class="modal-content-fullscreen">
+                    <div class="modal-image-gallery">
+                        <img src="" alt="Imagen principal del producto" class="modal-main-image" id="mainModalImage">
+                        <div class="modal-thumbnails" id="modalThumbnailsContainer">
+                        </div>
+                    </div>
+
+                    <div class="modal-details-content">
+                        <span class="close-button" id="closeModalBtn">&times;</span>
+                        <div class="modal-details-header">
+                            <h2 id="modalProductName"></h2>
+                            <hr>
+                            <div id="modalProductSpecs">
+                            </div>
+                            <hr>
+                        </div>
+                        <p class="price" id="modalProductPrice"></p>
+                        <hr>
+                        <div class="description-section">
+                            <p id="modalProductDescription"></p>
+                        </div>
+                        <button type="button" class="btn btn-primary add-to-cart-modal">Agregar al carrito</button><br>
+                        <button type="button" class="btn btn-danger add-to-favorites-modal">Favoritos</button>
+                    </div>
                 </div>
             </div>
         </section>

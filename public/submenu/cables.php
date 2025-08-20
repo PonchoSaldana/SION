@@ -1,5 +1,5 @@
 <?php
-    include("../../config/sesion.php");
+include("../../config/sesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,7 +55,7 @@
                     <li><a href="../../views/todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li><a href="../../views/panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -85,59 +85,121 @@
         <h1 class="my-cart-title">Categoria - Cables de red</h1>
 
         <section>
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="../img/cables.jpeg" alt="Producto 1">
-                    <h3>Router</h3>
-                    <p>Router profesional de oficina</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="../img/cables.jpeg" alt="Producto 2">
-                    <h3>Router 5G</h3>
-                    <p>Router multiusos potente</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="../img/cables.jpeg" alt="Producto 3">
-                    <h3>Conector multiple</h3>
-                    <p>Conector multiusos</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="../img/cables.jpeg" alt="Producto 4">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-            </div>
 
             <div class="product-container">
                 <div class="product-card">
-                    <img src="../img/cables.jpeg" alt="Producto 5">
-                    <h3>Camara steren</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/cables.jpeg" alt="GE Antena de TV para Exteriores">
+                    <h3>Cable Red LAN Ethernet</h3><br>
+                    <p>Computadora Enrutador RJ45 Alta Velocidad (20 M)</p>
+                    <p class="price">$299.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_001"
+                        data-product-name="Cable Red LAN Ethernet Computadora Enrutador RJ45 Alta Velocidad (20 M)"
+                        data-product-price="299.00"
+                        data-product-description="El cable Ethernet NW01 tiene un conector RJ-45 para uso en interiores. Está hecho de aleación superconductora, con un diámetro de 5.3 mm. Su velocidad de transmisión es de 100M. Soporta temperaturas de -40 a 75 grados Celsius y tiene una resistencia a la tracción de 1000N, con una fuerza de compresión de 250P."
+                        data-product-specs='[
+                   {"label": "País de Origen", "value": "CN - China"},
+                   {"label": "Product Type", "value": "Network Cables"},
+                   {"label": "Ancho del Producto Ensamblado", "value": "22 cm"},
+                   {"label": "Altura del Producto Ensamblado", "value": "8 cm"}
+               ]'
+                        data-main-image="../img/cables.jpeg"
+                        data-thumbnails='["../img/cables.jpeg", "../img/cables1.webp", "../img/cables2.webp"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/cables.jpeg" alt="Producto 6">
-                    <h3>Router multipuertos</h3>
-                    <p>Router de oficina</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/cable.png" alt="Cámara de vigilancia">
+                    <h3>UniFi Ethernet Patch Cable Cat6 de 22 cm, color azul</h3><br>                        
+                    <p>Conector RJ45, alta velocidad, ideal para redes domésticas y empresariales.</p>
+                    <p class="price">$499.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_002"
+                        data-product-name="UniFi Ethernet Patch Cable Cat6 de 22 cm, color azul"
+                        data-product-price="499.00"
+                        data-product-description="El cable de conexión UC-PATCH-RJ45-BL es flexible, tiene una longitud de 220 mm y ha sido probado con el estándar T6-568-B.2 Cat6 de Fluke."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "UC-PATCH-RJ45-BL"},
+                   {"label": "Marca", "value": "UBIQUITI"},
+                   {"label": "Código SAT", "value": "43223303"},
+                   {"label": "Garantía", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/cable.png"
+                        data-thumbnails='["../img/cable.png", "../img/cable1.png", "../img/cable2.png"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="../img/cablexd.jpg" alt="Cámara de vigilancia">
+                    <h3>Cable de Parcheo TX6, UTP Cat6, 24 AWG, CM, Color Blanco Mate, 15ft</h3><br>
+                    <p>Estos cables de parcheo UTP (par trenzado sin blindaje) de Categoría 6</p>
+                    <p class="price">$599.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_003"
+                        data-product-name="Cable de Parcheo TX6, UTP Cat6, 24 AWG, CM, Color Blanco Mate, 15ft"
+                        data-product-price="599.00"
+                        data-product-description="El cable de conexión se ofrece en un cable UTP de varios colores para una flexibilidad de diseño con una funda de alivio de tensión clara en cada enchufe modular. Todos los cables de conexión deberán ser compatibles con los esquemas de cableado T568A y T568B."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "UTPSP15Y"},
+                   {"label": "Marca de operación","value": "PANDUIT"},
+                   {"label": "Código SAT", "value": "26121616"},
+                   {"label": "Garantia", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/cablexd.jpg"
+                        data-thumbnails='["../img/cablexd.jpg", "../img/cablesxd.jpg", "../img/cablesxdd.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="../img/cablerojo.png" alt="Cámara de vigilancia">
+                    <h3>Cable de Parcheo TX6, UTP Cat6, 24 AWG, CM, Color Rojo, 15ft</h3><br>
+                    <p>Los cables de parcheo UTP Categoría 6/Clase E se construyen con un cable de cobre de par trenzado sin blindaje de 24 AWG</p>
+                    <p class="price">$399.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="antena_003"
+                        data-product-name="Cable de Parcheo TX6, UTP Cat6, 24 AWG, CM, Color Rojo, 15ft"
+                        data-product-price="399.00"
+                        data-product-description="El cable de conexión se ofrece en un cable UTP de varios colores para una flexibilidad de diseño con una funda de alivio de tensión clara en cada enchufe modular. Todos los cables de conexión deberán ser compatibles con los esquemas de cableado T568A y T568B."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "UTPSP15RDY"},
+                   {"label": "Marca", "value": "PANDUIT"},
+                   {"label": "Código SAT", "value": "26121616"},
+                   {"label": "Garantía", "value": "3 años con SYSCOM"}
+               ]'
+                        data-main-image="../img/cablerojo.png"
+                        data-thumbnails='["../img/cablerojo.png", "../img/cablerojo1.png", "../img/cablerojo2.png"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
             </div>
+
+            <div id="productDetailsModal" class="modal-fullscreen" style="display: none;">
+                <div class="modal-content-fullscreen">
+                    <div class="modal-image-gallery">
+                        <img src="" alt="Imagen principal del producto" class="modal-main-image" id="mainModalImage">
+                        <div class="modal-thumbnails" id="modalThumbnailsContainer">
+                        </div>
+                    </div>
+
+                    <div class="modal-details-content">
+                        <span class="close-button" id="closeModalBtn">&times;</span>
+                        <div class="modal-details-header">
+                            <h2 id="modalProductName"></h2>
+                            <hr>
+                            <div id="modalProductSpecs">
+                            </div>
+                            <hr>
+                        </div>
+                        <p class="price" id="modalProductPrice"></p>
+                        <hr>
+                        <div class="description-section">
+                            <p id="modalProductDescription"></p>
+                        </div>
+                        <button type="button" class="btn btn-primary add-to-cart-modal">Agregar al carrito</button><br>
+                        <button type="button" class="btn btn-danger add-to-favorites-modal">Favoritos</button>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </main>
 

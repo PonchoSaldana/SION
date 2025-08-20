@@ -1,6 +1,7 @@
 <?php
-    include("../../config/sesion.php");
-?><!DOCTYPE html>
+include("../../config/sesion.php");
+?>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -54,7 +55,7 @@
                     <li><a href="../../views/todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li><a href="../../views/panelAdmin.php">Panel de Administración</a></li>
-                     <?php endif; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -86,55 +87,115 @@
         <section>
             <div class="product-container">
                 <div class="product-card">
-                    <img src="../img/images (4).jpeg" alt="Producto 1">
-                    <h3>Router</h3>
-                    <p>Router profesional de oficina</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/modem.jpg" alt="Modem TP-Link Archer MR600">
+                    <h3>TP-Link Archer MR600</h3><br>
+                    <p>Modem 4G+ LTE WiFi AC1200, doble banda, SIM Card, ideal para zonas sin cable</p>
+                    <p class="price">$2,499.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="modem_001"
+                        data-product-name="TP-Link Archer MR600, Modem 4G+ LTE WiFi AC1200, doble banda, SIM Card"
+                        data-product-price="2499.00"
+                        data-product-description="El Archer MR600 es un modem 4G+ LTE que permite compartir internet móvil en toda la casa u oficina. Compatible con SIM Card, doble banda, hasta 64 dispositivos conectados, ideal para zonas rurales o sin cable."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "Archer MR600"},
+                   {"label": "Marca", "value": "TP-Link"},
+                   {"label": "Velocidad", "value": "Hasta 1200 Mbps"},
+                   {"label": "Garantía", "value": "2 años"}
+               ]'
+                        data-main-image="../img/modem.jpg"
+                        data-thumbnails='["../img/modem.jpg", "../img/modem1.jpg", "../img/modem2.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/images (4).jpeg" alt="Producto 2">
-                    <h3>Router 5G</h3>
-                    <p>Router multiusos potente</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/modem0.jpg" alt="Modem Huawei B311">
+                    <h3>Huawei B311</h3><br>
+                    <p>Modem 4G LTE WiFi, hasta 32 dispositivos, fácil instalación, SIM Card</p>
+                    <p class="price">$1,899.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="modem_002"
+                        data-product-name="Huawei B311, Modem 4G LTE WiFi, hasta 32 dispositivos, SIM Card"
+                        data-product-price="1899.00"
+                        data-product-description="El Huawei B311 es un modem 4G LTE que permite compartir internet móvil, ideal para casa u oficina. Fácil instalación, soporte para SIM Card, WiFi estable y seguro."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "B311"},
+                   {"label": "Marca", "value": "Huawei"},
+                   {"label": "Velocidad", "value": "Hasta 150 Mbps"},
+                   {"label": "Garantía", "value": "1 año"}
+               ]'
+                        data-main-image="../img/modem0.jpg"
+                        data-thumbnails='["../img/modem0.jpg", "../img/modem00.jpg", "../img/modem000.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/images (4).jpeg" alt="Producto 3">
-                    <h3>Conector multiple</h3>
-                    <p>Conector multiusos</p>
-                    <p class="price">$100.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/m.jpg" alt="Modem Teltonika RUT240">
+                    <h3>Teltonika RUT240</h3><br>
+                    <p>Modem industrial 4G LTE, WiFi, VPN, SIM Card, ideal para IoT y empresas</p>
+                    <p class="price">$3,299.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="modem_003"
+                        data-product-name="Teltonika RUT240, Modem industrial 4G LTE, WiFi, VPN, SIM Card"
+                        data-product-price="3299.00"
+                        data-product-description="El Teltonika RUT240 es un modem industrial 4G LTE, ideal para aplicaciones IoT, empresas y comercios. Incluye WiFi, VPN, soporte para SIM Card y administración remota."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "RUT240"},
+                   {"label": "Marca", "value": "Teltonika"},
+                   {"label": "Velocidad", "value": "Hasta 150 Mbps"},
+                   {"label": "Garantía", "value": "2 años"}
+               ]'
+                        data-main-image="../img/m.jpg"
+                        data-thumbnails='["../img/m.jpg", "../img/m1.jpg", "../img/m2.jpg"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
+
                 <div class="product-card">
-                    <img src="../img/images (4).jpeg" alt="Producto 4">
-                    <h3>Camara de vigilancia</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$20.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+                    <img src="../img/mo1.png" alt="Modem D-Link DWR-921">
+                    <h3>D-Link DWR-921</h3><br>
+                    <p>Modem 4G LTE WiFi N300, doble antena, SIM Card, fácil configuración</p>
+                    <p class="price">$1,599.00</p>
+                    <a href="#" class="btn btn-outline-info open-product-modal"
+                        data-product-id="modem_004"
+                        data-product-name="D-Link DWR-921, Modem 4G LTE WiFi N300, doble antena, SIM Card"
+                        data-product-price="1599.00"
+                        data-product-description="El D-Link DWR-921 es un modem 4G LTE WiFi N300, ideal para compartir internet móvil en casa u oficina. Doble antena, fácil configuración y soporte para SIM Card."
+                        data-product-specs='[
+                   {"label": "Modelo", "value": "DWR-921"},
+                   {"label": "Marca", "value": "D-Link"},
+                   {"label": "Velocidad", "value": "Hasta 300 Mbps"},
+                   {"label": "Garantía", "value": "1 año"}
+               ]'
+                        data-main-image="../img/mo1.png"
+                        data-thumbnails='["../img/mo1.png", "../img/mo2.png", "../img/mo3.png"]'>Más detalles</a><br>
+                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
                 </div>
             </div>
 
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="../img/images (4).jpeg" alt="Producto 5">
-                    <h3>Camara steren</h3>
-                    <p>Camara de vigilancia 360 grados</p>
-                    <p class="price">$10.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
-                </div>
-                <div class="product-card">
-                    <img src="../img/images (4).jpeg" alt="Producto 6">
-                    <h3>Router multipuertos</h3>
-                    <p>Router de oficina</p>
-                    <p class="price">$200.00</p>
-                    <button type="button" class="btn btn-outline-success">Agregar al carrito</button><br>
-                    <a href="#" class="btn btn-outline-info">Más detalles</a>
+            <div id="productDetailsModal" class="modal-fullscreen" style="display: none;">
+                <div class="modal-content-fullscreen">
+                    <div class="modal-image-gallery">
+                        <img src="" alt="Imagen principal del producto" class="modal-main-image" id="mainModalImage">
+                        <div class="modal-thumbnails" id="modalThumbnailsContainer">
+                        </div>
+                    </div>
+
+                    <div class="modal-details-content">
+                        <span class="close-button" id="closeModalBtn">&times;</span>
+                        <div class="modal-details-header">
+                            <h2 id="modalProductName"></h2>
+                            <hr>
+                            <div id="modalProductSpecs">
+                            </div>
+                            <hr>
+                        </div>
+                        <p class="price" id="modalProductPrice"></p>
+                        <hr>
+                        <div class="description-section">
+                            <p id="modalProductDescription"></p>
+                        </div>
+                        <button type="button" class="btn btn-primary add-to-cart-modal">Agregar al carrito</button><br>
+                        <button type="button" class="btn btn-danger add-to-favorites-modal">Favoritos</button>
+                    </div>
                 </div>
             </div>
         </section>
