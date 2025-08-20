@@ -35,7 +35,37 @@ $resultado = $stmt->get_result();
     <!--BOTON DE Boxicons----------------------------------------------------------->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-
+    <!-- ESTILOS PARA BOTONES CONSISTENTES -->
+    <style>
+        .btn-outline-success { 
+            background-color: transparent; 
+            border-color: #28a745; 
+            color: #28a745; 
+        }
+        .btn-outline-success:hover { 
+            background-color: #28a745; 
+            color: white; 
+        }
+        .btn-outline-danger { 
+            background-color: transparent; 
+            border-color: #dc3545; 
+            color: #dc3545; 
+        }
+        .btn-outline-danger:hover { 
+            background-color: #dc3545; 
+            color: white; 
+        }
+        .btn-fav.active i { 
+            color: #dc3545; 
+        }
+        .btn-fav i { 
+            color: #6c757d; 
+        }
+        /* Asegura que los modales no tengan animaciones conflictivas */
+        .modal.fade .modal-dialog {
+            transition: transform 0.3s ease-out;
+        }
+    </style>
 </head>
 
 <body>
@@ -70,7 +100,8 @@ $resultado = $stmt->get_result();
                     <li><a href="../../views/favoritos.php">Favoritos</a></li>
                     <li><a href="../../views/todos_los_productos.php">Todos los productos</a></li>
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
-                        <li><a href="../../views/panelAdmin.php">Panel de Administración</a></li><?php endif; ?>
+                        <li><a href="../../views/panelAdmin.php">Panel de Administración</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -136,36 +167,21 @@ $resultado = $stmt->get_result();
                                         <p><strong>Precio:</strong> $<?= number_format($row['precio'], 2) ?></p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-success" onclick='agregarAlCarrito({
-                                        id: <?= $row["id"] ?>,
-                                        nombre: "<?= addslashes($row["nombre"]) ?>",
-                                        precio: <?= $row["precio"] ?>,
-                                        imagen: "../../public/uploads/<?= $row["imagen"] ?>",
-                                        cantidad: 1
-                                    })'>Agregar al carrito</button>
+                                        <button class="btn btn-outline-success" onclick='agregarAlCarrito({
+                                            id: <?= $row["id"] ?>,
+                                            nombre: "<?= addslashes($row["nombre"]) ?>",
+                                            precio: <?= $row["precio"] ?>,
+                                            imagen: "../../public/uploads/<?= $row["imagen"] ?>",
+                                            cantidad: 1
+                                        })'>Agregar al carrito</button>
                                         <form action="agregarFavoritos.php" method="POST" class="d-inline">
                                             <input type="hidden" name="id_producto" value="<?= $row['id'] ?>">
-                                            <button type="submit" class="btn btn-warning">Agregar a favoritos</button>
+                                            <button type="submit" class="btn btn-outline-danger btn-fav"><i class='bx bx-heart'></i> Agregar a favoritos</button>
                                         </form>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     </div>
                                 </div>
                             </div>
-                            <script>
-                                function agregarAlCarrito(producto) {
-                                    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-                                    // Verificar si ya existe el producto
-                                    const existe = carrito.find(p => p.id === producto.id);
-                                    if (existe) {
-                                        existe.cantidad += producto.cantidad;
-                                    } else {
-                                        carrito.push(producto);
-                                    }
-
-                                    localStorage.setItem('carrito', JSON.stringify(carrito));
-
-                                }
-                            </script>
                         </div>
 
                     <?php endwhile; ?>
@@ -207,6 +223,117 @@ $resultado = $stmt->get_result();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../public/js/index.js"></script>
+    <script>
+        // ----------- FUNCIONES CARRITO ------------
+        function obtenerCarrito() {
+            return JSON.parse(localStorage.getItem('carrito')) || [];
+        }
+
+        function guardarCarrito(carrito) {
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+        }
+
+        function agregarAlCarrito(producto) {
+            let carrito = obtenerCarrito();
+            const existe = carrito.find(p => p.id === producto.id);
+            if (existe) {
+                existe.cantidad += producto.cantidad;
+            } else {
+                carrito.push(producto);
+            }
+            guardarCarrito(carrito);
+            mostrarModal("Agregado al carrito", "bx-cart", "green");
+        }
+
+        function actualizarContadorCarrito() {
+            let carrito = obtenerCarrito();
+            const count = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            document.getElementById('productos').textContent = count;
+        }
+
+        // ----------- FUNCIONES FAVORITOS ------------
+        function obtenerFavoritos() {
+            return JSON.parse(localStorage.getItem('favoritos')) || [];
+        }
+
+        function guardarFavoritos(favoritos) {
+            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+        }
+
+        function toggleFavorito(id, nombre, precio, imagen, boton) {
+            let favoritos = obtenerFavoritos();
+            let existe = favoritos.find(p => p.id === id);
+            if (existe) {
+                favoritos = favoritos.filter(p => p.id !== id);
+                guardarFavoritos(favoritos);
+                if (boton) {
+                    boton.classList.remove('active');
+                    boton.querySelector('i').classList.replace('bxs-heart', 'bx-heart');
+                }
+                mostrarModal("Eliminado de favoritos", "bx-heart", "gray");
+            } else {
+                favoritos.push({ id, nombre, precio, imagen });
+                guardarFavoritos(favoritos);
+                if (boton) {
+                    boton.classList.add('active');
+                    boton.querySelector('i').classList.replace('bx-heart', 'bxs-heart');
+                }
+                mostrarModal("Agregado a favoritos", "bxs-heart", "red");
+            }
+        }
+
+        // ----------- FUNCIONES MODAL NOTIFICACIÓN ------------
+        function mostrarModal(mensaje, icono, color) {
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <i class="bx ${icono}" style="font-size: 2rem; color: ${color};"></i>
+                            <p>${mensaje}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+            setTimeout(() => {
+                bsModal.hide();
+                modal.remove();
+            }, 1500);
+        }
+
+        // ----------- INICIALIZACIÓN ------------
+        document.addEventListener('DOMContentLoaded', () => {
+            actualizarContadorCarrito();
+            const favoritos = obtenerFavoritos();
+            
+            document.querySelectorAll('.modal-content').forEach(modal => {
+                const favButton = modal.querySelector('.btn-fav');
+                const idProducto = modal.querySelector('input[name="id_producto"]').value;
+                const nombre = modal.querySelector('.modal-title').textContent;
+                const precio = parseFloat(modal.querySelector('.modal-body p strong').nextSibling.textContent.replace('$', '').trim());
+                const imagen = modal.querySelector('.modal-body img').src;
+                
+                // Agregar ícono de corazón al botón de favoritos
+                favButton.innerHTML = `<i class='bx ${favoritos.some(p => p.id == idProducto) ? 'bxs-heart' : 'bx-heart'}'></i> Agregar a favoritos`;
+                
+                // Verificar si el producto está en favoritos
+                if (favoritos.some(p => p.id == idProducto)) {
+                    favButton.classList.add('active');
+                }
+                
+                // Evento para el botón de favoritos
+                favButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleFavorito(idProducto, nombre, precio, imagen, favButton);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
