@@ -27,7 +27,7 @@ include("../config/sesion.php");
                 </span>
                 <div class="menu">
                     <div class="logo-toggle">
-                        <span class="logo"><a href="../public/index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
+                        <span class="logo"><a href="../index.php"><img src="../public/img/LOGO/sin fondo.png" alt="Logo SION" height="90"></a></span>
                         <i class="bx bx-x sidelbarClose"></i>
                     </div>
                     <ul class="nav-links">
