@@ -139,7 +139,7 @@ include("config/sesion.php");
             </div>
             <div class="carrusel-slide">
                 <div class="imagen-wrapper">
-                    <img src="public/img/modem.jpeg" alt="Producto 5">
+                    <img src="public/img/modem.jpg" alt="Producto 5">
                 </div>
                 <div class="texto-slide">
                     <p>Modem Internet Prepago 4.5g Internet Hogar</p>
