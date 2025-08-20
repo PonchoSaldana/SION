@@ -1,4 +1,5 @@
 <?php
+
 include("../config/sesion.php");
 
 // Conexión a la base de datos
@@ -127,7 +128,7 @@ $resultado = $conexion->query($query);
 </nav>
 <hr>
 
-<section class="contenedor-compras">
+<section class="contenedor-compras" style="background-color: #76c8ff;">
     <h1 class="my-cart-title">Mis Compras</h1>
     <?php echo $message; ?>
     <div class="container">

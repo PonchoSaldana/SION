@@ -153,102 +153,7 @@ if (isset($_GET['success'])) {
         </div>
     </section>
 
-    <!--VISTA RECIENTEMENTE-->
-    <section>
-        <div class="recently-viewed-container">
-            <h2>Viste recientemente</h2>
-            <div class="carousel-wrapper">
-                <button class="nav-button left" onclick="scrollCarousel(-1)">&#8592;</button>
-                <div class="carousel" id="productCarousel">
-                    <div class="product-cardxd">
-                        <div class="product-image-container">
-                            <img src="../public/img/descarga (1).jpeg" alt="Cámara de seguridad analógica 1080P al aire libre" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <p class="product-description">Cámara de seguridad analógica 1080P al aire libre IP66 cámara de vigilancia CCTV...</p>
-                            <div class="product-price-section">
-                                $400
-                            </div>
-                            <button class="add-to-cart-button" onclick="agregarAlCarrito('Cámara de seguridad analógica 1080P', 400, '../public/img/descarga (1).jpeg')">Agregar al carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-cardxd">
-                        <div class="product-image-container">
-                            <img src="../public/img/images.jpeg" alt="Cámara CCTV a color a tiempo completo 1080P" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <p class="product-description">Cámara CCTV a color a tiempo completo 1080P, cámara de seguridad al aire libre con cable de 2 MP...</p>
-                            <div class="product-price-section">
-                                $500
-                            </div>
-                            <button class="add-to-cart-button" onclick="agregarAlCarrito('Cámara CCTV a color 1080P', 500, '../public/img/images.jpeg')">Agregar al carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-cardxd">
-                        <div class="product-image-container">
-                            <img src="../public/img/images (4).jpeg" alt="Antena de TV Mitzu Interior Negro TV-8000" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <p class="product-description">Antena de TV Mitzu Interior Negro TV-8000</p>
-                            <div class="product-price-section">
-                                $200
-                            </div>
-                            <button class="add-to-cart-button" onclick="agregarAlCarrito('Antena de TV Mitzu', 200, '../public/img/images (4).jpeg')">Agregar al carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-cardxd">
-                        <div class="product-image-container">
-                            <img src="../public/img/descarga.jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
-                            <div class="product-price-section">
-                                $700
-                            </div>
-                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 700, '../public/img/descarga.jpeg')">Agregar al carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-cardxd">
-                        <div class="product-image-container">
-                            <img src="../public/img/images (3).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
-                            <div class="product-price-section">
-                                $700
-                            </div>
-                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 700, '../public/img/images (3).jpeg')">Agregar al carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-cardxd">
-                        <div class="product-image-container">
-                            <img src="../public/img/descarga (1).jpeg" alt="TL-WR940N 450Mbps Wireless N Router" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <p class="product-description">TL-WR940N 450Mbps Wireless N Router</p>
-                            <div class="product-price-section">
-                                $700
-                            </div>
-                            <button class="add-to-cart-button" onclick="agregarAlCarrito('TL-WR940N Router', 700, '../public/img/descarga (1).jpeg')">Agregar al carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-cardxd">
-                        <div class="product-image-container">
-                            <img src="../public/img/images (2).jpeg" alt="Switch Gigabit Ethernet de 24 puertos" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <p class="product-description">Switch Gigabit Ethernet de 24 puertos</p>
-                            <div class="product-price-section">
-                                $2500
-                            </div>
-                            <button class="add-to-cart-button" onclick="agregarAlCarrito('Switch Gigabit 24 puertos', 2500, '../public/img/images (2).jpeg')">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
-                <button class="nav-button right" onclick="scrollCarousel(1)">&#8594;</button>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Pie de página -->
     <footer class="main-footer">
@@ -405,7 +310,7 @@ if (isset($_GET['success'])) {
                 }
 
                 // Enviar datos como JSON
-                fetch('../app/controllers/test.php', {
+                fetch('../app/controllers/guardar_pedido.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json', // Cambiado a JSON
@@ -436,7 +341,7 @@ if (isset($_GET['success'])) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'No se pudo procesar la compra. Detalle: ' + error.message,
+                        text: 'No se pudo procesar la compra. Detalle: Inicie sesión para continuar.',
                         confirmButtonText: 'Ok'
                     });
                 });

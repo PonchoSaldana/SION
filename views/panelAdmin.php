@@ -253,7 +253,9 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
                     <th>Total</th>
                     <th>Expiración</th>
                     <th>Estado</th>
+                    <th>   </th>
                     <th>Acciones</th>
+
                 </tr>
             </thead>
             <tbody>
